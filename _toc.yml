@@ -1,0 +1,94 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+
+parts:
+  # - caption: Preface
+  #   chapters:
+  #     - file: book/preface/instructor
+  #     - file: book/preface/syllabus
+  #     - file: book/preface/software
+  - caption: Cesium
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: Cesium/01-Introduction
+  #     - file: book/Math/Linear-Algbra/Chapter2-Matrix-Operation
+  #     - file: book/Math/Linear-Algbra/Chapter3-LU-and-LDU-factorization
+  #     - file: book/Math/Linear-Algbra/Chapter4-Transpose-and-Permutation
+  #     - file: book/Math/Linear-Algbra/Chapter5-Vector-Space-And-Subspace
+  #     - file: book/Math/Linear-Algbra/Chapter6-Row-reduced-form
+  # - caption: Tree and Graph algorithm
+  #   maxdepth: 2
+  #   chapters:
+  #     - file: book/Computer-Science/Tree-and-Graph/01-certificate
+
+  # - caption: UT Dallas
+    # numbered: true
+    # maxdepth: 2
+    # chapters:
+      # - file: book/UTD/Scientific-Papers-Guidance
+  # - caption: Earth Engine
+  #   numbered: true
+  #   maxdepth: 2
+  #   chapters:
+  #     - file: book/gee/01_introduction
+  #     - file: book/gee/02_maps
+  #     - file: book/gee/03_gee_data
+  #     - file: book/gee/04_local_data
+  #     - file: book/gee/05_data_viz
+  #     - file: book/gee/06_data_analysis
+  #     - file: book/gee/07_data_export
+  #     - file: book/gee/08_cartoee
+  #     - file: book/gee/09_timelapse
+  #     - file: book/gee/10_webapps
+  #     - file: book/gee/11_applications
+  # - caption: DuckDB
+  #   numbered: true
+  #   maxdepth: 2
+  #   chapters:
+  #     - file: book/duckdb/01_duckdb_intro
+  #     - file: book/duckdb/02_sql_basics
+  #     - file: book/duckdb/03_python_api
+  #     - file: book/duckdb/04_data_import
+  #     - file: book/duckdb/05_data_export
+  #     - file: book/duckdb/06_geometries
+  #     - file: book/duckdb/07_spatial_relationships
+  #     - file: book/duckdb/08_data_viz
+  #     - file: book/duckdb/09_spatial_joins
+  #     - file: book/duckdb/10_pmtiles
+  #     - file: book/duckdb/11_data_analysis
+
+  # - caption: PostGIS
+  #   numbered: true
+  #   maxdepth: 2
+  #   chapters:
+  #     - file: book/postgis/installation
+  #     - file: book/postgis/sql_basics
+  #     - file: book/postgis/postgis_intro
+  #     - file: book/postgis/geometries
+  #     - file: book/postgis/spatial_relationships
+  #     - file: book/postgis/projection
+  #     - file: book/postgis/geopandas
+  # - caption: Labs
+  #   numbered: false
+  #   maxdepth: 2
+  #   chapters:
+  #     - file: book/labs/instructions
+  #     - file: book/labs/lab_01
+  #     - file: book/labs/lab_02
+  #     - file: book/labs/lab_03
+  #     - file: book/labs/lab_04
+  #     - file: book/labs/lab_05
+  #     - file: book/labs/lab_06
+  #     - file: book/labs/lab_07
+  #     - file: book/labs/lab_08
+  #     - file: book/labs/lab_09
+  #     - file: book/labs/lab_10
+  #     - file: book/labs/final_project
+  # - caption: Appendix
+  #   chapters:
+  #     - file: book/gee/bibliography
+  #     - file: book/gee/issues

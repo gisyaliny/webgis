@@ -1,4 +1,4 @@
-# [Welcome to Yalin's Notes](https://gisyaliny.github.io/notes/)
+# Welcome to Yalin's [Knowledge Base](https://gisyaliny.github.io/KnowledgeBase/)
 
 Hi there! Welcome to my GitHub repository where I share my study notes on math, computer science, statistics, and coursework from Coursera classes. I'm excited to have you here!
 
@@ -18,34 +18,34 @@ I am a Ph.D. Candidate in the [Department of Geospatial Information Sciences](ht
 <table>
   <tr>
     <td align="center">
-      <img src="assets\statistics.jpg" alt="Statistics" width="200" height="200">
+      <img src="https://gisyaliny.github.io/KnowledgeBase/assets/statistics.jpg" alt="Statistics" width="200" height="200">
       <br>
       <em>Statistics</em>
     </td>
     <td align="center">
-      <img src="assets\math.png" alt="Math" width="200" height="200">
+      <img src="https://gisyaliny.github.io/KnowledgeBase/assets/math.png" alt="Math" width="200" height="200">
       <br>
       <em>Math</em>
     </td>
     <td align="center">
-      <img src="assets\gis.png" alt="GIS" width="200" height="200">
+      <img src="https://gisyaliny.github.io/KnowledgeBase/assets/gis.png" alt="GIS" width="200" height="200">
       <br>
       <em>GIS</em>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="assets\computer-science.png" alt="Computer Science" width="200" height="200">
+      <img src="https://gisyaliny.github.io/KnowledgeBase/assets/computer-science.png" alt="Computer Science" width="200" height="200">
       <br>
       <em>Computer Science</em>
     </td>
     <td align="center">
-      <img src="assets\Coursera.png" alt="Coursera" width="200" height="200">
+      <img src="https://gisyaliny.github.io/KnowledgeBase/assets/Coursera.png" alt="Coursera" width="200" height="200">
       <br>
       <em>Coursera</em>
     </td>
     <td align="center">
-      <img src="assets\others.jpg" alt="Others" width="200" height="200">
+      <img src="https://gisyaliny.github.io/KnowledgeBase/assets/others.jpg" alt="Others" width="200" height="200">
       <br>
       <em>Others</em>
     </td>
