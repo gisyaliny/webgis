@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Introduction &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Cesium/01-Introduction';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/Cesium/01-Introduction.html" />
+    <link rel="icon" href="../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="1. Values, Types, and Operators" href="../JS/01-JS-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">1. Values, Types, and Operators</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/Cesium/01-Introduction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/Cesium/01-Introduction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/Cesium/01-Introduction.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2FCesium/01-Introduction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Cesium/01-Introduction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-data-format">2.1. Support Data Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-in-developing">2.2. Cesium in developing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-component-for-cesium">2.3. Learning component for Cesium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-environment-setting">2.4. Cesium Environment setting</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1><span class="section-number">2. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cesium.com/">Cesium</a></p></li>
+</ul>
+<p>Cesium is an <strong>open-source JavaScript library</strong> for creating 3D globes and maps. It allows developers to build interactive web-based applications with high-performance rendering of geospatial data. Cesium is particularly renowned for its capability to visualize <strong>large-scale</strong>, <strong>time-dynamic</strong>, and <strong>geographically</strong></p>
+<ul class="simple">
+<li><p>It requires support of <code class="docutils literal notranslate"><span class="pre">WebGL</span></code></p></li>
+<li><p>Based on <code class="docutils literal notranslate"><span class="pre">Apache</span> <span class="pre">2.0</span></code> license</p></li>
+</ul>
+<p><img alt="" src="https://images.prismic.io/cesium/f9240055-e3a6-49f1-aef9-30e2ed4b0600_cesium-for-unreal-open1.png?auto=compress%2Cformat&amp;fit=crop&amp;ar=16%3A9&amp;crop=faces%2Ccenter&amp;w=675" /></p>
+<section id="support-data-format">
+<h2><span class="section-number">2.1. </span>Support Data Format<a class="headerlink" href="#support-data-format" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code>: A lightweight format for encoding geospatial data using JSON (JavaScript Object Notation).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KML</span> <span class="pre">(Keyhole</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>: An XML-based format for expressing geographic annotation and visualization within Internet-based maps and Earth browsers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CZML</span> <span class="pre">(Cesium</span> <span class="pre">Language)</span></code>: A JSON-based format specifically designed for Cesium, allowing developers to describe time-dynamic scenes in Cesium applications.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3D</span> <span class="pre">Tiles</span></code>: A format for streaming massive heterogeneous 3D geospatial datasets, enabling efficient visualization of large-scale 3D content such as terrain, buildings, and point clouds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tileset</span></code>: Cesium supports various tileset formats for efficiently rendering large-scale datasets, including formats like quantized-mesh, 3D Tiles, and terrain tiles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STL</span> <span class="pre">(Stereolithography)</span></code>: A file format native to the stereolithography <code class="docutils literal notranslate"><span class="pre">CAD</span></code> software used for creating 3D models, commonly used for representing 3D geometry in Cesium applications.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COLLADA</span> <span class="pre">(COLLAborative</span> <span class="pre">Design</span> <span class="pre">Activity)</span></code>: A 3D model interchange format for exchanging digital assets between different graphics software applications, often used for importing 3D models into Cesium scenes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJ</span> <span class="pre">(Wavefront</span> <span class="pre">.obj</span> <span class="pre">file)</span></code>: A simple text-based format for representing 3D models, suitable for importing into Cesium applications for visualization.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GML</span> <span class="pre">(Geography</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>: An <code class="docutils literal notranslate"><span class="pre">XML</span></code>-based encoding for the transport and storage of geographic information, supported in Cesium for interoperability with GIS systems.</p></li>
+</ul>
+</section>
+<section id="cesium-in-developing">
+<h2><span class="section-number">2.2. </span>Cesium in developing<a class="headerlink" href="#cesium-in-developing" title="Link to this heading">#</a></h2>
+<p><img alt="" src="https://gisyaliny.github.io/gis/assets/01.png" /></p>
+</section>
+<section id="learning-component-for-cesium">
+<h2><span class="section-number">2.3. </span>Learning component for Cesium<a class="headerlink" href="#learning-component-for-cesium" title="Link to this heading">#</a></h2>
+<div style="text-align: center;">
+  <img src="https://gisyaliny.github.io/gis/assets/02.png" alt="Image" style="width: 40%;">
+</div>
+</section>
+<section id="cesium-environment-setting">
+<h2><span class="section-number">2.4. </span>Cesium Environment setting<a class="headerlink" href="#cesium-environment-setting" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">Node.js</span> <span class="pre">and</span> <span class="pre">npm</span></code>: <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> development requires <code class="docutils literal notranslate"><span class="pre">Node.js</span></code>, which includes <code class="docutils literal notranslate"><span class="pre">npm</span></code> (Node Package Manager), for managing dependencies and running scripts. You can download and install <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> from <a class="reference external" href="https://nodejs.org/en">here</a>.</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">--version</span></code> to check whether you install <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> successfully</p></li>
+</ul>
+</li>
+<li><p>Create a New Project</p>
+<ol class="arabic simple">
+<li><p>First, create a new directory for your Cesium project. You can do this using the command line:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">cesium</span><span class="o">-</span><span class="n">project</span>
+<span class="n">cd</span> <span class="n">cesium</span><span class="o">-</span><span class="n">project</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Next, initialize a new npm project in the project directory:
+<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">init</span> <span class="pre">-y</span></code></p></li>
+</ol>
+<p>This command creates a package.json file with default settings.</p>
+<ol class="arabic simple" start="3">
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> as a dependency using <code class="docutils literal notranslate"><span class="pre">npm</span></code>:
+<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">cesium</span></code></p></li>
+</ol>
+<p>This command installs the Cesium library and adds it as a dependency in your package.json file.</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>node<span class="w"> </span>--version
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v14.17.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>cesium-project
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>cesium-project
+<span class="o">!</span>npm<span class="w"> </span>init<span class="w"> </span>-y
+<span class="o">!</span>npm<span class="w"> </span>install<span class="w"> </span>cesium
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wrote to e:\2024\github\gis\Cesium\package.json:
+
+{
+  &quot;name&quot;: &quot;Cesium&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;keywords&quot;: [],
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;
+}
+
+
+
+&gt; protobufjs@7.2.6 postinstall e:\2024\github\gis\Cesium\node_modules\protobufjs
+&gt; node scripts/postinstall
+
++ cesium@1.116.0
+added 39 packages from 79 contributors and audited 39 packages in 3.968s
+found 0 vulnerabilities
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN notsup Unsupported engine for @zip.js/zip.js@2.7.41: wanted: {&quot;deno&quot;:&quot;&gt;=1.0.0&quot;,&quot;node&quot;:&quot;&gt;=16.5.0&quot;,&quot;bun&quot;:&quot;&gt;=0.7.0&quot;} (current: {&quot;node&quot;:&quot;14.17.6&quot;,&quot;npm&quot;:&quot;6.14.15&quot;})
+npm WARN notsup Not compatible with your version of node/npm: @zip.js/zip.js@2.7.41
+npm WARN Cesium@1.0.0 No description
+npm WARN Cesium@1.0.0 No repository field.
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic" start="3">
+<li><p>Create an <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file in your project directory.</p>
+<ul class="simple">
+<li><p>This file will serve as the entry point for your <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> application:</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a editor and add the following content:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Cesium Example&lt;/title&gt;
+    &lt;style&gt;
+        /* Add any custom styles here */
+        #cesiumContainer {
+            width: 100%;
+            height: 100%;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;cesiumContainer&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        // Your Cesium code goes here
+        var viewer = new Cesium.Viewer(&#39;cesiumContainer&#39;);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file sets up a basic webpage with a container <code class="docutils literal notranslate"><span class="pre">div</span></code> for the <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> viewer and includes the <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> library via a <code class="docutils literal notranslate"><span class="pre">script</span></code> tag.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Cesium"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../JS/01-JS-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Values, Types, and Operators</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-data-format">2.1. Support Data Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-in-developing">2.2. Cesium in developing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-component-for-cesium">2.3. Learning component for Cesium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-environment-setting">2.4. Cesium Environment setting</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
