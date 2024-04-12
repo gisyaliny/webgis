@@ -10,6 +10,11 @@ parts:
   #     - file: book/preface/instructor
   #     - file: book/preface/syllabus
   #     - file: book/preface/software
+  - caption: JavaScript Basic
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: JS/01-JS-intro
   - caption: Cesium
     numbered: true
     maxdepth: 2
