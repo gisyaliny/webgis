@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. SQL &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>4. SQL &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../_static/fav.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Introduction" href="../Cesium/01-Introduction.html" />
-    <link rel="prev" title="2. Array and Object (Dictionary)" href="../JS/02-Arrays-and-Object.html" />
+    <link rel="next" title="5. Introduction" href="../Cesium/01-Introduction.html" />
+    <link rel="prev" title="3. Loops and logic" href="../JS/03-loop-and-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,14 +174,15 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">1. Values, Types, and Operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">2. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">3. Loops and logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backend</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. SQL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. SQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">4. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">5. Introduction</a></li>
 </ul>
 
     </div>
@@ -443,60 +444,61 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-types-in-sql">3.1. Key Types in SQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-types">3.1.1. Numeric Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-types">3.1.2. String Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-time-types">3.1.3. Date/Time Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-type">3.1.4. Boolean Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-types-in-sql">4.1. Key Types in SQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-types">4.1.1. Numeric Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-types">4.1.2. String Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-time-types">4.1.3. Date/Time Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-type">4.1.4. Boolean Type</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-normalization">3.2. Database normalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints-in-sql">3.3. Constraints in SQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-constraint">3.3.1. Unique Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-constraint">3.3.2. Check Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-constraint">3.3.3. Default Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-key-constraint">3.3.4. Foreign Key Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensive-example">3.3.5. Comprehensive Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-normalization">4.2. Database normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints-in-sql">4.3. Constraints in SQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-constraint">4.3.1. Unique Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-constraint">4.3.2. Check Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-constraint">4.3.3. Default Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-key-constraint">4.3.4. Foreign Key Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensive-example">4.3.5. Comprehensive Example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dql-data-query-language">3.4. DQL (Data Query Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join">3.4.1. Join</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dql-data-query-language">4.4. DQL (Data Query Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join">4.4.1. Join</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dml-data-manipulation-language">3.5. DML (Data Manipulation Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert">3.5.1. Insert</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">3.5.2. Update</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete">3.5.3. Delete</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dml-data-manipulation-language">4.5. DML (Data Manipulation Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert">4.5.1. Insert</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">4.5.2. Update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete">4.5.3. Delete</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">3.6. Operators</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">3.6.1. Arithmetic Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">3.6.2. Comparison Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concat-and-substring-operator">3.6.3. <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-operator">3.6.4. <code class="docutils literal notranslate"><span class="pre">IN</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#between-operator">3.6.5. <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#like-operator">3.6.6. <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-null-is-not-null-operators">3.6.7. <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> / <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#any-all-operators">3.6.8. <code class="docutils literal notranslate"><span class="pre">ANY</span></code> / <code class="docutils literal notranslate"><span class="pre">ALL</span></code> Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-operator">3.6.9. Date and Time Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by-and-having-operators">3.6.10. <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">4.6. Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">4.6.1. Arithmetic Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">4.6.2. Comparison Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concat-and-substring-operator">4.6.3. <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-operator">4.6.4. <code class="docutils literal notranslate"><span class="pre">IN</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#between-operator">4.6.5. <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#like-operator">4.6.6. <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-null-is-not-null-operators">4.6.7. <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> / <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#any-all-operators">4.6.8. <code class="docutils literal notranslate"><span class="pre">ANY</span></code> / <code class="docutils literal notranslate"><span class="pre">ALL</span></code> Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-operator">4.6.9. Date and Time Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by-and-having-operators">4.6.10. <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> operators</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ddl-data-definition-language">3.7. DDL (Data Definition Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create">3.7.1. <code class="docutils literal notranslate"><span class="pre">CREATE</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alter">3.7.2. <code class="docutils literal notranslate"><span class="pre">ALTER</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop">3.7.3. <code class="docutils literal notranslate"><span class="pre">DROP</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truncate">3.7.4. <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename">3.7.5. <code class="docutils literal notranslate"><span class="pre">RENAME</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cast-and">3.7.6. <code class="docutils literal notranslate"><span class="pre">CAST</span></code> and <code class="docutils literal notranslate"><span class="pre">::</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ddl-data-definition-language">4.7. DDL (Data Definition Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create">4.7.1. <code class="docutils literal notranslate"><span class="pre">CREATE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alter">4.7.2. <code class="docutils literal notranslate"><span class="pre">ALTER</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop">4.7.3. <code class="docutils literal notranslate"><span class="pre">DROP</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truncate">4.7.4. <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename">4.7.5. <code class="docutils literal notranslate"><span class="pre">RENAME</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cast-and">4.7.6. <code class="docutils literal notranslate"><span class="pre">CAST</span></code> and <code class="docutils literal notranslate"><span class="pre">::</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcl-data-control-language">3.8. DCL (Data Control Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grant">3.8.1. <code class="docutils literal notranslate"><span class="pre">GRANT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revoke">3.8.2. <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcl-data-control-language">4.8. DCL (Data Control Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grant">4.8.1. <code class="docutils literal notranslate"><span class="pre">GRANT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revoke">4.8.2. <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcl-transaction-control-language">3.9. TCL (Transaction Control Language)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcl-transaction-control-language">4.9. TCL (Transaction Control Language)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-script">4.10. Example Script</a></li>
 </ul>
             </nav>
         </div>
@@ -509,16 +511,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sql">
-<h1><span class="section-number">3. </span>SQL<a class="headerlink" href="#sql" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>SQL<a class="headerlink" href="#sql" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=yMqldbY2AAg&amp;amp;t=4s&amp;amp;ab_channel=ByteByteGo">Reference</a></p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">SQL</span> <span class="pre">(Structured</span> <span class="pre">Query</span> <span class="pre">Language)</span></code>: <code class="docutils literal notranslate"><span class="pre">SQL</span></code> is a standard language for managing relational databases. It provides a set of commands for performing various operations such as querying data, updating data, creating and modifying database schema, and managing access controls.</p>
 <p><img alt="image.png" src="../_images/01.png" /></p>
 <section id="key-types-in-sql">
-<h2><span class="section-number">3.1. </span>Key Types in SQL<a class="headerlink" href="#key-types-in-sql" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Key Types in SQL<a class="headerlink" href="#key-types-in-sql" title="Link to this heading">#</a></h2>
 <section id="numeric-types">
-<h3><span class="section-number">3.1.1. </span>Numeric Types<a class="headerlink" href="#numeric-types" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>Numeric Types<a class="headerlink" href="#numeric-types" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">INT</span></code> (Integer): Represents whole numbers.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DECIMAL</span></code>: Represents fixed-point numbers with exact precision.</p>
@@ -532,7 +534,7 @@ document.write(`
 </ul>
 </section>
 <section id="string-types">
-<h3><span class="section-number">3.1.2. </span>String Types<a class="headerlink" href="#string-types" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.1.2. </span>String Types<a class="headerlink" href="#string-types" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">VARCHAR</span></code>: Represents variable-length character strings with a maximum length specified.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TEXT</span></code>: Represents variable-length character strings with a maximum length that can be extremely large.</p>
@@ -548,7 +550,7 @@ document.write(`
 </ul>
 </section>
 <section id="date-time-types">
-<h3><span class="section-number">3.1.3. </span>Date/Time Types<a class="headerlink" href="#date-time-types" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.1.3. </span>Date/Time Types<a class="headerlink" href="#date-time-types" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">DATE</span></code>: Represents a date value without time.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TIMESTAMP</span></code>: Represents date and time values.</p>
@@ -563,7 +565,7 @@ document.write(`
 </ul>
 </section>
 <section id="boolean-type">
-<h3><span class="section-number">3.1.4. </span>Boolean Type<a class="headerlink" href="#boolean-type" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.1.4. </span>Boolean Type<a class="headerlink" href="#boolean-type" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">BIT</span></code>: Represents a single bit that can store boolean values (0 or 1).</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Employees</span><span class="w"> </span><span class="p">(</span>
@@ -577,7 +579,7 @@ document.write(`
 </section>
 </section>
 <section id="database-normalization">
-<h2><span class="section-number">3.2. </span>Database normalization<a class="headerlink" href="#database-normalization" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Database normalization<a class="headerlink" href="#database-normalization" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Database</span> <span class="pre">normalization</span></code> is a process used to organize a relational database into tables and columns to <strong>minimize <code class="docutils literal notranslate"><span class="pre">redundancy</span></code> and <code class="docutils literal notranslate"><span class="pre">dependency</span></code></strong>. It aims to reduce data anomalies such as insertion, update, and deletion anomalies, which can occur when data is not properly organized.</p>
 <p>Let’s illustrate normalization with a simple example:</p>
 <p>Suppose we have a database to store information about <code class="docutils literal notranslate"><span class="pre">students</span></code> and the <code class="docutils literal notranslate"><span class="pre">courses</span></code> they are enrolled in. Initially, we might design a single table like this:</p>
@@ -697,9 +699,9 @@ document.write(`
 </table>
 </section>
 <section id="constraints-in-sql">
-<h2><span class="section-number">3.3. </span>Constraints in SQL<a class="headerlink" href="#constraints-in-sql" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Constraints in SQL<a class="headerlink" href="#constraints-in-sql" title="Link to this heading">#</a></h2>
 <section id="unique-constraint">
-<h3><span class="section-number">3.3.1. </span>Unique Constraint<a class="headerlink" href="#unique-constraint" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>Unique Constraint<a class="headerlink" href="#unique-constraint" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">unique</span> <span class="pre">constraint</span></code> ensures that all values in a column are unique (i.e., <strong>no duplicates are allowed</strong>).</p>
 <p>It can be applied to one or more columns in a table. If a unique constraint is defined on multiple columns, the combination of values across those columns must be unique.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Students</span><span class="w"> </span><span class="p">(</span>
@@ -712,7 +714,7 @@ document.write(`
 <p>In this example, both <code class="docutils literal notranslate"><span class="pre">StudentName</span></code> and <code class="docutils literal notranslate"><span class="pre">Email</span></code> columns have <code class="docutils literal notranslate"><span class="pre">unique</span> <span class="pre">constraints</span></code>, meaning that each student’s name and email must be unique within the table.</p>
 </section>
 <section id="check-constraint">
-<h3><span class="section-number">3.3.2. </span>Check Constraint<a class="headerlink" href="#check-constraint" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>Check Constraint<a class="headerlink" href="#check-constraint" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">check</span> <span class="pre">constraint</span></code> is used to enforce a condition on the values allowed in a column. It ensures that all values <code class="docutils literal notranslate"><span class="pre">inserted</span></code> or <code class="docutils literal notranslate"><span class="pre">updated</span></code> in the column <strong>satisfy the specified condition</strong>.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Employees</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">EmployeeID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -724,7 +726,7 @@ document.write(`
 <p>In this example, the check constraints ensure that the <code class="docutils literal notranslate"><span class="pre">Age</span></code> column contains values greater than or equal to <code class="docutils literal notranslate"><span class="pre">18</span></code> and the <code class="docutils literal notranslate"><span class="pre">Department</span></code> column only contains values <code class="docutils literal notranslate"><span class="pre">IT</span></code>, <code class="docutils literal notranslate"><span class="pre">Finance</span></code>, or <code class="docutils literal notranslate"><span class="pre">HR</span></code>.</p>
 </section>
 <section id="default-constraint">
-<h3><span class="section-number">3.3.3. </span>Default Constraint<a class="headerlink" href="#default-constraint" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>Default Constraint<a class="headerlink" href="#default-constraint" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">constraint</span></code> specifies a default value for a column when no value is explicitly provided during an <code class="docutils literal notranslate"><span class="pre">insert</span></code> operation. If a <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">constraint</span></code> is defined on a column, the default value is used if no other value is specified.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Orders</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">OrderID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -736,7 +738,7 @@ document.write(`
 <p>In this example, if no value is provided for the <code class="docutils literal notranslate"><span class="pre">OrderDate</span></code> column during an <code class="docutils literal notranslate"><span class="pre">insert</span></code> operation, the current date is automatically inserted. Similarly, if no value is provided for the <code class="docutils literal notranslate"><span class="pre">Status</span></code> column, ‘Pending’ is inserted by default.</p>
 </section>
 <section id="foreign-key-constraint">
-<h3><span class="section-number">3.3.4. </span>Foreign Key Constraint<a class="headerlink" href="#foreign-key-constraint" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.4. </span>Foreign Key Constraint<a class="headerlink" href="#foreign-key-constraint" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">foreign</span> <span class="pre">key</span> <span class="pre">constraint</span></code> establishes a relationship between two tables by enforcing referential integrity. It ensures that values in a column (or a set of columns) in one table match values in another table’s <code class="docutils literal notranslate"><span class="pre">primary</span> <span class="pre">key</span></code> or <code class="docutils literal notranslate"><span class="pre">unique</span> <span class="pre">key</span></code>.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Orders</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">OrderID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -748,7 +750,7 @@ document.write(`
 <p>In this example, the <code class="docutils literal notranslate"><span class="pre">CustomerID</span></code> column in the <code class="docutils literal notranslate"><span class="pre">Orders</span></code> table is a <code class="docutils literal notranslate"><span class="pre">foreign</span> <span class="pre">key</span></code> that references the <code class="docutils literal notranslate"><span class="pre">CustomerID</span></code> column in the <code class="docutils literal notranslate"><span class="pre">Customers</span></code> table, ensuring that only valid customer IDs can be inserted into the Orders table.</p>
 </section>
 <section id="comprehensive-example">
-<h3><span class="section-number">3.3.5. </span>Comprehensive Example<a class="headerlink" href="#comprehensive-example" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.5. </span>Comprehensive Example<a class="headerlink" href="#comprehensive-example" title="Link to this heading">#</a></h3>
 <p>let’s create a comprehensive example using all four constraints: <code class="docutils literal notranslate"><span class="pre">Unique</span></code>, <code class="docutils literal notranslate"><span class="pre">Check</span></code>, <code class="docutils literal notranslate"><span class="pre">Default</span></code>, and <code class="docutils literal notranslate"><span class="pre">Foreign</span> <span class="pre">Key</span></code>.</p>
 <p>Suppose we’re designing a database for a library management system. We’ll create tables for <code class="docutils literal notranslate"><span class="pre">Books</span></code>, <code class="docutils literal notranslate"><span class="pre">Authors</span></code>, and <code class="docutils literal notranslate"><span class="pre">Members</span></code>, and we’ll define various constraints to ensure data integrity.</p>
 <ul class="simple">
@@ -794,10 +796,10 @@ document.write(`
 </section>
 </section>
 <section id="dql-data-query-language">
-<h2><span class="section-number">3.4. </span>DQL (Data Query Language)<a class="headerlink" href="#dql-data-query-language" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>DQL (Data Query Language)<a class="headerlink" href="#dql-data-query-language" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">DQL</span></code> is a subset of <code class="docutils literal notranslate"><span class="pre">SQL</span></code> used for retrieving data from the database. The primary command in <code class="docutils literal notranslate"><span class="pre">DQL</span></code> is <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>, which is used to retrieve data from one or more tables based on specified criteria.</p>
 <section id="join">
-<h3><span class="section-number">3.4.1. </span>Join<a class="headerlink" href="#join" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.4.1. </span>Join<a class="headerlink" href="#join" title="Link to this heading">#</a></h3>
 <p>In SQL, joins are used to combine rows from two or more tables based on a related column between them.</p>
 <p>Suppose we have two tables, <code class="docutils literal notranslate"><span class="pre">Students</span></code> and <code class="docutils literal notranslate"><span class="pre">Courses</span> <span class="pre">Register</span></code>, where <code class="docutils literal notranslate"><span class="pre">Students</span></code> contains information about students and <code class="docutils literal notranslate"><span class="pre">Courses</span> <span class="pre">Register</span></code> contains information about courses they are enrolled in. The tables are as follows:</p>
 <p><strong>Students Table:</strong></p>
@@ -864,28 +866,28 @@ document.write(`
 </section>
 </section>
 <section id="dml-data-manipulation-language">
-<h2><span class="section-number">3.5. </span>DML (Data Manipulation Language)<a class="headerlink" href="#dml-data-manipulation-language" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>DML (Data Manipulation Language)<a class="headerlink" href="#dml-data-manipulation-language" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">DML</span></code> is used to manipulate data stored in the database. It includes commands for <code class="docutils literal notranslate"><span class="pre">inserting</span></code>, <code class="docutils literal notranslate"><span class="pre">updating</span></code>, <code class="docutils literal notranslate"><span class="pre">deleting</span></code>, and <code class="docutils literal notranslate"><span class="pre">querying</span></code> data within tables.</p>
 <p>Common DML commands include <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>, and <code class="docutils literal notranslate"><span class="pre">SELECT</span></code>.</p>
 <section id="insert">
-<h3><span class="section-number">3.5.1. </span>Insert<a class="headerlink" href="#insert" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.5.1. </span>Insert<a class="headerlink" href="#insert" title="Link to this heading">#</a></h3>
 <p><img alt="image.png" src="../_images/03.png" /></p>
 </section>
 <section id="update">
-<h3><span class="section-number">3.5.2. </span>Update<a class="headerlink" href="#update" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.5.2. </span>Update<a class="headerlink" href="#update" title="Link to this heading">#</a></h3>
 <p><img alt="image.png" src="../_images/04.png" /></p>
 </section>
 <section id="delete">
-<h3><span class="section-number">3.5.3. </span>Delete<a class="headerlink" href="#delete" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.5.3. </span>Delete<a class="headerlink" href="#delete" title="Link to this heading">#</a></h3>
 <p><img alt="image.png" src="../_images/05.png" /></p>
 </section>
 </section>
 <section id="operators">
-<h2><span class="section-number">3.6. </span>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h2>
 <p>In <code class="docutils literal notranslate"><span class="pre">SQL</span></code>, operators are used to perform operations on data within queries. There are various types of operators in <code class="docutils literal notranslate"><span class="pre">SQL</span></code>, including <code class="docutils literal notranslate"><span class="pre">arithmetic</span> <span class="pre">operators</span></code>, <code class="docutils literal notranslate"><span class="pre">comparison</span> <span class="pre">operators</span></code>, <code class="docutils literal notranslate"><span class="pre">logical</span> <span class="pre">operators</span></code>, and more. Here’s an introduction to some common SQL operators with examples:</p>
 <p><img alt="image.png" src="../_images/06.png" /></p>
 <section id="arithmetic-operators">
-<h3><span class="section-number">3.6.1. </span>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.1. </span>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Addition (<code class="docutils literal notranslate"><span class="pre">+</span></code>), Subtraction (<code class="docutils literal notranslate"><span class="pre">-</span></code>), Multiplication (<code class="docutils literal notranslate"><span class="pre">*</span></code>), Division (<code class="docutils literal notranslate"><span class="pre">/</span></code>), and Modulus (<code class="docutils literal notranslate"><span class="pre">%</span></code>).</p></li>
 </ul>
@@ -894,14 +896,14 @@ document.write(`
 </div>
 </section>
 <section id="comparison-operators">
-<h3><span class="section-number">3.6.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.2. </span>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Link to this heading">#</a></h3>
 <p>Equal to (<code class="docutils literal notranslate"><span class="pre">=</span></code>), Not equal to (<code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">!=</span></code>), Greater than (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>), Less than (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>), Greater than or equal to (<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>), Less than or equal to (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>=).</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="concat-and-substring-operator">
-<h3><span class="section-number">3.6.3. </span><code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code> Operator<a class="headerlink" href="#concat-and-substring-operator" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.3. </span><code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code> Operator<a class="headerlink" href="#concat-and-substring-operator" title="Link to this heading">#</a></h3>
 <p>Concatenates two or more strings together.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">FirstName</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">LastName</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">FullName</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Customers</span><span class="p">;</span>
 </pre></div>
@@ -909,35 +911,35 @@ document.write(`
 <p><img alt="image.png" src="../_images/07.png" /></p>
 </section>
 <section id="in-operator">
-<h3><span class="section-number">3.6.4. </span><code class="docutils literal notranslate"><span class="pre">IN</span></code> Operator<a class="headerlink" href="#in-operator" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.4. </span><code class="docutils literal notranslate"><span class="pre">IN</span></code> Operator<a class="headerlink" href="#in-operator" title="Link to this heading">#</a></h3>
 <p>Checks if a value matches any value in a list.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Electronics&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Appliances&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="between-operator">
-<h3><span class="section-number">3.6.5. </span><code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> Operator<a class="headerlink" href="#between-operator" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.5. </span><code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> Operator<a class="headerlink" href="#between-operator" title="Link to this heading">#</a></h3>
 <p>Checks if a value is within a specified range.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Orders</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">OrderDate</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;2022-01-01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;2022-01-31&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="like-operator">
-<h3><span class="section-number">3.6.6. </span><code class="docutils literal notranslate"><span class="pre">LIKE</span></code> Operator<a class="headerlink" href="#like-operator" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.6. </span><code class="docutils literal notranslate"><span class="pre">LIKE</span></code> Operator<a class="headerlink" href="#like-operator" title="Link to this heading">#</a></h3>
 <p>Compares a value to similar values using <code class="docutils literal notranslate"><span class="pre">wildcard</span></code> characters (<code class="docutils literal notranslate"><span class="pre">%</span></code> for zero or more characters, <code class="docutils literal notranslate"><span class="pre">_</span></code> for a single character).</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ProductName</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;Apple%&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="is-null-is-not-null-operators">
-<h3><span class="section-number">3.6.7. </span><code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> / <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> Operators<a class="headerlink" href="#is-null-is-not-null-operators" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.7. </span><code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> / <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> Operators<a class="headerlink" href="#is-null-is-not-null-operators" title="Link to this heading">#</a></h3>
 <p>Checks if a value is NULL or not NULL.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Employees</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ManagerID</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="any-all-operators">
-<h3><span class="section-number">3.6.8. </span><code class="docutils literal notranslate"><span class="pre">ANY</span></code> / <code class="docutils literal notranslate"><span class="pre">ALL</span></code> Operators<a class="headerlink" href="#any-all-operators" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.8. </span><code class="docutils literal notranslate"><span class="pre">ANY</span></code> / <code class="docutils literal notranslate"><span class="pre">ALL</span></code> Operators<a class="headerlink" href="#any-all-operators" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">ANY</span></code> operator returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the comparison is <code class="docutils literal notranslate"><span class="pre">true</span></code> for <strong>at least one</strong> of the values returned by the subquery.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Products</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">ANY</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">SpecialOffers</span><span class="p">);</span>
@@ -958,7 +960,7 @@ document.write(`
 </ul>
 </section>
 <section id="date-and-time-operator">
-<h3><span class="section-number">3.6.9. </span>Date and Time Operator<a class="headerlink" href="#date-and-time-operator" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.9. </span>Date and Time Operator<a class="headerlink" href="#date-and-time-operator" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Addition and Subtraction Operators (<code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code>)</p>
 <ul class="simple">
@@ -1007,7 +1009,7 @@ document.write(`
 </ol>
 </section>
 <section id="group-by-and-having-operators">
-<h3><span class="section-number">3.6.10. </span><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> operators<a class="headerlink" href="#group-by-and-having-operators" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.6.10. </span><code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> operators<a class="headerlink" href="#group-by-and-having-operators" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> clause is used to group rows based on one or more columns.</p>
 <ul class="simple">
@@ -1035,12 +1037,12 @@ document.write(`
 </section>
 </section>
 <section id="ddl-data-definition-language">
-<h2><span class="section-number">3.7. </span>DDL (Data Definition Language)<a class="headerlink" href="#ddl-data-definition-language" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.7. </span>DDL (Data Definition Language)<a class="headerlink" href="#ddl-data-definition-language" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">DDL</span></code> is used to define the structure and schema of a database. It includes commands for creating, modifying, and deleting database objects such as <code class="docutils literal notranslate"><span class="pre">tables</span></code>, <code class="docutils literal notranslate"><span class="pre">indexes</span></code>, <code class="docutils literal notranslate"><span class="pre">views</span></code>, and <code class="docutils literal notranslate"><span class="pre">schemas</span></code>.</p>
 <p>Common DDL commands include <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALTER</span></code>, <code class="docutils literal notranslate"><span class="pre">DROP</span></code>, <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code>, and <code class="docutils literal notranslate"><span class="pre">RENAME</span></code>.</p>
 <p><img alt="image.png" src="../_images/09.png" /></p>
 <section id="create">
-<h3><span class="section-number">3.7.1. </span><code class="docutils literal notranslate"><span class="pre">CREATE</span></code><a class="headerlink" href="#create" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.7.1. </span><code class="docutils literal notranslate"><span class="pre">CREATE</span></code><a class="headerlink" href="#create" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> command is used to create new database objects such as <code class="docutils literal notranslate"><span class="pre">tables</span></code>, <code class="docutils literal notranslate"><span class="pre">indexes</span></code>, <code class="docutils literal notranslate"><span class="pre">views</span></code>, etc.</p></li>
 <li><p>This command creates a new <code class="docutils literal notranslate"><span class="pre">table</span></code> named <code class="docutils literal notranslate"><span class="pre">Employees</span></code> with columns <code class="docutils literal notranslate"><span class="pre">EmployeeID</span></code>, <code class="docutils literal notranslate"><span class="pre">FirstName</span></code>, <code class="docutils literal notranslate"><span class="pre">LastName</span></code>, and <code class="docutils literal notranslate"><span class="pre">Department</span></code>.</p></li>
@@ -1055,7 +1057,7 @@ document.write(`
 </div>
 </section>
 <section id="alter">
-<h3><span class="section-number">3.7.2. </span><code class="docutils literal notranslate"><span class="pre">ALTER</span></code><a class="headerlink" href="#alter" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.7.2. </span><code class="docutils literal notranslate"><span class="pre">ALTER</span></code><a class="headerlink" href="#alter" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">ALTER</span></code> command is used to <strong>modify existing database objects</strong>.</p></li>
 <li><p>This command adds a new column named <code class="docutils literal notranslate"><span class="pre">Salary</span></code> to the <code class="docutils literal notranslate"><span class="pre">Employees</span></code> table.</p></li>
@@ -1066,7 +1068,7 @@ document.write(`
 </div>
 </section>
 <section id="drop">
-<h3><span class="section-number">3.7.3. </span><code class="docutils literal notranslate"><span class="pre">DROP</span></code><a class="headerlink" href="#drop" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.7.3. </span><code class="docutils literal notranslate"><span class="pre">DROP</span></code><a class="headerlink" href="#drop" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">DROP</span></code> command is used to <strong>delete existing database objects</strong>.</p></li>
 <li><p>This command deletes the <code class="docutils literal notranslate"><span class="pre">Employees</span></code> table and all its data from the database.</p></li>
@@ -1076,7 +1078,7 @@ document.write(`
 </div>
 </section>
 <section id="truncate">
-<h3><span class="section-number">3.7.4. </span><code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code><a class="headerlink" href="#truncate" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.7.4. </span><code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code><a class="headerlink" href="#truncate" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code> command is used to <strong>delete all rows</strong> from a table but <strong>keeps the table structure</strong> intact.</p></li>
 <li><p>This command <strong>removes all rows</strong> from the <code class="docutils literal notranslate"><span class="pre">Employees</span></code> table, but the table structure remains.</p></li>
@@ -1086,7 +1088,7 @@ document.write(`
 </div>
 </section>
 <section id="rename">
-<h3><span class="section-number">3.7.5. </span><code class="docutils literal notranslate"><span class="pre">RENAME</span></code><a class="headerlink" href="#rename" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.7.5. </span><code class="docutils literal notranslate"><span class="pre">RENAME</span></code><a class="headerlink" href="#rename" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">RENAME</span></code> command is used to rename existing database objects.</p></li>
 <li><p>This command renames the column <code class="docutils literal notranslate"><span class="pre">FirstName</span></code> in the <code class="docutils literal notranslate"><span class="pre">Employees</span></code> table to <code class="docutils literal notranslate"><span class="pre">First_Name</span></code>.</p></li>
@@ -1097,7 +1099,7 @@ document.write(`
 </div>
 </section>
 <section id="cast-and">
-<h3><span class="section-number">3.7.6. </span><code class="docutils literal notranslate"><span class="pre">CAST</span></code> and <code class="docutils literal notranslate"><span class="pre">::</span></code><a class="headerlink" href="#cast-and" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.7.6. </span><code class="docutils literal notranslate"><span class="pre">CAST</span></code> and <code class="docutils literal notranslate"><span class="pre">::</span></code><a class="headerlink" href="#cast-and" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">CAST</span></code> command is used to explicitly specify the data type to which you want to convert a value.</p></li>
 </ul>
@@ -1109,12 +1111,12 @@ document.write(`
 </section>
 </section>
 <section id="dcl-data-control-language">
-<h2><span class="section-number">3.8. </span>DCL (Data Control Language)<a class="headerlink" href="#dcl-data-control-language" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.8. </span>DCL (Data Control Language)<a class="headerlink" href="#dcl-data-control-language" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">DCL</span></code> is used to manage access permissions and control database operations. It includes commands for <strong>granting and revoking privileges to users and roles</strong>.</p>
 <p>Common DCL commands include <code class="docutils literal notranslate"><span class="pre">GRANT</span></code> and <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code>.</p>
 <p><img alt="image.png" src="../_images/10.png" /></p>
 <section id="grant">
-<h3><span class="section-number">3.8.1. </span><code class="docutils literal notranslate"><span class="pre">GRANT</span></code><a class="headerlink" href="#grant" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.8.1. </span><code class="docutils literal notranslate"><span class="pre">GRANT</span></code><a class="headerlink" href="#grant" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">GRANT</span></code> command is used to give specific privileges to a user or role.</p></li>
 <li><p>This command grants the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> and <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> privileges on the <code class="docutils literal notranslate"><span class="pre">Employees</span></code> table to the user named <code class="docutils literal notranslate"><span class="pre">user1</span></code>. Now, <code class="docutils literal notranslate"><span class="pre">user1</span></code> can select and insert data into the Employees table.</p>
@@ -1125,7 +1127,7 @@ document.write(`
 </ul>
 </section>
 <section id="revoke">
-<h3><span class="section-number">3.8.2. </span><code class="docutils literal notranslate"><span class="pre">REVOKE</span></code><a class="headerlink" href="#revoke" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.8.2. </span><code class="docutils literal notranslate"><span class="pre">REVOKE</span></code><a class="headerlink" href="#revoke" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code> command is used to revoke previously granted privileges from a user or role.</p></li>
 <li><p>This command revokes the <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> privilege on the <code class="docutils literal notranslate"><span class="pre">Employees</span></code> table from the user named <code class="docutils literal notranslate"><span class="pre">user1</span></code>. Now, user1 <strong>no longer has permission to insert data</strong> into the Employees table.</p>
@@ -1137,10 +1139,86 @@ document.write(`
 </section>
 </section>
 <section id="tcl-transaction-control-language">
-<h2><span class="section-number">3.9. </span>TCL (Transaction Control Language)<a class="headerlink" href="#tcl-transaction-control-language" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.9. </span>TCL (Transaction Control Language)<a class="headerlink" href="#tcl-transaction-control-language" title="Link to this heading">#</a></h2>
 <p>TCL is used to manage transactions within the database. It includes commands for starting, committing, and rolling back transactions to ensure data integrity and consistency.</p>
 <p>Common TCL commands include <code class="docutils literal notranslate"><span class="pre">COMMIT</span></code>, <code class="docutils literal notranslate"><span class="pre">ROLLBACK</span></code>, and <code class="docutils literal notranslate"><span class="pre">SAVEPOINT</span></code>.</p>
 <p><img alt="image.png" src="../_images/11.png" /></p>
+</section>
+<section id="example-script">
+<h2><span class="section-number">4.10. </span>Example Script<a class="headerlink" href="#example-script" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DECLARE</span></code>: This section is used to declare variables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>: Marks the beginning of the main block of code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FOR</span> <span class="pre">...</span> <span class="pre">LOOP</span></code>: This loop iterates over the result set returned by the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> query inside it.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span></code>, <code class="docutils literal notranslate"><span class="pre">RECORD</span></code> is a data type that represents a <code class="docutils literal notranslate"><span class="pre">row</span></code> or <code class="docutils literal notranslate"><span class="pre">record</span></code> in a result set or a composite type. It is often used in functions or procedures where the structure of the <strong>returned data is not known in advance</strong> or when working with dynamic queries.</p></li>
+<li><p>In the expression <code class="docutils literal notranslate"><span class="pre">((ST_Area(geom)</span> <span class="pre">/</span> <span class="pre">SUM(ST_Area(geom))</span> <span class="pre">OVER())</span> <span class="pre">*</span> <span class="pre">10000)::INT</span> <span class="pre">AS</span> <span class="pre">n</span></code>, the <code class="docutils literal notranslate"><span class="pre">OVER()</span></code> clause is used with the <code class="docutils literal notranslate"><span class="pre">SUM()</span></code> function as a <strong>window function</strong>.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">OVER()</span></code> clause specifies the window over which the SUM() function operates. In this case, it calculates the <strong>total sum</strong> of the <code class="docutils literal notranslate"><span class="pre">ST_Area(geom)</span></code> values <strong>across all rows</strong> in the result set, allowing for a percentage calculation of each individual area relative to the total sum.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ST_Dump</span></code> is a <code class="docutils literal notranslate"><span class="pre">PostGIS</span></code> function that decomposes a geometry into a set of <code class="docutils literal notranslate"><span class="pre">geometry_dump</span></code> rows.</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">stats_10000</span><span class="p">;</span>
+
+<span class="c1">-- Create the final output table</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">stats_10000</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">geoid</span><span class="w"> </span><span class="nb">varchar</span><span class="p">,</span>
+<span class="w">    </span><span class="n">dbar</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span>
+<span class="w">    </span><span class="n">stdev</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span>
+<span class="w">	</span><span class="n">mu</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="p">,</span>
+<span class="w">	</span><span class="n">sigma</span><span class="w"> </span><span class="n">double</span><span class="w"> </span><span class="k">precision</span>
+<span class="p">);</span>
+<span class="c1">-- Set the seed for reproducible results</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">setseed</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">);</span>
+
+<span class="k">DO</span><span class="w"> </span><span class="err">$$</span>
+<span class="k">DECLARE</span>
+<span class="w">    </span><span class="n">polygon_record</span><span class="w"> </span><span class="n">RECORD</span><span class="p">;</span>
+<span class="k">BEGIN</span>
+<span class="w">		</span><span class="k">FOR</span><span class="w"> </span><span class="n">polygon_record</span><span class="w"> </span><span class="k">IN</span>
+<span class="w">			</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">area</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span>
+<span class="w">			</span><span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">				</span><span class="k">SELECT</span>
+<span class="w">					</span><span class="n">id</span><span class="p">,</span>
+<span class="w">					</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">area</span><span class="p">,</span>
+<span class="w">					</span><span class="p">((</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">ST_Area</span><span class="p">(</span><span class="n">geom</span><span class="p">))</span><span class="w"> </span><span class="n">OVER</span><span class="p">())</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10000</span><span class="p">)::</span><span class="nb">INT</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span><span class="p">,</span>
+<span class="w">					</span><span class="n">geom</span>
+<span class="w">				</span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;DFW_CMA&quot;</span>
+<span class="w">			</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">areas_with_n</span>
+<span class="w">		</span><span class="n">LOOP</span>
+<span class="w">        </span><span class="c1">-- Generate random points within the current polygon using the calculated &#39;n&#39;</span>
+<span class="w">        </span><span class="k">CREATE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">temp_random_points</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="p">(</span><span class="n">ST_Dump</span><span class="p">(</span><span class="n">ST_GeneratePoints</span><span class="p">(</span><span class="n">polygon_record</span><span class="p">.</span><span class="n">geom</span><span class="p">,</span><span class="w"> </span><span class="n">polygon_record</span><span class="p">.</span><span class="n">n</span><span class="p">))).</span><span class="n">geom</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">-- TRUNCATE TABLE temp_random_points;</span>
+<span class="w">        </span><span class="c1">-- INSERT INTO temp_random_points (geom)</span>
+<span class="w">        </span><span class="c1">-- SELECT (ST_Dump(ST_GeneratePoints(polygon_record.geom, polygon_record.n))).geom;</span>
+
+<span class="w">        </span><span class="c1">-- Calculate pairwise distances</span>
+<span class="w">        </span><span class="k">CREATE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">temp_distances</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="mi">0</span><span class="p">::</span><span class="n">double</span><span class="w"> </span><span class="k">precision</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">distance</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Initialize with dummy data to set the data type</span>
+<span class="w">        </span><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">temp_distances</span><span class="p">;</span>
+<span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">temp_distances</span><span class="w"> </span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+<span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">ST_Distance</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">geom</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">geom</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">distance</span>
+<span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">temp_random_points</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">temp_random_points</span><span class="w"> </span><span class="n">b</span>
+<span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">ctid</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">ctid</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Ensure not calculating distance of a point to itself</span>
+
+<span class="w">        </span><span class="c1">-- Compute mean and standard deviation of distances</span>
+<span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">stats_10000</span><span class="w"> </span><span class="p">(</span><span class="n">geoid</span><span class="p">,</span><span class="w"> </span><span class="n">dbar</span><span class="p">,</span><span class="w"> </span><span class="n">stdev</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">)</span>
+<span class="w">        </span><span class="k">SELECT</span><span class="w">  </span><span class="n">polygon_record</span><span class="p">.</span><span class="n">id</span><span class="p">,</span>
+<span class="w">				</span><span class="k">AVG</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">dbar</span><span class="p">,</span>
+<span class="w">				</span><span class="n">STDDEV_POP</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">stdev</span><span class="p">,</span>
+<span class="w">				</span><span class="n">SQRT</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">polygon_record</span><span class="p">.</span><span class="n">area</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">SQRT</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">8262589495</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mu</span><span class="p">,</span>
+<span class="w">				</span><span class="n">SQRT</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">polygon_record</span><span class="p">.</span><span class="n">area</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">SQRT</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">3881101412</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">sigma</span>
+<span class="w">        </span><span class="k">FROM</span><span class="w"> </span><span class="n">temp_distances</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">-- Clean up temporary tables for the next iteration</span>
+<span class="w">        </span><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">temp_random_points</span><span class="p">;</span>
+<span class="w">        </span><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">temp_distances</span><span class="p">;</span>
+<span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
+<span class="k">END</span><span class="w"> </span><span class="err">$$</span><span class="p">;</span>
+
+<span class="c1">-- Retrieve and view the final results</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">stats_10000</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -1175,12 +1253,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../JS/02-Arrays-and-Object.html"
+       href="../JS/03-loop-and-logic.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Array and Object (Dictionary)</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Loops and logic</p>
       </div>
     </a>
     <a class="right-next"
@@ -1188,7 +1266,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Introduction</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1208,60 +1286,61 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-types-in-sql">3.1. Key Types in SQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-types">3.1.1. Numeric Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-types">3.1.2. String Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-time-types">3.1.3. Date/Time Types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-type">3.1.4. Boolean Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-types-in-sql">4.1. Key Types in SQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numeric-types">4.1.1. Numeric Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-types">4.1.2. String Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-time-types">4.1.3. Date/Time Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-type">4.1.4. Boolean Type</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-normalization">3.2. Database normalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints-in-sql">3.3. Constraints in SQL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-constraint">3.3.1. Unique Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-constraint">3.3.2. Check Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-constraint">3.3.3. Default Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-key-constraint">3.3.4. Foreign Key Constraint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensive-example">3.3.5. Comprehensive Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-normalization">4.2. Database normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints-in-sql">4.3. Constraints in SQL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-constraint">4.3.1. Unique Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-constraint">4.3.2. Check Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-constraint">4.3.3. Default Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foreign-key-constraint">4.3.4. Foreign Key Constraint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comprehensive-example">4.3.5. Comprehensive Example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dql-data-query-language">3.4. DQL (Data Query Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join">3.4.1. Join</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dql-data-query-language">4.4. DQL (Data Query Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join">4.4.1. Join</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dml-data-manipulation-language">3.5. DML (Data Manipulation Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert">3.5.1. Insert</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">3.5.2. Update</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete">3.5.3. Delete</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dml-data-manipulation-language">4.5. DML (Data Manipulation Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert">4.5.1. Insert</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update">4.5.2. Update</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete">4.5.3. Delete</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">3.6. Operators</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">3.6.1. Arithmetic Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">3.6.2. Comparison Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concat-and-substring-operator">3.6.3. <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-operator">3.6.4. <code class="docutils literal notranslate"><span class="pre">IN</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#between-operator">3.6.5. <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#like-operator">3.6.6. <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-null-is-not-null-operators">3.6.7. <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> / <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#any-all-operators">3.6.8. <code class="docutils literal notranslate"><span class="pre">ANY</span></code> / <code class="docutils literal notranslate"><span class="pre">ALL</span></code> Operators</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-operator">3.6.9. Date and Time Operator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by-and-having-operators">3.6.10. <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operators">4.6. Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators">4.6.1. Arithmetic Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-operators">4.6.2. Comparison Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concat-and-substring-operator">4.6.3. <code class="docutils literal notranslate"><span class="pre">CONCAT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSTRING</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-operator">4.6.4. <code class="docutils literal notranslate"><span class="pre">IN</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#between-operator">4.6.5. <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#like-operator">4.6.6. <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-null-is-not-null-operators">4.6.7. <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code> / <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code> Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#any-all-operators">4.6.8. <code class="docutils literal notranslate"><span class="pre">ANY</span></code> / <code class="docutils literal notranslate"><span class="pre">ALL</span></code> Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time-operator">4.6.9. Date and Time Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by-and-having-operators">4.6.10. <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">HAVING</span></code> operators</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ddl-data-definition-language">3.7. DDL (Data Definition Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create">3.7.1. <code class="docutils literal notranslate"><span class="pre">CREATE</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alter">3.7.2. <code class="docutils literal notranslate"><span class="pre">ALTER</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop">3.7.3. <code class="docutils literal notranslate"><span class="pre">DROP</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truncate">3.7.4. <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename">3.7.5. <code class="docutils literal notranslate"><span class="pre">RENAME</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cast-and">3.7.6. <code class="docutils literal notranslate"><span class="pre">CAST</span></code> and <code class="docutils literal notranslate"><span class="pre">::</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ddl-data-definition-language">4.7. DDL (Data Definition Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create">4.7.1. <code class="docutils literal notranslate"><span class="pre">CREATE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alter">4.7.2. <code class="docutils literal notranslate"><span class="pre">ALTER</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drop">4.7.3. <code class="docutils literal notranslate"><span class="pre">DROP</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truncate">4.7.4. <code class="docutils literal notranslate"><span class="pre">TRUNCATE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename">4.7.5. <code class="docutils literal notranslate"><span class="pre">RENAME</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cast-and">4.7.6. <code class="docutils literal notranslate"><span class="pre">CAST</span></code> and <code class="docutils literal notranslate"><span class="pre">::</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcl-data-control-language">3.8. DCL (Data Control Language)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grant">3.8.1. <code class="docutils literal notranslate"><span class="pre">GRANT</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revoke">3.8.2. <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dcl-data-control-language">4.8. DCL (Data Control Language)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grant">4.8.1. <code class="docutils literal notranslate"><span class="pre">GRANT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revoke">4.8.2. <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcl-transaction-control-language">3.9. TCL (Transaction Control Language)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcl-transaction-control-language">4.9. TCL (Transaction Control Language)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-script">4.10. Example Script</a></li>
 </ul>
   </nav></div>
 
