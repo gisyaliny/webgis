@@ -16,6 +16,7 @@ parts:
     chapters:
       - file: JS/01-JS-intro
       - file: JS/02-Arrays-and-Object
+      - file: JS/03-loop-and-logic
   - caption: Backend
     numbered: true
     maxdepth: 2
