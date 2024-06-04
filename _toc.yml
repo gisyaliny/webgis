@@ -17,11 +17,22 @@ parts:
       - file: JS/01-JS-intro
       - file: JS/02-Arrays-and-Object
       - file: JS/03-loop-and-logic
+  - caption: ArcGIS JS API
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: JS/ArcGIS/01-get-started
+      - file: JS/ArcGIS/02-manipulate-layers
   - caption: Backend
     numbered: true
     maxdepth: 2
     chapters:
-      - file: Backend/01-sql-comprehensive.ipynb
+      - file: Backend/01-sql-comprehensive
+  - caption: React and TypeScript
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: React/01-get-started
   - caption: Cesium
     numbered: true
     maxdepth: 2
