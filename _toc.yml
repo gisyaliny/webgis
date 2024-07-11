@@ -14,30 +14,41 @@ parts:
     numbered: true
     maxdepth: 2
     chapters:
-      - file: JS/01-JS-intro
-      - file: JS/02-Arrays-and-Object
-      - file: JS/03-loop-and-logic
+      - file: docs/JS/01-JS-intro
+      - file: docs/JS/02-Arrays-and-Object
+      - file: docs/JS/03-loop-and-logic
   - caption: ArcGIS JS API
     numbered: true
     maxdepth: 2
     chapters:
-      - file: JS/ArcGIS/01-get-started
-      - file: JS/ArcGIS/02-manipulate-layers
-  - caption: Backend
+      - file: docs/JS/ArcGIS/01-get-started
+      - file: docs/JS/ArcGIS/02-manipulate-layers
+      - file: docs/JS/ArcGIS/03-spatial-query
+  - caption: Django Blog Project
     numbered: true
     maxdepth: 2
     chapters:
-      - file: Backend/01-sql-comprehensive
+      - file: docs/Backend/Django-Blog/01-get-started
+      - file: docs/Backend/Django-Blog/02-database-and-admin
+      - file: docs/Backend/Django-Blog/03-user-registration
+      - file: docs/Backend/Django-Blog/04-post-crud
+      - file: docs/Backend/Django-Blog/06-rest-api
+      - file: docs/Backend/Django-Blog/07-deploy
+  - caption: DataBase
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: docs/Backend/01-sql-comprehensive
   - caption: React and TypeScript
     numbered: true
     maxdepth: 2
     chapters:
-      - file: React/01-get-started
+      - file: docs/React/01-get-started
   - caption: Cesium
     numbered: true
     maxdepth: 2
     chapters:
-      - file: Cesium/01-Introduction
+      - file: docs/Cesium/01-Introduction
   # - caption: Appendix
   #   chapters:
   #     - file: book/gee/bibliography

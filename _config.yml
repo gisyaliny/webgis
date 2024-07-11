@@ -51,6 +51,8 @@ html:
   use_issues_button: true
   use_edit_page_button: true
   use_download_button: true
+  extra_css: 
+    - static/table.css
   # thebe: true
   # google_analytics_id: G-XXXXXXX
 
