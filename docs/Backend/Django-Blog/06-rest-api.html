@@ -1,0 +1,928 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>11. Django REST API &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend/Django-Blog/06-rest-api';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/Backend/Django-Blog/06-rest-api.html" />
+    <link rel="icon" href="../../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="12. Deploy Django Project into Windows Server using IIS and FastCGI" href="07-deploy.html" />
+    <link rel="prev" title="10. POST Create, Read, Update and Delete (CRUD)" href="04-post-crud.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">1. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">2. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">3. Loops and logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">4. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">5. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">6. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">7. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">8. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">9. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-post-crud.html">10. POST Create, Read, Update and Delete (CRUD)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-deploy.html">12. Deploy Django Project into Windows Server using IIS and FastCGI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">13. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">14. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">15. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Backend/Django-Blog/06-rest-api.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Backend/Django-Blog/06-rest-api.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/Backend/Django-Blog/06-rest-api.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/Backend/Django-Blog/06-rest-api.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Backend/Django-Blog/06-rest-api.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Django REST API</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-construction">11.1. Basic Construction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-framework-drf">11.1.1. Setting Up Your Django REST Framework (DRF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">11.1.2. Serializers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-post-generic-views">11.1.3. Create views for Post (Generic Views)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views-for-comment-customized-apiview">11.1.4. Views for Comment (Customized APIView)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-configuration">11.1.5. URL Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-querying-and-filtering">11.2. Advanced Querying and Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-filter-framework">11.2.1. Setting Up Your Django REST Filter Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-another-post-list-view-for-content-query">11.2.2. Set another Post List View for content query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2.3. URL Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-permissions">11.3. Authentication and Permissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-setting">11.3.1. Set the setting</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="django-rest-api">
+<h1><span class="section-number">11. </span>Django REST API<a class="headerlink" href="#django-rest-api" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">RESTful</span> <span class="pre">API</span></code> is an architectural style for an application programming interface that uses HTTP requests to access and use data.</p></li>
+<li><p>That data can be used to <code class="docutils literal notranslate"><span class="pre">GET</span></code> , <code class="docutils literal notranslate"><span class="pre">PUT</span></code> , <code class="docutils literal notranslate"><span class="pre">POST</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> data types, which refers to <strong>reading</strong>, <strong>updating</strong>, <strong>creating</strong> and <strong>deleting</strong> operations related to resources.</p></li>
+<li><p><a class="reference external" href="https://www.django-rest-framework.org/api-guide/serializers/">Django Rest API Documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=t-uAgI-AUxc&amp;amp;ab_channel=TechWithTim">Video Tutorial</a></p></li>
+</ul>
+<section id="basic-construction">
+<h2><span class="section-number">11.1. </span>Basic Construction<a class="headerlink" href="#basic-construction" title="Link to this heading">#</a></h2>
+<section id="setting-up-your-django-rest-framework-drf">
+<h3><span class="section-number">11.1.1. </span>Setting Up Your Django REST Framework (DRF)<a class="headerlink" href="#setting-up-your-django-rest-framework-drf" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>First, install Django REST Framework if you haven’t already:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>djangorestframework
+</pre></div>
+</div>
+</li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">rest_framework</span></code> to your <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> in <code class="docutils literal notranslate"><span class="pre">django_project/settings.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="serializers">
+<h3><span class="section-number">11.1.2. </span>Serializers<a class="headerlink" href="#serializers" title="Link to this heading">#</a></h3>
+<p>Serializers define how the model instances are converted to <code class="docutils literal notranslate"><span class="pre">JSON</span></code>.</p>
+<ul>
+<li><p>Create a new file <code class="docutils literal notranslate"><span class="pre">serializers.py</span></code> in your app directory, in our case, under blog folder</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># blog/serializers.py</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span><span class="p">,</span><span class="n">Comment</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+
+<span class="k">class</span> <span class="nc">PostSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;author&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">,</span><span class="s2">&quot;date_posted&quot;</span><span class="p">]</span>
+        
+<span class="k">class</span> <span class="nc">PostUpdateSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Post</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="s2">&quot;author&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">,</span><span class="s2">&quot;date_posted&quot;</span><span class="p">]</span>
+        <span class="n">read_only_fields</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;author&quot;</span><span class="p">]</span>
+        
+        
+<span class="k">class</span> <span class="nc">CommentSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Comment</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;post&quot;</span><span class="p">,</span><span class="s2">&quot;author&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">,</span><span class="s2">&quot;date_posted&quot;</span><span class="p">]</span>
+        
+<span class="k">class</span> <span class="nc">CommentUpdateSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Comment</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;post&quot;</span><span class="p">,</span><span class="s2">&quot;author&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">,</span><span class="s2">&quot;date_posted&quot;</span><span class="p">]</span>
+        <span class="n">read_only_fields</span>  <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="s2">&quot;post&quot;</span><span class="p">,</span><span class="s2">&quot;author&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="create-views-for-post-generic-views">
+<h3><span class="section-number">11.1.3. </span>Create views for Post (Generic Views)<a class="headerlink" href="#create-views-for-post-generic-views" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use Django REST Framework’s <code class="docutils literal notranslate"><span class="pre">generic</span> <span class="pre">views</span></code> for <code class="docutils literal notranslate"><span class="pre">Post</span></code> to handle common actions like <strong>create</strong>, <strong>retrieve</strong>, <strong>update</strong>, and <strong>delete</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">queryset</span></code>: This attribute defines the set of data that the view will operate on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serializer_class</span></code>: This attribute specifies the serializer class that will be used to convert the <code class="docutils literal notranslate"><span class="pre">queryset</span></code> into <code class="docutils literal notranslate"><span class="pre">JSON</span></code> format.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># blog/views.py</span>
+    <span class="o">...</span>
+    <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">generics</span>
+    <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+    <span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">PostSerializer</span>
+
+    <span class="o">...</span>
+    <span class="k">class</span> <span class="nc">PostListCreateAPIView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PostSerializer</span>
+        
+    <span class="k">class</span> <span class="nc">PostRetrieveDestroyAPIView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveDestroyAPIView</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">lookup_field</span> <span class="o">=</span> <span class="s1">&#39;pk&#39;</span>
+        <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PostSerializer</span>
+        
+    <span class="k">class</span> <span class="nc">PostUpdateAPIView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">UpdateAPIView</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">lookup_field</span> <span class="o">=</span> <span class="s1">&#39;pk&#39;</span>
+        <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PostUpdateSerializer</span>
+</pre></div>
+</div>
+</section>
+<section id="views-for-comment-customized-apiview">
+<h3><span class="section-number">11.1.4. </span>Views for Comment (Customized APIView)<a class="headerlink" href="#views-for-comment-customized-apiview" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Add the following code to <code class="docutils literal notranslate"><span class="pre">blog/views.py</span></code> to handle Comment retrieval with <code class="docutils literal notranslate"><span class="pre">APIView</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CommentAPIView</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">request</span><span class="p">,</span><span class="nb">format</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">date_posted</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;date_posted&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">date_posted_after</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;date_posted_after&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">date_posted_before</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">query_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;date_posted_before&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        
+        <span class="n">comments</span> <span class="o">=</span> <span class="n">Comment</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+            <span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">content__icontains</span><span class="o">=</span><span class="n">content</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">date_posted</span><span class="p">:</span>
+            <span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">date_posted__date</span><span class="o">=</span><span class="n">date_posted</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">date_posted_after</span><span class="p">:</span>
+            <span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">date_posted__date__gt</span><span class="o">=</span><span class="n">date_posted_after</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">date_posted_before</span><span class="p">:</span>
+            <span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">date_posted__date__lt</span><span class="o">=</span><span class="n">date_posted_before</span><span class="p">)</span>
+            
+        <span class="n">comments</span> <span class="o">=</span> <span class="n">comments</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;date_posted&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+            
+        <span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">comments</span><span class="p">,</span><span class="n">many</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_200_OK</span><span class="p">)</span>
+        
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="n">CommentSerializer</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">serializer</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">serializer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="url-configuration">
+<h3><span class="section-number">11.1.5. </span>URL Configuration<a class="headerlink" href="#url-configuration" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Set up the URL Pattern</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/post/create&#39;</span><span class="p">,</span> <span class="n">PostListCreateAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;api-post-create&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/post/&lt;int:pk&gt;&#39;</span><span class="p">,</span> <span class="n">PostRetrieveDestroyAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;api-post-qd&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/post/&lt;int:pk&gt;/update/&#39;</span><span class="p">,</span> <span class="n">PostUpdateAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;api-post-update&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/comment/&#39;</span><span class="p">,</span> <span class="n">CommentAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;api-comment&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test API functionality</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/api/post/create
+<span class="o">{</span><span class="s2">&quot;title&quot;</span>:<span class="o">[</span><span class="s2">&quot;This field is required.&quot;</span><span class="o">]</span>,<span class="s2">&quot;author&quot;</span>:<span class="o">[</span><span class="s2">&quot;This field is required.&quot;</span><span class="o">]</span>,<span class="s2">&quot;content&quot;</span>:<span class="o">[</span><span class="s2">&quot;This field is required.&quot;</span><span class="o">]}</span>
+
+curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:8000/api/post/1
+<span class="o">{</span><span class="s2">&quot;id&quot;</span>:1,<span class="s2">&quot;title&quot;</span>:<span class="s2">&quot;First Post&quot;</span>,<span class="s2">&quot;author&quot;</span>:2,<span class="s2">&quot;content&quot;</span>:<span class="s2">&quot;This is the content of the first post1&quot;</span>,<span class="s2">&quot;date_posted&quot;</span>:<span class="s2">&quot;2024-07-01T13:40:17.920961Z&quot;</span><span class="o">}</span>
+
+curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://localhost:8000/api/comment/?content<span class="o">=</span>insights
+<span class="o">[{</span><span class="s2">&quot;id&quot;</span>:13,<span class="s2">&quot;post&quot;</span>:9,<span class="s2">&quot;author&quot;</span>:3,<span class="s2">&quot;content&quot;</span>:<span class="s2">&quot;Great insights, thank you!&quot;</span>,<span class="s2">&quot;date_posted&quot;</span>:<span class="s2">&quot;2024-07-01T10:40:00Z&quot;</span><span class="o">}</span>,<span class="o">{</span><span class="s2">&quot;id&quot;</span>:36,<span class="s2">&quot;post&quot;</span>:4,<span class="s2">&quot;author&quot;</span>:3,<span class="s2">&quot;content&quot;</span>:<span class="s2">&quot;Thanks for the insights!&quot;</span>,<span class="s2">&quot;date_posted&quot;</span>:<span class="s2">&quot;2024-07-01T12:40:00Z&quot;</span><span class="o">}]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="advanced-querying-and-filtering">
+<h2><span class="section-number">11.2. </span>Advanced Querying and Filtering<a class="headerlink" href="#advanced-querying-and-filtering" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>For more advanced querying, such as searching with wildcards, consider using Django Filters or adding custom query parameters.</p></li>
+</ul>
+<section id="setting-up-your-django-rest-filter-framework">
+<h3><span class="section-number">11.2.1. </span>Setting Up Your Django REST Filter Framework<a class="headerlink" href="#setting-up-your-django-rest-filter-framework" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>First, install the required Framework if you haven’t already:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>django-filter
+</pre></div>
+</div>
+</li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">django-filter</span></code> to your <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> in <code class="docutils literal notranslate"><span class="pre">django_project/settings.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s1">&#39;django-filter&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="set-another-post-list-view-for-content-query">
+<h3><span class="section-number">11.2.2. </span>Set another Post List View for content query<a class="headerlink" href="#set-another-post-list-view-for-content-query" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter_backends</span></code>: This attribute lists the filter backends that will be used to apply <strong>filtering</strong>, <strong>searching</strong>, and <strong>ordering</strong> to the <code class="docutils literal notranslate"><span class="pre">queryset</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DjangoFilterBackend</span></code>: Provides filtering based on specified fields. It is part of the <code class="docutils literal notranslate"><span class="pre">django-filter</span></code> package.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filters.SearchFilter</span></code>: Allows searching across specified fields using a query parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filters.OrderingFilter</span></code>: Enables ordering of the results based on specified fields.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filterset_fields</span></code>: This attribute defines the fields that can be used for filtering the <code class="docutils literal notranslate"><span class="pre">queryset</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ordering_fields</span></code>: This attribute defines the fields that can be used for ordering the results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PostListAPIView</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListAPIView</span><span class="p">):</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Post</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">PostSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">[</span><span class="n">DjangoFilterBackend</span><span class="p">,</span> <span class="n">filters</span><span class="o">.</span><span class="n">SearchFilter</span><span class="p">,</span> <span class="n">filters</span><span class="o">.</span><span class="n">OrderingFilter</span><span class="p">]</span>
+    <span class="n">filterset_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">]</span>
+    <span class="n">ordering_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date_posted&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id1">
+<h3><span class="section-number">11.2.3. </span>URL Configuration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Set up the URL Pattern</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;api/post/&#39;</span><span class="p">,</span> <span class="n">PostListAPIView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;api-post-list&#39;</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Test API functionality</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GET<span class="w"> </span>/api/post/?author<span class="o">=</span><span class="m">2</span><span class="p">&amp;</span><span class="nv">search</span><span class="o">=</span>First<span class="p">&amp;</span><span class="nv">ordering</span><span class="o">=</span>date_posted
+
+HTTP<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK
+Allow:<span class="w"> </span>GET,<span class="w"> </span>HEAD,<span class="w"> </span>OPTIONS
+Content-Type:<span class="w"> </span>application/json
+Vary:<span class="w"> </span>Accept
+
+<span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">        </span><span class="s2">&quot;title&quot;</span>:<span class="w"> </span><span class="s2">&quot;First Post&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;author&quot;</span>:<span class="w"> </span><span class="m">2</span>,
+<span class="w">        </span><span class="s2">&quot;content&quot;</span>:<span class="w"> </span><span class="s2">&quot;This is the content of the first post1&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;date_posted&quot;</span>:<span class="w"> </span><span class="s2">&quot;2024-07-01T13:40:17.920961Z&quot;</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="m">32</span>,
+<span class="w">        </span><span class="s2">&quot;title&quot;</span>:<span class="w"> </span><span class="s2">&quot;Getting Started with TensorFlow&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;author&quot;</span>:<span class="w"> </span><span class="m">2</span>,
+<span class="w">        </span><span class="s2">&quot;content&quot;</span>:<span class="w"> </span><span class="s2">&quot;TensorFlow is an open-source platform for machine learning. This tutorial shows you how to get started with TensorFlow and build your first model.&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;date_posted&quot;</span>:<span class="w"> </span><span class="s2">&quot;2024-07-02T17:41:45.215499Z&quot;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="authentication-and-permissions">
+<h2><span class="section-number">11.3. </span>Authentication and Permissions<a class="headerlink" href="#authentication-and-permissions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In this section, we will add authentication and permissions to secure your API.</p></li>
+<li><p><a class="reference external" href="https://www.django-rest-framework.org/api-guide/permissions/">Reading Material</a></p></li>
+</ul>
+<section id="set-the-setting">
+<h3><span class="section-number">11.3.1. </span>Set the setting<a class="headerlink" href="#set-the-setting" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">REST_FRAMEWORK</span></code>: This is a dictionary where you configure global settings for <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">REST</span> <span class="pre">Framework</span> <span class="pre">(DRF)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_AUTHENTICATION_CLASSES</span></code>: This setting defines the default authentication classes that will be used to authenticate the users making requests to your API. It includes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SessionAuthentication</span></code>: Uses Django’s session framework for authentication. It is suitable for browser-based clients.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TokenAuthentication</span></code>: Uses token-based authentication, where each request is authenticated using a token. This is more suitable for non-browser clients, such as mobile apps.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_PERMISSION_CLASSES</span></code>: This setting defines the default permission classes that will be used to authorize the users making requests to your API.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">IsAuthenticated</span></code>: This permission class ensures that only authenticated users can access the API endpoints. If a user is not authenticated, they will receive a 401 Unauthorized response.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># django_project/setting.py</span>
+<span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;rest_framework.authentication.SessionAuthentication&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;rest_framework.authentication.TokenAuthentication&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;DEFAULT_PERMISSION_CLASSES&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;rest_framework.permissions.IsAuthenticated&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\Backend\Django-Blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-post-crud.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>POST Create, Read, Update and Delete (CRUD)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07-deploy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Deploy Django Project into Windows Server using IIS and FastCGI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-construction">11.1. Basic Construction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-framework-drf">11.1.1. Setting Up Your Django REST Framework (DRF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">11.1.2. Serializers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-post-generic-views">11.1.3. Create views for Post (Generic Views)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views-for-comment-customized-apiview">11.1.4. Views for Comment (Customized APIView)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-configuration">11.1.5. URL Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-querying-and-filtering">11.2. Advanced Querying and Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-filter-framework">11.2.1. Setting Up Your Django REST Filter Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-another-post-list-view-for-content-query">11.2.2. Set another Post List View for content query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2.3. URL Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-permissions">11.3. Authentication and Permissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-setting">11.3.1. Set the setting</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

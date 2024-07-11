@@ -1,0 +1,896 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12. Deploy Django Project into Windows Server using IIS and FastCGI &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend/Django-Blog/07-deploy';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/Backend/Django-Blog/07-deploy.html" />
+    <link rel="icon" href="../../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="13. SQL" href="../01-sql-comprehensive.html" />
+    <link rel="prev" title="11. Django REST API" href="06-rest-api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">1. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">2. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">3. Loops and logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">4. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">5. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">6. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">7. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">8. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">9. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-post-crud.html">10. POST Create, Read, Update and Delete (CRUD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-rest-api.html">11. Django REST API</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Deploy Django Project into Windows Server using IIS and FastCGI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">13. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">14. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">15. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Backend/Django-Blog/07-deploy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Backend/Django-Blog/07-deploy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/Backend/Django-Blog/07-deploy.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/Backend/Django-Blog/07-deploy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Backend/Django-Blog/07-deploy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Deploy Django Project into Windows Server using IIS and FastCGI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-python-env-and-iis">12.1. Prepare Python env and IIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment-setting">12.1.1. Python Environment Setting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#django-project-setting">12.1.2. Django Project Setting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-iis">12.1.3. Install IIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-iis-installation">12.1.4. Verify the IIS Installation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-iis">12.2. Configure IIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-configure-fastcgi-using-iis">12.2.1. Option 1: Configure FastCGI using IIS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-and-configure-a-new-iis-web-site">12.3. Create and Configure a New IIS Web Site</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-web-site">12.3.1. Create a new Web Site</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-set-fastcgi-handler-using-iis">12.3.2. Option 1: Set FastCGI Handler using IIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-set-fastcgi-handler-using-web-config">12.3.3. Option 2: Set FastCGI Handler using <code class="docutils literal notranslate"><span class="pre">web.config</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-static-and-media-file-properly">12.4. Load Static and Media file properly</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-all-static-files-and-make-a-static-virtual-path">12.4.1. Gather all static files and make a static virtual path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-the-same-for-media">12.4.2. Do the same for <code class="docutils literal notranslate"><span class="pre">media</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-result-and-set-firewall">12.5. Check Result and Set Firewall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-result">12.5.1. Check Result</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-windows-firewall">12.5.2. Configure the Windows Firewall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-error">12.6. Possible Error</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-env-issue">12.6.1. Python env issue</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="deploy-django-project-into-windows-server-using-iis-and-fastcgi">
+<h1><span class="section-number">12. </span>Deploy Django Project into Windows Server using IIS and FastCGI<a class="headerlink" href="#deploy-django-project-into-windows-server-using-iis-and-fastcgi" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blog.nonstopio.com/deploy-django-application-on-windows-iis-server-93aee2864c41">Reference</a></p></li>
+<li><p><a class="reference external" href="https://docs.djangoproject.com/en/4.2/howto/static-files/">How to manage static files in django</a></p></li>
+</ul>
+<section id="prepare-python-env-and-iis">
+<h2><span class="section-number">12.1. </span>Prepare Python env and IIS<a class="headerlink" href="#prepare-python-env-and-iis" title="Link to this heading">#</a></h2>
+<section id="python-environment-setting">
+<h3><span class="section-number">12.1.1. </span>Python Environment Setting<a class="headerlink" href="#python-environment-setting" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>According to author’s experience, <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">3.9.x</span></code> is not compatible with <code class="docutils literal notranslate"><span class="pre">FastCGI</span></code>, therefore we need to re-create a conda env with <code class="docutils literal notranslate"><span class="pre">python==3.8</span></code></p></li>
+<li><p>And then, we need reinstall the required library, in a case you do not generate <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, we do it one by one here</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wfastcgi</span></code> provides a bridge between IIS and Python using WSGI and FastCGI</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>py38<span class="w"> </span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.8
+conda<span class="w"> </span>activate<span class="w"> </span>py38
+pip<span class="w"> </span>install<span class="w"> </span>django
+pip<span class="w"> </span>install<span class="w"> </span>django-allauth
+pip<span class="w"> </span>install<span class="w"> </span>django-crispy-forms
+pip<span class="w"> </span>install<span class="w"> </span>crispy-bootstrap4
+pip<span class="w"> </span>install<span class="w"> </span>jwt
+pip<span class="w"> </span>install<span class="w"> </span>et-xmlfile
+pip<span class="w"> </span>install<span class="w"> </span>requests
+pip<span class="w"> </span>install<span class="w"> </span>urllib3
+pip<span class="w"> </span>install<span class="w"> </span>wfastcgi
+pip<span class="w"> </span>install<span class="w"> </span>pillow
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="django-project-setting">
+<h3><span class="section-number">12.1.2. </span>Django Project Setting<a class="headerlink" href="#django-project-setting" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Remember to change Debug model to <code class="docutils literal notranslate"><span class="pre">False</span></code> and add Host IP into your <code class="docutils literal notranslate"><span class="pre">django_project.settings.py</span></code></p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">STATIC_URL</span></code>, <code class="docutils literal notranslate"><span class="pre">STATIC_ROOT</span></code>, <code class="docutils literal notranslate"><span class="pre">MEDIA_URL</span></code>, <code class="docutils literal notranslate"><span class="pre">MEDIA_ROOT</span></code></p>
+<ul>
+<li><p>Don’t put any static files in the <code class="docutils literal notranslate"><span class="pre">STATIC_ROOT</span></code> directory. That’s where the static files get copied to automatically after you run <code class="docutils literal notranslate"><span class="pre">collectstatic</span></code>.</p></li>
+<li><p>Instead, always put them in the directories associated with the <code class="docutils literal notranslate"><span class="pre">STATICFILES_DIRS</span></code> setting or <code class="docutils literal notranslate"><span class="pre">&lt;APP_NAME&gt;/static/</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#django_project.settings.py</span>
+<span class="o">...</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s2">&quot;static/&quot;</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s1">&#39;/media/&#39;</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span><span class="s1">&#39;static&#39;</span><span class="p">)</span>
+<span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span><span class="s1">&#39;media&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="install-iis">
+<h3><span class="section-number">12.1.3. </span>Install IIS<a class="headerlink" href="#install-iis" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Search <strong>Turn Windows features on or off</strong>, check <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">Information</span> <span class="pre">Services</span></code> and <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">Information</span> <span class="pre">Services</span> <span class="pre">Hostable</span> <span class="pre">Web</span> <span class="pre">Core</span></code></p></li>
+<li><p>Goto <code class="docutils literal notranslate"><span class="pre">Internet</span> <span class="pre">Information</span> <span class="pre">Services</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">World</span> <span class="pre">Wide</span> <span class="pre">Web</span> <span class="pre">Services</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Application</span> <span class="pre">Development</span> <span class="pre">Features</span></code>, Check<code class="docutils literal notranslate"><span class="pre">CGI</span></code></p>
+<p><img alt="image.png" src="../../../_images/031.png" /></p>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">OK</span></code> to apply this setting, and restart your machine to activate it.</p></li>
+</ol>
+</section>
+<section id="verify-the-iis-installation">
+<h3><span class="section-number">12.1.4. </span>Verify the IIS Installation<a class="headerlink" href="#verify-the-iis-installation" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Open a web browser on the server, goto <a class="reference external" href="http://localhost/">http://localhost/</a>.You should see the default IIS page.</p>
+<p><img alt="image-3.png" src="../../../_images/041.png" /></p>
+</li>
+</ul>
+</section>
+</section>
+<section id="configure-iis">
+<h2><span class="section-number">12.2. </span>Configure IIS<a class="headerlink" href="#configure-iis" title="Link to this heading">#</a></h2>
+<section id="option-1-configure-fastcgi-using-iis">
+<h3><span class="section-number">12.2.1. </span>Option 1: Configure FastCGI using IIS<a class="headerlink" href="#option-1-configure-fastcgi-using-iis" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Click on the name of the server in the list on the left. Double-click the <code class="docutils literal notranslate"><span class="pre">FastCGI</span> <span class="pre">Settings</span></code> icon</p>
+<p><img alt="image.png" src="../../../_images/051.png" /></p>
+</li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Actions</span></code> on the right-hand side click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">application</span> <span class="pre">…</span></code></p>
+<p><img alt="image-2.png" src="../../../_images/061.png" /></p>
+</li>
+<li><p>In the Add FastCGI Application dialog, in the <code class="docutils literal notranslate"><span class="pre">Full</span> <span class="pre">Path</span></code> box, type the path to the Python env we just created, and In the <code class="docutils literal notranslate"><span class="pre">Arguments</span></code> input box, type the path to the <code class="docutils literal notranslate"><span class="pre">wfastcgi.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">site-packages</span></code></p>
+<p><img alt="image-3.png" src="../../../_images/071.png" /></p>
+</li>
+<li><p>Under the <code class="docutils literal notranslate"><span class="pre">General</span></code> section, click on the <code class="docutils literal notranslate"><span class="pre">Environment</span> <span class="pre">Variables</span></code> line, then click the gray <code class="docutils literal notranslate"><span class="pre">…</span></code> button that appears next to (Collection) on the right-hand side of the line.</p>
+<ol class="arabic simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">DJANGO_SETTINGS_MODULE</span></code> with value <code class="docutils literal notranslate"><span class="pre">{Your_Django_Project_name}.settings</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> with value <code class="docutils literal notranslate"><span class="pre">{Your_Django_Project_Path}</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">WSGI_HANDLER</span></code> with value <code class="docutils literal notranslate"><span class="pre">{Your_Django_Project_name}.wsgi.application</span></code></p></li>
+</ol>
+</li>
+</ol>
+</section>
+</section>
+<section id="create-and-configure-a-new-iis-web-site">
+<h2><span class="section-number">12.3. </span>Create and Configure a New IIS Web Site<a class="headerlink" href="#create-and-configure-a-new-iis-web-site" title="Link to this heading">#</a></h2>
+<p>Next, we need to create a new website in IIS for the Django application and add a Handler Mapping to the newly created website so that requests coming to the IIS website are passed off to the Django application for processing.</p>
+<section id="create-a-new-web-site">
+<h3><span class="section-number">12.3.1. </span>Create a new Web Site<a class="headerlink" href="#create-a-new-web-site" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">IIS</span> <span class="pre">Manager</span></code>, Right-click on the <code class="docutils literal notranslate"><span class="pre">Sites</span></code> folder and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Website</span> <span class="pre">…</span></code></p>
+<p><img alt="image.png" src="../../../_images/081.png" /></p>
+</li>
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">site</span></code>, name the project as you want. For the <code class="docutils literal notranslate"><span class="pre">physical</span> <span class="pre">path</span></code>, type the path to the project. Click <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<p><img alt="image-2.png" src="../../../_images/091.png" /></p>
+</li>
+</ol>
+</section>
+<section id="option-1-set-fastcgi-handler-using-iis">
+<h3><span class="section-number">12.3.2. </span>Option 1: Set FastCGI Handler using IIS<a class="headerlink" href="#option-1-set-fastcgi-handler-using-iis" title="Link to this heading">#</a></h3>
+<p>Next, we’ll add a <code class="docutils literal notranslate"><span class="pre">FastCGI</span> <span class="pre">handler</span></code> mapping to this site so the requests coming into the site will be processed by the Django application.</p>
+<ol class="arabic">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">IIS</span> <span class="pre">Manager</span></code>, expand the Sites folder on the left-hand side and click on the <code class="docutils literal notranslate"><span class="pre">site</span></code>. On the right, double-click <code class="docutils literal notranslate"><span class="pre">Handler</span> <span class="pre">Mappings</span></code></p>
+<p><img alt="image.png" src="../../../_images/101.png" /></p>
+</li>
+<li><p>On the right, under <code class="docutils literal notranslate"><span class="pre">Actions,</span></code> click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Module</span> <span class="pre">Mapping</span></code></p>
+<p><img alt="image-2.png" src="../../../_images/111.png" /></p>
+</li>
+<li><p>Fill out the form using your data</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D:\Anaconda3\envs\py38\python.exe|D:\Anaconda3\envs\py38\Lib\site-packages\wfastcgi.py</span></code></p></li>
+</ol>
+<p><img alt="image-3.png" src="../../../_images/12.png" /></p>
+</li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Request</span> <span class="pre">Restrictions</span></code> button and uncheck the <code class="docutils literal notranslate"><span class="pre">Invoke</span> <span class="pre">handler</span> <span class="pre">only</span> <span class="pre">if</span> <span class="pre">the</span> <span class="pre">request</span> <span class="pre">is</span> <span class="pre">mapped</span> <span class="pre">to</span></code> checkbox</p>
+<p><img alt="image-4.png" src="../../../_images/13.png" /></p>
+</li>
+</ol>
+</section>
+<section id="option-2-set-fastcgi-handler-using-web-config">
+<h3><span class="section-number">12.3.3. </span>Option 2: Set FastCGI Handler using <code class="docutils literal notranslate"><span class="pre">web.config</span></code><a class="headerlink" href="#option-2-set-fastcgi-handler-using-web-config" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/visualstudio/python/configure-web-apps-for-iis-windows?view=vs-2022">Microsoft tutorial</a></p></li>
+</ul>
+<ol class="arabic">
+<li><p>Build a <code class="docutils literal notranslate"><span class="pre">web.config</span></code> at under the same dir of <code class="docutils literal notranslate"><span class="pre">{Your</span> <span class="pre">Django</span> <span class="pre">Project}</span></code>, below is my <code class="docutils literal notranslate"><span class="pre">web.config</span></code> file</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+<span class="w">    </span><span class="nt">&lt;system.webServer&gt;</span>
+<span class="w">        </span><span class="nt">&lt;handlers&gt;</span>
+<span class="w">            </span><span class="nt">&lt;add</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Python FastCGI&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;*&quot;</span><span class="w"> </span><span class="na">verb=</span><span class="s">&quot;*&quot;</span><span class="w"> </span><span class="na">modules=</span><span class="s">&quot;FastCgiModule&quot;</span><span class="w"> </span><span class="na">scriptProcessor=</span><span class="s">&quot;D:\Anaconda3\envs\py38\python.exe|D:\Anaconda3\envs\py38\Lib\site-packages\wfastcgi.py&quot;</span><span class="w"> </span><span class="na">resourceType=</span><span class="s">&quot;Unspecified&quot;</span><span class="w"> </span><span class="na">requireAccess=</span><span class="s">&quot;Script&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/handlers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/system.webServer&gt;</span>
+
+<span class="w">    </span><span class="nt">&lt;appSettings&gt;</span>
+<span class="w">        </span><span class="nt">&lt;add</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;WSGI_HANDLER&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;django.core.wsgi.get_wsgi_application()&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;add</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;DJANGO_SETTINGS_MODULE&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;django_project.settings&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;add</span><span class="w"> </span><span class="na">key=</span><span class="s">&quot;PYTHONPATH&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;E:\2024\github\django-blog-project\django_project&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/appSettings&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="load-static-and-media-file-properly">
+<h2><span class="section-number">12.4. </span>Load Static and Media file properly<a class="headerlink" href="#load-static-and-media-file-properly" title="Link to this heading">#</a></h2>
+<section id="gather-all-static-files-and-make-a-static-virtual-path">
+<h3><span class="section-number">12.4.1. </span>Gather all static files and make a static virtual path<a class="headerlink" href="#gather-all-static-files-and-make-a-static-virtual-path" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://testdriven.io/blog/django-static-files/">Working with Static and Media Files in Django</a></p></li>
+</ul>
+<ol class="arabic">
+<li><p>run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">collectstatic</span></code> under your django project</p>
+<ul class="simple">
+<li><p>It will generate <code class="docutils literal notranslate"><span class="pre">admin</span></code> under your <code class="docutils literal notranslate"><span class="pre">static</span></code> path, which contains all static files</p></li>
+</ul>
+<p><img alt="image.png" src="../../../_images/14.png" /></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Virtual</span> <span class="pre">Directory</span></code> in your site</p>
+<p><img alt="image-2.png" src="../../../_images/15.png" /></p>
+</li>
+<li><p>Fill the form using your <code class="docutils literal notranslate"><span class="pre">static</span></code> info</p>
+<p><img alt="image-3.png" src="../../../_images/16.png" /></p>
+</li>
+<li><p>Put a <code class="docutils literal notranslate"><span class="pre">web.config</span></code> under your <code class="docutils literal notranslate"><span class="pre">static</span></code> folder</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+<span class="w">   </span><span class="nt">&lt;system.webServer&gt;</span>
+<span class="w">      </span><span class="nt">&lt;handlers&gt;</span>
+<span class="w">            </span><span class="nt">&lt;clear</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;add</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;StaticFile&quot;</span><span class="w"> </span><span class="na">path=</span><span class="s">&quot;*&quot;</span><span class="w"> </span><span class="na">verb=</span><span class="s">&quot;*&quot;</span><span class="w"> </span><span class="na">modules=</span><span class="s">&quot;StaticFileModule&quot;</span><span class="w"> </span><span class="na">resourceType=</span><span class="s">&quot;File&quot;</span><span class="w"> </span><span class="na">requireAccess=</span><span class="s">&quot;Read&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/handlers&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/system.webServer&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="do-the-same-for-media">
+<h3><span class="section-number">12.4.2. </span>Do the same for <code class="docutils literal notranslate"><span class="pre">media</span></code><a class="headerlink" href="#do-the-same-for-media" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="check-result-and-set-firewall">
+<h2><span class="section-number">12.5. </span>Check Result and Set Firewall<a class="headerlink" href="#check-result-and-set-firewall" title="Link to this heading">#</a></h2>
+<section id="check-result">
+<h3><span class="section-number">12.5.1. </span>Check Result<a class="headerlink" href="#check-result" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>At this point everything should be working, so verify by loading the application in a browser.</p></li>
+<li><p>Open a browser on the server, Browse to <code class="docutils literal notranslate"><span class="pre">http://localhost:{port</span> <span class="pre">number</span> <span class="pre">you</span> <span class="pre">set}</span></code></p></li>
+</ul>
+</section>
+<section id="configure-the-windows-firewall">
+<h3><span class="section-number">12.5.2. </span>Configure the Windows Firewall<a class="headerlink" href="#configure-the-windows-firewall" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="possible-error">
+<h2><span class="section-number">12.6. </span>Possible Error<a class="headerlink" href="#possible-error" title="Link to this heading">#</a></h2>
+<section id="python-env-issue">
+<h3><span class="section-number">12.6.1. </span>Python env issue<a class="headerlink" href="#python-env-issue" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="n">occurred</span> <span class="k">while</span> <span class="n">reading</span> <span class="n">WSGI</span> <span class="n">handler</span><span class="p">:</span>
+
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="o">...</span>
+  <span class="n">File</span> <span class="s2">&quot;D:\Anaconda3\envs\py38\lib\site-packages\django</span><span class="se">\a</span><span class="s2">pps</span><span class="se">\r</span><span class="s2">egistry.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">83</span><span class="p">,</span> <span class="ow">in</span> <span class="n">populate</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;populate() isn&#39;t reentrant&quot;</span><span class="p">)</span>
+<span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">populate</span><span class="p">()</span> <span class="n">isn</span><span class="s1">&#39;t reentrant</span>
+
+
+<span class="n">StdOut</span><span class="p">:</span> 
+
+<span class="n">StdErr</span><span class="p">:</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>open <code class="docutils literal notranslate"><span class="pre">django/apps/registry.py</span></code>,  and around line 80, replace: <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">RuntimeError(&quot;populate()</span> <span class="pre">isn't</span> <span class="pre">reentrant&quot;)</span></code> with <code class="docutils literal notranslate"><span class="pre">self.app_configs</span> <span class="pre">=</span> <span class="pre">{}</span></code></p></li>
+<li><p>This will allow Django to continue loading, and <strong>reveal the actual error</strong>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\Backend\Django-Blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06-rest-api.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Django REST API</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../01-sql-comprehensive.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>SQL</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-python-env-and-iis">12.1. Prepare Python env and IIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment-setting">12.1.1. Python Environment Setting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#django-project-setting">12.1.2. Django Project Setting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-iis">12.1.3. Install IIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-the-iis-installation">12.1.4. Verify the IIS Installation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-iis">12.2. Configure IIS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-configure-fastcgi-using-iis">12.2.1. Option 1: Configure FastCGI using IIS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-and-configure-a-new-iis-web-site">12.3. Create and Configure a New IIS Web Site</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-web-site">12.3.1. Create a new Web Site</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-set-fastcgi-handler-using-iis">12.3.2. Option 1: Set FastCGI Handler using IIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-set-fastcgi-handler-using-web-config">12.3.3. Option 2: Set FastCGI Handler using <code class="docutils literal notranslate"><span class="pre">web.config</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-static-and-media-file-properly">12.4. Load Static and Media file properly</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gather-all-static-files-and-make-a-static-virtual-path">12.4.1. Gather all static files and make a static virtual path</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-the-same-for-media">12.4.2. Do the same for <code class="docutils literal notranslate"><span class="pre">media</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-result-and-set-firewall">12.5. Check Result and Set Firewall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-result">12.5.1. Check Result</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-windows-firewall">12.5.2. Configure the Windows Firewall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#possible-error">12.6. Possible Error</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-env-issue">12.6.1. Python env issue</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

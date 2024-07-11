@@ -1,0 +1,1842 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9. User Authentication Tutorial &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend/Django-Blog/03-user-registration';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/Backend/Django-Blog/03-user-registration.html" />
+    <link rel="icon" href="../../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="10. POST Create, Read, Update and Delete (CRUD)" href="04-post-crud.html" />
+    <link rel="prev" title="8. Database and Migrations" href="02-database-and-admin.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">1. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">2. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">3. Loops and logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">4. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">5. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">6. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">7. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">8. Database and Migrations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-post-crud.html">10. POST Create, Read, Update and Delete (CRUD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-rest-api.html">11. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-deploy.html">12. Deploy Django Project into Windows Server using IIS and FastCGI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">13. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">14. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">15. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Backend/Django-Blog/03-user-registration.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Backend/Django-Blog/03-user-registration.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/Backend/Django-Blog/03-user-registration.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/Backend/Django-Blog/03-user-registration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Backend/Django-Blog/03-user-registration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>User Authentication Tutorial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-user-authentication-app">9.1. Set up User Authentication app</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-app">9.1.1. Register app</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-user-models-and-forms">9.2. Create User Models and Forms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-crispy-environment">9.2.1. Setup Crispy environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-forms-in-users-forms-py">9.2.2. Create forms in <code class="docutils literal notranslate"><span class="pre">users/forms.py</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-user-authentication">9.3. Create Views for User Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-register-view">9.3.1. Create <code class="docutils literal notranslate"><span class="pre">register</span></code> view</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-url-patterns">9.3.2. Setting Up URL Patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-templates">9.3.3. Creating Templates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-and-logout-page">9.4. Login and Logout Page</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-construct-the-url-patterns">9.4.1. Step 1: Construct the URL Patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-the-templates-for-login-and-logout-pages">9.4.2. Step 2: Create the Templates for Login and Logout Pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-conditional-statements-in-the-navigation-bar">9.4.3. Step 3: Add Conditional Statements in the Navigation Bar</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-parameters">9.4.3.1. Attributes (Parameters)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-functions">9.4.3.2. Methods (Functions)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-configure-settings">9.4.4. Step 4: Configure Settings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-and-picture-customize-forms">9.5. Profile and Picture (Customize forms)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-userprofile-model-and-configure-media-settings">9.5.1. Step 1: Create UserProfile Model and configure Media settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-construct-the-url-pattern">9.5.2. Step 2: Construct the URL Pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-create-profile-view">9.5.3. Step 3: Create Profile View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-construct-the-template">9.5.4. Step 4: Construct the Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-create-signals">9.5.5. Step 5: Create Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-construct-two-forms-user-and-userprofile">9.5.6. Step 6: Construct Two Forms (User and UserProfile)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-update-the-profile-view">9.5.7. Step 7: Update the Profile View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-update-the-template">9.5.8. Step 8: Update the Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-modify-the-userprofile-model-to-resize-images">9.5.9. Step 9: Modify the UserProfile Model to Resize Images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resource">9.6. Additional Resource</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-decorators">9.6.1. Commonly Used Decorators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-signals">9.6.2. Commonly used Signals</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="user-authentication-tutorial">
+<h1><span class="section-number">9. </span>User Authentication Tutorial<a class="headerlink" href="#user-authentication-tutorial" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=q4jPR-M0TAQ&amp;amp;list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&amp;amp;index=6&amp;amp;ab_channel=CoreySchafer">Reference</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Django</span></code> provides a robust authentication system that <strong>handles user accounts, groups, permissions, and cookie-based user sessions</strong>.</p></li>
+<li><p>In this tutorial, we will learn how to create an <code class="docutils literal notranslate"><span class="pre">authentication</span> <span class="pre">system</span></code> for a Django application. This involves setting up <strong>user registration, login, and logout functionality</strong>, and restricting access to certain pages.</p></li>
+</ul>
+<section id="set-up-user-authentication-app">
+<h2><span class="section-number">9.1. </span>Set up User Authentication app<a class="headerlink" href="#set-up-user-authentication-app" title="Link to this heading">#</a></h2>
+<section id="register-app">
+<h3><span class="section-number">9.1.1. </span>Register app<a class="headerlink" href="#register-app" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>First, create a new app named <code class="docutils literal notranslate"><span class="pre">users</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>users
+</pre></div>
+</div>
+</li>
+<li><p>Add the app to <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> in <code class="docutils literal notranslate"><span class="pre">django_project/settings.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;users.apps.UsersConfig&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="create-user-models-and-forms">
+<h2><span class="section-number">9.2. </span>Create User Models and Forms<a class="headerlink" href="#create-user-models-and-forms" title="Link to this heading">#</a></h2>
+<p>This section focuses on defining the <code class="docutils literal notranslate"><span class="pre">user</span> <span class="pre">profile</span> <span class="pre">model</span></code> and creating <code class="docutils literal notranslate"><span class="pre">forms</span></code> for <strong>user registration</strong> and <strong>profile updates</strong>.</p>
+<section id="setup-crispy-environment">
+<h3><span class="section-number">9.2.1. </span>Setup Crispy environment<a class="headerlink" href="#setup-crispy-environment" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>install the required libraries</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>django-crispy-forms
+pip<span class="w"> </span>install<span class="w"> </span>crispy-bootstrap4
+</pre></div>
+</div>
+</li>
+<li><p>Add the app to <code class="docutils literal notranslate"><span class="pre">INSTALLED_APPS</span></code> in <code class="docutils literal notranslate"><span class="pre">django_project/settings.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;crispy_forms&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;crispy_bootstrap4&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Set up the crispy environment in <code class="docutils literal notranslate"><span class="pre">django_project/settings.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">CRISPY_ALLOWED_TEMPLATE_PACKS</span> <span class="o">=</span> <span class="s2">&quot;bootstrap4&quot;</span>
+<span class="n">CRISPY_TEMPLATE_PACK</span> <span class="o">=</span> <span class="s1">&#39;bootstrap4&#39;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="create-forms-in-users-forms-py">
+<h3><span class="section-number">9.2.2. </span>Create forms in <code class="docutils literal notranslate"><span class="pre">users/forms.py</span></code><a class="headerlink" href="#create-forms-in-users-forms-py" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Since <code class="docutils literal notranslate"><span class="pre">User</span></code> is a build-in model in <code class="docutils literal notranslate"><span class="pre">django.contrib.auth</span></code>, we do not need to construct our own model again.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Meta</span></code> Class: The <code class="docutils literal notranslate"><span class="pre">Meta</span></code> class is used to specify <strong>which model the form is associated</strong> with (<code class="docutils literal notranslate"><span class="pre">User</span></code>) and <strong>which fields should be included in the form</strong>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.forms</span> <span class="kn">import</span> <span class="n">UserCreationForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">UserProfile</span>
+<span class="kn">from</span> <span class="nn">crispy_forms.helper</span> <span class="kn">import</span> <span class="n">FormHelper</span>
+<span class="kn">from</span> <span class="nn">crispy_forms.layout</span> <span class="kn">import</span> <span class="n">Submit</span>
+
+<span class="k">class</span> <span class="nc">UserRegisterForm</span><span class="p">(</span><span class="n">UserCreationForm</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;password1&#39;</span><span class="p">,</span> <span class="s1">&#39;password2&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Here is a table listing the <code class="docutils literal notranslate"><span class="pre">supported</span> <span class="pre">fields</span></code> in <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">forms</span></code> along with a brief description and an example</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CharField</p></td>
+<td><p>A field for small- to large-sized strings.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">forms.CharField(max_length=100)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>EmailField</p></td>
+<td><p>A field for email addresses.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">email</span> <span class="pre">=</span> <span class="pre">forms.EmailField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>IntegerField</p></td>
+<td><p>A field for integer values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">=</span> <span class="pre">forms.IntegerField()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>FloatField</p></td>
+<td><p>A field for floating-point numbers.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">price</span> <span class="pre">=</span> <span class="pre">forms.FloatField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>BooleanField</p></td>
+<td><p>A field for boolean values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">is_active</span> <span class="pre">=</span> <span class="pre">forms.BooleanField()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DateField</p></td>
+<td><p>A field for date values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">birth_date</span> <span class="pre">=</span> <span class="pre">forms.DateField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DateTimeField</p></td>
+<td><p>A field for date and time values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">created_at</span> <span class="pre">=</span> <span class="pre">forms.DateTimeField()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TimeField</p></td>
+<td><p>A field for time values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">start_time</span> <span class="pre">=</span> <span class="pre">forms.TimeField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>URLField</p></td>
+<td><p>A field for URL values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">website</span> <span class="pre">=</span> <span class="pre">forms.URLField()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SlugField</p></td>
+<td><p>A field for slug values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">slug</span> <span class="pre">=</span> <span class="pre">forms.SlugField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ChoiceField</p></td>
+<td><p>A field for selecting a choice from a set of options.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">=</span> <span class="pre">forms.ChoiceField(choices=[('1',</span> <span class="pre">'Option</span> <span class="pre">1'),</span> <span class="pre">('2',</span> <span class="pre">'Option</span> <span class="pre">2')])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MultipleChoiceField</p></td>
+<td><p>A field for selecting multiple choices from a set of options.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choices</span> <span class="pre">=</span> <span class="pre">forms.MultipleChoiceField(choices=[('1',</span> <span class="pre">'Option</span> <span class="pre">1'),</span> <span class="pre">('2',</span> <span class="pre">'Option</span> <span class="pre">2')])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>FileField</p></td>
+<td><p>A field for uploading files.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">file</span> <span class="pre">=</span> <span class="pre">forms.FileField()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ImageField</p></td>
+<td><p>A field for uploading image files.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">image</span> <span class="pre">=</span> <span class="pre">forms.ImageField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>DecimalField</p></td>
+<td><p>A field for decimal values with fixed precision.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">price</span> <span class="pre">=</span> <span class="pre">forms.DecimalField(max_digits=10,</span> <span class="pre">decimal_places=2)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>DurationField</p></td>
+<td><p>A field for storing durations of time.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">duration</span> <span class="pre">=</span> <span class="pre">forms.DurationField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>UUIDField</p></td>
+<td><p>A field for storing universally unique identifiers.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uuid</span> <span class="pre">=</span> <span class="pre">forms.UUIDField()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>JSONField</p></td>
+<td><p>A field for storing JSON-encoded data.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">metadata</span> <span class="pre">=</span> <span class="pre">forms.JSONField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ModelChoiceField</p></td>
+<td><p>A field for selecting a single model instance.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">author</span> <span class="pre">=</span> <span class="pre">forms.ModelChoiceField(queryset=Author.objects.all())</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ModelMultipleChoiceField</p></td>
+<td><p>A field for selecting multiple model instances.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">authors</span> <span class="pre">=</span> <span class="pre">forms.ModelMultipleChoiceField(queryset=Author.objects.all())</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>RegexField</p></td>
+<td><p>A field for validating input against a regular expression.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">zip_code</span> <span class="pre">=</span> <span class="pre">forms.RegexField(regex=r'^\d{5}$')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>IPAddressField</p></td>
+<td><p>A field for validating IPv4 addresses.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ip_address</span> <span class="pre">=</span> <span class="pre">forms.IPAddressField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>GenericIPAddressField</p></td>
+<td><p>A field for validating IPv4 and IPv6 addresses.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ip_address</span> <span class="pre">=</span> <span class="pre">forms.GenericIPAddressField(protocol='both')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TypedChoiceField</p></td>
+<td><p>A field like <code class="docutils literal notranslate"><span class="pre">ChoiceField</span></code>, but returns a value of a specific type.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choice</span> <span class="pre">=</span> <span class="pre">forms.TypedChoiceField(choices=[('1',</span> <span class="pre">'Option</span> <span class="pre">1'),</span> <span class="pre">('2',</span> <span class="pre">'Option</span> <span class="pre">2')],</span> <span class="pre">coerce=int)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>TypedMultipleChoiceField</p></td>
+<td><p>A field like <code class="docutils literal notranslate"><span class="pre">MultipleChoiceField</span></code>, but returns values of a specific type.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">choices</span> <span class="pre">=</span> <span class="pre">forms.TypedMultipleChoiceField(choices=[('1',</span> <span class="pre">'Option</span> <span class="pre">1'),</span> <span class="pre">('2',</span> <span class="pre">'Option</span> <span class="pre">2')],</span> <span class="pre">coerce=int)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>SplitDateTimeField</p></td>
+<td><p>A field for entering date and time separately.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">appointment</span> <span class="pre">=</span> <span class="pre">forms.SplitDateTimeField()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>ComboField</p></td>
+<td><p>A field that combines multiple fields into one.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">combo</span> <span class="pre">=</span> <span class="pre">forms.ComboField(fields=[forms.CharField(max_length=10),</span> <span class="pre">forms.EmailField()])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>MultiValueField</p></td>
+<td><p>A field that validates multiple values.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">multi</span> <span class="pre">=</span> <span class="pre">forms.MultiValueField(fields=[forms.CharField(),</span> <span class="pre">forms.CharField()])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>SplitHiddenDateTimeField</p></td>
+<td><p>A field like <code class="docutils literal notranslate"><span class="pre">SplitDateTimeField</span></code>, but renders as hidden widgets.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hidden</span> <span class="pre">=</span> <span class="pre">forms.SplitHiddenDateTimeField()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="create-views-for-user-authentication">
+<h2><span class="section-number">9.3. </span>Create Views for User Authentication<a class="headerlink" href="#create-views-for-user-authentication" title="Link to this heading">#</a></h2>
+<section id="create-register-view">
+<h3><span class="section-number">9.3.1. </span>Create <code class="docutils literal notranslate"><span class="pre">register</span></code> view<a class="headerlink" href="#create-register-view" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">request.method</span> <span class="pre">==</span> <span class="pre">POST</span></code>, we get the POST data and check the validation, if passed, we use <code class="docutils literal notranslate"><span class="pre">form.save</span></code> to push data into our database.</p></li>
+<li><p>If it’s a <code class="docutils literal notranslate"><span class="pre">GET</span></code> request, we just render the <code class="docutils literal notranslate"><span class="pre">register.html</span></code> template</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">UserRegisterForm</span>
+
+<span class="c1"># Create your views here.</span>
+<span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">UserRegisterForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">username</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Account created for </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;blog-home&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">UserRegisterForm</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;users/register.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">})</span>
+
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Django's</span> <span class="pre">messages</span> <span class="pre">framework</span></code> allows you to store messages in one request and retrieve them for display in a subsequent request. It’s often used to <strong>provide feedback to the user</strong>.</p>
+<ul>
+<li><p>Example in Views</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example in a view</span>
+<span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Your message here&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Handling Messages in Templates:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span> <span class="o">%</span><span class="p">}</span>
+<span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;alert alert-{{ message.tags }}&quot;</span><span class="o">&gt;</span>
+    <span class="p">{{</span> <span class="n">message</span> <span class="p">}}</span>
+<span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endfor</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Message Levels:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">messages.debug</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">messages.info</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">messages.success</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">messages.warning</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">messages.error</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="setting-up-url-patterns">
+<h3><span class="section-number">9.3.2. </span>Setting Up URL Patterns<a class="headerlink" href="#setting-up-url-patterns" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Define URLs in <code class="docutils literal notranslate"><span class="pre">users/urls.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;register/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">register</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;register&#39;</span><span class="p">),</span>
+    <span class="c1"># path(&#39;profile/&#39;, views.profile, name=&#39;profile&#39;),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Include users URLs in your project’s <code class="docutils literal notranslate"><span class="pre">django_project/urls.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;users/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;users.urls&#39;</span><span class="p">)),</span>
+    <span class="o">...</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="creating-templates">
+<h3><span class="section-number">9.3.3. </span>Creating Templates<a class="headerlink" href="#creating-templates" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">register.html</span></code> in <code class="docutils literal notranslate"><span class="pre">users/templates/users/register.html</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;blog/main.html&quot; %}
+{% load crispy_forms_tags %}
+
+{% block main-content %}
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Join Today<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    {% for message in messages %}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-{{ message.tags }}&quot;</span><span class="p">&gt;</span>
+        {{ message }}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    {% endfor %}
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;d-flex justify-content-end&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary me-2&quot;</span><span class="p">&gt;</span>Register<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;blog-home&#39; %}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-danger&quot;</span><span class="p">&gt;</span>Cancel<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;border-top mt-3&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">small</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-muted&quot;</span><span class="p">&gt;</span>
+            Already Have An Account? <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ml-2&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Sign In<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{% endblock main-content %}
+</pre></div>
+</div>
+</li>
+<li><p><strong>Button Alignment</strong>: The <code class="docutils literal notranslate"><span class="pre">d-flex</span> <span class="pre">justify-content-end</span></code> class places both buttons on the right side of the form row.</p></li>
+<li><p><strong>Button Spacing</strong>: The <code class="docutils literal notranslate"><span class="pre">me-2</span></code> class adds a <strong>margin to the right</strong> of the Register button, creating space between the buttons.</p></li>
+<li><p><strong>Cancel Button</strong>: The cancel button is styled as a danger button (<code class="docutils literal notranslate"><span class="pre">btn</span> <span class="pre">btn-danger</span></code>) to differentiate it from the primary action.</p></li>
+</ul>
+</section>
+</section>
+<section id="login-and-logout-page">
+<h2><span class="section-number">9.4. </span>Login and Logout Page<a class="headerlink" href="#login-and-logout-page" title="Link to this heading">#</a></h2>
+<section id="step-1-construct-the-url-patterns">
+<h3><span class="section-number">9.4.1. </span>Step 1: Construct the URL Patterns<a class="headerlink" href="#step-1-construct-the-url-patterns" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>First, you’ll need to define the URL patterns for the login and logout views using Django’s built-in views.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># users/urls.py</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.views</span> <span class="kn">import</span> <span class="n">LoginView</span><span class="p">,</span> <span class="n">LogoutView</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login/&#39;</span><span class="p">,</span> <span class="n">LoginView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s1">&#39;users/login.html&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;logout/&#39;</span><span class="p">,</span> <span class="n">LogoutView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(</span><span class="n">template_name</span><span class="o">=</span><span class="s1">&#39;users/logout.html&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;logout&#39;</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LoginView</span></code> is used to handle user login. It displays a login form and processes the login request.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default Value</p></th>
+<th class="head"><p>Example Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>template_name</p></td>
+<td><p>The name of the template to use for displaying the login form.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'registration/login.html'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'users/login.html'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>authentication_form</p></td>
+<td><p>The form class to use for validating the login.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AuthenticationForm</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MyCustomAuthenticationForm</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>redirect_authenticated_user</p></td>
+<td><p>Whether to redirect authenticated users who access the login page.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>extra_context</p></td>
+<td><p>A dictionary of context data to add to the default context.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{'next':</span> <span class="pre">'somewhere'}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>redirect_field_name</p></td>
+<td><p>The name of a GET parameter that contains the URL to redirect to after login.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'next'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'next_page'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>success_url</p></td>
+<td><p>URL to redirect to after a successful login.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'/profile/'</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LogoutView</span></code> is used to handle user logout. It logs the user out and redirects them to a specified URL.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default Value</p></th>
+<th class="head"><p>Example Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>template_name</p></td>
+<td><p>The name of the template to use for displaying a post-logout message (if any).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'users/logout.html'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>next_page</p></td>
+<td><p>URL to redirect to after logging out.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'/login/'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>redirect_field_name</p></td>
+<td><p>The name of a GET parameter that contains the URL to redirect to after logout.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'next'</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'next_page'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>extra_context</p></td>
+<td><p>A dictionary of context data to add to the default context.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{'info':</span> <span class="pre">'You</span> <span class="pre">have</span> <span class="pre">been</span> <span class="pre">logged</span> <span class="pre">out.'}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="step-2-create-the-templates-for-login-and-logout-pages">
+<h3><span class="section-number">9.4.2. </span>Step 2: Create the Templates for Login and Logout Pages<a class="headerlink" href="#step-2-create-the-templates-for-login-and-logout-pages" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Next, create the templates for the login and logout pages. Use Django’s template inheritance and crispy forms for better styling.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">users/templates/users/login.html</span></code></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;blog/main.html&quot; %} {% load crispy_forms_tags %} {% block
+main-content %}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Log In<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  {% for message in messages %}
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;alert alert-{{ message.tags }}&quot;</span><span class="p">&gt;</span>{{ message }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  {% endfor %}
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span><span class="p">&gt;</span>
+    {% csrf_token %} {{ form|crispy }}
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;d-flex justify-content-end&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary me-2 mt-2&quot;</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;blog-home&#39; %}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-danger mt-2&quot;</span><span class="p">&gt;</span>Cancel<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;border-top mt-3&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">small</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-muted&quot;</span><span class="p">&gt;</span>
+      Need an account?
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ml-2&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;register&#39; %}&quot;</span><span class="p">&gt;</span>Sign Up Now<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">small</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{% endblock main-content %}
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">users/templates/users/logout.html</span></code></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;blog/main.html&quot; %} {% block main-content %}
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>You have been logged out<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;login&#39; %}&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-primary mt-2&quot;</span><span class="p">&gt;</span>Log In Again<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+{% endblock main-content %}
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-3-add-conditional-statements-in-the-navigation-bar">
+<h3><span class="section-number">9.4.3. </span>Step 3: Add Conditional Statements in the Navigation Bar<a class="headerlink" href="#step-3-add-conditional-statements-in-the-navigation-bar" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Update your navigation bar template to show different options based on the user’s authentication status.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- Navbar template --&gt;</span>
+...
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;navbar-nav ml-auto&quot;</span><span class="p">&gt;</span>
+  {% if user.is_authenticated %}
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav-item nav-link&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;profile&#39; %}&quot;</span><span class="p">&gt;</span>Profile<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav-item nav-link&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;logout&#39; %}&quot;</span><span class="p">&gt;</span>Logout<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  {% else %}
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav-item nav-link&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;login&#39; %}&quot;</span><span class="p">&gt;</span>Login<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav-item nav-link&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{% url &#39;register&#39; %}&quot;</span><span class="p">&gt;</span>Register<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  {% endif %}
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+...
+</pre></div>
+</div>
+</li>
+</ul>
+<ul class="simple">
+<li><p>In Django, the <code class="docutils literal notranslate"><span class="pre">user</span></code> object, typically an instance of <code class="docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>, has various attributes and methods that provide information about the user and enable interaction with user data.</p></li>
+</ul>
+<section id="attributes-parameters">
+<h4><span class="section-number">9.4.3.1. </span>Attributes (Parameters)<a class="headerlink" href="#attributes-parameters" title="Link to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Example Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>username</p></td>
+<td><p>The username of the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.username</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>first_name</p></td>
+<td><p>The first name of the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.first_name</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>last_name</p></td>
+<td><p>The last name of the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.last_name</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>The email address of the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.email</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>is_staff</p></td>
+<td><p>True if the user is allowed to access the admin site.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.is_staff</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>is_active</p></td>
+<td><p>True if the user account is active.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.is_active</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>is_superuser</p></td>
+<td><p>True if the user has all permissions without explicitly assigning them.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.is_superuser</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>last_login</p></td>
+<td><p>The date and time of the user’s last login.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.last_login</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>date_joined</p></td>
+<td><p>The date and time when the user account was created.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.date_joined</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>groups</p></td>
+<td><p>A related manager for handling the groups the user belongs to.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.groups.all</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>user_permissions</p></td>
+<td><p>A related manager for handling the permissions the user has.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.user_permissions.all</span> <span class="pre">}}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="methods-functions">
+<h4><span class="section-number">9.4.3.2. </span>Methods (Functions)<a class="headerlink" href="#methods-functions" title="Link to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Example Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>get_username()</p></td>
+<td><p>Returns the username for the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.get_username</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>get_full_name()</p></td>
+<td><p>Returns the first name and the last name with a space in between.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.get_full_name</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>get_short_name()</p></td>
+<td><p>Returns the first name of the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">user.get_short_name</span> <span class="pre">}}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>set_password(raw_password)</p></td>
+<td><p>Sets the user’s password to the given raw string, taking care of the password hashing.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.set_password('new_password')</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>check_password(raw_password)</p></td>
+<td><p>Returns True if the given raw string is the correct password for the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.check_password('password')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>set_unusable_password()</p></td>
+<td><p>Marks the user as having no password set.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.set_unusable_password()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>has_usable_password()</p></td>
+<td><p>Returns True if the user has a usable password.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.has_usable_password()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>email_user(subject, message, from_email=None, **kwargs)</p></td>
+<td><p>Sends an email to the user.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.email_user('Subject',</span> <span class="pre">'Message')</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>get_group_permissions(obj=None)</p></td>
+<td><p>Returns a list of permission strings that this user has through their groups.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.get_group_permissions()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>get_all_permissions(obj=None)</p></td>
+<td><p>Returns a list of permission strings that this user has, both through group and user permissions.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.get_all_permissions()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>has_perm(perm, obj=None)</p></td>
+<td><p>Returns True if the user has the specified permission.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.has_perm('app_label.permission_code')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>has_perms(perms, obj=None)</p></td>
+<td><p>Returns True if the user has each of the specified permissions.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.has_perms(['app_label.perm1',</span> <span class="pre">'perm2'])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>has_module_perms(app_label)</p></td>
+<td><p>Returns True if the user has any permissions in the given app label.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">user.has_module_perms('app_label')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>is_authenticated (property)</p></td>
+<td><p>Always True for any user. This is a way to tell if the user has been authenticated.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">if</span> <span class="pre">user.is_authenticated</span> <span class="pre">%}...{%</span> <span class="pre">endif</span> <span class="pre">%}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>is_anonymous (property)</p></td>
+<td><p>Always False for any user. This is a way to tell if the user is not authenticated.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{%</span> <span class="pre">if</span> <span class="pre">user.is_anonymous</span> <span class="pre">%}...{%</span> <span class="pre">endif</span> <span class="pre">%}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="step-4-configure-settings">
+<h3><span class="section-number">9.4.4. </span>Step 4: Configure Settings<a class="headerlink" href="#step-4-configure-settings" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Set the login redirect URL and the login URL in your <code class="docutils literal notranslate"><span class="pre">django_project/setting.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOGIN_URL</span></code>: This setting defines the URL where users will be redirected if they need to log in. For instance, if a user tries to access a page that requires authentication without being logged in, they will be redirected to this URL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOGIN_REDIRECT_URL</span></code>: This setting defines the URL where users will be redirected after successfully logging in.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># settings.py</span>
+<span class="n">LOGIN_REDIRECT_URL</span> <span class="o">=</span> <span class="s1">&#39;profile&#39;</span>
+<span class="n">LOGIN_URL</span> <span class="o">=</span> <span class="s1">&#39;login&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="profile-and-picture-customize-forms">
+<h2><span class="section-number">9.5. </span>Profile and Picture (Customize forms)<a class="headerlink" href="#profile-and-picture-customize-forms" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">pillow</span></code> for image processing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pillow
+</pre></div>
+</div>
+</li>
+</ul>
+<section id="step-1-create-userprofile-model-and-configure-media-settings">
+<h3><span class="section-number">9.5.1. </span>Step 1: Create UserProfile Model and configure Media settings<a class="headerlink" href="#step-1-create-userprofile-model-and-configure-media-settings" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">UserProfile</span></code> model is an extension of the default Django <code class="docutils literal notranslate"><span class="pre">User</span></code> model.</p></li>
+<li><p>It allows us to <strong>store additional information about the <code class="docutils literal notranslate"><span class="pre">user</span></code></strong>, such as a bio, profile picture, and birth date.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## users/models.py</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">class</span> <span class="nc">UserProfile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;This user does not have a bio&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;default.png&#39;</span><span class="p">,</span> <span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;profile_pics&#39;</span><span class="p">)</span>
+    <span class="n">birth_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s1"> Profile&#39;</span>
+
+</pre></div>
+</div>
+</li>
+<li><p>Define <strong>where uploaded media files (like profile pictures) are stored</strong> and how they are accessed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># django_project/settings.py</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="o">...</span>
+
+<span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;media&#39;</span><span class="p">)</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s1">&#39;/media/&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-2-construct-the-url-pattern">
+<h3><span class="section-number">9.5.2. </span>Step 2: Construct the URL Pattern<a class="headerlink" href="#step-2-construct-the-url-pattern" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Define the URL pattern to access the user’s profile page.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## users/urls.py</span>
+<span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;profile/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;profile&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-3-create-profile-view">
+<h3><span class="section-number">9.5.3. </span>Step 3: Create Profile View<a class="headerlink" href="#step-3-create-profile-view" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The view handles the logic of rendering the user profile page.</p></li>
+<li><p>It <strong>ensures that only <code class="docutils literal notranslate"><span class="pre">authenticated</span> <span class="pre">users</span></code> can access the profile page</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## users/views.py</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+
+<span class="o">...</span>
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;users/profile.html&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-4-construct-the-template">
+<h3><span class="section-number">9.5.4. </span>Step 4: Construct the Template<a class="headerlink" href="#step-4-construct-the-template" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>It displays the user’s information and provides a form for updating the profile.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- templates/users/profile.html --&gt;</span>
+{% extends &quot;blog/main.html&quot; %}
+{% load crispy_forms_tags %}
+
+{% block main-content %}
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>User Profile<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content-section&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;row&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-3&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;rounded-circle account-img&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ user.userprofile.image.url }}&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;col-md-9&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;account-heading&quot;</span><span class="p">&gt;</span>{{ user.username }}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-secondary&quot;</span><span class="p">&gt;</span>{{ user.email }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group-item&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Bio:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ user.userprofile.bio }}
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group-item&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Birth Date:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ user.userprofile.birth_date|date:&quot;F d, Y&quot; }}
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- FORM HERE --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{% endblock main-content %}
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-5-create-signals">
+<h3><span class="section-number">9.5.5. </span>Step 5: Create Signals<a class="headerlink" href="#step-5-create-signals" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">signals</span></code> to <strong>automatically create and save a <code class="docutils literal notranslate"><span class="pre">UserProfile</span></code> instance whenever a new User instance is created</strong>.</p></li>
+<li><p>This ensures that every user has a profile.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># users/signals.py</span>
+
+<span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.dispatch</span> <span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">UserProfile</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_profile</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+        <span class="n">UserProfile</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">User</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_profile</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">instance</span><span class="o">.</span><span class="n">userprofile</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-6-construct-two-forms-user-and-userprofile">
+<h3><span class="section-number">9.5.6. </span>Step 6: Construct Two Forms (User and UserProfile)<a class="headerlink" href="#step-6-construct-two-forms-user-and-userprofile" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Purpose</strong>: Create forms for updating user information and user profile information.</p></li>
+<li><p>These forms will be used to handle the input from the profile page.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># users/forms.py</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">UserProfile</span>
+<span class="kn">from</span> <span class="nn">crispy_forms.helper</span> <span class="kn">import</span> <span class="n">FormHelper</span>
+<span class="kn">from</span> <span class="nn">crispy_forms.layout</span> <span class="kn">import</span> <span class="n">Submit</span>
+
+<span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">UserUpdateForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">EmailField</span><span class="p">()</span>
+    
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">UserProfileForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">UserProfile</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bio&#39;</span><span class="p">,</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;birth_date&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">helper</span> <span class="o">=</span> <span class="n">FormHelper</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">helper</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="n">Submit</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="s1">&#39;Update&#39;</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-7-update-the-profile-view">
+<h3><span class="section-number">9.5.7. </span>Step 7: Update the Profile View<a class="headerlink" href="#step-7-update-the-profile-view" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Modify the profile view to handle POST requests for form submission and update user and user profile data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># users/views.py</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">messages</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
+
+<span class="o">...</span>
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">u_form</span> <span class="o">=</span> <span class="n">UserUpdateForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">p_form</span> <span class="o">=</span> <span class="n">UserProfileForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">userprofile</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="ow">and</span> <span class="n">p_form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">u_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">p_form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Your account has been updated&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;profile&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">u_form</span> <span class="o">=</span> <span class="n">UserUpdateForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="n">p_form</span> <span class="o">=</span> <span class="n">UserProfileForm</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">userprofile</span><span class="p">)</span>
+    
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;u_form&#39;</span><span class="p">:</span> <span class="n">u_form</span><span class="p">,</span>
+        <span class="s1">&#39;p_form&#39;</span><span class="p">:</span> <span class="n">p_form</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;users/profile.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-8-update-the-template">
+<h3><span class="section-number">9.5.8. </span>Step 8: Update the Template<a class="headerlink" href="#step-8-update-the-template" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Modify the template to include forms for updating the user and user profile information.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- users/templates/users/profile.html --&gt;</span>
+{% extends &quot;blog/main.html&quot; %}
+{% load crispy_forms_tags %}
+
+{% block main-content %}
+
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>{{ user.username }}&#39;s Profile<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content-section&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;media&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;rounded-circle account-img&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ user.userprofile.image.url }}&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;media-body&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h2</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;account-heading&quot;</span><span class="p">&gt;</span>{{ user.username }}<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-secondary&quot;</span><span class="p">&gt;</span>{{ user.email }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group-item&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Bio:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ user.userprofile.bio }}
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-group-item&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>Birth Date:<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span> {{ user.userprofile.birth_date|date:&quot;F d, Y&quot; }}
+                <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">enctype</span><span class="o">=</span><span class="s">&quot;multipart/form-data&quot;</span><span class="p">&gt;</span>
+        {% csrf_token %}
+        <span class="p">&lt;</span><span class="nt">fieldset</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">legend</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;border-bottom mb-4&quot;</span><span class="p">&gt;</span>Update Profile<span class="p">&lt;/</span><span class="nt">legend</span><span class="p">&gt;</span>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+        <span class="p">&lt;/</span><span class="nt">fieldset</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn btn-outline-info&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Update<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+{% endblock main-content %}
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="step-9-modify-the-userprofile-model-to-resize-images">
+<h3><span class="section-number">9.5.9. </span>Step 9: Modify the UserProfile Model to Resize Images<a class="headerlink" href="#step-9-modify-the-userprofile-model-to-resize-images" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Update the UserProfile model to resize profile images to a maximum of 300x300 pixels to ensure uniformity and optimize storage space.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># users/models.py</span>
+
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">class</span> <span class="nc">UserProfile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">bio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;This user does not have a bio&quot;</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;default.png&#39;</span><span class="p">,</span> <span class="n">upload_to</span><span class="o">=</span><span class="s1">&#39;profile_pics&#39;</span><span class="p">)</span>
+    <span class="n">birth_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s1"> Profile&#39;</span>
+    
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        
+        <span class="c1"># Resize uploaded image</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">height</span> <span class="o">&gt;</span> <span class="mi">300</span> <span class="ow">or</span> <span class="n">img</span><span class="o">.</span><span class="n">width</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span>
+            <span class="n">output_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">thumbnail</span><span class="p">(</span><span class="n">output_size</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="additional-resource">
+<h2><span class="section-number">9.6. </span>Additional Resource<a class="headerlink" href="#additional-resource" title="Link to this heading">#</a></h2>
+<section id="commonly-used-decorators">
+<h3><span class="section-number">9.6.1. </span>Commonly Used Decorators<a class="headerlink" href="#commonly-used-decorators" title="Link to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Decorator</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Use Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&#64;login_required</p></td>
+<td><p>Ensures that the user is authenticated before accessing the view.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;login_required</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">profile(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">render(request,</span> <span class="pre">'profile.html')</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&#64;permission_required</p></td>
+<td><p>Ensures that the user has a specific permission before accessing the view.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;permission_required('app_label.permission_code')</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&#64;user_passes_test</p></td>
+<td><p>Allows access to the view if a given test is passed (e.g., custom check).</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;user_passes_test(lambda</span> <span class="pre">u:</span> <span class="pre">u.is_superuser)</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&#64;csrf_exempt</p></td>
+<td><p>Exempts the view from CSRF verification.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;csrf_exempt</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&#64;require_http_methods</p></td>
+<td><p>Restricts the allowed HTTP methods for the view.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;require_http_methods([&quot;GET&quot;,</span> <span class="pre">&quot;POST&quot;])</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&#64;require_GET</p></td>
+<td><p>Restricts the view to handle only GET requests.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;require_GET</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&#64;require_POST</p></td>
+<td><p>Restricts the view to handle only POST requests.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;require_POST</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&#64;cache_page</p></td>
+<td><p>Caches the view’s response for a specified amount of time.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;cache_page(60</span> <span class="pre">*</span> <span class="pre">15)</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&#64;never_cache</p></td>
+<td><p>Prevents caching of the view’s response.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;never_cache</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&#64;vary_on_headers</p></td>
+<td><p>Varies the cache based on specific headers.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;vary_on_headers('User-Agent')</span></code><br><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">my_view(request):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>&#64;method_decorator</p></td>
+<td><p>Applies a decorator to a class-based view method.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;method_decorator(login_required,</span> <span class="pre">name='dispatch')</span></code><br><code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">MyView(View):</span></code><br>    <code class="docutils literal notranslate"><span class="pre">...</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="commonly-used-signals">
+<h3><span class="section-number">9.6.2. </span>Commonly used Signals<a class="headerlink" href="#commonly-used-signals" title="Link to this heading">#</a></h3>
+<table>
+  <tr>
+    <th>Signal</th>
+    <th>Purpose</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>post_save</td>
+    <td>Sent after a model’s save() method is called.</td>
+    <td>
+      Automatically create a profile for new users:<br>
+      <pre>
+from django.db.models.signals import post_save
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+from .models import UserProfile
+<p>&#64;receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+if created:
+UserProfile.objects.create(user=instance)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>pre_save</td>
+    <td>Sent before a model’s save() method is called.</td>
+    <td>
+      Auto-populate a field before saving:<br>
+      <pre>
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from .models import MyModel
+<p>&#64;receiver(pre_save, sender=MyModel)
+def pre_save_handler(sender, instance, **kwargs):
+instance.slug = slugify(<a class="reference external" href="http://instance.name">instance.name</a>)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>post_delete</td>
+    <td>Sent after a model’s delete() method is called.</td>
+    <td>
+      Clean up related records after deletion:<br>
+      <pre>
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+from .models import MyModel
+<p>&#64;receiver(post_delete, sender=MyModel)
+def post_delete_handler(sender, instance, **kwargs):
+instance.related_record.delete()
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>pre_delete</td>
+    <td>Sent before a model’s delete() method is called.</td>
+    <td>
+      Perform actions before deletion:<br>
+      <pre>
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
+from .models import MyModel
+<p>&#64;receiver(pre_delete, sender=MyModel)
+def pre_delete_handler(sender, instance, **kwargs):
+print(f’Deleting: {instance}’)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>m2m_changed</td>
+    <td>Sent when a ManyToManyField is changed.</td>
+    <td>
+      Log changes to many-to-many relationships:<br>
+      <pre>
+from django.db.models.signals import m2m_changed
+from django.dispatch import receiver
+from .models import MyModel
+<p>&#64;receiver(m2m_changed, sender=MyModel.many_to_many_field.through)
+def m2m_changed_handler(sender, instance, action, **kwargs):
+if action == “post_add”:
+print(f’Added to {instance}’)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>request_started</td>
+    <td>Sent when Django starts processing an HTTP request.</td>
+    <td>
+      Initialize per-request data:<br>
+      <pre>
+from django.core.signals import request_started
+from django.dispatch import receiver
+<p>&#64;receiver(request_started)
+def request_started_handler(sender, **kwargs):
+print(‘Request started’)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>request_finished</td>
+    <td>Sent when Django finishes processing an HTTP request.</td>
+    <td>
+      Clean up after request processing:<br>
+      <pre>
+from django.core.signals import request_finished
+from django.dispatch import receiver
+<p>&#64;receiver(request_finished)
+def request_finished_handler(sender, **kwargs):
+print(‘Request finished’)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>user_logged_in</td>
+    <td>Sent when a user logs in.</td>
+    <td>
+      Track user login activities:<br>
+      <pre>
+from django.contrib.auth.signals import user_logged_in
+from django.dispatch import receiver
+<p>&#64;receiver(user_logged_in)
+def user_logged_in_handler(sender, request, user, **kwargs):
+print(f’User {user} logged in’)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>user_logged_out</td>
+    <td>Sent when a user logs out.</td>
+    <td>
+      Track user logout activities:<br>
+      <pre>
+from django.contrib.auth.signals import user_logged_out
+from django.dispatch import receiver
+<p>&#64;receiver(user_logged_out)
+def user_logged_out_handler(sender, request, user, **kwargs):
+print(f’User {user} logged out’)
+</pre>
+</td></p>
+  </tr>
+  <tr>
+    <td>user_signup</td>
+    <td>Custom signal, often used to handle user sign-up events.</td>
+    <td>
+      Handle additional sign-up logic:<br>
+      <pre>
+from django.dispatch import Signal
+<p>user_signup = Signal(providing_args=[“user”, “request”])</p>
+<p>&#64;receiver(user_signup)
+def user_signup_handler(sender, user, request, **kwargs):
+print(f’User {user} signed up’)
+</pre>
+</td></p>
+  </tr>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\Backend\Django-Blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-database-and-admin.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Database and Migrations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-post-crud.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>POST Create, Read, Update and Delete (CRUD)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-user-authentication-app">9.1. Set up User Authentication app</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-app">9.1.1. Register app</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-user-models-and-forms">9.2. Create User Models and Forms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-crispy-environment">9.2.1. Setup Crispy environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-forms-in-users-forms-py">9.2.2. Create forms in <code class="docutils literal notranslate"><span class="pre">users/forms.py</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-user-authentication">9.3. Create Views for User Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-register-view">9.3.1. Create <code class="docutils literal notranslate"><span class="pre">register</span></code> view</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-url-patterns">9.3.2. Setting Up URL Patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-templates">9.3.3. Creating Templates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#login-and-logout-page">9.4. Login and Logout Page</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-construct-the-url-patterns">9.4.1. Step 1: Construct the URL Patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-the-templates-for-login-and-logout-pages">9.4.2. Step 2: Create the Templates for Login and Logout Pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-add-conditional-statements-in-the-navigation-bar">9.4.3. Step 3: Add Conditional Statements in the Navigation Bar</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-parameters">9.4.3.1. Attributes (Parameters)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-functions">9.4.3.2. Methods (Functions)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-configure-settings">9.4.4. Step 4: Configure Settings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-and-picture-customize-forms">9.5. Profile and Picture (Customize forms)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-userprofile-model-and-configure-media-settings">9.5.1. Step 1: Create UserProfile Model and configure Media settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-construct-the-url-pattern">9.5.2. Step 2: Construct the URL Pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-create-profile-view">9.5.3. Step 3: Create Profile View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-construct-the-template">9.5.4. Step 4: Construct the Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-create-signals">9.5.5. Step 5: Create Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-construct-two-forms-user-and-userprofile">9.5.6. Step 6: Construct Two Forms (User and UserProfile)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-update-the-profile-view">9.5.7. Step 7: Update the Profile View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-update-the-template">9.5.8. Step 8: Update the Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-modify-the-userprofile-model-to-resize-images">9.5.9. Step 9: Modify the UserProfile Model to Resize Images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resource">9.6. Additional Resource</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-decorators">9.6.1. Commonly Used Decorators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-signals">9.6.2. Commonly used Signals</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

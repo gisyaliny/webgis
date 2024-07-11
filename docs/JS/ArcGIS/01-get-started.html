@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. Introduction to ArcGIS JS API &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/JS/ArcGIS/01-get-started';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/JS/ArcGIS/01-get-started.html" />
+    <link rel="icon" href="../../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5. Web Layers and widgets" href="02-manipulate-layers.html" />
+    <link rel="prev" title="3. Loops and logic" href="../03-loop-and-logic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-JS-intro.html">1. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-Arrays-and-Object.html">2. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-loop-and-logic.html">3. Loops and logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-manipulate-layers.html">5. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-spatial-query.html">6. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/Django-Blog/01-get-started.html">7. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/Django-Blog/02-database-and-admin.html">8. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/Django-Blog/03-user-registration.html">9. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/Django-Blog/04-post-crud.html">10. POST Create, Read, Update and Delete (CRUD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/Django-Blog/06-rest-api.html">11. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/Django-Blog/07-deploy.html">12. Deploy Django Project into Windows Server using IIS and FastCGI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Backend/01-sql-comprehensive.html">13. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">14. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">15. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/JS/ArcGIS/01-get-started.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/JS/ArcGIS/01-get-started.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/JS/ArcGIS/01-get-started.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/JS/ArcGIS/01-get-started.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/JS/ArcGIS/01-get-started.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to ArcGIS JS API</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-development-environment">4.1. Setting Up Your Development Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-basic-map">4.2. Creating a Basic Map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-map">4.2.1. Initialize the Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-mapview">4.2.2. Create a MapView</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-points-lines-and-polygons">4.3. Add Points, Lines, and Polygons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-point">4.3.1. Adding a Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-line">4.3.2. Adding a Line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-polygon">4.3.3. Adding a Polygon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#host-web-layers">4.4. Host Web Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webmap">4.4.1. WebMap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapview">4.4.2. MapView</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-arcgis-js-api">
+<h1><span class="section-number">4. </span>Introduction to ArcGIS JS API<a class="headerlink" href="#introduction-to-arcgis-js-api" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">ArcGIS</span> <span class="pre">JavaScript</span> <span class="pre">API</span></code> is a powerful tool for building <strong>interactive web maps</strong> and geographic information system (GIS) applications.</p>
+<p>This tutorial will guide you through the basics of using the <code class="docutils literal notranslate"><span class="pre">ArcGIS</span> <span class="pre">JavaScript</span> <span class="pre">API</span></code>, including setting up your development environment, creating a simple map, adding layers, and working with spatial data.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#./01_point_line_polygon.htm"><span class="xref myst">Add Points, lines and Polygons</span></a></p></li>
+<li><p><a class="reference internal" href="#./01-webMaps.htm"><span class="xref myst">Host Web Maps</span></a></p></li>
+<li><p><a class="reference external" href="https://developers.arcgis.com/javascript/latest/maps-2d/">Read after finish</a></p></li>
+</ul>
+<section id="setting-up-your-development-environment">
+<h2><span class="section-number">4.1. </span>Setting Up Your Development Environment<a class="headerlink" href="#setting-up-your-development-environment" title="Link to this heading">#</a></h2>
+<p>Create a new HTML file (e.g., <code class="docutils literal notranslate"><span class="pre">index.html</span></code>) and open it in your favorite text editor, and include the <code class="docutils literal notranslate"><span class="pre">ArcGIS</span> <span class="pre">JavaScript</span> <span class="pre">API</span></code> in your <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file by adding the following lines within the <code class="docutils literal notranslate"><span class="pre">&lt;head&gt;</span></code> section:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>ArcGIS JavaScript API Tutorial<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span>
+      <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span>
+      <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://js.arcgis.com/4.25/esri/themes/light/main.css&quot;</span>
+    <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://js.arcgis.com/4.25/&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;viewDiv&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;height: 100vh;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/Map&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/views/MapView&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nb">Map</span><span class="p">,</span><span class="w"> </span><span class="nx">MapView</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Your code will go here</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-basic-map">
+<h2><span class="section-number">4.2. </span>Creating a Basic Map<a class="headerlink" href="#creating-a-basic-map" title="Link to this heading">#</a></h2>
+<section id="initialize-the-map">
+<h3><span class="section-number">4.2.1. </span>Initialize the Map<a class="headerlink" href="#initialize-the-map" title="Link to this heading">#</a></h3>
+<p>Within the <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tag, initialize a new <code class="docutils literal notranslate"><span class="pre">map</span></code> by creating an instance of the <code class="docutils literal notranslate"><span class="pre">Map</span></code> class:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">basemap</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;topo-vector&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Basemap layer service</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-mapview">
+<h3><span class="section-number">4.2.2. </span>Create a MapView<a class="headerlink" href="#create-a-mapview" title="Link to this heading">#</a></h3>
+<p>Next, create a <code class="docutils literal notranslate"><span class="pre">MapView</span></code> to display the <code class="docutils literal notranslate"><span class="pre">map</span></code>. This defines the center and zoom level of the map:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapView</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;viewDiv&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Reference to the scene div created in step 1</span>
+<span class="w">  </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="nx">map</span><span class="p">,</span><span class="w"> </span><span class="c1">// Reference to the map object created before the view</span>
+<span class="w">  </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">118.805</span><span class="p">,</span><span class="w"> </span><span class="mf">34.027</span><span class="p">],</span><span class="w"> </span><span class="c1">// Longitude, latitude</span>
+<span class="w">  </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">13</span><span class="p">,</span><span class="w"> </span><span class="c1">// Zoom level</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="add-points-lines-and-polygons">
+<h2><span class="section-number">4.3. </span>Add Points, Lines, and Polygons<a class="headerlink" href="#add-points-lines-and-polygons" title="Link to this heading">#</a></h2>
+<section id="adding-a-point">
+<h3><span class="section-number">4.3.1. </span>Adding a Point<a class="headerlink" href="#adding-a-point" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Point Geometry</strong>: Defines the location of the point.</p></li>
+<li><p><strong><a class="reference external" href="https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-SimpleMarkerSymbol.html">Marker Symbol</a></strong>: Customizes the point’s appearance with color and outline.</p></li>
+<li><p><strong>Popup Template</strong>: Specifies the template for pop-up information displayed when the graphic is clicked.</p></li>
+<li><p><strong>Attributes</strong>: Contains data attributes to be displayed in the popup.</p></li>
+<li><p><strong>Graphic Object</strong>: Combines geometry, symbol, and attributes into a graphic, which is then added to the graphics layer.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;point&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">118.80657463861</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">34.0005930608889</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">simpleMarkerSymbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-marker&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">226</span><span class="p">,</span><span class="w"> </span><span class="mf">119</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">],</span><span class="w"> </span><span class="c1">// Orange</span>
+<span class="w">  </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">],</span><span class="w"> </span><span class="c1">// White</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">popupTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{Name}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{Description}&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">pointAttribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">Name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Points&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">Description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;It&#39;s a sample Point&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">pointGraphic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">point</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="nx">simpleMarkerSymbol</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="nx">popupTemplate</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="nx">pointAttribute</span><span class="p">,</span>
+<span class="p">});</span>
+<span class="nx">graphicsLayer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">pointGraphic</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="adding-a-line">
+<h3><span class="section-number">4.3.2. </span>Adding a Line<a class="headerlink" href="#adding-a-line" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Polyline Geometry</strong>: Defines the vertices of the line.</p></li>
+<li><p><strong>Line Symbol</strong>: Customizes the line’s appearance with color and width.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">polyline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;polyline&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">paths</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.821527826096</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0139576938577</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.814893761649</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0080602407843</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.808878330345</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0016642996246</span><span class="p">],</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">simpleLineSymbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-line&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">226</span><span class="p">,</span><span class="w"> </span><span class="mf">119</span><span class="p">,</span><span class="w"> </span><span class="mf">40</span><span class="p">],</span><span class="w"> </span><span class="c1">// Orange</span>
+<span class="w">  </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">lineAttribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">Name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Lines&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">Description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;It&#39;s a sample line&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">polylineGraphic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">polyline</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="nx">simpleLineSymbol</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="nx">popupTemplate</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="nx">lineAttribute</span><span class="p">,</span>
+<span class="p">});</span>
+<span class="nx">graphicsLayer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">polylineGraphic</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="adding-a-polygon">
+<h3><span class="section-number">4.3.3. </span>Adding a Polygon<a class="headerlink" href="#adding-a-polygon" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Polygon Geometry</strong>: Defines the vertices of the polygon.</p></li>
+<li><p><strong>Fill Symbol</strong>: Customizes the polygon’s appearance with color, opacity, and outline.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">polygon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">rings</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.818984489994</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0137559967283</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.806796597377</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0215816298725</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.791432890735</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0163883241613</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.79596686535</span><span class="p">,</span><span class="w"> </span><span class="mf">34.008564864635</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">118.808558110679</span><span class="p">,</span><span class="w"> </span><span class="mf">34.0035027131376</span><span class="p">],</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">simpleFillSymbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">227</span><span class="p">,</span><span class="w"> </span><span class="mf">139</span><span class="p">,</span><span class="w"> </span><span class="mf">79</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">],</span><span class="w"> </span><span class="c1">// Orange, opacity 80%</span>
+<span class="w">  </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">polygonAttributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">Name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Graphic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">Description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;I am a polygon&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">polygonGraphic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">polygon</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="nx">simpleFillSymbol</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="nx">polygonAttributes</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="nx">popupTemplate</span><span class="p">,</span>
+<span class="p">});</span>
+<span class="nx">graphicsLayer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">polygonGraphic</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="host-web-layers">
+<h2><span class="section-number">4.4. </span>Host Web Layers<a class="headerlink" href="#host-web-layers" title="Link to this heading">#</a></h2>
+<p>In this section, we will explore how to host <code class="docutils literal notranslate"><span class="pre">web</span> <span class="pre">layers</span></code> using the <code class="docutils literal notranslate"><span class="pre">ArcGIS</span> <span class="pre">Maps</span> <span class="pre">SDK</span> <span class="pre">for</span> <span class="pre">JavaScript</span></code>.</p>
+<section id="webmap">
+<h3><span class="section-number">4.4.1. </span>WebMap<a class="headerlink" href="#webmap" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">WebMap</span></code> class is used to create and manipulate web maps.</p>
+<ul>
+<li><p>A web map is a configuration of layers, styles, and other settings that can be shared and accessed via a web service.</p></li>
+<li><p>In this script, multiple WebMap instances are created using <code class="docutils literal notranslate"><span class="pre">unique</span> <span class="pre">web</span> <span class="pre">map</span> <span class="pre">IDs</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Constructor Parameters</strong>: The <code class="docutils literal notranslate"><span class="pre">WebMap</span></code> constructor takes an object with a <code class="docutils literal notranslate"><span class="pre">portalItem</span></code> property.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">portalItem</span></code></strong>: This is an object that specifies the ID of the web map stored in the <code class="docutils literal notranslate"><span class="pre">ArcGIS</span> <span class="pre">Online</span> <span class="pre">portal</span></code>.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">webmaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">webmapids</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">webmapid</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebMap</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">portalItem</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="nx">webmapid</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="mapview">
+<h3><span class="section-number">4.4.2. </span>MapView<a class="headerlink" href="#mapview" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">MapView</span></code> class is used to display a map in a specific HTML container.</p></li>
+<li><p>It allows you to interact with the map, including <code class="docutils literal notranslate"><span class="pre">panning</span></code>, <code class="docutils literal notranslate"><span class="pre">zooming</span></code>, and <code class="docutils literal notranslate"><span class="pre">adding</span> <span class="pre">layers</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span></code>: The WebMap instance to display.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">container</span></code>: The ID of the HTML element where the map will be rendered.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code>: The initial center point of the map.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zoom</span></code>: The initial zoom level of the map.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapView</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="nx">webmaps</span><span class="p">[</span><span class="mf">0</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;viewDiv&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="nx">mapConfigurations</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">center</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="nx">mapConfigurations</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">zoom</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\JS\ArcGIS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../03-loop-and-logic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Loops and logic</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-manipulate-layers.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Web Layers and widgets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-development-environment">4.1. Setting Up Your Development Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-basic-map">4.2. Creating a Basic Map</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-the-map">4.2.1. Initialize the Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-mapview">4.2.2. Create a MapView</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-points-lines-and-polygons">4.3. Add Points, Lines, and Polygons</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-point">4.3.1. Adding a Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-line">4.3.2. Adding a Line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-polygon">4.3.3. Adding a Polygon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#host-web-layers">4.4. Host Web Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#webmap">4.4.1. WebMap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapview">4.4.2. MapView</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
