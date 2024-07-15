@@ -5,11 +5,12 @@ format: jb-book
 root: index
 
 parts:
-  # - caption: Preface
-  #   chapters:
-  #     - file: book/preface/instructor
-  #     - file: book/preface/syllabus
-  #     - file: book/preface/software
+  - caption: CSS
+    chapters:
+      - file: docs/CSS/01-get-start
+      - file: docs/CSS/02-CSS-Box
+      - file: docs/CSS/03-css-layout
+      - file: docs/CSS/04-css-selectors
   - caption: JavaScript Basic
     numbered: true
     maxdepth: 2
