@@ -1,0 +1,1293 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CSS Layout &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/CSS/03-css-layout';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/CSS/03-css-layout.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CSS Selectors" href="04-css-selectors.html" />
+    <link rel="prev" title="CSS Box Model" href="02-CSS-Box.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-start.html">Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-CSS-Box.html">CSS Box Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-css-selectors.html">CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">1. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">2. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">3. Loops and logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">4. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">5. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">6. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">7. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">8. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">9. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">10. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/06-rest-api.html">11. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-deploy.html">12. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">13. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">14. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">15. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/CSS/03-css-layout.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/CSS/03-css-layout.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/CSS/03-css-layout.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/CSS/03-css-layout.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/CSS/03-css-layout.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CSS Layout</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-display-property">The <code class="docutils literal notranslate"><span class="pre">display</span></code> Property</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-level-elements">Block-level Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-elements">Inline Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-none"><code class="docutils literal notranslate"><span class="pre">Display:</span> <span class="pre">none</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#width-and-max-width">width and max-width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-position-property">The <code class="docutils literal notranslate"><span class="pre">position</span></code> Property</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-static"><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">static</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-relative"><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">relative</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-fixed-and-position-absolute"><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed;</span></code> and <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute;</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow">Overflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-visible">overflow: visible</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-hidden">overflow: hidden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-scroll">overflow: scroll</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-auto">overflow: auto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-z-index-property">The z-index Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#float-and-clear">float and clear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-float-property">The float Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#float-examples">Float Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-clear-property">The clear Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#float-example-with-clearfix">Float Example with clearfix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-html-structure">Set Up the HTML Structure:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-the-layout-using-css-properties">Style the Layout Using CSS Properties:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-script">Sample Script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-cheating-sheet">Position Cheating sheet</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="css-layout">
+<h1>CSS Layout<a class="headerlink" href="#css-layout" title="Link to this heading">#</a></h1>
+<section id="the-display-property">
+<h2>The <code class="docutils literal notranslate"><span class="pre">display</span></code> Property<a class="headerlink" href="#the-display-property" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">display</span></code> property is used to specify how an element is shown on a web page.</p></li>
+<li><p>Every HTML element has a default <code class="docutils literal notranslate"><span class="pre">display</span></code> value, depending on <strong>what type of element it is</strong>. The default display value for most elements is <code class="docutils literal notranslate"><span class="pre">block</span></code> or <code class="docutils literal notranslate"><span class="pre">inline</span></code>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inline</span></code></p></td>
+<td><p>Displays an element as an inline element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">block</span></code></p></td>
+<td><p>Displays an element as a block element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">contents</span></code></p></td>
+<td><p>Makes the container disappear, making the child elements children of the element the next level up in the DOM</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">flex</span></code></p></td>
+<td><p>Displays an element as a block-level flex container</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">grid</span></code></p></td>
+<td><p>Displays an element as a block-level grid container</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inline-block</span></code></p></td>
+<td><p>Displays an element as an inline-level block container. The element itself is formatted as an inline element, but you can apply height and width values</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inline-flex</span></code></p></td>
+<td><p>Displays an element as an inline-level flex container</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">inline-grid</span></code></p></td>
+<td><p>Displays an element as an inline-level grid container</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inline-table</span></code></p></td>
+<td><p>The element is displayed as an inline-level table</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list-item</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">run-in</span></code></p></td>
+<td><p>Displays an element as either block or inline, depending on context</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;table&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">table-caption</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;caption&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table-column-group</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;colgroup&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">table-header-group</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;thead&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table-footer-group</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;tfoot&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">table-row-group</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;tbody&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table-cell</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;td&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">table-column</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;col&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table-row</span></code></p></td>
+<td><p>Let the element behave like a <code class="docutils literal notranslate"><span class="pre">&lt;tr&gt;</span></code> element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">none</span></code></p></td>
+<td><p>The element is completely removed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">initial</span></code></p></td>
+<td><p>Sets this property to its default value</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inherit</span></code></p></td>
+<td><p>Inherits this property from its parent element</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<section id="block-level-elements">
+<h3>Block-level Elements<a class="headerlink" href="#block-level-elements" title="Link to this heading">#</a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">block-level</span> <span class="pre">element</span></code> <strong>ALWAYS starts on a new line</strong> and <strong>takes up the full width available</strong> (stretches out to the left and right as far as it can).</p>
+<p>Examples of block-level elements:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;</span></code> - <code class="docutils literal notranslate"><span class="pre">&lt;h6&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;p&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;form&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;header&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;footer&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;section&gt;</span></code></p></li>
+</ul>
+</section>
+<section id="inline-elements">
+<h3>Inline Elements<a class="headerlink" href="#inline-elements" title="Link to this heading">#</a></h3>
+<p>An <code class="docutils literal notranslate"><span class="pre">inline</span> <span class="pre">element</span></code> <strong>DOES NOT start on a new line</strong> and** only takes up as much width as necessary**.</p>
+<p>Examples of inline elements:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code></p>
+<p><img alt="image.png" src="../../_images/102.png" /></p>
+</li>
+</ul>
+</section>
+<section id="display-none">
+<h3><code class="docutils literal notranslate"><span class="pre">Display:</span> <span class="pre">none</span></code><a class="headerlink" href="#display-none" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">display:</span> <span class="pre">none</span></code>; is commonly used with <code class="docutils literal notranslate"><span class="pre">JavaScript</span></code> to <strong>hide and show elements without deleting and recreating them</strong>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> element uses <code class="docutils literal notranslate"><span class="pre">display:</span> <span class="pre">none;</span></code> as default.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">visibility:hidden;</span></code> also hides an element. However, <strong>the element will still take up the same space</strong> as before. The element will be hidden, but still affect the layout</p>
+<p><img alt="image.png" src="../../_images/112.png" /></p>
+</li>
+</ul>
+</section>
+</section>
+<section id="width-and-max-width">
+<h2>width and max-width<a class="headerlink" href="#width-and-max-width" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://www.w3schools.com/css/css_max-width.asp">Reference</a></p></li>
+<li><p>Setting the <code class="docutils literal notranslate"><span class="pre">width</span></code> of a <code class="docutils literal notranslate"><span class="pre">block-level</span> <span class="pre">element</span></code> will prevent it from stretching out to the edges of its container.</p>
+<ul>
+<li><p>Then, you can set the <code class="docutils literal notranslate"><span class="pre">margins</span></code> to <code class="docutils literal notranslate"><span class="pre">auto</span></code>, to horizontally center the element within its container.</p></li>
+<li><p>The element will take up the specified <code class="docutils literal notranslate"><span class="pre">width</span></code>, and the <strong>remaining space will be split equally between the two margins</strong></p>
+<p><img alt="image.png" src="../../_images/121.png" /></p>
+</li>
+<li><p>The problem with the <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> above occurs when the browser window is smaller than the width of the element. The browser then adds a horizontal scrollbar to the page.</p></li>
+</ul>
+</li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">max-width</span></code> instead, in this situation, will improve the browser’s handling of small windows. This is important when making a site usable on small devices:</p>
+<p><img alt="image-2.png" src="../../_images/131.png" /></p>
+</li>
+<li><p>Example</p>
+<p><img alt="image-3.png" src="../../_images/141.png" /></p>
+</li>
+</ul>
+</section>
+<section id="the-position-property">
+<h2>The <code class="docutils literal notranslate"><span class="pre">position</span></code> Property<a class="headerlink" href="#the-position-property" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">position</span></code> property specifies the type of positioning method used for an element.</p></li>
+</ul>
+<p>There are five different position values:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">static</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">relative</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fixed</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">absolute</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sticky</span></code></p></li>
+</ol>
+<p>Elements are then positioned using the top, bottom, left, and right properties. However, these properties will not work unless the position property is set first. They also work differently depending on the position value.</p>
+<section id="position-static">
+<h3><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">static</span></code><a class="headerlink" href="#position-static" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>HTML elements are positioned static <strong>by default</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Static</span> <span class="pre">positioned</span> <span class="pre">elements</span></code> are <strong>not affected by the top, bottom, left, and right properties</strong>.</p></li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="p">.</span><span class="nc">static</span><span class="w"> </span><span class="p">{</span>
+<span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">static</span><span class="p">;</span>
+<span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#73AD21</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="position-relative">
+<h3><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">relative</span></code><a class="headerlink" href="#position-relative" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>An element with <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">relative;</span></code> is positioned relative to its normal position.</p></li>
+<li><p>Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position. <strong>Other content will not be adjusted to fit into any gap left by the element</strong>.</p></li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="p">.</span><span class="nc">relative</span><span class="w"> </span><span class="p">{</span>
+<span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#73AD21</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="position-fixed-and-position-absolute">
+<h3><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed;</span></code> and <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute;</span></code><a class="headerlink" href="#position-fixed-and-position-absolute" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>An element with <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed;</span></code> is positioned relative to the viewport, which means it <strong>always stays in the same place even if the page is scrolled</strong>. The top, right, bottom, and left properties are used to position the element.</p></li>
+<li><p><strong>Common Use Cases</strong>: Used for elements that need to stay in a fixed position on the screen, such as navigation bars, headers, or footers.</p></li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="p">.</span><span class="nc">fixed</span><span class="w"> </span><span class="p">{</span>
+<span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#73AD21</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Position Context</p></td>
+<td><p>Relative to the nearest positioned ancestor or initial containing block.</p></td>
+<td><p>Relative to the viewport.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scrolling Behavior</p></td>
+<td><p>Scrolls with the document.</p></td>
+<td><p>Stays fixed in the same position.</p></td>
+</tr>
+<tr class="row-even"><td><p>Common Use Cases</p></td>
+<td><p>Placing elements at specific coordinates within a container.</p></td>
+<td><p>Fixed headers, footers, or sidebars.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Example</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;container&quot;&gt;&lt;div</span> <span class="pre">class=&quot;absolute-box&quot;&gt;Absolute&lt;/div&gt;&lt;/div&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">class=&quot;fixed-box&quot;&gt;Fixed&lt;/div&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>An element with <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute;</span></code> is positioned <strong>relative to the nearest positioned ancestor</strong> (instead of positioned relative to the viewport, like fixed).</p></li>
+<li><p><strong>Common Use Cases</strong>: Used to create elements that are placed at specific coordinates within their containing block.</p></li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="p">.</span><span class="nc">relative</span><span class="w"> </span><span class="p">{</span>
+<span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#73AD21</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">div</span><span class="p">.</span><span class="nc">absolute</span><span class="w"> </span><span class="p">{</span>
+<span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#73AD21</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="overflow">
+<h2>Overflow<a class="headerlink" href="#overflow" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">overflow</span></code> property specifies whether to <strong><code class="docutils literal notranslate"><span class="pre">clip</span></code> the content</strong> or to <strong>add <code class="docutils literal notranslate"><span class="pre">scrollbars</span></code></strong> when the content of an element is too big to fit in the specified area.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">overflow</span></code> property has the following values:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">visible</span></code> - <strong>Default</strong>. The overflow is <strong>not clipped</strong>. The content renders <strong>outside</strong> the element’s box</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden</span></code> - The overflow is <strong>clipped</strong>, and the rest of the content will be invisible</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scroll</span></code> - The overflow is <strong>clipped</strong>, and <strong>a <code class="docutils literal notranslate"><span class="pre">scrollbar</span></code> is added</strong> to see the rest of the content</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto</span></code> - Similar to <code class="docutils literal notranslate"><span class="pre">scroll</span></code>, but it <strong>adds scrollbars only when necessary</strong></p></li>
+</ol>
+</li>
+</ul>
+<section id="overflow-visible">
+<h3>overflow: visible<a class="headerlink" href="#overflow-visible" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>By <strong>default</strong>, the <code class="docutils literal notranslate"><span class="pre">overflow</span></code> is <code class="docutils literal notranslate"><span class="pre">visible</span></code>, meaning that it is not clipped and it renders outside the element’s box:</p>
+<p><img alt="image.png" src="../../_images/151.png" /></p>
+</li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">coral</span><span class="p">;</span>
+<span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">visible</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="overflow-hidden">
+<h3>overflow: hidden<a class="headerlink" href="#overflow-hidden" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>With the <code class="docutils literal notranslate"><span class="pre">hidden</span></code> value, the <code class="docutils literal notranslate"><span class="pre">overflow</span></code> is <strong>clipped</strong>, and the rest of the content is hidden:</p>
+<p><img alt="image.png" src="../../_images/161.png" /></p>
+</li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="overflow-scroll">
+<h3>overflow: scroll<a class="headerlink" href="#overflow-scroll" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Setting the value to <code class="docutils literal notranslate"><span class="pre">scroll</span></code>, the <code class="docutils literal notranslate"><span class="pre">overflow</span></code> is <strong>clipped</strong> and <strong>a <code class="docutils literal notranslate"><span class="pre">scrollbar</span></code> is added to scroll inside the box</strong>. Note that this will add a scrollbar both horizontally and vertically (even if you do not need it):</p>
+<p><img alt="image.png" src="../../_images/17.png" /></p>
+</li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">scroll</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="overflow-auto">
+<h3>overflow: auto<a class="headerlink" href="#overflow-auto" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">auto</span></code> value is similar to <code class="docutils literal notranslate"><span class="pre">scroll</span></code>, but it adds <code class="docutils literal notranslate"><span class="pre">scrollbars</span></code> only when necessary:</p>
+<p><img alt="image.png" src="../../_images/18.png" /></p>
+</li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="w"> </span><span class="p">{</span>
+<span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="the-z-index-property">
+<h2>The z-index Property<a class="headerlink" href="#the-z-index-property" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>When elements are positioned, they can overlap other elements. The <code class="docutils literal notranslate"><span class="pre">z-index</span></code> property specifies the <strong>stack order</strong> of an element (which element should be placed in front of, or behind, the others).</p></li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+<span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="image.png" src="../../_images/19.png" /></p>
+</li>
+</ul>
+</section>
+<section id="float-and-clear">
+<h2>float and clear<a class="headerlink" href="#float-and-clear" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The CSS <code class="docutils literal notranslate"><span class="pre">float</span></code> property specifies how an element should float.</p></li>
+<li><p>The CSS <code class="docutils literal notranslate"><span class="pre">clear</span></code> property specifies what elements can float beside the cleared element and on which side.</p></li>
+</ul>
+<section id="the-float-property">
+<h3>The float Property<a class="headerlink" href="#the-float-property" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">float</span></code> property is used for positioning and formatting content e.g. let an image float left to the text in a container.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">float</span></code> property can have one of the following values:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span></code> - The element floats to the left of its container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> - The element floats to the right of its container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code> - The element does <strong>not float</strong> (will be displayed just where it occurs in the text). This is <strong>default</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inherit</span></code> - The element inherits the float value of its parent</p></li>
+</ol>
+</li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span>
+<span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nt">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nt">body</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nt">h2</span><span class="o">&gt;</span><span class="nt">Float</span><span class="w"> </span><span class="nt">Right</span><span class="o">&lt;/</span><span class="nt">h2</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">In</span><span class="w"> </span><span class="nt">this</span><span class="w"> </span><span class="nt">example</span><span class="o">,</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">image</span><span class="w"> </span><span class="nt">will</span><span class="w"> </span><span class="nt">float</span><span class="w"> </span><span class="nt">to</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">right</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">paragraph</span><span class="o">,</span><span class="w"> </span><span class="nt">and</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">text</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">paragraph</span><span class="w"> </span><span class="nt">will</span><span class="w"> </span><span class="nt">wrap</span><span class="w"> </span><span class="nt">around</span><span class="w"> </span><span class="nt">the</span><span class="w"> </span><span class="nt">image</span><span class="o">.&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;&lt;</span><span class="nt">img</span><span class="w"> </span><span class="nt">src</span><span class="o">=</span><span class="s2">&quot;pineapple.jpg&quot;</span><span class="w"> </span><span class="nt">alt</span><span class="o">=</span><span class="s2">&quot;Pineapple&quot;</span><span class="w"> </span><span class="nt">style</span><span class="o">=</span><span class="s2">&quot;width:170px;height:170px;margin-left:15px;&quot;</span><span class="o">&gt;</span>
+<span class="nt">Lorem</span><span class="w"> </span><span class="nt">ipsum</span><span class="w"> </span><span class="nt">dolor</span><span class="w"> </span><span class="nt">sit</span><span class="w"> </span><span class="nt">amet</span><span class="o">,</span><span class="w"> </span><span class="nt">consectetur</span><span class="w"> </span><span class="nt">adipiscing</span><span class="w"> </span><span class="nt">elit</span><span class="o">.</span><span class="w"> </span><span class="nt">Phasellus</span><span class="w"> </span><span class="nt">imperdiet</span><span class="o">,</span><span class="w"> </span><span class="nt">nulla</span><span class="w"> </span><span class="nt">et</span><span class="w"> </span><span class="nt">dictum</span><span class="w"> </span><span class="nt">interdum</span><span class="o">,</span><span class="w"> </span><span class="nt">nisi</span><span class="w"> </span><span class="nt">lorem</span><span class="w"> </span><span class="nt">egestas</span><span class="w"> </span><span class="nt">odio</span><span class="o">,</span><span class="w"> </span><span class="nt">vitae</span><span class="w"> </span><span class="nt">scelerisque</span><span class="w"> </span><span class="nt">enim</span><span class="w"> </span><span class="nt">ligula</span><span class="w"> </span><span class="nt">venenatis</span><span class="w"> </span><span class="nt">dolor</span><span class="o">.</span><span class="w"> </span><span class="nt">Maecenas</span><span class="w"> </span><span class="nt">nisl</span><span class="w"> </span><span class="nt">est</span><span class="o">,</span><span class="w"> </span><span class="nt">ultrices</span><span class="w"> </span><span class="nt">nec</span><span class="w"> </span><span class="nt">congue</span><span class="w"> </span><span class="nt">eget</span><span class="o">,</span><span class="w"> </span><span class="nt">auctor</span><span class="w"> </span><span class="nt">vitae</span><span class="w"> </span><span class="nt">massa</span><span class="o">.</span><span class="w"> </span><span class="nt">Fusce</span><span class="w"> </span><span class="nt">luctus</span><span class="w"> </span><span class="nt">vestibulum</span><span class="w"> </span><span class="nt">augue</span><span class="w"> </span><span class="nt">ut</span><span class="w"> </span><span class="nt">aliquet</span><span class="o">.</span><span class="w"> </span><span class="nt">Mauris</span><span class="w"> </span><span class="nt">ante</span><span class="w"> </span><span class="nt">ligula</span><span class="o">,</span><span class="w"> </span><span class="nt">facilisis</span><span class="w"> </span><span class="nt">sed</span><span class="w"> </span><span class="nt">ornare</span><span class="w"> </span><span class="nt">eu</span><span class="o">,</span><span class="w"> </span><span class="nt">lobortis</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nt">odio</span><span class="o">.</span><span class="w"> </span><span class="nt">Praesent</span><span class="w"> </span><span class="nt">convallis</span><span class="w"> </span><span class="nt">urna</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="nt">lacus</span><span class="w"> </span><span class="nt">interdum</span><span class="w"> </span><span class="nt">ut</span><span class="w"> </span><span class="nt">hendrerit</span><span class="w"> </span><span class="nt">risus</span><span class="w"> </span><span class="nt">congue</span><span class="o">.</span><span class="w"> </span><span class="nt">Nunc</span><span class="w"> </span><span class="nt">sagittis</span><span class="w"> </span><span class="nt">dictum</span><span class="w"> </span><span class="nt">nisi</span><span class="o">,</span><span class="w"> </span><span class="nt">sed</span><span class="w"> </span><span class="nt">ullamcorper</span><span class="w"> </span><span class="nt">ipsum</span><span class="w"> </span><span class="nt">dignissim</span><span class="w"> </span><span class="nt">ac</span><span class="o">.</span><span class="w"> </span><span class="nt">In</span><span class="w"> </span><span class="nt">at</span><span class="w"> </span><span class="nt">libero</span><span class="w"> </span><span class="nt">sed</span><span class="w"> </span><span class="nt">nunc</span><span class="w"> </span><span class="nt">venenatis</span><span class="w"> </span><span class="nt">imperdiet</span><span class="w"> </span><span class="nt">sed</span><span class="w"> </span><span class="nt">ornare</span><span class="w"> </span><span class="nt">turpis</span><span class="o">.</span><span class="w"> </span><span class="nt">Donec</span><span class="w"> </span><span class="nt">vitae</span><span class="w"> </span><span class="nt">dui</span><span class="w"> </span><span class="nt">eget</span><span class="w"> </span><span class="nt">tellus</span><span class="w"> </span><span class="nt">gravida</span><span class="w"> </span><span class="nt">venenatis</span><span class="o">.</span><span class="w"> </span><span class="nt">Integer</span><span class="w"> </span><span class="nt">fringilla</span><span class="w"> </span><span class="nt">congue</span><span class="w"> </span><span class="nt">eros</span><span class="w"> </span><span class="nt">non</span><span class="w"> </span><span class="nt">fermentum</span><span class="o">.</span><span class="w"> </span><span class="nt">Sed</span><span class="w"> </span><span class="nt">dapibus</span><span class="w"> </span><span class="nt">pulvinar</span><span class="w"> </span><span class="nt">nibh</span><span class="w"> </span><span class="nt">tempor</span><span class="w"> </span><span class="nt">porta</span><span class="o">.</span><span class="w"> </span><span class="nt">Cras</span><span class="w"> </span><span class="nt">ac</span><span class="w"> </span><span class="nt">leo</span><span class="w"> </span><span class="nt">purus</span><span class="o">.</span><span class="w"> </span><span class="nt">Mauris</span><span class="w"> </span><span class="nt">quis</span><span class="w"> </span><span class="nt">diam</span><span class="w"> </span><span class="nt">velit</span><span class="o">.&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="nt">body</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><img alt="image.png" src="../../_images/20.png" /></p>
+</li>
+</ul>
+</section>
+<section id="float-examples">
+<h3>Float Examples<a class="headerlink" href="#float-examples" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>With the <code class="docutils literal notranslate"><span class="pre">float</span></code> property, it is easy to <strong>float boxes of content side by side</strong>:</p></li>
+<li><p>Example</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="w"> </span><span class="p">{</span>
+<span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">box</span><span class="w"> </span><span class="p">{</span>
+<span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span>
+<span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mf">33.33</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="c">/* three boxes (use 25% for four, and 50% for two, etc) */</span>
+<span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* if you want space between the images */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="image.png" src="../../_images/21.png" /></p>
+</li>
+</ul>
+</section>
+<section id="the-clear-property">
+<h3>The clear Property<a class="headerlink" href="#the-clear-property" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>When we use the <code class="docutils literal notranslate"><span class="pre">float</span></code> property, and <strong>we want the next element below (not on right or left)</strong>, we will have to use the <code class="docutils literal notranslate"><span class="pre">clear</span></code> property.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">clear</span></code> property specifies <strong>what should happen with the element that is next to a <code class="docutils literal notranslate"><span class="pre">floating</span></code> element</strong>.</p></li>
+<li><p>The clear property can have one of the following values:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code> - The element is not pushed below left or right floated elements. This is default</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span></code> - The element is <strong>pushed below left floated elements</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code> - The element is <strong>pushed below right floated elements</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">both</span></code> - The element is <strong>pushed below both left and right floated elements</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inherit</span></code> - The element inherits the clear value from its parent</p></li>
+</ol>
+<p><img alt="image.png" src="../../_images/22.png" /></p>
+</li>
+</ul>
+</section>
+<section id="float-example-with-clearfix">
+<h3>Float Example with clearfix<a class="headerlink" href="#float-example-with-clearfix" title="Link to this heading">#</a></h3>
+<p><img alt="image-2.png" src="../../_images/23.png" /></p>
+</section>
+</section>
+<section id="task">
+<h2>Task<a class="headerlink" href="#task" title="Link to this heading">#</a></h2>
+<section id="objective">
+<h3>Objective:<a class="headerlink" href="#objective" title="Link to this heading">#</a></h3>
+<p>Understand and apply <code class="docutils literal notranslate"><span class="pre">CSS</span> <span class="pre">layout</span></code> properties including <code class="docutils literal notranslate"><span class="pre">display</span></code>, <code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">overflow</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, and <code class="docutils literal notranslate"><span class="pre">clear</span></code> to create a well-structured and responsive webpage layout.</p>
+</section>
+<section id="set-up-the-html-structure">
+<h3>Set Up the HTML Structure:<a class="headerlink" href="#set-up-the-html-structure" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Create a simple HTML file with the following structure:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>CSS Layout Task<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./03-layout.css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">header</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;header&quot;</span><span class="p">&gt;</span>Header<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">nav</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;nav&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>About<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Services<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Contact<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">main</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;main&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">section</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content&quot;</span><span class="p">&gt;</span>Main Content<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">aside</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sidebar&quot;</span><span class="p">&gt;</span>Sidebar<span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container clearfix&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;float-box&quot;</span><span class="p">&gt;</span>Float 1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;float-box&quot;</span><span class="p">&gt;</span>Float 2<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;float-box&quot;</span><span class="p">&gt;</span>Float 3<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;float-box&quot;</span><span class="p">&gt;</span>Float 4<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;clear: both;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> <span class="cm">&lt;!-- Clear float --&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>This text is after the floated boxes. It is cleared so it won&#39;t wrap around the floated elements.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">footer</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer&quot;</span><span class="p">&gt;</span>Footer<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="style-the-layout-using-css-properties">
+<h3>Style the Layout Using CSS Properties:<a class="headerlink" href="#style-the-layout-using-css-properties" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">display</span></code>, <code class="docutils literal notranslate"><span class="pre">position</span></code>, <code class="docutils literal notranslate"><span class="pre">overflow</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, and <code class="docutils literal notranslate"><span class="pre">clear</span></code> properties to style the layout.</p>
+<p><img alt="image.png" src="../../_images/24.png" /></p>
+</li>
+</ul>
+</section>
+<section id="sample-script">
+<h3>Sample Script<a class="headerlink" href="#sample-script" title="Link to this heading">#</a></h3>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Basic styles */</span>
+<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">box-sizing</span><span class="p">:</span><span class="w"> </span><span class="kc">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">header</span><span class="o">,</span><span class="w"> </span><span class="nt">nav</span><span class="o">,</span><span class="w"> </span><span class="nt">main</span><span class="o">,</span><span class="w"> </span><span class="nt">footer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">z-index</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w"> </span><span class="c">/* Ensure it stays on top of other elements */</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f3f3f3</span><span class="p">;</span>
+<span class="w">    </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Adjust for fixed header height */</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">list-style-type</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="kt">px</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">nav</span><span class="w"> </span><span class="nt">ul</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ddd</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span>
+<span class="w">    </span><span class="k">flex-wrap</span><span class="p">:</span><span class="w"> </span><span class="kc">wrap</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Adjust for fixed header and nav */</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">content</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f1f1f1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">sidebar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ccc</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">footer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4CAF50</span><span class="p">;</span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<span class="w">    </span><span class="k">text-align</span><span class="p">:</span><span class="w"> </span><span class="kc">center</span><span class="p">;</span>
+<span class="w">    </span><span class="k">clear</span><span class="p">:</span><span class="w"> </span><span class="kc">both</span><span class="p">;</span>
+<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">fixed</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">    </span><span class="k">bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">left</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">main</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Adjust for fixed header */</span>
+<span class="w">    </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Adjust for fixed footer */</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">sidebar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span><span class="w"> </span><span class="c">/* Ensures sidebar content is scrollable */</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="c">/* Fixed height for demonstration */</span>
+<span class="p">}</span>
+
+<span class="c">/* Float and Clear examples */</span>
+<span class="p">.</span><span class="nc">float-box</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">left</span><span class="p">;</span>
+<span class="w">    </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#ff9999</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">clearfix</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">table</span><span class="p">;</span>
+<span class="w">    </span><span class="k">clear</span><span class="p">:</span><span class="w"> </span><span class="kc">both</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#e0e0e0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">    </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="position-cheating-sheet">
+<h2>Position Cheating sheet<a class="headerlink" href="#position-cheating-sheet" title="Link to this heading">#</a></h2>
+<p><img alt="image.png" src="../../_images/25.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\CSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-CSS-Box.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CSS Box Model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04-css-selectors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CSS Selectors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-display-property">The <code class="docutils literal notranslate"><span class="pre">display</span></code> Property</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block-level-elements">Block-level Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-elements">Inline Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-none"><code class="docutils literal notranslate"><span class="pre">Display:</span> <span class="pre">none</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#width-and-max-width">width and max-width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-position-property">The <code class="docutils literal notranslate"><span class="pre">position</span></code> Property</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-static"><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">static</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-relative"><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">relative</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#position-fixed-and-position-absolute"><code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">fixed;</span></code> and <code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">absolute;</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow">Overflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-visible">overflow: visible</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-hidden">overflow: hidden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-scroll">overflow: scroll</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overflow-auto">overflow: auto</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-z-index-property">The z-index Property</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#float-and-clear">float and clear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-float-property">The float Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#float-examples">Float Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-clear-property">The clear Property</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#float-example-with-clearfix">Float Example with clearfix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task">Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-html-structure">Set Up the HTML Structure:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#style-the-layout-using-css-properties">Style the Layout Using CSS Properties:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-script">Sample Script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#position-cheating-sheet">Position Cheating sheet</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
