@@ -34,8 +34,8 @@ parts:
       - file: docs/Backend/Django-Blog/02-database-and-admin
       - file: docs/Backend/Django-Blog/03-user-registration
       - file: docs/Backend/Django-Blog/04-post-crud
-      - file: docs/Backend/Django-Blog/06-rest-api
-      - file: docs/Backend/Django-Blog/07-deploy
+      - file: docs/Backend/Django-Blog/08-rest-api
+      - file: docs/Backend/Django-Blog/09-deploy
   - caption: DataBase
     numbered: true
     maxdepth: 2
