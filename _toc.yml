@@ -6,6 +6,7 @@ root: index
 
 parts:
   - caption: CSS
+    numbered: true
     chapters:
       - file: docs/CSS/01-get-start
       - file: docs/CSS/02-CSS-Box
@@ -16,8 +17,8 @@ parts:
     maxdepth: 2
     chapters:
       - file: docs/JS/01-JS-intro
-      - file: docs/JS/02-Arrays-and-Object
       - file: docs/JS/03-loop-and-logic
+      - file: docs/JS/02-Arrays-and-Object
   - caption: ArcGIS JS API
     numbered: true
     maxdepth: 2
