@@ -1,0 +1,1244 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>15. Customizing the Django Admin &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Backend/Django-Blog/07-customize-admin';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/Backend/Django-Blog/07-customize-admin.html" />
+    <link rel="icon" href="../../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16. Django REST API" href="08-rest-api.html" />
+    <link rel="prev" title="14. POST Create, Read, Update and Delete" href="04-post-crud.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/01-get-start.html">1. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/02-CSS-Box.html">2. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/03-css-layout.html">3. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/04-css-selectors.html">4. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">5. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">6. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">7. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">8. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">9. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">10. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">11. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">12. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">13. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-post-crud.html">14. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-rest-api.html">16. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-deploy.html">17. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">18. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">19. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">20. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Backend/Django-Blog/07-customize-admin.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Backend/Django-Blog/07-customize-admin.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/Backend/Django-Blog/07-customize-admin.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/Backend/Django-Blog/07-customize-admin.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Backend/Django-Blog/07-customize-admin.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Customizing the Django Admin</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-admin-site-customization">15.1. Basic Admin Site Customization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-model-and-admin">15.2. Django Model and Admin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-admin-site-with-modeladmin-class">15.3. Customize Admin Site with ModelAdmin Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-list-display">15.3.1. Control List Display</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-display-custom-fields">15.3.2. List Display Custom Fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-related-model-objects">15.3.3. Link Related Model Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-model-objects">15.3.4. Filter Model Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-model-objects">15.3.5. Search Model Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-model-inlines">15.3.6. Handle Model Inlines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-admin-actions">15.3.7. Custom Admin Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#override-django-admin-forms">15.4. Override Django Admin Forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#override-django-admin-templates">15.5. Override Django Admin Templates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">15.6. Extensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meta-class-options">15.6.1. Meta class options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-options">15.6.2. Inline options</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="customizing-the-django-admin">
+<h1><span class="section-number">15. </span>Customizing the Django Admin<a class="headerlink" href="#customizing-the-django-admin" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://testdriven.io/blog/customize-django-admin/">Reference</a></p></li>
+</ul>
+<p>Django’s automatically generated <code class="docutils literal notranslate"><span class="pre">admin</span></code> site is one of the biggest strengths of the framework.</p>
+<p>In this Chapter, we will discuss about</p>
+<ul class="simple">
+<li><p>Perform basic Django admin site configuration</p></li>
+<li><p>Explain how Django model attributes affect the admin site</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">list_display</span></code> to control which model fields are displayed</p></li>
+<li><p>Add custom fields to <code class="docutils literal notranslate"><span class="pre">list_display</span></code> and format existing ones</p></li>
+<li><p>Add links to related model objects in <code class="docutils literal notranslate"><span class="pre">list_display</span></code></p></li>
+<li><p>Enable search and filters via <code class="docutils literal notranslate"><span class="pre">search_fields</span></code> and <code class="docutils literal notranslate"><span class="pre">list_filter</span></code></p></li>
+<li><p>Handle model inlines for both <code class="docutils literal notranslate"><span class="pre">N:1</span></code> and <code class="docutils literal notranslate"><span class="pre">M:M</span></code> relationships</p></li>
+<li><p>Use Django admin actions and create custom ones</p></li>
+<li><p>Override Django admin forms and templates</p></li>
+<li><p>Utilize DjangoQL for advanced searching functionality</p></li>
+<li><p>Import data in and export data to different formats using <code class="docutils literal notranslate"><span class="pre">django-import-export</span></code></p></li>
+<li><p>Modify the appearance of your admin site via <code class="docutils literal notranslate"><span class="pre">django-admin-interface</span></code></p></li>
+</ul>
+<section id="basic-admin-site-customization">
+<h2><span class="section-number">15.1. </span>Basic Admin Site Customization<a class="headerlink" href="#basic-admin-site-customization" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">admin</span> <span class="pre">site</span></code> provides some basic configuration options. These options allow you to <strong>change the site’s title, header, site URL, and more</strong>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">admin.site</span></code> settings are usually modified in your <strong>project’s main <code class="docutils literal notranslate"><span class="pre">urls.py</span></code></strong> file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># django_project/urls.py</span>
+
+<span class="o">...</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">site_title</span> <span class="o">=</span> <span class="s2">&quot;Blog Site Admin (DEV)&quot;</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">site_header</span> <span class="o">=</span> <span class="s2">&quot;Blog Administration&quot;</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">index_title</span> <span class="o">=</span> <span class="s2">&quot;Site Administration&quot;</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Another thing you should do is <strong>change the <code class="docutils literal notranslate"><span class="pre">default</span> <span class="pre">/admin</span></code> URL</strong>. This’ll make it more difficult for malicious actors to find your admin panel.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># django_project/urls.py</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;secretadmin/&quot;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;users/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;users.urls&#39;</span><span class="p">)),</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;blog.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span> 
+
+<span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Your admin site should now be accessible at <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/secretadmin</span></code>.</p></li>
+</ul>
+</section>
+<section id="django-model-and-admin">
+<h2><span class="section-number">15.2. </span>Django Model and Admin<a class="headerlink" href="#django-model-and-admin" title="Link to this heading">#</a></h2>
+<p>Some <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">model</span> <span class="pre">attributes</span></code> directly affect the <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">admin</span> <span class="pre">site</span></code>. Most importantly:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__()</span></code> is used to define object’s display name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Meta</span></code> class is used to set various metadata options (e.g., <code class="docutils literal notranslate"><span class="pre">ordering</span></code> and <code class="docutils literal notranslate"><span class="pre">verbose_name</span></code>)</p></li>
+</ul>
+<p>Here’s an example of how these attributes are used in practice:</p>
+<ul>
+<li><p>By providing the <code class="docutils literal notranslate"><span class="pre">ordering</span></code> attribute the categories are now ordered by <code class="docutils literal notranslate"><span class="pre">date_posted</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">date_posted</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+    
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s2">&quot;Blog Post&quot;</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s2">&quot;Blog Posts&quot;</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-date_posted&quot;</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;post-detail&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pk&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pk</span><span class="p">})</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="customize-admin-site-with-modeladmin-class">
+<h2><span class="section-number">15.3. </span>Customize Admin Site with ModelAdmin Class<a class="headerlink" href="#customize-admin-site-with-modeladmin-class" title="Link to this heading">#</a></h2>
+<p>In this section, we’ll take a look at how to use the <code class="docutils literal notranslate"><span class="pre">ModelAdmin</span></code> class to customize the admin site.</p>
+<section id="control-list-display">
+<h3><span class="section-number">15.3.1. </span>Control List Display<a class="headerlink" href="#control-list-display" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">list_display</span></code> attribute allows you to <strong>control which model fields are displayed on the model list page</strong>.</p></li>
+<li><p>Another great thing about it is that it can display related model fields using the <code class="docutils literal notranslate"><span class="pre">__</span></code> operator.</p></li>
+<li><p>Here’s the demo script</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># blog/admin.py</span>
+
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PostAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># Fields to display in the list view</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;date_posted&#39;</span><span class="p">)</span>  <span class="c1"># Displays these fields in the list view</span>
+    <span class="c1"># Default ordering of records</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;-date_posted&#39;</span><span class="p">,)</span>  <span class="c1"># Orders the posts by date_posted in descending order</span>
+    <span class="c1"># Read-only fields in the form</span>
+    <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;date_posted&#39;</span><span class="p">,)</span>  <span class="c1"># Makes date_posted field read-only</span>
+
+<span class="c1"># Custom admin for the Comment model</span>
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Comment</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommentAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># Fields to display in the list view</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;date_posted&#39;</span><span class="p">)</span>  <span class="c1"># Displays post, author, and date_posted in list view</span>
+    <span class="c1"># Default ordering of records</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;-date_posted&#39;</span><span class="p">,)</span>  <span class="c1"># Orders comments by date_posted in descending order</span>
+    <span class="c1"># Read-only fields in the form</span>
+    <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;date_posted&#39;</span><span class="p">,)</span>  <span class="c1"># Makes date_posted field read-only</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="list-display-custom-fields">
+<h3><span class="section-number">15.3.2. </span>List Display Custom Fields<a class="headerlink" href="#list-display-custom-fields" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">list_display</span></code> setting can also be used to add custom fields.</p></li>
+<li><p>To add a custom field, you must <strong>define a new method</strong> within the <code class="docutils literal notranslate"><span class="pre">ModelAdmin</span></code> class.</p></li>
+<li><p>Here’s the demo script</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># blog/admin.py</span>
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PostAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># Fields to display in the list view</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;date_posted&#39;</span><span class="p">,</span><span class="s1">&#39;comment_count&#39;</span><span class="p">)</span>  <span class="c1"># Displays these fields in the list view</span>
+    <span class="c1"># ...</span>
+    
+    <span class="c1"># Method to count comments for each post</span>
+    <span class="k">def</span> <span class="nf">comment_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">comments_count</span>
+    <span class="n">comment_count</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s1">&#39;Number of Comments&#39;</span>  <span class="c1"># Sets the column header name in the admin</span>
+    
+    <span class="c1"># Optimizing query with annotation</span>
+    <span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_queryset</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="c1"># Annotate each post with the count of related comments</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">queryset</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">comments_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;comment&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">queryset</span>
+</pre></div>
+</div>
+</li>
+<li><p>Explanation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">comment_count(self,</span> <span class="pre">obj)</span></code> Method:</p>
+<ul class="simple">
+<li><p>This method is used to display the <strong>number of comments related to each post</strong>.</p></li>
+<li><p>It uses the <code class="docutils literal notranslate"><span class="pre">comments_count</span></code> value annotated to each post in the <code class="docutils literal notranslate"><span class="pre">get_queryset</span></code> method.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">short_description</span></code> is used to <strong>define the label</strong> that will appear as the column header in the admin list view.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_queryset(self,</span> <span class="pre">request)</span></code>:</p>
+<ul class="simple">
+<li><p>This method overrides the default <code class="docutils literal notranslate"><span class="pre">get_queryset</span></code> of the <code class="docutils literal notranslate"><span class="pre">ModelAdmin</span></code> to annotate each post with the count of its related comments.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">annotate(comments_count=Count('comment'))</span></code> line adds a <code class="docutils literal notranslate"><span class="pre">comments_count</span></code> field to each post object, counting the related Comment instances.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="link-related-model-objects">
+<h3><span class="section-number">15.3.3. </span>Link Related Model Objects<a class="headerlink" href="#link-related-model-objects" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Sometimes it can be helpful to <strong>add links to related model objects</strong> instead of just showing their display name</p></li>
+<li><p>Before we do that, let’s take a look at the Django admin site URL structure:</p>
+  <table>
+      <thead>
+          <tr>
+              <th>Page</th>
+              <th>URL</th>
+              <th>Description</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>List</td>
+              <td><code>admin:&lt;app&gt;_&lt;model&gt;_changelist</code></td>
+              <td>Displays the list of objects</td>
+          </tr>
+          <tr>
+              <td>Add</td>
+              <td><code>admin:&lt;app&gt;_&lt;model&gt;_add</code></td>
+              <td>Object add form</td>
+          </tr>
+          <tr>
+              <td>Change</td>
+              <td><code>admin:&lt;app&gt;_&lt;model&gt;_change</code></td>
+              <td>Object change form (requires <code>objectId</code>)</td>
+          </tr>
+          <tr>
+              <td>Delete</td>
+              <td><code>admin:&lt;app&gt;_&lt;model&gt;_delete</code></td>
+              <td>Object delete form (requires <code>objectId</code>)</td>
+          </tr>
+          <tr>
+              <td>History</td>
+              <td><code>admin:&lt;app&gt;_&lt;model&gt;_history</code></td>
+              <td>Displays object's history (requires <code>objectId</code>)</td>
+          </tr>
+      </tbody>
+  </table>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>To demonstrate how this is done, we’ll link author change url on the comment list page, here’s the demo script</p></li>
+<li><p>We used the <code class="docutils literal notranslate"><span class="pre">reverse</span></code> method to reverse the URL and passed <code class="docutils literal notranslate"><span class="pre">obj.author.id</span></code> as the <code class="docutils literal notranslate"><span class="pre">objectId</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Comment</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommentAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># Fields to display in the list view</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="s1">&#39;date_posted&#39;</span><span class="p">,</span> <span class="s1">&#39;display_author&#39;</span><span class="p">)</span>  <span class="c1"># Adds the custom display_author method to list_display</span>
+    <span class="c1">#...</span>
+    
+    <span class="c1"># Use select_related to optimize queries and reduce the number of database hits</span>
+    <span class="n">list_select_related</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Custom method to display the author field as a clickable link</span>
+    <span class="k">def</span> <span class="nf">display_author</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># Generates the URL for the change form of the related author using its primary key</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s2">&quot;admin:auth_user_change&quot;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">])</span>
+        <span class="c1"># Returns an HTML anchor tag (&lt;a&gt;) with the link, making the author&#39;s name clickable</span>
+        <span class="k">return</span> <span class="n">format_html</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;</span><span class="si">{}</span><span class="s1">&quot;&gt;</span><span class="si">{}</span><span class="s1">&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">author</span><span class="p">)</span>
+    
+    <span class="c1"># Sets the column header name for the custom method in the list view</span>
+    <span class="n">display_author</span><span class="o">.</span><span class="n">short_description</span> <span class="o">=</span> <span class="s2">&quot;Author&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="filter-model-objects">
+<h3><span class="section-number">15.3.4. </span>Filter Model Objects<a class="headerlink" href="#filter-model-objects" title="Link to this heading">#</a></h3>
+<p>Django admin makes it easy to filter objects.</p>
+<ul>
+<li><p>Best of all, <strong>Django can stack filters</strong> – e.g., filter by two or more fields simultaneously.</p></li>
+<li><p>To filter by a related object’s fields, use the <code class="docutils literal notranslate"><span class="pre">__</span></code> operator.</p></li>
+<li><p>For more advanced filtering functionality, you can also define <code class="docutils literal notranslate"><span class="pre">custom</span> <span class="pre">filters</span></code>.</p>
+<ul class="simple">
+<li><p>To define a custom filter, you must specify the options or so-called <code class="docutils literal notranslate"><span class="pre">lookups</span></code> and a <code class="docutils literal notranslate"><span class="pre">queryset</span></code> for each <code class="docutils literal notranslate"><span class="pre">lookup</span></code></p></li>
+</ul>
+</li>
+<li><p>Here’s the demo script to filter <code class="docutils literal notranslate"><span class="pre">Comment</span></code> by <code class="docutils literal notranslate"><span class="pre">posted_date</span></code> of <code class="docutils literal notranslate"><span class="pre">Post</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="c1"># Custom filter to display post&#39;s posted date with a custom name</span>
+<span class="k">class</span> <span class="nc">PostPostedDateFilter</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">SimpleListFilter</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Post Posted Date&#39;</span>  <span class="c1"># Sets the display title for the filter</span>
+    <span class="n">parameter_name</span> <span class="o">=</span> <span class="s1">&#39;post__date_posted&#39;</span>  <span class="c1"># The field name used in the query parameters</span>
+
+    <span class="k">def</span> <span class="nf">lookups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">model_admin</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of tuples. Each tuple contains a value and a display name for the filter options.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;today&#39;</span><span class="p">,</span> <span class="s1">&#39;Today&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;past_7_days&#39;</span><span class="p">,</span> <span class="s1">&#39;Past 7 days&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;this_month&#39;</span><span class="p">,</span> <span class="s1">&#39;This month&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;this_year&#39;</span><span class="p">,</span> <span class="s1">&#39;This year&#39;</span><span class="p">),</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Filters the queryset based on the selected filter option.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">today</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;today&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">post__date_posted__date</span><span class="o">=</span><span class="n">today</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;past_7_days&#39;</span><span class="p">:</span>
+            <span class="n">past_7_days</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">post__date_posted__date__gte</span><span class="o">=</span><span class="n">past_7_days</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;this_month&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+                <span class="n">post__date_posted__year</span><span class="o">=</span><span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+                <span class="n">post__date_posted__month</span><span class="o">=</span><span class="n">today</span><span class="o">.</span><span class="n">month</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;this_year&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">post__date_posted__year</span><span class="o">=</span><span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">queryset</span>  <span class="c1"># Default returns all if &quot;Any date&quot; is selected or no option matches</span>
+
+<span class="c1"># Custom admin for the Comment model</span>
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Comment</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommentAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># Fields to filter the records</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;date_posted&#39;</span><span class="p">,</span><span class="n">PostPostedDateFilter</span><span class="p">)</span>  <span class="c1"># Adds filters for post, author, and date posted</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="search-model-objects">
+<h3><span class="section-number">15.3.5. </span>Search Model Objects<a class="headerlink" href="#search-model-objects" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">admin</span></code> provides basic search functionality.</p></li>
+<li><p>It can be enabled by specifying which model fields should be searchable via the <code class="docutils literal notranslate"><span class="pre">search_fields</span></code> attribute.</p></li>
+<li><p>Here’s the demo script</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PostAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># Fields that are searchable</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">)</span>  <span class="c1"># Allows searching through titles and content</span>
+    <span class="c1"># ...</span>
+
+<span class="c1"># Custom admin for the Comment model</span>
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Comment</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommentAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># Fields that are searchable</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,)</span>  <span class="c1"># Allows searching through the comment content</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="handle-model-inlines">
+<h3><span class="section-number">15.3.6. </span>Handle Model Inlines<a class="headerlink" href="#handle-model-inlines" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">admin</span> <span class="pre">interface</span></code> allows you to edit <code class="docutils literal notranslate"><span class="pre">models</span></code> on the same page as the parent model via <code class="docutils literal notranslate"><span class="pre">inlines</span></code>.</p></li>
+<li><p>Django provides two types of <code class="docutils literal notranslate"><span class="pre">inlines</span></code> <a class="reference external" href="https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#django.contrib.admin.StackedInline">StackedInline</a> and <a class="reference external" href="https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#django.contrib.admin.TabularInline">TabularInline</a>.</p></li>
+<li><p>Let’s use an inline to display <code class="docutils literal notranslate"><span class="pre">Comments</span></code> on the <code class="docutils literal notranslate"><span class="pre">Post</span> <span class="pre">details</span> <span class="pre">page</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inline admin to display comments directly within the Post admin</span>
+<span class="k">class</span> <span class="nc">CommentInline</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">TabularInline</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Comment</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Number of empty forms displayed to add new comments</span>
+    <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">,</span> <span class="s1">&#39;date_posted&#39;</span><span class="p">)</span>  <span class="c1"># Display these fields as read-only</span>
+    
+    
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Post</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">PostAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    
+    <span class="c1"># Inlines allow comments to be managed directly within the Post form</span>
+    <span class="n">inlines</span> <span class="o">=</span> <span class="p">[</span><span class="n">CommentInline</span><span class="p">]</span>  <span class="c1"># Displays related comments inline with the Post</span>
+</pre></div>
+</div>
+</li>
+<li><p>Visit the admin site now, you should able to see the comments on the post detail page</p>
+<p><img alt="img" src="../../../_images/17.png" /></p>
+</li>
+</ul>
+</section>
+<section id="custom-admin-actions">
+<h3><span class="section-number">15.3.7. </span>Custom Admin Actions<a class="headerlink" href="#custom-admin-actions" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">admin</span> <span class="pre">actions</span></code> allow you to perform an “action” on an object or a group of objects.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">action</span></code> can be used to <strong>modify an object’s attributes, delete the object, copy it, and so forth</strong>.</p></li>
+<li><p>Suppose we try to define <code class="docutils literal notranslate"><span class="pre">empty_comment</span></code> to clean <code class="docutils literal notranslate"><span class="pre">content</span></code> of selected comment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Clean selected comments&#39; content&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">empty_comments</span><span class="p">(</span><span class="n">modeladmin</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">queryset</span><span class="p">):</span>
+    <span class="n">queryset</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Custom admin for the Comment model</span>
+<span class="nd">@admin</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Comment</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CommentAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">empty_comments</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Now you can see the added actions in admin site</p>
+<p><img alt="img" src="../../../_images/18.png" /></p>
+</li>
+</ul>
+</section>
+</section>
+<section id="override-django-admin-forms">
+<h2><span class="section-number">15.4. </span>Override Django Admin Forms<a class="headerlink" href="#override-django-admin-forms" title="Link to this heading">#</a></h2>
+</section>
+<section id="override-django-admin-templates">
+<h2><span class="section-number">15.5. </span>Override Django Admin Templates<a class="headerlink" href="#override-django-admin-templates" title="Link to this heading">#</a></h2>
+</section>
+<section id="extensions">
+<h2><span class="section-number">15.6. </span>Extensions<a class="headerlink" href="#extensions" title="Link to this heading">#</a></h2>
+<section id="meta-class-options">
+<h3><span class="section-number">15.6.1. </span>Meta class options<a class="headerlink" href="#meta-class-options" title="Link to this heading">#</a></h3>
+<p>Here I list more commonly used <code class="docutils literal notranslate"><span class="pre">Meta</span></code>class options, check it out.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Meta Option</th>
+            <th>Purpose</th>
+            <th>Code Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>verbose_name</td>
+            <td>Sets a human-readable singular name for the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;verbose_name = "Blog Post"<br></code></td>
+        </tr>
+        <tr>
+            <td>verbose_name_plural</td>
+            <td>Sets a human-readable plural name for the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;verbose_name_plural = "Blog Posts"<br></code></td>
+        </tr>
+        <tr>
+            <td>ordering</td>
+            <td>Specifies the default ordering of model instances.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;ordering = ['-date_posted']<br></code></td>
+        </tr>
+        <tr>
+            <td>unique_together</td>
+            <td>Enforces a unique constraint on the specified fields.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;unique_together = ('author', 'title')<br></code></td>
+        </tr>
+        <tr>
+            <td>permissions</td>
+            <td>Defines custom permissions for the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;permissions = [('can_publish', 'Can publish posts')]<br></code></td>
+        </tr>
+        <tr>
+            <td>db_table</td>
+            <td>Sets the name of the database table used for the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;db_table = 'custom_table_name'<br></code></td>
+        </tr>
+        <tr>
+            <td>get_latest_by</td>
+            <td>Defines the default field used when retrieving the latest object.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;get_latest_by = 'date_posted'<br></code></td>
+        </tr>
+        <tr>
+            <td>indexes</td>
+            <td>Creates database indexes on specified fields for faster lookups.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;indexes = [models.Index(fields=['date_posted'])]<br></code></td>
+        </tr>
+        <tr>
+            <td>abstract</td>
+            <td>Specifies that the model is abstract and will not be created as a database table.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;abstract = True<br></code></td>
+        </tr>
+        <tr>
+            <td>constraints</td>
+            <td>Defines custom database constraints on the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;constraints = [models.UniqueConstraint(fields=['title'], name='unique_title')]<br></code></td>
+        </tr>
+        <tr>
+            <td>default_permissions</td>
+            <td>Specifies the default permissions (add, change, delete, view) for the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;default_permissions = ['add', 'change', 'view']<br></code></td>
+        </tr>
+        <tr>
+            <td>proxy</td>
+            <td>Creates a proxy model that inherits from another model, used for different model behavior.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;proxy = True<br></code></td>
+        </tr>
+        <tr>
+            <td>managed</td>
+            <td>Indicates if Django should manage the model’s database table (e.g., create/drop tables).</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;managed = False<br></code></td>
+        </tr>
+        <tr>
+            <td>auto_created</td>
+            <td>Indicates that the model was automatically created (typically for intermediate tables).</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;auto_created = True<br></code></td>
+        </tr>
+        <tr>
+            <td>select_on_save</td>
+            <td>Forces Django to select the instance from the database immediately after saving.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;select_on_save = True<br></code></td>
+        </tr>
+        <tr>
+            <td>default_related_name</td>
+            <td>Sets the default reverse relationship name for foreign key fields.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;default_related_name = 'related_posts'<br></code></td>
+        </tr>
+        <tr>
+            <td>index_together</td>
+            <td>Creates a composite index on the specified fields for efficient multi-column searches.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;index_together = [['field1', 'field2']]<br></code></td>
+        </tr>
+        <tr>
+            <td>apps</td>
+            <td>Customizes the application labels associated with the model (used in advanced scenarios).</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;apps = ['app1', 'app2']<br></code></td>
+        </tr>
+        <tr>
+            <td>base_manager_name</td>
+            <td>Specifies the name of the default manager for the model.</td>
+            <td><code>class Meta:<br> &nbsp;&nbsp;base_manager_name = 'custom_manager'<br></code></td>
+        </tr>
+    </tbody>
+</table>
+</section>
+<section id="inline-options">
+<h3><span class="section-number">15.6.2. </span>Inline options<a class="headerlink" href="#inline-options" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Here’s a table introducing commonly used methods and properties of <code class="docutils literal notranslate"><span class="pre">admin.StackedInline</span></code> and <code class="docutils literal notranslate"><span class="pre">admin.TabularInline</span></code>.</p></li>
+<li><p>These two classes are used in <code class="docutils literal notranslate"><span class="pre">Django’s</span> <span class="pre">admin</span> <span class="pre">interface</span></code> to display related models directly within the <code class="docutils literal notranslate"><span class="pre">parent</span> <span class="pre">model's</span> <span class="pre">form</span></code>, enhancing the data management experience.</p></li>
+</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Method/Property</th>
+            <th>Purpose</th>
+            <th>Code Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>model</td>
+            <td>Specifies the model to be displayed as an inline within the parent model's admin page.</td>
+            <td><code>class CommentInline(admin.TabularInline):<br> &nbsp;&nbsp;model = Comment<br></code></td>
+        </tr>
+        <tr>
+            <td>extra</td>
+            <td>Defines the number of empty forms displayed by default when adding related objects.</td>
+            <td><code>extra = 1<br></code></td>
+        </tr>
+        <tr>
+            <td>fields</td>
+            <td>Specifies the fields to display in the inline form.</td>
+            <td><code>fields = ['author', 'content', 'date_posted']<br></code></td>
+        </tr>
+        <tr>
+            <td>readonly_fields</td>
+            <td>Displays specified fields as read-only, preventing edits directly in the inline form.</td>
+            <td><code>readonly_fields = ['date_posted']<br></code></td>
+        </tr>
+        <tr>
+            <td>max_num</td>
+            <td>Sets the maximum number of forms that can be added in the inline.</td>
+            <td><code>max_num = 5<br></code></td>
+        </tr>
+        <tr>
+            <td>min_num</td>
+            <td>Sets the minimum number of forms that must be present in the inline.</td>
+            <td><code>min_num = 1<br></code></td>
+        </tr>
+        <tr>
+            <td>fk_name</td>
+            <td>Specifies a custom foreign key to use if the related model has more than one foreign key to the parent model.</td>
+            <td><code>fk_name = 'related_field'<br></code></td>
+        </tr>
+        <tr>
+            <td>verbose_name</td>
+            <td>Customizes the singular name of the inline object in the admin interface.</td>
+            <td><code>verbose_name = 'Post Comment'<br></code></td>
+        </tr>
+        <tr>
+            <td>verbose_name_plural</td>
+            <td>Customizes the plural name of the inline object in the admin interface.</td>
+            <td><code>verbose_name_plural = 'Post Comments'<br></code></td>
+        </tr>
+        <tr>
+            <td>can_delete</td>
+            <td>Allows or disallows deletion of the inline objects directly in the parent form.</td>
+            <td><code>can_delete = True<br></code></td>
+        </tr>
+        <tr>
+            <td>show_change_link</td>
+            <td>Displays a link to edit each related object from the inline list view.</td>
+            <td><code>show_change_link = True<br></code></td>
+        </tr>
+        <tr>
+            <td>formset</td>
+            <td>Allows customization of the formset class used for the inline, enabling more complex validation or custom behavior.</td>
+            <td><code>formset = CustomCommentFormSet<br></code></td>
+        </tr>
+        <tr>
+            <td>template</td>
+            <td>Specifies a custom template for rendering the inline form, allowing for deeper UI customization beyond default Tabular or Stacked layouts.</td>
+            <td><code>template = 'admin/custom_inline_template.html'<br></code></td>
+        </tr>
+        <tr>
+            <td>classes</td>
+            <td>Adds CSS classes to the inline section for styling purposes.</td>
+            <td><code>classes = ['collapse']<br></code></td>
+        </tr>
+        <tr>
+            <td>ordering</td>
+            <td>Defines the default ordering of the related objects within the inline form.</td>
+            <td><code>ordering = ['-date_posted']<br></code></td>
+        </tr>
+        <tr>
+            <td>exclude</td>
+            <td>Excludes specific fields from being displayed in the inline form.</td>
+            <td><code>exclude = ['password']<br></code></td>
+        </tr>
+        <tr>
+            <td>list_display (TabularOnly)</td>
+            <td>Displays specified fields in a tabular format in the list view. Used specifically with admin.TabularInline for enhanced data presentation.</td>
+            <td><code>class MyInline(admin.TabularInline):<br> &nbsp;&nbsp;list_display = ['field1', 'field2']<br></code></td>
+        </tr>
+        <tr>
+            <td>prepopulated_fields</td>
+            <td>Automatically populates fields based on the values of other fields, often used with slugs.</td>
+            <td><code>prepopulated_fields = {'slug': ('title',)}<br></code></td>
+        </tr>
+        <tr>
+            <td>sortable_field_name</td>
+            <td>Allows sorting of inline objects by a specific field, typically used when items are ordered manually (like drag-and-drop sorting).</td>
+            <td><code>sortable_field_name = 'order'<br></code></td>
+        </tr>
+    </tbody>
+</table>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\Backend\Django-Blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-post-crud.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>POST Create, Read, Update and Delete</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08-rest-api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Django REST API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-admin-site-customization">15.1. Basic Admin Site Customization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#django-model-and-admin">15.2. Django Model and Admin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-admin-site-with-modeladmin-class">15.3. Customize Admin Site with ModelAdmin Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-list-display">15.3.1. Control List Display</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-display-custom-fields">15.3.2. List Display Custom Fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-related-model-objects">15.3.3. Link Related Model Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-model-objects">15.3.4. Filter Model Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-model-objects">15.3.5. Search Model Objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-model-inlines">15.3.6. Handle Model Inlines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-admin-actions">15.3.7. Custom Admin Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#override-django-admin-forms">15.4. Override Django Admin Forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#override-django-admin-templates">15.5. Override Django Admin Templates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">15.6. Extensions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meta-class-options">15.6.1. Meta class options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-options">15.6.2. Inline options</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
