@@ -19,6 +19,11 @@ parts:
       - file: docs/JS/01-JS-intro
       - file: docs/JS/03-loop-and-logic
       - file: docs/JS/02-Arrays-and-Object
+  - caption: JS Examples
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: docs/JS/Examples/Sort-Tables
   - caption: ArcGIS JS API
     numbered: true
     maxdepth: 2
