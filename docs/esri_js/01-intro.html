@@ -1,0 +1,1319 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>14. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/esri_js/01-intro';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/esri_js/01-intro.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15. Class 2 — Selection, Queries, Popups &amp; Symbology" href="02-selection.html" />
+    <link rel="prev" title="13. Working with Spatial Data with ArcGIS JS API" href="../JS/ArcGIS/03-spatial-query.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">1. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">2. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">3. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">4. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">5. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">6. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">7. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">8. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">9. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">10. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">11. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">12. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">13. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-selection.html">15. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">16. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">17. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">18. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">19. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">20. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">21. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">22. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">23. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">24. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">25. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/esri_js/01-intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/esri_js/01-intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/esri_js/01-intro.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/esri_js/01-intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/esri_js/01-intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ArcGIS JavaScript API 4.x Foundations & App Skeleton</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-setup-amd">14.1. 0) Project setup (AMD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-objects-map-mapview-ui-regions">14.2. 1) Core objects: Map &amp; MapView + UI regions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on">14.2.1. Hands-On</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-types-when-to-use-them">14.3. 2) Layer types &amp; when to use them</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurelayer-client-features-popups-queries">14.3.1. 2.1 FeatureLayer (client features, popups, queries)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapimagelayer-server-drawn-fast-with-sublayers">14.3.2. 2.2 MapImageLayer (server-drawn, fast, with sublayers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphicslayer-ad-hoc-graphics-like-selection-highlight">14.3.3. 2.3 GraphicsLayer (ad-hoc graphics like selection/highlight)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-ux-home-scalebar-legend-basemapgallery">14.4. 3) Widgets &amp; UX (Home, ScaleBar, Legend, BasemapGallery)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-101-featurelayer-vs-graphicslayer">14.5. 4) Popups 101 (FeatureLayer vs GraphicsLayer)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-constraints-navigation-helpers">14.6. 5) View constraints &amp; navigation helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-together-a-clean-app-skeleton">14.7. 6) Putting it together — a clean app skeleton</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-best-practices-pitfalls-quick-checklist">14.8. 7) Popups: best practices &amp; pitfalls (quick checklist)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-lab-capstone-for-class-1">14.9. Hands-On Lab (capstone for Class 1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-a-build-the-base-app">14.9.1. Lab A — Build the base app</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-b-add-a-mapimagelayer-with-one-sublayer-popup">14.9.2. Lab B — Add a MapImageLayer with one sublayer + popup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-c-add-a-graphicslayer-and-a-mark-location-button">14.9.3. Lab C — Add a GraphicsLayer and a “mark location” button</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-d-navigation-helpers">14.9.4. Lab D — Navigation helpers</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="arcgis-javascript-api-4-x-foundations-app-skeleton">
+<h1><span class="section-number">14. </span>ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton<a class="headerlink" href="#arcgis-javascript-api-4-x-foundations-app-skeleton" title="Link to this heading">#</a></h1>
+<p><strong>Global aims</strong></p>
+<ul class="simple">
+<li><p>Understand the <strong>4.x mental model</strong>: <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">→</span> <span class="pre">View</span> <span class="pre">→</span> <span class="pre">Layers</span> <span class="pre">→</span> <span class="pre">Widgets</span> <span class="pre">→</span> <span class="pre">Popups</span></code>.</p></li>
+<li><p>Stand up a clean <strong>2D web map</strong> using AMD (<code class="docutils literal notranslate"><span class="pre">require()</span></code>), then progressively add layers &amp; UI.</p></li>
+<li><p>Know when to use <strong>FeatureLayer vs MapImageLayer vs GraphicsLayer</strong>.</p></li>
+<li><p>Wire up <strong>popups</strong> (layer-based &amp; graphic-based) and view constraints.</p></li>
+<li><p>Leave with a working skeleton you can reuse for real apps.</p></li>
+</ul>
+<section id="project-setup-amd">
+<h2><span class="section-number">14.1. </span>0) Project setup (AMD)<a class="headerlink" href="#project-setup-amd" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p>ArcGIS JS 4.x ships via CDN. The simplest start uses AMD <code class="docutils literal notranslate"><span class="pre">require()</span></code> (no build tooling).</p></li>
+<li><p>For production you may move to ESM + bundlers, but AMD is perfect for learning.</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>    <span class="cp">&lt;!DOCTYPE html&gt;</span>
+    <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>ArcGIS JS 4.x Starter<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://js.arcgis.com/4.23/esri/themes/light/main.css&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="nt">html</span><span class="o">,</span><span class="w"> </span><span class="nt">body</span><span class="o">,</span><span class="w"> </span><span class="p">#</span><span class="nn">viewDiv</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://js.arcgis.com/4.23/&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;viewDiv&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nx">require</span><span class="p">([</span>
+<span class="w">        </span><span class="s2">&quot;esri/Map&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;esri/views/MapView&quot;</span>
+<span class="w">    </span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nb">Map</span><span class="p">,</span><span class="w"> </span><span class="nx">MapView</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span><span class="w"> </span><span class="nx">basemap</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;topo-vector&quot;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapView</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;viewDiv&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">map</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">80.45</span><span class="p">,</span><span class="w"> </span><span class="mf">38.75</span><span class="p">],</span><span class="w"> </span><span class="c1">// WV-ish</span>
+<span class="w">        </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">constraints</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Switch basemap to <code class="docutils literal notranslate"><span class="pre">&quot;hybrid&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;streets-navigation-vector&quot;</span></code>.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">basemap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hybrid&quot;</span><span class="p">;</span><span class="w">                </span><span class="c1">// or &quot;streets-navigation-vector&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change center/zoom to your city.</p></li>
+<li><p>try <code class="docutils literal notranslate"><span class="pre">minZoom</span></code>/<code class="docutils literal notranslate"><span class="pre">maxZoom</span></code> and observe behavior.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">122.419</span><span class="p">,</span><span class="w"> </span><span class="mf">37.774</span><span class="p">];</span><span class="w">      </span><span class="c1">// San Francisco</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">zoom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">11</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">19</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="core-objects-map-mapview-ui-regions">
+<h2><span class="section-number">14.2. </span>1) Core objects: Map &amp; MapView + UI regions<a class="headerlink" href="#core-objects-map-mapview-ui-regions" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Map</span></code> holds basemap + layer collection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MapView</span></code> renders the <code class="docutils literal notranslate"><span class="pre">Map</span></code> in 2D and manages user interaction &amp; the widget UI.</p></li>
+<li><p>The view has UI “corners” (<code class="docutils literal notranslate"><span class="pre">top-left</span></code>, <code class="docutils literal notranslate"><span class="pre">top-right</span></code>, etc.) for tool placement.</p></li>
+</ul>
+<p><strong>Demo: add a containered UI panel</strong></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;viewDiv&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;legendDiv&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;position:absolute; bottom:15px; right:15px; z-index: 5; background:#fff; padding:8px; border-radius:6px&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You can later pass <code class="docutils literal notranslate"><span class="pre">container:</span> <span class="pre">&quot;legendDiv&quot;</span></code> to widgets to render into this card.</p></li>
+</ul>
+<section id="hands-on">
+<h3><span class="section-number">14.2.1. </span>Hands-On<a class="headerlink" href="#hands-on" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">#scaleDiv</span></code> and position it <code class="docutils literal notranslate"><span class="pre">bottom-left</span></code>.</p></li>
+<li><p>Add a custom “Help” button (<code class="docutils literal notranslate"><span class="pre">position:</span> <span class="pre">top-right</span></code>) that just <code class="docutils literal notranslate"><span class="pre">alert()</span></code>s.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c">&lt;!--</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">--&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;scaleDiv&quot;</span><span class="w">  </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;position:absolute;bottom:15px;left:15px;z-index:5;background:#fff;padding:6px;border-radius:6px&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;helpBtn&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;position:absolute;top:15px;right:15px;z-index:6&quot;</span><span class="o">&gt;</span><span class="nx">Help</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;helpBtn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;This is a demo help message.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="layer-types-when-to-use-them">
+<h2><span class="section-number">14.3. </span>2) Layer types &amp; when to use them<a class="headerlink" href="#layer-types-when-to-use-them" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p><strong>FeatureLayer</strong>: vector features from a Feature Service. Client-side rendering, querying, popups, editing. Use for interactive, attribute-rich content.</p></li>
+<li><p><strong>MapImageLayer</strong>: server-drawn map images with <strong>sublayers</strong> (think ArcGIS Server map service). Great for big cartography/indices without client rendering. Sublayers can still have popups.</p></li>
+<li><p><strong>GraphicsLayer</strong>: ad-hoc client graphics you create at runtime (selection, sketches, transient overlays).</p></li>
+</ul>
+<section id="featurelayer-client-features-popups-queries">
+<h3><span class="section-number">14.3.1. </span>2.1 FeatureLayer (client features, popups, queries)<a class="headerlink" href="#featurelayer-client-features-popups-queries" title="Link to this heading">#</a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span>
+<span class="w">    </span><span class="s2">&quot;esri/Map&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/views/MapView&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/layers/FeatureLayer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/PopupTemplate&quot;</span>
+<span class="w">    </span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nb">Map</span><span class="p">,</span><span class="w"> </span><span class="nx">MapView</span><span class="p">,</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">PopupTemplate</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span><span class="w"> </span><span class="nx">basemap</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;topo-vector&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapView</span><span class="p">({</span><span class="w"> </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;viewDiv&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">map</span><span class="p">,</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">80.45</span><span class="p">,</span><span class="w"> </span><span class="mf">38.75</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">countyPopup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PopupTemplate</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME} County&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">        &lt;b&gt;Population:&lt;/b&gt; {POP}&lt;br&gt;</span>
+<span class="sb">        &lt;b&gt;Source:&lt;/b&gt; {SOURCE}</span>
+<span class="sb">        `</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">featureLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="nx">countyPopup</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">featureLayer</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">definitionExpression</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">POP</span> <span class="pre">&gt;</span> <span class="pre">50000</span></code>) to filter server-side.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">minScale</span></code> so counties only appear when zoomed out.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">counties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME} County&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POP: {POP2007}&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nx">definitionExpression</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POP2007 &gt; 50000&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// server filter</span>
+<span class="w">    </span><span class="nx">minScale</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w">                              </span><span class="c1">// show any scale</span>
+<span class="w">    </span><span class="nx">maxScale</span><span class="o">:</span><span class="w"> </span><span class="mf">4000000</span><span class="w">                         </span><span class="c1">// hide when zoomed in closer than ~1:4M</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">counties</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Tip</strong>: To change filter later:</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">counties</span><span class="p">.</span><span class="nx">definitionExpression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;STATE_NAME = &#39;Texas&#39;&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="mapimagelayer-server-drawn-fast-with-sublayers">
+<h3><span class="section-number">14.3.2. </span>2.2 MapImageLayer (server-drawn, fast, with sublayers)<a class="headerlink" href="#mapimagelayer-server-drawn-fast-with-sublayers" title="Link to this heading">#</a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/layers/MapImageLayer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/PopupTemplate&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">MapImageLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">PopupTemplate</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapImageLayer</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">sublayers</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="c1">// States layer id</span>
+<span class="w">            </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PopupTemplate</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{STATE_NAME}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FIPS: {STATE_FIPS}&quot;</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nx">opacity</span><span class="o">:</span><span class="w"> </span><span class="mf">0.8</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">states</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Toggle a second sublayer at runtime; try <code class="docutils literal notranslate"><span class="pre">sublayer.visible</span> <span class="pre">=</span> <span class="pre">false/true</span></code>.</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">opacity</span></code> to blend with basemap.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">censusMIL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapImageLayer</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sublayers</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="c1">// States</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">censusMIL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Toggle</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">statesSL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">censusMIL</span><span class="p">.</span><span class="nx">sublayers</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">statesSL</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="nx">statesSL</span><span class="p">.</span><span class="nx">visible</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="graphicslayer-ad-hoc-graphics-like-selection-highlight">
+<h3><span class="section-number">14.3.3. </span>2.3 GraphicsLayer (ad-hoc graphics like selection/highlight)<a class="headerlink" href="#graphicslayer-ad-hoc-graphics-like-selection-highlight" title="Link to this heading">#</a></h3>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/layers/GraphicsLayer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/Graphic&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">GraphicsLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">selectionLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;selection&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">selectionLayer</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Add a temporary polygon graphic with a symbol</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">poly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">rings</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="o">-</span><span class="mf">81</span><span class="p">,</span><span class="mf">38</span><span class="p">],[</span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="mf">38</span><span class="p">],[</span><span class="o">-</span><span class="mf">80</span><span class="p">,</span><span class="mf">39</span><span class="p">],[</span><span class="o">-</span><span class="mf">81</span><span class="p">,</span><span class="mf">39</span><span class="p">],[</span><span class="o">-</span><span class="mf">81</span><span class="p">,</span><span class="mf">38</span><span class="p">]],</span>
+<span class="w">        </span><span class="nx">spatialReference</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">wkid</span><span class="o">:</span><span class="w"> </span><span class="mf">4326</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="nx">selectionLayer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span><span class="w"> </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">poly</span><span class="p">,</span><span class="w"> </span><span class="nx">symbol</span><span class="p">,</span><span class="w"> </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">kind</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;temp&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}));</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Add a click handler to remove all graphics from <code class="docutils literal notranslate"><span class="pre">selectionLayer</span></code>.</p></li>
+<li><p>Try changing the symbol on <code class="docutils literal notranslate"><span class="pre">mouseover</span></code> vs <code class="docutils literal notranslate"><span class="pre">mouseout</span></code>.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">// Clear on click (anywhere)</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">selectionLayer</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">());</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="widgets-ux-home-scalebar-legend-basemapgallery">
+<h2><span class="section-number">14.4. </span>3) Widgets &amp; UX (Home, ScaleBar, Legend, BasemapGallery)<a class="headerlink" href="#widgets-ux-home-scalebar-legend-basemapgallery" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p>Widgets give you polished UI quickly. Most take <code class="docutils literal notranslate"><span class="pre">view</span></code> and optional container.</p></li>
+</ul>
+<p><strong>Demo: add four common widgets</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span>
+<span class="w">    </span><span class="s2">&quot;esri/widgets/Home&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/widgets/ScaleBar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/widgets/Legend&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/widgets/BasemapGallery&quot;</span>
+<span class="w">    </span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Home</span><span class="p">,</span><span class="w"> </span><span class="nx">ScaleBar</span><span class="p">,</span><span class="w"> </span><span class="nx">Legend</span><span class="p">,</span><span class="w"> </span><span class="nx">BasemapGallery</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Home</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">home</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-left&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">scaleBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ScaleBar</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="p">,</span><span class="w"> </span><span class="nx">unit</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;dual&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">scaleBar</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bottom-left&quot;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Legend</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="p">,</span><span class="w"> </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;legendDiv&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// render into our card</span>
+<span class="w">    </span><span class="c1">// view.ui.add(legend, &quot;bottom-right&quot;); // alternative if not using container</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">basemapGallery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BasemapGallery</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">basemapGallery</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-right&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Move <code class="docutils literal notranslate"><span class="pre">BasemapGallery</span></code> into a custom floating card (like <code class="docutils literal notranslate"><span class="pre">legendDiv</span></code>).</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;basemapCard&quot;</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="s2">&quot;position:absolute;top:60px;right:15px;background:#fff;padding:8px;border-radius:6px;z-index:5&quot;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">basemapGallery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BasemapGallery</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="p">,</span><span class="w"> </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;basemapCard&quot;</span><span class="w"> </span><span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Hide <code class="docutils literal notranslate"><span class="pre">Legend</span></code> on small screens (<code class="docutils literal notranslate"><span class="pre">view.widthBreakpoint</span></code>) for responsiveness.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Legend</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">legend</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bottom-right&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s2">&quot;widthBreakpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">bp</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">legend</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">bp</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;xsmall&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// hide when extra-small</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="popups-101-featurelayer-vs-graphicslayer">
+<h2><span class="section-number">14.5. </span>4) Popups 101 (FeatureLayer vs GraphicsLayer)<a class="headerlink" href="#popups-101-featurelayer-vs-graphicslayer" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PopupTemplate</span></code> formats content (<code class="docutils literal notranslate"><span class="pre">HTML</span></code> allowed).</p></li>
+<li><p><strong>FeatureLayer</strong> popups show when you click its features (if <code class="docutils literal notranslate"><span class="pre">popupEnabled</span> <span class="pre">!==</span> <span class="pre">false</span></code>).</p></li>
+<li><p><strong>GraphicsLayer</strong> needs <strong>graphics</strong> to carry <code class="docutils literal notranslate"><span class="pre">popupTemplate</span></code> (or set at the layer in 4.30+); otherwise, nothing shows by default.</p></li>
+</ul>
+<p><strong>Demo: feature popup</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{STATE_NAME}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FIPS: {STATE_FIPS}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">states</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Demo: graphic popup</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/Graphic&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Graphic</span><span class="p">){</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;point&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">longitude</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">80.5</span><span class="p">,</span><span class="w"> </span><span class="nx">latitude</span><span class="o">:</span><span class="w"> </span><span class="mf">38.7</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-marker&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hello WV&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Marker&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{label}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">selectionLayer</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">g</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Create a polygon graphic with attributes and a popup listing area/perimeter you <strong>compute on the fly</strong> (just store precomputed values in <code class="docutils literal notranslate"><span class="pre">attributes</span></code> for now).</p></li>
+<li><p>A) Geodesic (no projection step, great default)</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/geometry/geometryEngine&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/Graphic&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">geometryEngine</span><span class="p">,</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">){</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">poly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">rings</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="o">-</span><span class="mf">80.6</span><span class="p">,</span><span class="mf">38.6</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.2</span><span class="p">,</span><span class="mf">38.6</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.2</span><span class="p">,</span><span class="mf">38.9</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.6</span><span class="p">,</span><span class="mf">38.9</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.6</span><span class="p">,</span><span class="mf">38.6</span><span class="p">]],</span>
+<span class="w">            </span><span class="nx">spatialReference</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">wkid</span><span class="o">:</span><span class="w"> </span><span class="mf">4326</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="c1">// Accurate on the ellipsoid</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">area_km2</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nx">geometryEngine</span><span class="p">.</span><span class="nx">geodesicArea</span><span class="p">(</span><span class="nx">poly</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;square-kilometers&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">perimeter_km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">geometryEngine</span><span class="p">.</span><span class="nx">geodesicLength</span><span class="p">(</span><span class="nx">geometryEngine</span><span class="p">.</span><span class="nx">boundary</span><span class="p">(</span><span class="nx">poly</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;kilometers&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Demo AOI&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">area_km2</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">area_km2</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">3</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">perimeter_km</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">perimeter_km</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">poly</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span><span class="w"> </span><span class="nx">outline</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">1.5</span><span class="w"> </span><span class="p">}},</span>
+<span class="w">            </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="nx">attrs</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{name}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Area: {area_km2} km²&lt;br&gt;Perimeter: {perimeter_km} km&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}));</span>
+<span class="w">        </span><span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>B) Projected (equal-area/UTM for planar measurements)</p>
+<ul>
+<li><p>If you want <strong>planar</strong> area/length (e.g., in an equal-area projection):</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">        </span><span class="nx">require</span><span class="p">([</span>
+<span class="w">        </span><span class="s2">&quot;esri/geometry/geometryEngine&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;esri/geometry/projection&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;esri/geometry/SpatialReference&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;esri/Graphic&quot;</span>
+<span class="w">        </span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">geometryEngine</span><span class="p">,</span><span class="w"> </span><span class="nx">projection</span><span class="p">,</span><span class="w"> </span><span class="nx">SpatialReference</span><span class="p">,</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">){</span>
+
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">poly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">rings</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="o">-</span><span class="mf">80.6</span><span class="p">,</span><span class="mf">38.6</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.2</span><span class="p">,</span><span class="mf">38.6</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.2</span><span class="p">,</span><span class="mf">38.9</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.6</span><span class="p">,</span><span class="mf">38.9</span><span class="p">],[</span><span class="o">-</span><span class="mf">80.6</span><span class="p">,</span><span class="mf">38.6</span><span class="p">]],</span>
+<span class="w">            </span><span class="nx">spatialReference</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">wkid</span><span class="o">:</span><span class="w"> </span><span class="mf">4326</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="c1">// Choose an equal-area SR for the U.S. (NAD83 / Conus Albers)</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">AEA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SpatialReference</span><span class="p">({</span><span class="w"> </span><span class="nx">wkid</span><span class="o">:</span><span class="w"> </span><span class="mf">5070</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">// EPSG:5070</span>
+
+<span class="w">        </span><span class="nx">projection</span><span class="p">.</span><span class="nx">load</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">polyAEA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">projection</span><span class="p">.</span><span class="nx">project</span><span class="p">(</span><span class="nx">poly</span><span class="p">,</span><span class="w"> </span><span class="nx">AEA</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">area_km2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">geometryEngine</span><span class="p">.</span><span class="nx">planarArea</span><span class="p">(</span><span class="nx">polyAEA</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;square-kilometers&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">perim_km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">geometryEngine</span><span class="p">.</span><span class="nx">planarLength</span><span class="p">(</span><span class="nx">geometryEngine</span><span class="p">.</span><span class="nx">boundary</span><span class="p">(</span><span class="nx">polyAEA</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;kilometers&quot;</span><span class="p">);</span>
+
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Demo AOI (AEA)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">area_km2</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">area_km2</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">3</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">perimeter_km</span><span class="o">:</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">perim_km</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">3</span><span class="p">)</span>
+<span class="w">            </span><span class="p">};</span>
+
+<span class="w">            </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">poly</span><span class="p">,</span><span class="w"> </span><span class="c1">// keep original for display; metrics come from projected geometry</span>
+<span class="w">            </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">],</span><span class="w"> </span><span class="nx">outline</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">1.5</span><span class="w"> </span><span class="p">}},</span>
+<span class="w">            </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="nx">attrs</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{name}&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Area: {area_km2} km²&lt;br&gt;Perimeter: {perimeter_km} km&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}));</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="p">});</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Disable popups on a layer: <code class="docutils literal notranslate"><span class="pre">featureLayer.popupEnabled</span> <span class="pre">=</span> <span class="pre">false</span></code>, confirm others still work.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">counties</span><span class="p">.</span><span class="nx">popupEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="view-constraints-navigation-helpers">
+<h2><span class="section-number">14.6. </span>5) View constraints &amp; navigation helpers<a class="headerlink" href="#view-constraints-navigation-helpers" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p>Prevent users from zooming too far in/out or interacting out of scope.</p></li>
+<li><p>Programmatically navigate to a geometry or coordinate pair.</p></li>
+</ul>
+<p><strong>Demo: constraints &amp; goTo</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="nx">rotationEnabled</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">goToWVCapitol</span><span class="p">(){</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">goTo</span><span class="p">({</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">81.633</span><span class="p">,</span><span class="w"> </span><span class="mf">38.336</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">14</span><span class="w"> </span><span class="p">})</span>
+<span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">e</span><span class="p">)=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s2">&quot;goTo canceled/failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Add two buttons: “WV” and “My Area”. First calls <code class="docutils literal notranslate"><span class="pre">goToWVCapitol()</span></code>.</p></li>
+<li><p>Second reads <code class="docutils literal notranslate"><span class="pre">?x=&amp;y=&amp;wkid=&amp;l=</span></code> from URL and calls <code class="docutils literal notranslate"><span class="pre">view.goTo()</span></code> (hint: <code class="docutils literal notranslate"><span class="pre">URLSearchParams</span></code>).</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">goToFromURL</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;12&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">wkid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;wkid&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;4326&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nb">isFinite</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">Number</span><span class="p">.</span><span class="nb">isFinite</span><span class="p">(</span><span class="nx">y</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">wkid</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">4326</span><span class="p">)</span>
+<span class="w">        </span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">spatialReference</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">wkid</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">view</span><span class="p">.</span><span class="nx">goTo</span><span class="p">(</span><span class="nx">target</span><span class="p">).</span><span class="k">catch</span><span class="p">(()=&gt;{});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">goToFromURL</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="putting-it-together-a-clean-app-skeleton">
+<h2><span class="section-number">14.7. </span>6) Putting it together — a clean app skeleton<a class="headerlink" href="#putting-it-together-a-clean-app-skeleton" title="Link to this heading">#</a></h2>
+<p><strong>What/Why</strong></p>
+<ul class="simple">
+<li><p>A tidy lifecycle helps scale: <code class="docutils literal notranslate"><span class="pre">init()</span> <span class="pre">→</span> <span class="pre">createMap()</span> <span class="pre">→</span> <span class="pre">createLayers()</span> <span class="pre">→</span> <span class="pre">createWidgets()</span> <span class="pre">→</span> <span class="pre">wireEvents()</span></code>.</p></li>
+</ul>
+<p><strong>Demo (single file skeleton)</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="nx">require</span><span class="p">([</span>
+<span class="w">    </span><span class="s2">&quot;esri/Map&quot;</span><span class="p">,</span><span class="s2">&quot;esri/views/MapView&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/layers/FeatureLayer&quot;</span><span class="p">,</span><span class="s2">&quot;esri/layers/MapImageLayer&quot;</span><span class="p">,</span><span class="s2">&quot;esri/layers/GraphicsLayer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/widgets/Home&quot;</span><span class="p">,</span><span class="s2">&quot;esri/widgets/ScaleBar&quot;</span><span class="p">,</span><span class="s2">&quot;esri/widgets/Legend&quot;</span><span class="p">,</span><span class="s2">&quot;esri/widgets/BasemapGallery&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;esri/PopupTemplate&quot;</span>
+<span class="w">    </span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nb">Map</span><span class="p">,</span><span class="w"> </span><span class="nx">MapView</span><span class="p">,</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">MapImageLayer</span><span class="p">,</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">Home</span><span class="p">,</span><span class="w"> </span><span class="nx">ScaleBar</span><span class="p">,</span><span class="w"> </span><span class="nx">Legend</span><span class="p">,</span><span class="w"> </span><span class="nx">BasemapGallery</span><span class="p">,</span><span class="w"> </span><span class="nx">PopupTemplate</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">map</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">layers</span><span class="o">:</span><span class="p">{},</span><span class="w"> </span><span class="nx">ui</span><span class="o">:</span><span class="p">{},</span>
+
+<span class="w">        </span><span class="nx">init</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">createMap</span><span class="p">();</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">createLayers</span><span class="p">();</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">createWidgets</span><span class="p">();</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">wireEvents</span><span class="p">();</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="nx">createMap</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span><span class="w"> </span><span class="nx">basemap</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;topo-vector&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapView</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;viewDiv&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">map</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">center</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">80.45</span><span class="p">,</span><span class="w"> </span><span class="mf">38.75</span><span class="p">],</span>
+<span class="w">            </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">constraints</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">minZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">maxZoom</span><span class="o">:</span><span class="w"> </span><span class="mf">16</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="nx">createLayers</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">selection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="s2">&quot;selection&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">selection</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PopupTemplate</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME} County&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POP: {POP2007}&quot;</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">feature</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">mapImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapImageLayer</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">sublayers</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">mapImage</span><span class="p">);</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="nx">createWidgets</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Home</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">home</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-left&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">scaleBar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ScaleBar</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">,</span><span class="w"> </span><span class="nx">unit</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;dual&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">scaleBar</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bottom-left&quot;</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Legend</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">,</span><span class="w"> </span><span class="nx">container</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;legendDiv&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basemapGallery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">BasemapGallery</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">basemapGallery</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-right&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="nx">wireEvents</span><span class="p">(){</span>
+<span class="w">        </span><span class="c1">// simple demo: click to log features under cursor</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)=&gt;{</span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">hit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">view</span><span class="p">.</span><span class="nx">hitTest</span><span class="p">(</span><span class="nx">evt</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;HitTest results:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hit</span><span class="p">.</span><span class="nx">results</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="nx">App</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+<span class="w">    </span><span class="nb">window</span><span class="p">.</span><span class="nx">App</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</pre></div>
+</div>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Ensure the Legend shows both the FeatureLayer and the MapImage sublayer (tip: <code class="docutils literal notranslate"><span class="pre">Legend</span></code> reads <strong>visible layers</strong>).</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Legend</span><span class="p">({</span><span class="w"> </span><span class="nx">view</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">legend</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bottom-right&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Legend automatically lists visible layers (FeatureLayer + visible MapImage sublayers)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add a toggle button that sets <code class="docutils literal notranslate"><span class="pre">this.layers.mapImage.sublayers.items[0].visible</span> <span class="pre">=</span> <span class="pre">!visible</span></code>.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">firstSL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">censusMIL</span><span class="p">.</span><span class="nx">sublayers</span><span class="p">.</span><span class="nx">items</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="w">    </span><span class="nx">firstSL</span><span class="p">.</span><span class="nx">visible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="nx">firstSL</span><span class="p">.</span><span class="nx">visible</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="popups-best-practices-pitfalls-quick-checklist">
+<h2><span class="section-number">14.8. </span>7) Popups: best practices &amp; pitfalls (quick checklist)<a class="headerlink" href="#popups-best-practices-pitfalls-quick-checklist" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Always set <code class="docutils literal notranslate"><span class="pre">outFields</span></code> or use <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code> during <code class="docutils literal notranslate"><span class="pre">dev</span></code>; trim to necessary fields for perf.</p></li>
+<li><p>For <strong>GraphicsLayer</strong>, assign <code class="docutils literal notranslate"><span class="pre">popupTemplate</span></code> to each graphic (4.23).</p></li>
+<li><p>Use <strong>layer order</strong> to control which thing is clicked first (<code class="docutils literal notranslate"><span class="pre">map.reorder</span></code>).</p></li>
+<li><p>Use links responsibly: <code class="docutils literal notranslate"><span class="pre">target=&quot;_blank&quot;</span></code> for external resources.</p></li>
+<li><p><strong>Keep HTML concise</strong>—avoid heavy inline CSS for performance/accessibility.</p></li>
+</ul>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Add a second FeatureLayer with <strong>overlapping features</strong>; reorder to see hit priority change.</p></li>
+<li><p>Demonstrate that disabling <code class="docutils literal notranslate"><span class="pre">popupEnabled</span></code> on the lower layer removes its popup but keeps the top one working.</p></li>
+</ul>
+</section>
+<section id="hands-on-lab-capstone-for-class-1">
+<h2><span class="section-number">14.9. </span>Hands-On Lab (capstone for Class 1)<a class="headerlink" href="#hands-on-lab-capstone-for-class-1" title="Link to this heading">#</a></h2>
+<section id="lab-a-build-the-base-app">
+<h3><span class="section-number">14.9.1. </span>Lab A — Build the base app<a class="headerlink" href="#lab-a-build-the-base-app" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Create the AMD page (CDN includes).</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Map</span></code>, <code class="docutils literal notranslate"><span class="pre">MapView</span></code>, constraints, custom background card (<code class="docutils literal notranslate"><span class="pre">#legendDiv</span></code>).</p></li>
+<li><p>Add <strong>one FeatureLayer</strong> (counties) with a <code class="docutils literal notranslate"><span class="pre">PopupTemplate</span></code>.</p></li>
+</ol>
+<p><strong>Success criteria</strong>: You can click counties and see the popup.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">({</span><span class="w"> </span><span class="nx">basemap</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;topo-vector&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapView</span><span class="p">({</span><span class="w"> </span><span class="nx">container</span><span class="o">:</span><span class="s2">&quot;viewDiv&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">map</span><span class="o">:</span><span class="nx">baseMap</span><span class="p">,</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="p">[</span><span class="o">-</span><span class="mf">80.45</span><span class="p">,</span><span class="mf">38.75</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="mf">7</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">countiesA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">FeatureLayer</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/3&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME} County&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Population (2007): {POP2007}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">baseMap</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">countiesA</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-b-add-a-mapimagelayer-with-one-sublayer-popup">
+<h3><span class="section-number">14.9.2. </span>Lab B — Add a MapImageLayer with one sublayer + popup<a class="headerlink" href="#lab-b-add-a-mapimagelayer-with-one-sublayer-popup" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">MapImageLayer</span></code> census service with <strong>States</strong> sublayer.</p></li>
+<li><p>Give the sublayer a <code class="docutils literal notranslate"><span class="pre">PopupTemplate</span></code> (title + small content).</p></li>
+<li><p>Verify it appears in the <code class="docutils literal notranslate"><span class="pre">legend</span></code> and <code class="docutils literal notranslate"><span class="pre">popups</span></code> work when clicking states outside county coverage (or toggle county visibility).</p></li>
+</ol>
+<p><strong>Success criteria</strong>: State popups work; toggling visibility makes behavior intuitive.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">censusB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MapImageLayer</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">sublayers</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">visible</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{STATE_NAME}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FIPS: {STATE_FIPS}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">censusB</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-c-add-a-graphicslayer-and-a-mark-location-button">
+<h3><span class="section-number">14.9.3. </span>Lab C — Add a GraphicsLayer and a “mark location” button<a class="headerlink" href="#lab-c-add-a-graphicslayer-and-a-mark-location-button" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Add a button that drops a point <code class="docutils literal notranslate"><span class="pre">Graphic</span></code> at the <strong>view center</strong>.</p></li>
+<li><p>The graphic should have a simple marker <code class="docutils literal notranslate"><span class="pre">symbol</span></code> and a <code class="docutils literal notranslate"><span class="pre">popup</span></code> (“You clicked here”).</p></li>
+<li><p>Clicking that point should open your custom <code class="docutils literal notranslate"><span class="pre">popup</span></code> (proves graphic popups work).</p></li>
+<li><p>Add a “Clear Marks” button to remove all graphics.</p></li>
+</ol>
+<p><strong>Success criteria</strong>: You can add/clear ad-hoc markers and open their popups.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">marks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">marks</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">markCenter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">center</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">marks</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Graphic</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">pt</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">symbol</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="s2">&quot;simple-marker&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="o">:</span><span class="mf">8</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;You marked here&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="nx">popupTemplate</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Mark&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{label}&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;markBtn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">markCenter</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;clearMarksBtn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">marks</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-d-navigation-helpers">
+<h3><span class="section-number">14.9.4. </span>Lab D — Navigation helpers<a class="headerlink" href="#lab-d-navigation-helpers" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">goTo(x,y,zoom,wkid=4326)</span></code> using URLSearchParams.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">wkid</span> <span class="pre">!==</span> <span class="pre">4326</span></code>, pass <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">spatialReference:</span> <span class="pre">{</span> <span class="pre">wkid</span> <span class="pre">}</span> <span class="pre">}</span></code> in the point.</p></li>
+<li><p>Add two example links on the page:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?x=-81.633&amp;y=38.336&amp;l=14</span></code> (Charleston)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?x=-79.955&amp;y=39.63&amp;l=14</span></code> (Morgantown)</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Success criteria</strong>: Reloading with different params centers/zooms correctly.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="kd">function</span><span class="w"> </span><span class="nx">goToParams</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">,</span><span class="nx">l</span><span class="p">,</span><span class="nx">wkid</span><span class="o">=</span><span class="mf">4326</span><span class="p">){</span>
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">wkid</span><span class="o">===</span><span class="mf">4326</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="p">[</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">],</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="nx">l</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                                 </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">center</span><span class="o">:</span><span class="p">{</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">spatialReference</span><span class="o">:</span><span class="p">{</span><span class="nx">wkid</span><span class="p">}},</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="nx">l</span><span class="w"> </span><span class="p">};</span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">goTo</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+
+<span class="w">   </span><span class="kd">const</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">);</span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nx">goToParams</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)),</span><span class="w"> </span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)),</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">)</span><span class="o">||</span><span class="s2">&quot;12&quot;</span><span class="p">,</span><span class="mf">10</span><span class="p">),</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;wkid&quot;</span><span class="p">)</span><span class="o">||</span><span class="s2">&quot;4326&quot;</span><span class="p">,</span><span class="mf">10</span><span class="p">));</span>
+<span class="w">   </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\esri_js"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../JS/ArcGIS/03-spatial-query.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Working with Spatial Data with ArcGIS JS API</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-selection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Class 2 — Selection, Queries, Popups &amp; Symbology</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-setup-amd">14.1. 0) Project setup (AMD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-objects-map-mapview-ui-regions">14.2. 1) Core objects: Map &amp; MapView + UI regions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on">14.2.1. Hands-On</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layer-types-when-to-use-them">14.3. 2) Layer types &amp; when to use them</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurelayer-client-features-popups-queries">14.3.1. 2.1 FeatureLayer (client features, popups, queries)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapimagelayer-server-drawn-fast-with-sublayers">14.3.2. 2.2 MapImageLayer (server-drawn, fast, with sublayers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphicslayer-ad-hoc-graphics-like-selection-highlight">14.3.3. 2.3 GraphicsLayer (ad-hoc graphics like selection/highlight)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-ux-home-scalebar-legend-basemapgallery">14.4. 3) Widgets &amp; UX (Home, ScaleBar, Legend, BasemapGallery)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-101-featurelayer-vs-graphicslayer">14.5. 4) Popups 101 (FeatureLayer vs GraphicsLayer)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-constraints-navigation-helpers">14.6. 5) View constraints &amp; navigation helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-together-a-clean-app-skeleton">14.7. 6) Putting it together — a clean app skeleton</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#popups-best-practices-pitfalls-quick-checklist">14.8. 7) Popups: best practices &amp; pitfalls (quick checklist)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-lab-capstone-for-class-1">14.9. Hands-On Lab (capstone for Class 1)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-a-build-the-base-app">14.9.1. Lab A — Build the base app</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-b-add-a-mapimagelayer-with-one-sublayer-popup">14.9.2. Lab B — Add a MapImageLayer with one sublayer + popup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-c-add-a-graphicslayer-and-a-mark-location-button">14.9.3. Lab C — Add a GraphicsLayer and a “mark location” button</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-d-navigation-helpers">14.9.4. Lab D — Navigation helpers</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

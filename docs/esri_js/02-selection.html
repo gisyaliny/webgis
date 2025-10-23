@@ -1,0 +1,1175 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>15. Class 2 — Selection, Queries, Popups &amp; Symbology &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/esri_js/02-selection';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/esri_js/02-selection.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="16. Blog-get started (Django)" href="../Backend/Django-Blog/01-get-started.html" />
+    <link rel="prev" title="14. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton" href="01-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">1. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">2. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">3. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">4. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">5. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">6. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">7. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">8. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">9. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">10. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">11. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">12. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">13. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">14. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">16. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">17. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">18. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">19. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">20. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">21. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">22. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">23. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">24. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">25. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/esri_js/02-selection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/esri_js/02-selection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/esri_js/02-selection.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/esri_js/02-selection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/esri_js/02-selection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Class 2 — Selection, Queries, Popups & Symbology</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-selections-with-sketch">15.1. Drawing selections with Sketch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-featurelayers">15.2. Querying FeatureLayers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-query-results-in-graphicslayer">15.3. Rendering query results in GraphicsLayer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight-workflows">15.4. Highlight workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-with-definitionexpression">15.5. Filtering with definitionExpression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-results-panel">15.6. Building a results panel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-app-polish">15.7. Real app polish</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-labs-class-2">15.8. Hands-On Labs (Class 2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-a-draw-query">15.8.1. Lab A — Draw &amp; query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-b-show-results-in-graphicslayer">15.8.2. Lab B — Show results in GraphicsLayer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-c-popup-driven-highlight">15.8.3. Lab C — Popup-driven highlight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-d-add-year-filter-ui">15.8.4. Lab D — Add year filter UI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-e-build-results-panel">15.8.5. Lab E — Build results panel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">15.9. Wrap-up</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="class-2-selection-queries-popups-symbology">
+<h1><span class="section-number">15. </span>Class 2 — Selection, Queries, Popups &amp; Symbology<a class="headerlink" href="#class-2-selection-queries-popups-symbology" title="Link to this heading">#</a></h1>
+<p><strong>Global aims</strong></p>
+<ul class="simple">
+<li><p>Learn to <strong>draw geometries</strong> with the <code class="docutils literal notranslate"><span class="pre">Sketch</span></code> widget for interactive selection.</p></li>
+<li><p>Master <strong>querying server-side data</strong> (<code class="docutils literal notranslate"><span class="pre">FeatureLayer</span></code>.<code class="docutils literal notranslate"><span class="pre">queryFeatures</span></code>, <code class="docutils literal notranslate"><span class="pre">Query</span></code> parameters).</p></li>
+<li><p>Clone query results into a <code class="docutils literal notranslate"><span class="pre">GraphicsLayer</span></code> for <strong>custom rendering &amp; popups</strong>.</p></li>
+<li><p>Understand <strong>highlight workflows</strong>: default highlight vs custom symbology.</p></li>
+<li><p>Use <strong>filters</strong> (<code class="docutils literal notranslate"><span class="pre">definitionExpression</span></code>) to make apps fast and targeted.</p></li>
+<li><p>Build a <strong>results panel</strong> (HTML + data grouping) to bridge the map and the user’s tasks.</p></li>
+</ul>
+<section id="drawing-selections-with-sketch">
+<h2><span class="section-number">15.1. </span>Drawing selections with Sketch<a class="headerlink" href="#drawing-selections-with-sketch" title="Link to this heading">#</a></h2>
+<p><strong>Concept</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Sketch</span></code> widget allows users to draw geometries (<code class="docutils literal notranslate"><span class="pre">polygon</span></code>, <code class="docutils literal notranslate"><span class="pre">rectangle</span></code>, <code class="docutils literal notranslate"><span class="pre">point</span></code>, etc.) directly on the map.</p></li>
+<li><p>When drawing is complete, you can pass the geometry to a <code class="docutils literal notranslate"><span class="pre">Query</span></code>.</p></li>
+</ul>
+<p><strong>Demo</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/widgets/Sketch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esri/layers/GraphicsLayer&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Sketch</span><span class="p">,</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">drawLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">drawLayer</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sketch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Sketch</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">view</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">layer</span><span class="o">:</span><span class="w"> </span><span class="nx">drawLayer</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">availableCreateTools</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;polygon&quot;</span><span class="p">,</span><span class="s2">&quot;rectangle&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">creationMode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;update&quot;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">view</span><span class="p">.</span><span class="nx">ui</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">sketch</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;top-left&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">sketch</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;User drew geometry:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">graphic</span><span class="p">.</span><span class="nx">geometry</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Next step: query a FeatureLayer with it</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Pro tips</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">creationMode:</span> <span class="pre">&quot;update&quot;</span></code> so drawn graphics are editable immediately.</p></li>
+</ul>
+<p>Disable popup auto-open while drawing (restore later).</p>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Add a button “Select Tiles” that activates rectangle drawing.</p></li>
+<li><p>When finished, log the geometry extent.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">// button to start rectangle</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btnSelectTiles&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">sketch</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s2">&quot;rectangle&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// log extent when finished</span>
+<span class="w">    </span><span class="nx">sketch</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">graphic</span><span class="p">.</span><span class="nx">geometry</span><span class="p">.</span><span class="nx">extent</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Extent:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">ext</span><span class="p">.</span><span class="nx">xmin</span><span class="p">,</span><span class="w"> </span><span class="nx">ext</span><span class="p">.</span><span class="nx">ymin</span><span class="p">,</span><span class="w"> </span><span class="nx">ext</span><span class="p">.</span><span class="nx">xmax</span><span class="p">,</span><span class="w"> </span><span class="nx">ext</span><span class="p">.</span><span class="nx">ymax</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="querying-featurelayers">
+<h2><span class="section-number">15.2. </span>Querying FeatureLayers<a class="headerlink" href="#querying-featurelayers" title="Link to this heading">#</a></h2>
+<p><strong>Concept</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">FeatureLayer.queryFeatures()</span></code> lets you fetch features by geometry or attribute conditions.</p>
+<p>Always set <code class="docutils literal notranslate"><span class="pre">outFields</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;*&quot;]</span></code> or specific fields).</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">returnGeometry</span></code> if you need to render results.</p>
+<p><strong>Demo</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/rest/support/Query&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">Query</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Query</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">userGeom</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">spatialRelationship</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;intersects&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">returnGeometry</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">queryFeatures</span><span class="p">(</span><span class="nx">q</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">results</span><span class="p">)=&gt;{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Found features:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="p">.</span><span class="nx">features</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Pro tips</strong></p>
+<ul class="simple">
+<li><p>Common spatial relationships: <code class="docutils literal notranslate"><span class="pre">&quot;intersects&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;contains&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;within&quot;</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">maxRecordCountFactor</span></code> (if supported) or page through results for large datasets.</p></li>
+<li><p>Keep <code class="docutils literal notranslate"><span class="pre">outFields</span></code> minimal for speed (all fields only during dev).</p></li>
+</ul>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Query counties intersecting your drawn rectangle.</p></li>
+<li><p>Print their names in console.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">// assume `featureLayer` is your counties FL and `sketch` from #1</span>
+<span class="w">    </span><span class="nx">sketch</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">q</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Query</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">graphic</span><span class="p">.</span><span class="nx">geometry</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">spatialRelationship</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;intersects&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">returnGeometry</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">queryFeatures</span><span class="p">(</span><span class="nx">q</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">features</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">NAME</span><span class="p">));</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="rendering-query-results-in-graphicslayer">
+<h2><span class="section-number">15.3. </span>Rendering query results in GraphicsLayer<a class="headerlink" href="#rendering-query-results-in-graphicslayer" title="Link to this heading">#</a></h2>
+<p><strong>Concept</strong></p>
+<ul class="simple">
+<li><p>Don’t rely on FeatureLayer selection (in 4.x it doesn’t expose a “selected” state easily).</p></li>
+<li><p>Instead: <strong>clone results → add to a <code class="docutils literal notranslate"><span class="pre">GraphicsLayer</span></code> → apply selection symbol and <code class="docutils literal notranslate"><span class="pre">popupTemplate</span></code></strong>.</p></li>
+</ul>
+<p><strong>Demo</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">selectionGL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="s2">&quot;selections&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">selectionGL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">showResults</span><span class="p">(</span><span class="nx">features</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">features</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">f</span><span class="p">=&gt;{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">popupTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POP: {POP2007}&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">g</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">addMany</span><span class="p">(</span><span class="nx">graphics</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Pro tips</strong></p>
+<ul class="simple">
+<li><p>Put <code class="docutils literal notranslate"><span class="pre">selectionGL</span></code> <strong>on top</strong> (<code class="docutils literal notranslate"><span class="pre">map.reorder</span></code>) so its popups override FeatureLayer popups.</p></li>
+<li><p>Use distinct symbology (e.g., dashed outlines) so users can see selection vs base symbology.</p></li>
+</ul>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>Select features → clone them into selectionGL → click to open popups.</p></li>
+<li><p>Clear selection with a “Clear” button.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">renderSelection</span><span class="p">(</span><span class="nx">features</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">features</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sym</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">popupTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME}&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POP: {POP2007}&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">g</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">addMany</span><span class="p">(</span><span class="nx">graphics</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">reorder</span><span class="p">(</span><span class="nx">selectionGL</span><span class="p">,</span><span class="w"> </span><span class="nx">map</span><span class="p">.</span><span class="nx">layers</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// keep on top</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// hook into your query (from #2)</span>
+<span class="w">    </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">queryFeatures</span><span class="p">(</span><span class="nx">q</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">renderSelection</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">features</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// Clear button</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btnClear&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="highlight-workflows">
+<h2><span class="section-number">15.4. </span>Highlight workflows<a class="headerlink" href="#highlight-workflows" title="Link to this heading">#</a></h2>
+<p><strong>Concept</strong></p>
+<ul class="simple">
+<li><p>FeatureLayer popups trigger <strong>defaultHighlightEnabled</strong> highlight.</p></li>
+<li><p>GraphicsLayer doesn’t support this; you need a <strong>custom highlight</strong>.</p></li>
+</ul>
+<p><strong>Demo: track popup selection</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">require</span><span class="p">([</span><span class="s2">&quot;esri/core/reactiveUtils&quot;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">reactiveUtils</span><span class="p">){</span>
+
+<span class="w">    </span><span class="nx">reactiveUtils</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span>
+<span class="w">        </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">popup</span><span class="p">.</span><span class="nx">selectedFeature</span><span class="p">,</span>
+<span class="w">        </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">clearHighlight</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">g</span><span class="p">=&gt;{</span>
+<span class="w">            </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">feature</span><span class="p">)</span>
+<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0.25</span><span class="p">],</span><span class="w"> </span><span class="nx">outline</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">3</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span><span class="w"> </span><span class="nx">outline</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+<p><strong>Pro tips</strong></p>
+<ul class="simple">
+<li><p>Use consistent highlight styles across the app.</p></li>
+<li><p>Clear highlights when <code class="docutils literal notranslate"><span class="pre">popup</span></code> closes (<code class="docutils literal notranslate"><span class="pre">popup.visible</span> <span class="pre">=</span> <span class="pre">false</span></code>).</p></li>
+</ul>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>When you click a selected tile, make its outline thicker/cyan.</p></li>
+<li><p>Clicking another tile should restore the first tile’s normal symbol.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">// base + highlight symbols</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseSelSym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">],</span><span class="w"> </span><span class="nx">outline</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">hiSelSym</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0.25</span><span class="p">],</span><span class="w"> </span><span class="nx">outline</span><span class="o">:</span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="mf">3</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">clearGLHighlight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">baseSelSym</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">reactiveUtils</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">popup</span><span class="p">.</span><span class="nx">selectedFeature</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">feat</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">feat</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">clearGLHighlight</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">feat</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">hiSelSym</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">baseSelSym</span><span class="p">;</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">reactiveUtils</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">popup</span><span class="p">.</span><span class="nx">visible</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">vis</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">vis</span><span class="p">)</span><span class="w"> </span><span class="nx">clearGLHighlight</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering-with-definitionexpression">
+<h2><span class="section-number">15.5. </span>Filtering with definitionExpression<a class="headerlink" href="#filtering-with-definitionexpression" title="Link to this heading">#</a></h2>
+<p><strong>Concept</strong></p>
+<ul class="simple">
+<li><p>Restricts features at the server level (fastest way to “filter” a FeatureLayer).</p></li>
+</ul>
+<p>Uses SQL-like syntax.</p>
+<p><strong>Demo</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">definitionExpression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;POP2007 &gt; 100000&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Pro tips</strong></p>
+<ul class="simple">
+<li><p>Combine filters with parentheses:
+<code class="docutils literal notranslate"><span class="pre">&quot;STATE_NAME</span> <span class="pre">=</span> <span class="pre">'West</span> <span class="pre">Virginia'</span> <span class="pre">AND</span> <span class="pre">POP2007</span> <span class="pre">&gt;</span> <span class="pre">100000&quot;.</span></code></p></li>
+<li><p>When adding year/attribute filters from UI, always sanitize inputs.</p></li>
+</ul>
+<p><strong>Hands-On</strong></p>
+<p>Add checkboxes for years → build a <code class="docutils literal notranslate"><span class="pre">definitionExpression</span></code>.</p>
+<p>Show only features from selected years.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>    <span class="cm">&lt;!-- example checkboxes --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;yearCB&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;2018&quot;</span><span class="p">&gt;</span> 2018<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;yearCB&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;2019&quot;</span><span class="p">&gt;</span> 2019<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;yearCB&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;2020&quot;</span><span class="p">&gt;</span> 2020<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+
+    function applyYearFilterFromUI() {
+    const years = Array.from(document.querySelectorAll(&quot;.yearCB:checked&quot;)).map(cb =&gt; cb.value);
+    featureLayer.definitionExpression = years.length
+        ? &quot;(&quot; + years.map(y =&gt; `Year LIKE &#39;%${y}%&#39;`).join(&quot; OR &quot;) + &quot;)&quot;
+        : &quot;1=1&quot;;
+    }
+
+    document.querySelectorAll(&quot;.yearCB&quot;).forEach(cb =&gt; {
+    cb.addEventListener(&quot;change&quot;, applyYearFilterFromUI);
+    });
+</pre></div>
+</div>
+</section>
+<section id="building-a-results-panel">
+<h2><span class="section-number">15.6. </span>Building a results panel<a class="headerlink" href="#building-a-results-panel" title="Link to this heading">#</a></h2>
+<p><strong>Concept</strong></p>
+<ul class="simple">
+<li><p>Map + table complement each other.</p></li>
+<li><p>Group features by dataset, build collapsible HTML, connect with downloads.</p></li>
+</ul>
+<p><strong>Demo skeleton</strong></p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">buildTable</span><span class="p">(</span><span class="nx">features</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;table class=&#39;table&#39;&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Population&lt;/th&gt;&lt;/tr&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">features</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">f</span><span class="p">=&gt;{</span>
+<span class="w">        </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`&lt;tr&gt;&lt;td&gt;</span><span class="si">${</span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">NAME</span><span class="si">}</span><span class="sb">&lt;/td&gt;&lt;td&gt;</span><span class="si">${</span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">POP2007</span><span class="si">}</span><span class="sb">&lt;/td&gt;&lt;/tr&gt;`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;&lt;/table&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;resultsDiv&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Pro tips</strong></p>
+<ul class="simple">
+<li><p>Use groupings (<code class="docutils literal notranslate"><span class="pre">dataset_name</span></code>) as table headers.</p></li>
+<li><p>Make rows clickable to trigger <code class="docutils literal notranslate"><span class="pre">view.goTo(feature.geometry)</span></code>.</p></li>
+<li><p>Bootstrap/jQuery (or plain JS) can add collapsible headers.</p></li>
+</ul>
+<p><strong>Hands-On</strong></p>
+<ul class="simple">
+<li><p>When user selects counties, build a table of <code class="docutils literal notranslate"><span class="pre">{NAME,</span> <span class="pre">POP2007}</span></code>.</p></li>
+<li><p>Clicking a row zooms to that county.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">buildResultsTable</span><span class="p">(</span><span class="nx">features</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;resultsDiv&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;table class=&#39;table&#39;&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Population&lt;/th&gt;&lt;/tr&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">features</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`&lt;tr class=&quot;resRow&quot; data-oid=&quot;</span><span class="si">${</span><span class="nx">a</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="si">}</span><span class="sb">&quot;&gt;&lt;td&gt;</span><span class="si">${</span><span class="nx">a</span><span class="p">.</span><span class="nx">NAME</span><span class="si">}</span><span class="sb">&lt;/td&gt;&lt;td&gt;</span><span class="si">${</span><span class="nx">a</span><span class="p">.</span><span class="nx">POP2007</span><span class="si">}</span><span class="sb">&lt;/td&gt;&lt;/tr&gt;`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;&lt;/table&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">el</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.resRow&quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">row</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">row</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s2">&quot;data-oid&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">features</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">ff</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">ff</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">oid</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="p">)</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">goTo</span><span class="p">({</span><span class="w"> </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">geometry</span><span class="p">,</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// call right after you have query results:</span>
+<span class="w">    </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">queryFeatures</span><span class="p">(</span><span class="nx">q</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">renderSelection</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">features</span><span class="p">);</span><span class="w">      </span><span class="c1">// from #3</span>
+<span class="w">    </span><span class="nx">buildResultsTable</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">features</span><span class="p">);</span><span class="w">    </span><span class="c1">// this function</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="real-app-polish">
+<h2><span class="section-number">15.7. </span>Real app polish<a class="headerlink" href="#real-app-polish" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Limits</strong>: If &gt;100 results, prompt user to refine (avoid UI lag).</p></li>
+<li><p><strong>Error handling</strong>: Wrap queries in <code class="docutils literal notranslate"><span class="pre">try/catch</span></code> and show friendly messages.</p></li>
+<li><p><strong>Performance</strong>: Don’t keep every selection layer in memory; clear old graphics.</p></li>
+<li><p><strong>UX</strong>: Provide “Clear selection” and “Filter reset” buttons.</p></li>
+<li><p><strong>Accessibility</strong>: Use meaningful button labels, not just icons.</p></li>
+<li><p><strong>Testing</strong>: Always test large queries and slow networks.</p></li>
+</ul>
+</section>
+<section id="hands-on-labs-class-2">
+<h2><span class="section-number">15.8. </span>Hands-On Labs (Class 2)<a class="headerlink" href="#hands-on-labs-class-2" title="Link to this heading">#</a></h2>
+<section id="lab-a-draw-query">
+<h3><span class="section-number">15.8.1. </span>Lab A — Draw &amp; query<a class="headerlink" href="#lab-a-draw-query" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Enable rectangle drawing via <code class="docutils literal notranslate"><span class="pre">Sketch</span></code>.</p></li>
+<li><p>Query <code class="docutils literal notranslate"><span class="pre">FeatureLayer</span></code> for features intersecting the rectangle.</p></li>
+<li><p>Log the count.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Draw a rectangle and query intersecting features.</span>
+<span class="w">    </span><span class="c1">// Assume sketch + featureLayer already defined</span>
+<span class="w">    </span><span class="nx">sketch</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Query</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">geometry</span><span class="o">:</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">graphic</span><span class="p">.</span><span class="nx">geometry</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">spatialRelationship</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;intersects&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">outFields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">returnGeometry</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">});</span>
+
+<span class="w">        </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">queryFeatures</span><span class="p">(</span><span class="nx">query</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Features found:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">features</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// Optional: pass to display function</span>
+<span class="w">        </span><span class="nx">showResults</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">features</span><span class="p">);</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-b-show-results-in-graphicslayer">
+<h3><span class="section-number">15.8.2. </span>Lab B — Show results in GraphicsLayer<a class="headerlink" href="#lab-b-show-results-in-graphicslayer" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Clone query results into <code class="docutils literal notranslate"><span class="pre">selectionGL</span></code>.</p></li>
+<li><p>Apply custom <code class="docutils literal notranslate"><span class="pre">symbol</span></code> + <code class="docutils literal notranslate"><span class="pre">popupTemplate</span></code>.</p></li>
+<li><p>Add “Clear” button.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Clone results into a selection layer with custom symbol and popups.</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">selectionGL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GraphicsLayer</span><span class="p">({</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;selection&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">map</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">selectionGL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">showResults</span><span class="p">(</span><span class="nx">features</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">graphics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">features</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">popupTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;{NAME}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Population: {POP2007}&quot;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">g</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">addMany</span><span class="p">(</span><span class="nx">graphics</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Clear button</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;clearBtn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">removeAll</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-c-popup-driven-highlight">
+<h3><span class="section-number">15.8.3. </span>Lab C — Popup-driven highlight<a class="headerlink" href="#lab-c-popup-driven-highlight" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Watch <code class="docutils literal notranslate"><span class="pre">view.popup.selectedFeature</span></code>.</p></li>
+<li><p>Apply cyan outline to the active graphic.</p></li>
+<li><p>Restore others to base symbol.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Watch popup selection and highlight active graphic.</span>
+<span class="w">    </span><span class="nx">reactiveUtils</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">view</span><span class="p">.</span><span class="nx">popup</span><span class="p">.</span><span class="nx">selectedFeature</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">clearHighlight</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="p">)</span>
+<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">],</span>
+<span class="w">                </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span>
+<span class="w">                </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">clearHighlight</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">selectionGL</span><span class="p">.</span><span class="nx">graphics</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">g</span><span class="p">.</span><span class="nx">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;simple-fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">],</span>
+<span class="w">                    </span><span class="nx">outline</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">],</span><span class="w"> </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-d-add-year-filter-ui">
+<h3><span class="section-number">15.8.4. </span>Lab D — Add year filter UI<a class="headerlink" href="#lab-d-add-year-filter-ui" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">checkbox</span></code> list of years.</p></li>
+<li><p>Build <code class="docutils literal notranslate"><span class="pre">definitionExpression</span></code>.</p></li>
+<li><p>Apply to <code class="docutils literal notranslate"><span class="pre">FeatureLayer</span></code>.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use checkboxes to build a definitionExpression.</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">applyYearFilter</span><span class="p">(</span><span class="nx">years</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">years</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">definitionExpression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1=1&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// reset</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">expr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">years</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="sb">`Year = &#39;</span><span class="si">${</span><span class="nx">y</span><span class="si">}</span><span class="sb">&#39;`</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s2">&quot; OR &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">featureLayer</span><span class="p">.</span><span class="nx">definitionExpression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`(</span><span class="si">${</span><span class="nx">expr</span><span class="si">}</span><span class="sb">)`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Example: checkboxes</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.yearCheckbox&quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">cb</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cb</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">years</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.yearCheckbox:checked&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">el</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">applyYearFilter</span><span class="p">(</span><span class="nx">years</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="lab-e-build-results-panel">
+<h3><span class="section-number">15.8.5. </span>Lab E — Build results panel<a class="headerlink" href="#lab-e-build-results-panel" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Group features by <code class="docutils literal notranslate"><span class="pre">STATE_NAME</span></code>.</p></li>
+<li><p>Render table with name + population.</p></li>
+<li><p>Add row click → zoom to feature.</p></li>
+</ul>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="c1">// Table with feature list, clickable rows zoom to feature.</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">buildTable</span><span class="p">(</span><span class="nx">features</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;table class=&#39;table&#39;&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Population&lt;/th&gt;&lt;/tr&gt;&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nx">features</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">NAME</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">pop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">POP2007</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">`&lt;tr class=&quot;row-click&quot; data-oid=&quot;</span><span class="si">${</span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="si">}</span><span class="sb">&quot;&gt;</span>
+<span class="sb">                &lt;td&gt;</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">&lt;/td&gt;&lt;td&gt;</span><span class="si">${</span><span class="nx">pop</span><span class="si">}</span><span class="sb">&lt;/td&gt;&lt;/tr&gt;`</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">html</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s2">&quot;&lt;/table&gt;&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;resultsDiv&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Add click-to-zoom</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s2">&quot;.row-click&quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">row</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">row</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">oid</span><span class="p">;</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">features</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">f</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">OBJECTID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">oid</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">feature</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">view</span><span class="p">.</span><span class="nx">goTo</span><span class="p">({</span><span class="w"> </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="nx">feature</span><span class="p">.</span><span class="nx">geometry</span><span class="p">,</span><span class="w"> </span><span class="nx">zoom</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="wrap-up">
+<h2><span class="section-number">15.9. </span>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<p>By the end of Class 2, you’ll know how to:</p>
+<ul class="simple">
+<li><p>Let users <strong>draw their own queries</strong>.</p></li>
+<li><p>Perform <strong>server-side spatial queries</strong>.</p></li>
+<li><p><strong>Visualize results</strong> with <code class="docutils literal notranslate"><span class="pre">symbology</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">popups</span></code> in a <code class="docutils literal notranslate"><span class="pre">GraphicsLayer</span></code>.</p></li>
+<li><p>Manage <strong>highlighting</strong> and <strong>filtering</strong>.</p></li>
+<li><p>Provide a <strong>results table</strong> to bridge UI and data.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\esri_js"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Backend/Django-Blog/01-get-started.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Blog-get started (Django)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-selections-with-sketch">15.1. Drawing selections with Sketch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-featurelayers">15.2. Querying FeatureLayers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-query-results-in-graphicslayer">15.3. Rendering query results in GraphicsLayer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight-workflows">15.4. Highlight workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-with-definitionexpression">15.5. Filtering with definitionExpression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-results-panel">15.6. Building a results panel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-app-polish">15.7. Real app polish</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-labs-class-2">15.8. Hands-On Labs (Class 2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-a-draw-query">15.8.1. Lab A — Draw &amp; query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-b-show-results-in-graphicslayer">15.8.2. Lab B — Show results in GraphicsLayer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-c-popup-driven-highlight">15.8.3. Lab C — Popup-driven highlight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-d-add-year-filter-ui">15.8.4. Lab D — Add year filter UI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-e-build-results-panel">15.8.5. Lab E — Build results panel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">15.9. Wrap-up</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
