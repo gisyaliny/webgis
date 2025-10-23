@@ -36,8 +36,8 @@ parts:
       - file: docs/JS/ArcGIS/01-get-started
       - file: docs/JS/ArcGIS/02-manipulate-layers
       - file: docs/JS/ArcGIS/03-spatial-query
-      - file: docs/JS/esri_js/01-intro
-      - file: docs/JS/esri_js/02-selection
+      - file: docs/esri_js/01-intro
+      - file: docs/esri_js/02-selection
   - caption: Django Blog Project
     numbered: true
     maxdepth: 2
