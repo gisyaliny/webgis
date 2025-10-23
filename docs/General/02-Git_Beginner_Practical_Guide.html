@@ -1,0 +1,1255 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2. 🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/General/02-Git_Beginner_Practical_Guide';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/General/02-Git_Beginner_Practical_Guide.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Intro to CSS" href="../CSS/01-get-start.html" />
+    <link rel="prev" title="1. 🧩 Emmet — Complete Practical Guide for Web Developers" href="01-Emmet_Comprehensive_Tutorial.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-Emmet_Comprehensive_Tutorial.html">1. 🧩 Emmet — Complete Practical Guide for Web Developers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">3. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">4. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">5. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">6. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">7. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">8. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">9. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">10. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">11. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">12. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">13. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">14. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">15. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">16. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">17. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">18. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">19. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">20. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">21. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">22. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">23. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/General/02-Git_Beginner_Practical_Guide.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/General/02-Git_Beginner_Practical_Guide.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/General/02-Git_Beginner_Practical_Guide.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/General/02-Git_Beginner_Practical_Guide.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/General/02-Git_Beginner_Practical_Guide.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-git-once-per-machine">2.1. ⚙️ 1. Setting Up Git (Once per Machine)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters">2.1.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-do-this">2.1.2. 🕐 When to do this</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">2.1.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-tip">2.1.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-local-repository">2.2. 📁 2. Initialize a Local Repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-it">2.2.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-a-remote-repository-github-gitlab-etc">2.3. 🌐 3. Connect to a Remote Repository (GitHub, GitLab, etc.)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching-working-on-features-safely">2.4. 🌿 4. Branching — Working on Features Safely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.4.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.4.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.4.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.4.4. 💡 Real-world tip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-task">2.4.5. 🧪 Hands-on task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-and-keeping-up-to-date">2.5. 🔄 5. Merging and Keeping Up-to-Date</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.5.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.5.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.5.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.5.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-merge-conflicts">2.6. ⚔️ 6. Solving Merge Conflicts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.6.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.6.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-fix">2.6.3. 🧠 How to fix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.6.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignore-keep-unwanted-files-out-of-git">2.7. 🚫 7. Using <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> — Keep Unwanted Files Out of Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.7.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">2.7.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">2.7.3. 🧠 Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.7.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#committing-pushing-and-reviewing-changes">2.8. 💾 8. Committing, Pushing, and Reviewing Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">2.8.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">2.8.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">2.8.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">2.8.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undo-recover-and-experiment-safely">2.9. 🧰 9. Undo, Recover, and Experiment Safely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">2.9.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">2.9.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">2.9.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">2.9.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handy-tools-stash-cherry-pick-and-tags">2.10. 🪄 10. Handy Tools: Stash, Cherry-Pick, and Tags</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">2.10.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-them">2.10.2. 🕐 When to use them</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">2.10.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">2.10.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-daily-git-workflow">2.11. 🔁 11. Typical Daily Git Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">2.11.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">2.11.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">2.11.3. 🧠 Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">2.11.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-and-next-steps">2.12. 🧠 12. Summary and Next Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-learned">2.12.1. ✅ You learned:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="git-for-everyday-development-a-beginner-friendly-practical-guide">
+<h1><span class="section-number">2. </span>🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide<a class="headerlink" href="#git-for-everyday-development-a-beginner-friendly-practical-guide" title="Link to this heading">#</a></h1>
+<p>Git is the most widely used version control system in software development.<br />
+It helps you <strong>track changes</strong>, <strong>collaborate safely</strong>, and <strong>recover mistakes</strong>.<br />
+This guide is written for beginners who want to understand <em>why</em> each Git step matters and <em>when</em> to use it in real projects.</p>
+<section id="setting-up-git-once-per-machine">
+<h2><span class="section-number">2.1. </span>⚙️ 1. Setting Up Git (Once per Machine)<a class="headerlink" href="#setting-up-git-once-per-machine" title="Link to this heading">#</a></h2>
+<section id="why-this-matters">
+<h3><span class="section-number">2.1.1. </span>🧩 Why this matters<a class="headerlink" href="#why-this-matters" title="Link to this heading">#</a></h3>
+<p>Before using Git on any project, you must tell Git who you are and how it should behave.<br />
+This information will appear in every commit and helps collaborators know who made which changes.</p>
+</section>
+<section id="when-to-do-this">
+<h3><span class="section-number">2.1.2. </span>🕐 When to do this<a class="headerlink" href="#when-to-do-this" title="Link to this heading">#</a></h3>
+<p>Do it once after installing Git — it applies globally to all repositories on your computer.</p>
+</section>
+<section id="commands">
+<h3><span class="section-number">2.1.3. </span>🧠 Commands<a class="headerlink" href="#commands" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;you@example.com&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>fetch.prune<span class="w"> </span><span class="nb">true</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.autocrlf<span class="w"> </span>input<span class="w">   </span><span class="c1"># for mac/linux</span>
+<span class="c1"># or on Windows:</span>
+<span class="c1"># git config --global core.autocrlf true</span>
+</pre></div>
+</div>
+</section>
+<section id="real-world-tip">
+<h3><span class="section-number">2.1.4. </span>💡 Real-world tip<a class="headerlink" href="#real-world-tip" title="Link to this heading">#</a></h3>
+<p>If you work with GitHub, set up SSH keys to avoid typing passwords every time:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;you@example.com&quot;</span>
+</pre></div>
+</div>
+<p>Add your public key to GitHub under <strong>Settings → SSH and GPG keys</strong>.</p>
+</section>
+</section>
+<section id="initialize-a-local-repository">
+<h2><span class="section-number">2.2. </span>📁 2. Initialize a Local Repository<a class="headerlink" href="#initialize-a-local-repository" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><span class="section-number">2.2.1. </span>🧩 Why this matters<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>A <strong>repository</strong> (repo) is where Git tracks your project’s files and their changes.<br />
+Initializing one tells Git, “start version control here.”</p>
+</section>
+<section id="when-to-use-it">
+<h3><span class="section-number">2.2.2. </span>🕐 When to use it<a class="headerlink" href="#when-to-use-it" title="Link to this heading">#</a></h3>
+<p>When you start a new project from scratch or want to version-control an existing folder.</p>
+</section>
+<section id="id2">
+<h3><span class="section-number">2.2.3. </span>🧠 Commands<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>my-project<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my-project
+git<span class="w"> </span>init
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# My Project&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: initial commit&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">2.2.4. </span>💡 Real-world tip<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Use a <code class="docutils literal notranslate"><span class="pre">.git</span></code> folder (created automatically) to store all Git metadata.<br />
+Do <strong>not</strong> delete it — it’s your project history!</p>
+<p><strong>Check current status anytime:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+</section>
+</section>
+<section id="connect-to-a-remote-repository-github-gitlab-etc">
+<h2><span class="section-number">2.3. </span>🌐 3. Connect to a Remote Repository (GitHub, GitLab, etc.)<a class="headerlink" href="#connect-to-a-remote-repository-github-gitlab-etc" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3><span class="section-number">2.3.1. </span>🧩 Why this matters<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>A remote repository lives on the internet and allows team collaboration.<br />
+Connecting your local repo to a remote lets you share your code or back it up.</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.3.2. </span>🕐 When to use it<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>When you want to push your local work to GitHub (or clone from an existing repo).</p>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.3.3. </span>🧠 Commands<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p><strong>Case 1 — Push local repo to remote</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:yourname/my-project.git
+git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p><strong>Case 2 — Clone an existing remote</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:org/project.git
+<span class="nb">cd</span><span class="w"> </span>project
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">2.3.4. </span>💡 Real-world tip<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> to check connected remotes.<br />
+You can rename or replace them later using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>&lt;new-url&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="branching-working-on-features-safely">
+<h2><span class="section-number">2.4. </span>🌿 4. Branching — Working on Features Safely<a class="headerlink" href="#branching-working-on-features-safely" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3><span class="section-number">2.4.1. </span>🧩 Why this matters<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Branches let you work on new features <strong>without breaking</strong> the main code.<br />
+You can later merge tested changes back into the main branch.</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.4.2. </span>🕐 When to use it<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Before starting a new feature, bug fix, or experiment.</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">2.4.3. </span>🧠 Commands<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create and switch to a new branch</span>
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/login-page
+
+<span class="c1"># View branches</span>
+git<span class="w"> </span>branch
+
+<span class="c1"># Push it to remote for collaboration</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/login-page
+</pre></div>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">2.4.4. </span>💡 Real-world tip<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Prefix branch names: <code class="docutils literal notranslate"><span class="pre">feat/</span></code>, <code class="docutils literal notranslate"><span class="pre">fix/</span></code>, <code class="docutils literal notranslate"><span class="pre">chore/</span></code>, <code class="docutils literal notranslate"><span class="pre">docs/</span></code>, etc.</p></li>
+<li><p>Delete branches after merging to keep your repo clean:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>feat/login-page
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--delete<span class="w"> </span>feat/login-page
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="hands-on-task">
+<h3><span class="section-number">2.4.5. </span>🧪 Hands-on task<a class="headerlink" href="#hands-on-task" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Create a branch <code class="docutils literal notranslate"><span class="pre">feat/homepage</span></code></p></li>
+<li><p>Edit files and commit changes</p></li>
+<li><p>Push the branch to GitHub</p></li>
+<li><p>Open a Pull Request from that branch</p></li>
+</ol>
+</section>
+</section>
+<section id="merging-and-keeping-up-to-date">
+<h2><span class="section-number">2.5. </span>🔄 5. Merging and Keeping Up-to-Date<a class="headerlink" href="#merging-and-keeping-up-to-date" title="Link to this heading">#</a></h2>
+<section id="id12">
+<h3><span class="section-number">2.5.1. </span>🧩 Why this matters<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Merging combines work from different branches.<br />
+Keeping your feature branch updated avoids big conflicts later.</p>
+</section>
+<section id="id13">
+<h3><span class="section-number">2.5.2. </span>🕐 When to use it<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>When your teammate updates <code class="docutils literal notranslate"><span class="pre">main</span></code>, and you want those changes</p></li>
+<li><p>When you’ve finished your feature and want to merge it back</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3><span class="section-number">2.5.3. </span>🧠 Commands<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p><strong>Update your feature branch</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull
+git<span class="w"> </span>switch<span class="w"> </span>feat/homepage
+git<span class="w"> </span>merge<span class="w"> </span>main
+</pre></div>
+</div>
+<p><strong>Merge feature into main</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>feat/homepage
+git<span class="w"> </span>push
+</pre></div>
+</div>
+</section>
+<section id="id15">
+<h3><span class="section-number">2.5.4. </span>💡 Real-world tip<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>If your team prefers clean, linear history, use <strong>rebase</strong> instead of merge:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>switch<span class="w"> </span>feat/homepage
+git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>rebase<span class="w"> </span>origin/main
+</pre></div>
+</div>
+<p>Rebase rewrites commit order but avoids messy merge commits.</p>
+</section>
+</section>
+<section id="solving-merge-conflicts">
+<h2><span class="section-number">2.6. </span>⚔️ 6. Solving Merge Conflicts<a class="headerlink" href="#solving-merge-conflicts" title="Link to this heading">#</a></h2>
+<section id="id16">
+<h3><span class="section-number">2.6.1. </span>🧩 Why this matters<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<p>When two people edit the same file lines differently, Git can’t decide which one to keep.<br />
+That’s a <strong>merge conflict</strong> — you must resolve it manually.</p>
+</section>
+<section id="id17">
+<h3><span class="section-number">2.6.2. </span>🕐 When to use it<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>During <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> if Git reports conflicts.</p>
+</section>
+<section id="how-to-fix">
+<h3><span class="section-number">2.6.3. </span>🧠 How to fix<a class="headerlink" href="#how-to-fix" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Open conflicted file — you’ll see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="n">your</span> <span class="n">code</span>
+<span class="o">=======</span>
+<span class="n">teammate</span><span class="s1">&#39;s code</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">main</span>
+</pre></div>
+</div>
+</li>
+<li><p>Manually edit to the correct version.</p></li>
+<li><p>Then mark resolved:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>filename
+git<span class="w"> </span>merge<span class="w"> </span>--continue<span class="w">   </span><span class="c1"># or git rebase --continue</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id18">
+<h3><span class="section-number">2.6.4. </span>💡 Real-world tip<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Use IDE merge tools (VS Code, PyCharm, etc.) to make it visual.</p></li>
+<li><p>If it gets messy:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>merge<span class="w"> </span>--abort
+</pre></div>
+</div>
+<p>and try again after pulling latest changes.</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="using-gitignore-keep-unwanted-files-out-of-git">
+<h2><span class="section-number">2.7. </span>🚫 7. Using <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> — Keep Unwanted Files Out of Git<a class="headerlink" href="#using-gitignore-keep-unwanted-files-out-of-git" title="Link to this heading">#</a></h2>
+<section id="id19">
+<h3><span class="section-number">2.7.1. </span>🧩 Why this matters<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<p>Some files (like build outputs, logs, or credentials) should <strong>never</strong> be tracked by Git.<br />
+<code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> defines which files to exclude.</p>
+</section>
+<section id="id20">
+<h3><span class="section-number">2.7.2. </span>🕐 When to use it<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<p>At the start of your project, or when adding new tools that generate temporary files.</p>
+</section>
+<section id="example">
+<h3><span class="section-number">2.7.3. </span>🧠 Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dependencies</span>
+<span class="n">node_modules</span><span class="o">/</span>
+<span class="n">venv</span><span class="o">/</span>
+<span class="n">__pycache__</span><span class="o">/</span>
+
+<span class="c1"># Builds</span>
+<span class="n">dist</span><span class="o">/</span>
+<span class="n">build</span><span class="o">/</span>
+
+<span class="c1"># Logs</span>
+<span class="o">*.</span><span class="n">log</span>
+
+<span class="c1"># Environment</span>
+<span class="o">.</span><span class="n">env</span>
+
+<span class="c1"># System files</span>
+<span class="o">.</span><span class="n">DS_Store</span>
+<span class="n">Thumbs</span><span class="o">.</span><span class="n">db</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h3><span class="section-number">2.7.4. </span>💡 Real-world tip<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<p>If you accidentally tracked ignored files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>.
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;chore: apply .gitignore&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="committing-pushing-and-reviewing-changes">
+<h2><span class="section-number">2.8. </span>💾 8. Committing, Pushing, and Reviewing Changes<a class="headerlink" href="#committing-pushing-and-reviewing-changes" title="Link to this heading">#</a></h2>
+<section id="id22">
+<h3><span class="section-number">2.8.1. </span>🧩 Why this matters<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<p>Each <strong>commit</strong> represents a meaningful snapshot of your work.<br />
+Pushing uploads commits to the remote repo so teammates can review them.</p>
+</section>
+<section id="id23">
+<h3><span class="section-number">2.8.2. </span>🕐 When to use it<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<p>After completing a small, testable unit of work (not too big, not too small).</p>
+</section>
+<section id="id24">
+<h3><span class="section-number">2.8.3. </span>🧠 Commands<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status<span class="w">             </span><span class="c1"># check what changed</span>
+git<span class="w"> </span>add<span class="w"> </span>file.js<span class="w">        </span><span class="c1"># stage specific file</span>
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w">              </span><span class="c1"># stage all</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: add login validation&quot;</span>
+git<span class="w"> </span>push<span class="w">               </span><span class="c1"># send to remote</span>
+</pre></div>
+</div>
+</section>
+<section id="id25">
+<h3><span class="section-number">2.8.4. </span>💡 Real-world tip<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<p>Write clear commit messages:</p>
+<ul class="simple">
+<li><p>✅ <code class="docutils literal notranslate"><span class="pre">fix:</span> <span class="pre">correct</span> <span class="pre">password</span> <span class="pre">validation</span> <span class="pre">regex</span></code></p></li>
+<li><p>❌ <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">code</span></code> or <code class="docutils literal notranslate"><span class="pre">stuff</span> <span class="pre">fixed</span></code></p></li>
+</ul>
+<p>To amend last commit (e.g., forgot a file):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>missing.js
+git<span class="w"> </span>commit<span class="w"> </span>--amend
+</pre></div>
+</div>
+</section>
+</section>
+<section id="undo-recover-and-experiment-safely">
+<h2><span class="section-number">2.9. </span>🧰 9. Undo, Recover, and Experiment Safely<a class="headerlink" href="#undo-recover-and-experiment-safely" title="Link to this heading">#</a></h2>
+<section id="id26">
+<h3><span class="section-number">2.9.1. </span>🧩 Why this matters<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<p>Git makes mistakes reversible — you can go back in time.<br />
+Understanding these tools helps you experiment confidently.</p>
+</section>
+<section id="id27">
+<h3><span class="section-number">2.9.2. </span>🕐 When to use it<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<p>When you accidentally delete, break, or commit something wrong.</p>
+</section>
+<section id="id28">
+<h3><span class="section-number">2.9.3. </span>🧠 Commands<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>restore<span class="w"> </span>file.txt<span class="w">                </span><span class="c1"># undo local changes</span>
+git<span class="w"> </span>reset<span class="w"> </span>HEAD~1<span class="w">                    </span><span class="c1"># undo last commit (keep files)</span>
+git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~1<span class="w">             </span><span class="c1"># remove last commit completely</span>
+git<span class="w"> </span>reflog<span class="w">                          </span><span class="c1"># view all actions (time travel log)</span>
+</pre></div>
+</div>
+<p><strong>Recover old versions:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>&lt;commit-id&gt;
+</pre></div>
+</div>
+</section>
+<section id="id29">
+<h3><span class="section-number">2.9.4. </span>💡 Real-world tip<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
+<p>Never use <code class="docutils literal notranslate"><span class="pre">--hard</span></code> on shared branches like <code class="docutils literal notranslate"><span class="pre">main</span></code>.<br />
+If you break something, look in <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reflog</span></code> — it’s your safety net.</p>
+</section>
+</section>
+<section id="handy-tools-stash-cherry-pick-and-tags">
+<h2><span class="section-number">2.10. </span>🪄 10. Handy Tools: Stash, Cherry-Pick, and Tags<a class="headerlink" href="#handy-tools-stash-cherry-pick-and-tags" title="Link to this heading">#</a></h2>
+<section id="id30">
+<h3><span class="section-number">2.10.1. </span>🧩 Why this matters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
+<p>These are pro-level helpers for multitasking, copying commits, or marking versions.</p>
+</section>
+<section id="when-to-use-them">
+<h3><span class="section-number">2.10.2. </span>🕐 When to use them<a class="headerlink" href="#when-to-use-them" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Stash: when you must switch branches but aren’t ready to commit.</p></li>
+<li><p>Cherry-pick: when you need one specific commit from another branch.</p></li>
+<li><p>Tags: when you release or mark milestones.</p></li>
+</ul>
+</section>
+<section id="id31">
+<h3><span class="section-number">2.10.3. </span>🧠 Commands<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># stash work in progress</span>
+git<span class="w"> </span>stash<span class="w"> </span>push<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;WIP: new feature&quot;</span>
+git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>stash<span class="w"> </span>pop
+
+<span class="c1"># copy a specific commit</span>
+git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;commit-id&gt;
+
+<span class="c1"># mark a release</span>
+git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>v1.0.0<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Version 1.0&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>v1.0.0
+</pre></div>
+</div>
+</section>
+<section id="id32">
+<h3><span class="section-number">2.10.4. </span>💡 Real-world tip<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
+<p>Use tags for versioning — they act as named snapshots for deployments.</p>
+</section>
+</section>
+<section id="typical-daily-git-workflow">
+<h2><span class="section-number">2.11. </span>🔁 11. Typical Daily Git Workflow<a class="headerlink" href="#typical-daily-git-workflow" title="Link to this heading">#</a></h2>
+<section id="id33">
+<h3><span class="section-number">2.11.1. </span>🧩 Why this matters<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
+<p>A clear daily routine prevents conflicts and keeps your repository organized.</p>
+</section>
+<section id="id34">
+<h3><span class="section-number">2.11.2. </span>🕐 When to use it<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<p>Every workday — it’s your main habit loop.</p>
+</section>
+<section id="id35">
+<h3><span class="section-number">2.11.3. </span>🧠 Example<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Update main</span>
+git<span class="w"> </span>switch<span class="w"> </span>main
+git<span class="w"> </span>pull
+
+<span class="c1"># 2. Create a feature branch</span>
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>feat/dashboard
+
+<span class="c1"># 3. Work &amp; commit</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;feat: add dashboard layout&quot;</span>
+
+<span class="c1"># 4. Sync often</span>
+git<span class="w"> </span>fetch<span class="w"> </span>origin
+git<span class="w"> </span>merge<span class="w"> </span>origin/main
+
+<span class="c1"># 5. Push and create a Pull Request</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>feat/dashboard
+</pre></div>
+</div>
+</section>
+<section id="id36">
+<h3><span class="section-number">2.11.4. </span>💡 Real-world tip<a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
+<p>Pull before starting work every day to reduce conflicts.<br />
+Always test before committing to keep history clean.</p>
+</section>
+</section>
+<section id="summary-and-next-steps">
+<h2><span class="section-number">2.12. </span>🧠 12. Summary and Next Steps<a class="headerlink" href="#summary-and-next-steps" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Why it matters</p></th>
+<th class="head"><p>When to use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code></p></td>
+<td><p>Start version control</p></td>
+<td><p>Beginning of any project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> / <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code></p></td>
+<td><p>Save progress with history</p></td>
+<td><p>After finishing a small unit of work</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code> / <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">switch</span></code></p></td>
+<td><p>Work safely on new ideas</p></td>
+<td><p>Before big feature or fix</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> / <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code></p></td>
+<td><p>Combine work</p></td>
+<td><p>When integrating changes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> / <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code></p></td>
+<td><p>Share work</p></td>
+<td><p>With teammates / before PR</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></p></td>
+<td><p>Exclude unwanted files</p></td>
+<td><p>Always</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span></code></p></td>
+<td><p>Pause work temporarily</p></td>
+<td><p>When switching tasks</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="you-learned">
+<h3><span class="section-number">2.12.1. </span>✅ You learned:<a class="headerlink" href="#you-learned" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How to set up and initialize Git</p></li>
+<li><p>How to connect with remote repositories</p></li>
+<li><p>How to branch, merge, and handle conflicts</p></li>
+<li><p>How to construct a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code></p></li>
+<li><p>How to safely undo and recover work</p></li>
+</ul>
+<p>Next steps: Learn about GitHub Pull Requests, rebasing strategies, and advanced history cleanup (<code class="docutils literal notranslate"><span class="pre">rebase</span> <span class="pre">-i</span></code>).</p>
+<blockquote>
+<div><p>Git isn’t just about commands — it’s a safety net and collaboration tool.<br />
+The more you commit (both literally and figuratively), the easier it gets!</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\General"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-Emmet_Comprehensive_Tutorial.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>🧩 Emmet — Complete Practical Guide for Web Developers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../CSS/01-get-start.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Intro to CSS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-git-once-per-machine">2.1. ⚙️ 1. Setting Up Git (Once per Machine)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-this-matters">2.1.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-do-this">2.1.2. 🕐 When to do this</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commands">2.1.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-tip">2.1.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-local-repository">2.2. 📁 2. Initialize a Local Repository</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-it">2.2.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-a-remote-repository-github-gitlab-etc">2.3. 🌐 3. Connect to a Remote Repository (GitHub, GitLab, etc.)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching-working-on-features-safely">2.4. 🌿 4. Branching — Working on Features Safely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.4.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.4.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.4.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.4.4. 💡 Real-world tip</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-task">2.4.5. 🧪 Hands-on task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-and-keeping-up-to-date">2.5. 🔄 5. Merging and Keeping Up-to-Date</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.5.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.5.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.5.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.5.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-merge-conflicts">2.6. ⚔️ 6. Solving Merge Conflicts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.6.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.6.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-fix">2.6.3. 🧠 How to fix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.6.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignore-keep-unwanted-files-out-of-git">2.7. 🚫 7. Using <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> — Keep Unwanted Files Out of Git</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.7.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">2.7.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">2.7.3. 🧠 Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.7.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#committing-pushing-and-reviewing-changes">2.8. 💾 8. Committing, Pushing, and Reviewing Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">2.8.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">2.8.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">2.8.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">2.8.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undo-recover-and-experiment-safely">2.9. 🧰 9. Undo, Recover, and Experiment Safely</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">2.9.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">2.9.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">2.9.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">2.9.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handy-tools-stash-cherry-pick-and-tags">2.10. 🪄 10. Handy Tools: Stash, Cherry-Pick, and Tags</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">2.10.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-them">2.10.2. 🕐 When to use them</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">2.10.3. 🧠 Commands</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">2.10.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-daily-git-workflow">2.11. 🔁 11. Typical Daily Git Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">2.11.1. 🧩 Why this matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">2.11.2. 🕐 When to use it</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">2.11.3. 🧠 Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">2.11.4. 💡 Real-world tip</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-and-next-steps">2.12. 🧠 12. Summary and Next Steps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-learned">2.12.1. ✅ You learned:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

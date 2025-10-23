@@ -6,53 +6,53 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>17. Django REST API &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>19. Django REST API &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="18. Deploy Project into Windows Server (IIS)" href="09-deploy.html" />
-    <link rel="prev" title="16. Customizing the Django Admin" href="07-customize-admin.html" />
+    <link rel="next" title="20. Deploy Project into Windows Server (IIS)" href="09-deploy.html" />
+    <link rel="prev" title="18. Customizing the Django Admin" href="07-customize-admin.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -73,27 +73,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +111,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -140,6 +141,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../index.html">
   
@@ -161,7 +164,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -170,50 +173,55 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/01-get-start.html">1. Intro to CSS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/02-CSS-Box.html">2. CSS Box Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/03-css-layout.html">3. CSS Layout</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/04-css-selectors.html">4. CSS Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/01-Emmet_Comprehensive_Tutorial.html">1. 🧩 Emmet — Complete Practical Guide for Web Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/02-Git_Beginner_Practical_Guide.html">2. 🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/01-get-start.html">3. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/02-CSS-Box.html">4. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/03-css-layout.html">5. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/04-css-selectors.html">6. CSS Selectors</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">5. Values, Types, and Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">6. Loops and logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">7. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">7. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">8. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">9. Array and Object (Dictionary)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../JS/Examples/Sort-Tables.html">8. Creating a Sortable HTML Table with JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/Examples/Sort-Tables.html">10. Creating a Sortable HTML Table with JavaScript</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">9. Introduction to ArcGIS JS API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">10. Web Layers and widgets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">11. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">11. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">12. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">13. Working with Spatial Data with ArcGIS JS API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">12. Blog-get started (Django)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">13. Database and Migrations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">14. User Authentication Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-post-crud.html">15. POST Create, Read, Update and Delete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07-customize-admin.html">16. Customizing the Django Admin</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. Django REST API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09-deploy.html">18. Deploy Project into Windows Server (IIS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">14. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">15. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">16. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-post-crud.html">17. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-customize-admin.html">18. Customizing the Django Admin</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-deploy.html">20. Deploy Project into Windows Server (IIS)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">19. SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">21. SQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">20. React and TypeScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">22. React and TypeScript</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">21. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">23. Introduction</a></li>
 </ul>
 
     </div>
@@ -229,7 +237,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -238,14 +246,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -270,14 +278,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Backend/Django-Blog/08-rest-api.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -288,14 +296,14 @@
       
       <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Backend/Django-Blog/08-rest-api.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -436,10 +444,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -447,14 +455,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -475,22 +483,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-construction">17.1. Basic Construction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-framework-drf">17.1.1. Setting Up Your Django REST Framework (DRF)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">17.1.2. Serializers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-post-generic-views">17.1.3. Create views for Post (Generic Views)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views-for-comment-customized-apiview">17.1.4. Views for Comment (Customized APIView)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-configuration">17.1.5. URL Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-construction">19.1. Basic Construction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-framework-drf">19.1.1. Setting Up Your Django REST Framework (DRF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">19.1.2. Serializers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-post-generic-views">19.1.3. Create views for Post (Generic Views)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views-for-comment-customized-apiview">19.1.4. Views for Comment (Customized APIView)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-configuration">19.1.5. URL Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-querying-and-filtering">17.2. Advanced Querying and Filtering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-filter-framework">17.2.1. Setting Up Your Django REST Filter Framework</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-another-post-list-view-for-content-query">17.2.2. Set another Post List View for content query</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.2.3. URL Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-querying-and-filtering">19.2. Advanced Querying and Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-filter-framework">19.2.1. Setting Up Your Django REST Filter Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-another-post-list-view-for-content-query">19.2.2. Set another Post List View for content query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.2.3. URL Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-permissions">17.3. Authentication and Permissions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-setting">17.3.1. Set the setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-permissions">19.3. Authentication and Permissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-setting">19.3.1. Set the setting</a></li>
 </ul>
 </li>
 </ul>
@@ -505,7 +513,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="django-rest-api">
-<h1><span class="section-number">17. </span>Django REST API<a class="headerlink" href="#django-rest-api" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">19. </span>Django REST API<a class="headerlink" href="#django-rest-api" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>A <code class="docutils literal notranslate"><span class="pre">RESTful</span> <span class="pre">API</span></code> is an architectural style for an application programming interface that uses HTTP requests to access and use data.</p></li>
 <li><p>That data can be used to <code class="docutils literal notranslate"><span class="pre">GET</span></code> , <code class="docutils literal notranslate"><span class="pre">PUT</span></code> , <code class="docutils literal notranslate"><span class="pre">POST</span></code> and <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> data types, which refers to <strong>reading</strong>, <strong>updating</strong>, <strong>creating</strong> and <strong>deleting</strong> operations related to resources.</p></li>
@@ -513,9 +521,9 @@ document.write(`
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=t-uAgI-AUxc&amp;amp;ab_channel=TechWithTim">Video Tutorial</a></p></li>
 </ul>
 <section id="basic-construction">
-<h2><span class="section-number">17.1. </span>Basic Construction<a class="headerlink" href="#basic-construction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.1. </span>Basic Construction<a class="headerlink" href="#basic-construction" title="Link to this heading">#</a></h2>
 <section id="setting-up-your-django-rest-framework-drf">
-<h3><span class="section-number">17.1.1. </span>Setting Up Your Django REST Framework (DRF)<a class="headerlink" href="#setting-up-your-django-rest-framework-drf" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.1. </span>Setting Up Your Django REST Framework (DRF)<a class="headerlink" href="#setting-up-your-django-rest-framework-drf" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>First, install Django REST Framework if you haven’t already:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>djangorestframework
@@ -534,7 +542,7 @@ document.write(`
 </ol>
 </section>
 <section id="serializers">
-<h3><span class="section-number">17.1.2. </span>Serializers<a class="headerlink" href="#serializers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.2. </span>Serializers<a class="headerlink" href="#serializers" title="Link to this heading">#</a></h3>
 <p>Serializers define how the model instances are converted to <code class="docutils literal notranslate"><span class="pre">JSON</span></code>.</p>
 <ul>
 <li><p>Create a new file <code class="docutils literal notranslate"><span class="pre">serializers.py</span></code> in your app directory, in our case, under blog folder</p>
@@ -571,7 +579,7 @@ document.write(`
 </ul>
 </section>
 <section id="create-views-for-post-generic-views">
-<h3><span class="section-number">17.1.3. </span>Create views for Post (Generic Views)<a class="headerlink" href="#create-views-for-post-generic-views" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.3. </span>Create views for Post (Generic Views)<a class="headerlink" href="#create-views-for-post-generic-views" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use Django REST Framework’s <code class="docutils literal notranslate"><span class="pre">generic</span> <span class="pre">views</span></code> for <code class="docutils literal notranslate"><span class="pre">Post</span></code> to handle common actions like <strong>create</strong>, <strong>retrieve</strong>, <strong>update</strong>, and <strong>delete</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">queryset</span></code>: This attribute defines the set of data that the view will operate on.</p></li>
@@ -601,7 +609,7 @@ document.write(`
 </div>
 </section>
 <section id="views-for-comment-customized-apiview">
-<h3><span class="section-number">17.1.4. </span>Views for Comment (Customized APIView)<a class="headerlink" href="#views-for-comment-customized-apiview" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.4. </span>Views for Comment (Customized APIView)<a class="headerlink" href="#views-for-comment-customized-apiview" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Add the following code to <code class="docutils literal notranslate"><span class="pre">blog/views.py</span></code> to handle Comment retrieval with <code class="docutils literal notranslate"><span class="pre">APIView</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CommentAPIView</span><span class="p">(</span><span class="n">views</span><span class="o">.</span><span class="n">APIView</span><span class="p">):</span>
@@ -643,7 +651,7 @@ document.write(`
 </ul>
 </section>
 <section id="url-configuration">
-<h3><span class="section-number">17.1.5. </span>URL Configuration<a class="headerlink" href="#url-configuration" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.5. </span>URL Configuration<a class="headerlink" href="#url-configuration" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Set up the URL Pattern</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -672,12 +680,12 @@ curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span
 </section>
 </section>
 <section id="advanced-querying-and-filtering">
-<h2><span class="section-number">17.2. </span>Advanced Querying and Filtering<a class="headerlink" href="#advanced-querying-and-filtering" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.2. </span>Advanced Querying and Filtering<a class="headerlink" href="#advanced-querying-and-filtering" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>For more advanced querying, such as searching with wildcards, consider using Django Filters or adding custom query parameters.</p></li>
 </ul>
 <section id="setting-up-your-django-rest-filter-framework">
-<h3><span class="section-number">17.2.1. </span>Setting Up Your Django REST Filter Framework<a class="headerlink" href="#setting-up-your-django-rest-filter-framework" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.2.1. </span>Setting Up Your Django REST Filter Framework<a class="headerlink" href="#setting-up-your-django-rest-filter-framework" title="Link to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>First, install the required Framework if you haven’t already:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>django-filter
@@ -696,7 +704,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span
 </ol>
 </section>
 <section id="set-another-post-list-view-for-content-query">
-<h3><span class="section-number">17.2.2. </span>Set another Post List View for content query<a class="headerlink" href="#set-another-post-list-view-for-content-query" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.2.2. </span>Set another Post List View for content query<a class="headerlink" href="#set-another-post-list-view-for-content-query" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">filter_backends</span></code>: This attribute lists the filter backends that will be used to apply <strong>filtering</strong>, <strong>searching</strong>, and <strong>ordering</strong> to the <code class="docutils literal notranslate"><span class="pre">queryset</span></code>.</p>
 <ul class="simple">
@@ -720,7 +728,7 @@ curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span
 </ul>
 </section>
 <section id="id1">
-<h3><span class="section-number">17.2.3. </span>URL Configuration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.2.3. </span>URL Configuration<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Set up the URL Pattern</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -762,13 +770,13 @@ Vary:<span class="w"> </span>Accept
 </section>
 </section>
 <section id="authentication-and-permissions">
-<h2><span class="section-number">17.3. </span>Authentication and Permissions<a class="headerlink" href="#authentication-and-permissions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.3. </span>Authentication and Permissions<a class="headerlink" href="#authentication-and-permissions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In this section, we will add authentication and permissions to secure your API.</p></li>
 <li><p><a class="reference external" href="https://www.django-rest-framework.org/api-guide/permissions/">Reading Material</a></p></li>
 </ul>
 <section id="set-the-setting">
-<h3><span class="section-number">17.3.1. </span>Set the setting<a class="headerlink" href="#set-the-setting" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.3.1. </span>Set the setting<a class="headerlink" href="#set-the-setting" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">REST_FRAMEWORK</span></code>: This is a dictionary where you configure global settings for <code class="docutils literal notranslate"><span class="pre">Django</span> <span class="pre">REST</span> <span class="pre">Framework</span> <span class="pre">(DRF)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_AUTHENTICATION_CLASSES</span></code>: This setting defines the default authentication classes that will be used to authenticate the users making requests to your API. It includes:</p>
@@ -828,7 +836,7 @@ Vary:<span class="w"> </span>Accept
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -837,7 +845,7 @@ Vary:<span class="w"> </span>Accept
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Customizing the Django Admin</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Customizing the Django Admin</p>
       </div>
     </a>
     <a class="right-next"
@@ -845,7 +853,7 @@ Vary:<span class="w"> </span>Accept
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>Deploy Project into Windows Server (IIS)</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>Deploy Project into Windows Server (IIS)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -865,22 +873,22 @@ Vary:<span class="w"> </span>Accept
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-construction">17.1. Basic Construction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-framework-drf">17.1.1. Setting Up Your Django REST Framework (DRF)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">17.1.2. Serializers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-post-generic-views">17.1.3. Create views for Post (Generic Views)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views-for-comment-customized-apiview">17.1.4. Views for Comment (Customized APIView)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-configuration">17.1.5. URL Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-construction">19.1. Basic Construction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-framework-drf">19.1.1. Setting Up Your Django REST Framework (DRF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#serializers">19.1.2. Serializers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-views-for-post-generic-views">19.1.3. Create views for Post (Generic Views)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#views-for-comment-customized-apiview">19.1.4. Views for Comment (Customized APIView)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#url-configuration">19.1.5. URL Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-querying-and-filtering">17.2. Advanced Querying and Filtering</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-filter-framework">17.2.1. Setting Up Your Django REST Filter Framework</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-another-post-list-view-for-content-query">17.2.2. Set another Post List View for content query</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.2.3. URL Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-querying-and-filtering">19.2. Advanced Querying and Filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-django-rest-filter-framework">19.2.1. Setting Up Your Django REST Filter Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-another-post-list-view-for-content-query">19.2.2. Set another Post List View for content query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">19.2.3. URL Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-permissions">17.3. Authentication and Permissions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-setting">17.3.1. Set the setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-permissions">19.3. Authentication and Permissions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-setting">19.3.1. Set the setting</a></li>
 </ul>
 </li>
 </ul>
@@ -931,8 +939,8 @@ By Yalin Yang
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

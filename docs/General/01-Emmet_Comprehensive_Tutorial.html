@@ -1,0 +1,1132 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1. 🧩 Emmet — Complete Practical Guide for Web Developers &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/General/01-Emmet_Comprehensive_Tutorial';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/General/01-Emmet_Comprehensive_Tutorial.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. 🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide" href="02-Git_Beginner_Practical_Guide.html" />
+    <link rel="prev" title="Welcome to Yalin’s Knowledge Base" href="../../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. 🧩 Emmet — Complete Practical Guide for Web Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-Git_Beginner_Practical_Guide.html">2. 🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">3. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">4. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">5. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">6. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">7. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">8. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">9. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">10. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">11. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">12. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">13. Working with Spatial Data with ArcGIS JS API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">14. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">15. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">16. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">17. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">18. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">19. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">20. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">21. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">22. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">23. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/General/01-Emmet_Comprehensive_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/General/01-Emmet_Comprehensive_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/General/01-Emmet_Comprehensive_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/General/01-Emmet_Comprehensive_Tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/General/01-Emmet_Comprehensive_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>🧩 Emmet — Complete Practical Guide for Web Developers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-structure-and-relationships">1.1. 🏁 1. Basic Structure and Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-examples">1.1.2. Syntax Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-tips">1.1.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-task">1.1.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-ids-classes-and-text">1.2. 🧱 2. Attributes, IDs, Classes, and Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.2. Syntax Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition-and-numbering">1.3. 🔁 3. Repetition and Numbering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.2. Syntax Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.3.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.3.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#realistic-page-structures">1.4. 🌐 4. Realistic Page Structures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.4.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">1.4.2. Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.4.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">1.4.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-abbreviations">1.5. 🎨 5. CSS Abbreviations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">1.5.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-examples">1.5.2. Common Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1.5.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.5.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-features">1.6. ⚙️ 6. Advanced Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.6.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-tricks">1.6.2. Useful Tricks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">1.6.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">1.6.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emmet-cheatsheet-quick-reference">1.7. 🪄 7. Emmet Cheatsheet (Quick Reference)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-practice-routine">1.8. 🧭 8. Suggested Practice Routine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pro-developer-tips">1.9. 🧠 9. Pro Developer Tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-project-challenge">1.10. 🎯 10. Final Project Challenge</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="emmet-complete-practical-guide-for-web-developers">
+<h1><span class="section-number">1. </span>🧩 Emmet — Complete Practical Guide for Web Developers<a class="headerlink" href="#emmet-complete-practical-guide-for-web-developers" title="Link to this heading">#</a></h1>
+<p>Emmet is a shorthand syntax that lets you write <strong>HTML and CSS</strong> faster than ever.<br />
+Instead of typing long repetitive markup, you use compact expressions that <strong>expand into full code</strong>.<br />
+This is extremely helpful for prototyping layouts, building templates, or quickly scaffolding repetitive elements.</p>
+<section id="basic-structure-and-relationships">
+<h2><span class="section-number">1.1. </span>🏁 1. Basic Structure and Relationships<a class="headerlink" href="#basic-structure-and-relationships" title="Link to this heading">#</a></h2>
+<section id="introduction">
+<h3><span class="section-number">1.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h3>
+<p>You’ll use these operators (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">()</span></code>) almost every time you code HTML.<br />
+They describe <strong>parent–child</strong> and <strong>sibling</strong> relationships, forming the skeleton of your page.</p>
+</section>
+<section id="syntax-examples">
+<h3><span class="section-number">1.1.2. </span>Syntax Examples<a class="headerlink" href="#syntax-examples" title="Link to this heading">#</a></h3>
+<p><strong>Child element (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>ul&gt;li
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Sibling (<code class="docutils literal notranslate"><span class="pre">+</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>h1+p
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Parent level (<code class="docutils literal notranslate"><span class="pre">^</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>div&gt;p&gt;span^a
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Grouping (<code class="docutils literal notranslate"><span class="pre">()</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>(div&gt;p)+footer
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">footer</span><span class="p">&gt;&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="real-world-tips">
+<h3><span class="section-number">1.1.3. </span>Real-World Tips<a class="headerlink" href="#real-world-tips" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Great for building <strong>nested layouts</strong> like <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">&gt;</span> <span class="pre">nav</span> <span class="pre">&gt;</span> <span class="pre">ul</span> <span class="pre">&gt;</span> <span class="pre">li</span> <span class="pre">&gt;</span> <span class="pre">a</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">()</span></code> to manage complex nesting without confusion.</p></li>
+<li><p>Combine <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code> to generate both hierarchy and structure at once.</p></li>
+</ul>
+</section>
+<section id="hands-on-task">
+<h3><span class="section-number">1.1.4. </span>Hands-On Task<a class="headerlink" href="#hands-on-task" title="Link to this heading">#</a></h3>
+<p>Create a basic website skeleton in one Emmet line:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>header&gt;nav&gt;ul&gt;li*3&gt;a{Menu $}^^main&gt;section+aside^footer
+</pre></div>
+</div>
+<p>Try expanding this in your editor — it generates a clean, ready-to-style HTML template.</p>
+</section>
+</section>
+<section id="attributes-ids-classes-and-text">
+<h2><span class="section-number">1.2. </span>🧱 2. Attributes, IDs, Classes, and Text<a class="headerlink" href="#attributes-ids-classes-and-text" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><span class="section-number">1.2.1. </span>Introduction<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>You’ll often need to assign classes, IDs, or placeholder text.<br />
+Emmet’s attribute syntax makes it concise and consistent.</p>
+</section>
+<section id="id2">
+<h3><span class="section-number">1.2.2. </span>Syntax Examples<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p><strong>ID and Class</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>div#main.content.wrapper
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;main&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;content wrapper&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Attributes (<code class="docutils literal notranslate"><span class="pre">[]</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>a[href=&quot;https://example.com&quot; target=&quot;_blank&quot;]
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://example.com&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Text Content (<code class="docutils literal notranslate"><span class="pre">{}</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>button{Click Me}
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Click Me<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">1.2.3. </span>Real-World Tips<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use meaningful IDs only for unique elements.</p></li>
+<li><p>Use multiple classes for reusable styling and avoid overusing IDs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{}</span></code> is great for inserting placeholder content during prototyping.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.2.4. </span>Hands-On Task<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Generate a login form header:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>header&gt;h1{Welcome}+p{Please sign in to continue}
+</pre></div>
+</div>
+<p>Then create the form below it:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>form&gt;input[type=&quot;text&quot; placeholder=&quot;Username&quot;]+input[type=&quot;password&quot; placeholder=&quot;Password&quot;]+button{Login}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="repetition-and-numbering">
+<h2><span class="section-number">1.3. </span>🔁 3. Repetition and Numbering<a class="headerlink" href="#repetition-and-numbering" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">1.3.1. </span>Introduction<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Repetition is key when creating lists, menus, cards, or table rows.<br />
+Emmet’s <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">$</span></code> symbols automate repetitive work.</p>
+</section>
+<section id="id6">
+<h3><span class="section-number">1.3.2. </span>Syntax Examples<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p><strong>Repeat (<code class="docutils literal notranslate"><span class="pre">*</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>li*3
+</pre></div>
+</div>
+<p>Creates three <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code> tags.</p>
+<p><strong>Numbering (<code class="docutils literal notranslate"><span class="pre">$</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>li.item$*3
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item3&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Padding numbers (<code class="docutils literal notranslate"><span class="pre">$$</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>li.item$$*3
+</pre></div>
+</div>
+<p>Expands to:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item01&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item02&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item03&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Reverse or custom start (<code class="docutils literal notranslate"><span class="pre">&#64;-</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;n</span></code>)</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>li.item$@-*3
+li.item$@5*3
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">1.3.3. </span>Real-World Tips<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Useful for <strong>dynamic component mockups</strong> or <strong>UI placeholders</strong>.</p></li>
+<li><p>Combine <code class="docutils literal notranslate"><span class="pre">$</span></code> with attributes or text to create consistent patterns.</p></li>
+<li><p>Great for templating when you plan to replace content dynamically via JS later.</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3><span class="section-number">1.3.4. </span>Hands-On Task<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Generate a TOC (Table of Contents) for 6 chapters:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>nav&gt;a[href=&quot;#chapter$&quot;]{Chapter $}*6
+</pre></div>
+</div>
+<p><strong>Reference CSS</strong></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">inline-block</span><span class="p">;</span><span class="w"> </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3366cc</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">text-decoration</span><span class="p">:</span><span class="w"> </span><span class="kc">underline</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="realistic-page-structures">
+<h2><span class="section-number">1.4. </span>🌐 4. Realistic Page Structures<a class="headerlink" href="#realistic-page-structures" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h3><span class="section-number">1.4.1. </span>Introduction<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Emmet shines in <strong>layout scaffolding</strong> — generating entire page skeletons with just one line.</p>
+</section>
+<section id="example">
+<h3><span class="section-number">1.4.2. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>div.container&gt;header&gt;h1{My Site}+nav&gt;ul&gt;li*3&gt;a[href=&quot;#&quot;]{Link $}^^main&gt;article&gt;h2{Article Title}+p&gt;lorem20^aside{Sidebar}^footer{© 2025 MySite}
+</pre></div>
+</div>
+<p>Expands into a complete semantic structure.</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">1.4.3. </span>Real-World Tips<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use Emmet for <strong>wireframing HTML</strong> before adding frameworks.</p></li>
+<li><p>Combine <code class="docutils literal notranslate"><span class="pre">lorem</span></code> with structure to preview layout spacing.</p></li>
+<li><p>Don’t worry about final content — focus on structure first.</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3><span class="section-number">1.4.4. </span>Hands-On Task<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Generate a <strong>blog layout</strong>:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>div.blog&gt;article.post$*5&gt;h2{Post $}+p&gt;lorem15
+</pre></div>
+</div>
+<p>Then wrap it with:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>main&gt;div.blog
+</pre></div>
+</div>
+</section>
+</section>
+<section id="css-abbreviations">
+<h2><span class="section-number">1.5. </span>🎨 5. CSS Abbreviations<a class="headerlink" href="#css-abbreviations" title="Link to this heading">#</a></h2>
+<section id="id12">
+<h3><span class="section-number">1.5.1. </span>Introduction<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>Emmet also works in CSS files. Typing shorthand properties expands to complete declarations instantly.</p>
+</section>
+<section id="common-examples">
+<h3><span class="section-number">1.5.2. </span>Common Examples<a class="headerlink" href="#common-examples" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Shorthand</p></th>
+<th class="head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">m10</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">margin:</span> <span class="pre">10px;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">p10-20</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">padding:</span> <span class="pre">10px</span> <span class="pre">20px;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">w100p</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">width:</span> <span class="pre">100%;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">h100vh</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">height:</span> <span class="pre">100vh;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bgc#333</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">background-color:</span> <span class="pre">#333;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">c#fff</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">#fff;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d:f</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">display:</span> <span class="pre">flex;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">jc:c</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">justify-content:</span> <span class="pre">center;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ai:c</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">align-items:</span> <span class="pre">center;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">1.5.3. </span>Real-World Tips<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Speed-boosts repetitive UI styling.</p></li>
+<li><p>Works great for inline edits when debugging CSS.</p></li>
+<li><p>Combine with snippets for framework-like shortcuts.</p></li>
+</ul>
+</section>
+<section id="id14">
+<h3><span class="section-number">1.5.4. </span>Hands-On Task<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>Type this in a CSS file:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>d:f; jc:c; ai:c; bgc#fafafa; p20; br10; sh0-2-8-rgba(0,0,0,.1)
+</pre></div>
+</div>
+<p>You’ll get a quick <strong>card-style container</strong>.</p>
+</section>
+</section>
+<section id="advanced-features">
+<h2><span class="section-number">1.6. </span>⚙️ 6. Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading">#</a></h2>
+<section id="id15">
+<h3><span class="section-number">1.6.1. </span>Introduction<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p>Now that you know the basics, let’s explore <strong>advanced controls</strong> that make Emmet even more flexible.</p>
+</section>
+<section id="useful-tricks">
+<h3><span class="section-number">1.6.2. </span>Useful Tricks<a class="headerlink" href="#useful-tricks" title="Link to this heading">#</a></h3>
+<p><strong>Lorem text</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>p&gt;lorem20
+</pre></div>
+</div>
+<p><strong>HTML5 boilerplate</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>!
+</pre></div>
+</div>
+<p><strong>Combine everything</strong></p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>ul&gt;li.item$*3&gt;a[href=&quot;#item$&quot;]{Item $}
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">1.6.3. </span>Real-World Tips<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Perfect for <strong>prototyping</strong> before back-end integration.</p></li>
+<li><p>Learn your editor’s shortcuts: in VS Code, use <code class="docutils literal notranslate"><span class="pre">Tab</span></code> to expand abbreviations.</p></li>
+<li><p>Customize Emmet in VS Code settings:</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;emmet.triggerExpansionOnTab&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id17">
+<h3><span class="section-number">1.6.4. </span>Hands-On Task<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>Build a <strong>three-column layout</strong>:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>section.container&gt;div.column$*3&gt;h3{Column $}+p&gt;lorem10
+</pre></div>
+</div>
+<p><strong>Reference CSS</strong></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">flex</span><span class="p">;</span><span class="w"> </span><span class="k">gap</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">.</span><span class="nc">column1</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">column2</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">column3</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">flex</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="k">background</span><span class="p">:</span><span class="w"> </span><span class="mh">#f5f5f5</span><span class="p">;</span><span class="w"> </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span><span class="w"> </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="emmet-cheatsheet-quick-reference">
+<h2><span class="section-number">1.7. </span>🪄 7. Emmet Cheatsheet (Quick Reference)<a class="headerlink" href="#emmet-cheatsheet-quick-reference" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>Child element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Sibling element</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>Move up a level</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">()</span></code></p></td>
+<td><p>Grouping</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Repeat multiple times</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$</span></code></p></td>
+<td><p>Numbering</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#</span></code></p></td>
+<td><p>ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>Class</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>Attributes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{}</span></code></p></td>
+<td><p>Text content</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="suggested-practice-routine">
+<h2><span class="section-number">1.8. </span>🧭 8. Suggested Practice Routine<a class="headerlink" href="#suggested-practice-routine" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Day</p></th>
+<th class="head"><p>Focus</p></th>
+<th class="head"><p>Exercises</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Structure operators (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">()</span></code>)</p></td>
+<td><p>Build nested nav and header</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Attributes and text</p></td>
+<td><p>Create signup form</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Repetition and numbering</p></td>
+<td><p>Generate blog posts</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>CSS shortcuts</p></td>
+<td><p>Rebuild layouts with Emmet CSS</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Combine &amp; review</p></td>
+<td><p>Create full responsive page skeleton</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pro-developer-tips">
+<h2><span class="section-number">1.9. </span>🧠 9. Pro Developer Tips<a class="headerlink" href="#pro-developer-tips" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Pair with snippets</strong> — Extend Emmet with custom snippets for recurring patterns.</p></li>
+<li><p><strong>Use in React/Vue/Svelte</strong> — Emmet also works in <code class="docutils literal notranslate"><span class="pre">.jsx</span></code>, <code class="docutils literal notranslate"><span class="pre">.vue</span></code>, and <code class="docutils literal notranslate"><span class="pre">.svelte</span></code> files (enable in settings).</p></li>
+<li><p><strong>Speed test yourself</strong> — Try coding the same layout with and without Emmet. You’ll usually save 70–90% time.</p></li>
+<li><p><strong>Keep structure readable</strong> — Even if it’s fast, write abbreviations that are clear to you and your team.</p></li>
+</ol>
+</section>
+<section id="final-project-challenge">
+<h2><span class="section-number">1.10. </span>🎯 10. Final Project Challenge<a class="headerlink" href="#final-project-challenge" title="Link to this heading">#</a></h2>
+<p>Write this full page layout in one Emmet line and expand it:</p>
+<div class="highlight-emmet notranslate"><div class="highlight"><pre><span></span>div.container&gt;header&gt;h1{Emmet Demo}+nav&gt;ul&gt;li*4&gt;a[href=&quot;#section$&quot;]{Section $}^^main&gt;section*3&gt;h2{Title $}+p&gt;lorem15^^footer{© 2025 Emmet Tutorial}
+</pre></div>
+</div>
+<p>Then add your own CSS using Emmet CSS abbreviations and preview in your browser.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\General"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to Yalin’s Knowledge Base</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-Git_Beginner_Practical_Guide.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-structure-and-relationships">1.1. 🏁 1. Basic Structure and Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax-examples">1.1.2. Syntax Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-tips">1.1.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hands-on-task">1.1.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes-ids-classes-and-text">1.2. 🧱 2. Attributes, IDs, Classes, and Text</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.2. Syntax Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition-and-numbering">1.3. 🔁 3. Repetition and Numbering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.2. Syntax Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.3.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.3.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#realistic-page-structures">1.4. 🌐 4. Realistic Page Structures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.4.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">1.4.2. Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">1.4.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">1.4.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#css-abbreviations">1.5. 🎨 5. CSS Abbreviations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">1.5.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-examples">1.5.2. Common Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">1.5.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">1.5.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-features">1.6. ⚙️ 6. Advanced Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">1.6.1. Introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-tricks">1.6.2. Useful Tricks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">1.6.3. Real-World Tips</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">1.6.4. Hands-On Task</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emmet-cheatsheet-quick-reference">1.7. 🪄 7. Emmet Cheatsheet (Quick Reference)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-practice-routine">1.8. 🧭 8. Suggested Practice Routine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pro-developer-tips">1.9. 🧠 9. Pro Developer Tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-project-challenge">1.10. 🎯 10. Final Project Challenge</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

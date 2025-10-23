@@ -6,53 +6,53 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>15. POST Create, Read, Update and Delete &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>17. POST Create, Read, Update and Delete &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="16. Customizing the Django Admin" href="07-customize-admin.html" />
-    <link rel="prev" title="14. User Authentication Tutorial" href="03-user-registration.html" />
+    <link rel="next" title="18. Customizing the Django Admin" href="07-customize-admin.html" />
+    <link rel="prev" title="16. User Authentication Tutorial" href="03-user-registration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -73,27 +73,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +111,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -140,6 +141,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../index.html">
   
@@ -161,7 +164,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -170,50 +173,55 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/01-get-start.html">1. Intro to CSS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/02-CSS-Box.html">2. CSS Box Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/03-css-layout.html">3. CSS Layout</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../CSS/04-css-selectors.html">4. CSS Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/01-Emmet_Comprehensive_Tutorial.html">1. 🧩 Emmet — Complete Practical Guide for Web Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../General/02-Git_Beginner_Practical_Guide.html">2. 🧭 Git for Everyday Development — A Beginner-Friendly Practical Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/01-get-start.html">3. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/02-CSS-Box.html">4. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/03-css-layout.html">5. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CSS/04-css-selectors.html">6. CSS Selectors</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">5. Values, Types, and Operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">6. Loops and logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">7. Array and Object (Dictionary)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/01-JS-intro.html">7. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/03-loop-and-logic.html">8. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/02-Arrays-and-Object.html">9. Array and Object (Dictionary)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../JS/Examples/Sort-Tables.html">8. Creating a Sortable HTML Table with JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/Examples/Sort-Tables.html">10. Creating a Sortable HTML Table with JavaScript</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">9. Introduction to ArcGIS JS API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">10. Web Layers and widgets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">11. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/01-get-started.html">11. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/02-manipulate-layers.html">12. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../JS/ArcGIS/03-spatial-query.html">13. Working with Spatial Data with ArcGIS JS API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">12. Blog-get started (Django)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">13. Database and Migrations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">14. User Authentication Tutorial</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. POST Create, Read, Update and Delete</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07-customize-admin.html">16. Customizing the Django Admin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08-rest-api.html">17. Django REST API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09-deploy.html">18. Deploy Project into Windows Server (IIS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">14. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-database-and-admin.html">15. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-user-registration.html">16. User Authentication Tutorial</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-customize-admin.html">18. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-rest-api.html">19. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-deploy.html">20. Deploy Project into Windows Server (IIS)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">19. SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-sql-comprehensive.html">21. SQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">20. React and TypeScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../React/01-get-started.html">22. React and TypeScript</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">21. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Cesium/01-Introduction.html">23. Introduction</a></li>
 </ul>
 
     </div>
@@ -229,7 +237,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -238,14 +246,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -270,14 +278,14 @@
       
       <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Backend/Django-Blog/04-post-crud.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../../../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -288,14 +296,14 @@
       
       <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Backend/Django-Blog/04-post-crud.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -436,10 +444,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -447,14 +455,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -475,50 +483,50 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs">15.1. Introduction to Class-Based Views (CBVs) vs. Function-Based Views (FBVs)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-views-cbvs">15.1.1. Class-Based Views (CBVs):</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based-views-fbvs">15.1.2. Function-Based Views (FBVs):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs">17.1. Introduction to Class-Based Views (CBVs) vs. Function-Based Views (FBVs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-views-cbvs">17.1.1. Class-Based Views (CBVs):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based-views-fbvs">17.1.2. Function-Based Views (FBVs):</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-post-create-view">15.2. Step 1: Create Post Create View</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">15.2.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-post-create-view">17.2. Step 1: Create Post Create View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">17.2.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-post-update-view">15.3. Step 2: Create Post Update View</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.3.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-post-update-view">17.3. Step 2: Create Post Update View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.3.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-template-for-post-create-and-update-views">15.4. Step 3: Set Template for Post Create and Update Views</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step4-set-post-delete-view">15.5. Step4: Set Post Delete View</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.5.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-template-for-post-create-and-update-views">17.4. Step 3: Set Template for Post Create and Update Views</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step4-set-post-delete-view">17.5. Step4: Set Post Delete View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">17.5.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-construct-post-confirm-delete-template">15.6. Step 5: Construct Post Confirm Delete Template</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-set-post-detail-view">15.7. Step 6: Set Post Detail View</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-construct-post-detail-template">15.8. Step 7: Construct Post Detail Template</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.8.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-construct-post-confirm-delete-template">17.6. Step 5: Construct Post Confirm Delete Template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-set-post-detail-view">17.7. Step 6: Set Post Detail View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-construct-post-detail-template">17.8. Step 7: Construct Post Detail Template</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">17.8.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-construct-url-patterns">15.9. Step 8: Construct URL Patterns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination">15.10. Pagination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.11. Pagination</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-pagination-to-postlistview">15.11.1. Add Pagination to PostListView</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-pagination-template">15.11.2. Create a Pagination Template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-construct-url-patterns">17.9. Step 8: Construct URL Patterns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination">17.10. Pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">17.11. Pagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-pagination-to-postlistview">17.11.1. Add Pagination to PostListView</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-pagination-template">17.11.2. Create a Pagination Template</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset">15.12. QuerySet</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-userposts-view">15.12.1. Create a UserPosts View</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-userposts-template">15.12.2. Construct UserPosts Template</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-url-pattern-for-user-posts">15.12.3. Construct URL Pattern for User Posts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset">17.12. QuerySet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-userposts-view">17.12.1. Create a UserPosts View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-userposts-template">17.12.2. Construct UserPosts Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-url-pattern-for-user-posts">17.12.3. Construct URL Pattern for User Posts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resource">15.13. Additional Resource</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-generic-views">15.13.1. Built-in generic views</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-object-in-django">15.13.2. Pagination Object in Django</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">15.13.2.1. Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resource">17.13. Additional Resource</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-generic-views">17.13.1. Built-in generic views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-object-in-django">17.13.2. Pagination Object in Django</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">17.13.2.1. Example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-django-queryset">15.13.3. Key Features of Django QuerySet:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-django-queryset">17.13.3. Key Features of Django QuerySet:</a></li>
 </ul>
 </li>
 </ul>
@@ -533,14 +541,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="post-create-read-update-and-delete">
-<h1><span class="section-number">15. </span>POST Create, Read, Update and Delete<a class="headerlink" href="#post-create-read-update-and-delete" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>POST Create, Read, Update and Delete<a class="headerlink" href="#post-create-read-update-and-delete" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>In this chapter, we will use class based view to implement Post Create, Detail, Update and Delete functions</p></li>
 </ul>
 <section id="introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs">
-<h2><span class="section-number">15.1. </span>Introduction to Class-Based Views (CBVs) vs. Function-Based Views (FBVs)<a class="headerlink" href="#introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.1. </span>Introduction to Class-Based Views (CBVs) vs. Function-Based Views (FBVs)<a class="headerlink" href="#introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs" title="Link to this heading">#</a></h2>
 <section id="class-based-views-cbvs">
-<h3><span class="section-number">15.1.1. </span>Class-Based Views (CBVs):<a class="headerlink" href="#class-based-views-cbvs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.1. </span>Class-Based Views (CBVs):<a class="headerlink" href="#class-based-views-cbvs" title="Link to this heading">#</a></h3>
 <p>Advantages:</p>
 <ul class="simple">
 <li><p><strong>Reusable</strong>: You can inherit and reuse views.</p></li>
@@ -552,7 +560,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="function-based-views-fbvs">
-<h3><span class="section-number">15.1.2. </span>Function-Based Views (FBVs):<a class="headerlink" href="#function-based-views-fbvs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.2. </span>Function-Based Views (FBVs):<a class="headerlink" href="#function-based-views-fbvs" title="Link to this heading">#</a></h3>
 <p>Advantages:</p>
 <ul class="simple">
 <li><p><strong>Simplicity</strong>: Easier to understand and use.</p></li>
@@ -564,7 +572,7 @@ Disadvantages:</p></li>
 </section>
 </section>
 <section id="step-1-create-post-create-view">
-<h2><span class="section-number">15.2. </span>Step 1: Create Post Create View<a class="headerlink" href="#step-1-create-post-create-view" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.2. </span>Step 1: Create Post Create View<a class="headerlink" href="#step-1-create-post-create-view" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>To create a new post with fields for the title and content.</p></li>
 <li><p>The view will ensure that the post is <strong>associated with the logged-in <code class="docutils literal notranslate"><span class="pre">user</span></code></strong>.</p>
@@ -585,7 +593,7 @@ Disadvantages:</p></li>
 </li>
 </ul>
 <section id="notes">
-<h3><span class="section-number">15.2.1. </span>Notes:<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.2.1. </span>Notes:<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Form Validation</strong>: The <code class="docutils literal notranslate"><span class="pre">form_valid</span></code> method ensures the form is valid and associates the post with the logged-in user.</p></li>
 <li><p><strong>Template Naming Convention</strong>: The template for this view should be named <code class="docutils literal notranslate"><span class="pre">post_form.html</span></code> by default.</p></li>
@@ -593,7 +601,7 @@ Disadvantages:</p></li>
 </section>
 </section>
 <section id="step-2-create-post-update-view">
-<h2><span class="section-number">15.3. </span>Step 2: Create Post Update View<a class="headerlink" href="#step-2-create-post-update-view" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.3. </span>Step 2: Create Post Update View<a class="headerlink" href="#step-2-create-post-update-view" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>To update an existing post.</p></li>
 <li><p>This view uses the same template as the <strong>create view</strong> and includes <strong>privilege checks to ensure only the post author can update the post</strong>.</p>
@@ -621,14 +629,14 @@ Disadvantages:</p></li>
 </li>
 </ul>
 <section id="id1">
-<h3><span class="section-number">15.3.1. </span>Notes:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.3.1. </span>Notes:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Privilege Check</strong>: The <code class="docutils literal notranslate"><span class="pre">test_func</span></code> method ensures that only the post author can update the post.</p></li>
 </ul>
 </section>
 </section>
 <section id="step-3-set-template-for-post-create-and-update-views">
-<h2><span class="section-number">15.4. </span>Step 3: Set Template for Post Create and Update Views<a class="headerlink" href="#step-3-set-template-for-post-create-and-update-views" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.4. </span>Step 3: Set Template for Post Create and Update Views<a class="headerlink" href="#step-3-set-template-for-post-create-and-update-views" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">users/templates/post_form.html</span></code></p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;blog/main.html&quot; %}
@@ -660,7 +668,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="step4-set-post-delete-view">
-<h2><span class="section-number">15.5. </span>Step4: Set Post Delete View<a class="headerlink" href="#step4-set-post-delete-view" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.5. </span>Step4: Set Post Delete View<a class="headerlink" href="#step4-set-post-delete-view" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>To delete an existing post.</p></li>
 <li><p>The view ensures only the post author can delete the <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p>
@@ -682,14 +690,14 @@ Disadvantages:</p></li>
 </li>
 </ul>
 <section id="id2">
-<h3><span class="section-number">15.5.1. </span>Notes:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.5.1. </span>Notes:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Success URL</strong>: The <code class="docutils literal notranslate"><span class="pre">success_url</span></code> attribute defines the URL to redirect to after successful deletion.</p></li>
 </ul>
 </section>
 </section>
 <section id="step-5-construct-post-confirm-delete-template">
-<h2><span class="section-number">15.6. </span>Step 5: Construct Post Confirm Delete Template<a class="headerlink" href="#step-5-construct-post-confirm-delete-template" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.6. </span>Step 5: Construct Post Confirm Delete Template<a class="headerlink" href="#step-5-construct-post-confirm-delete-template" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">users/templates/post_confirm_delete.html</span></code></p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &quot;blog/main.html&quot; %}
@@ -722,7 +730,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="step-6-set-post-detail-view">
-<h2><span class="section-number">15.7. </span>Step 6: Set Post Detail View<a class="headerlink" href="#step-6-set-post-detail-view" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.7. </span>Step 6: Set Post Detail View<a class="headerlink" href="#step-6-set-post-detail-view" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>To display the details of a specific post.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">DetailView</span>
@@ -736,7 +744,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="step-7-construct-post-detail-template">
-<h2><span class="section-number">15.8. </span>Step 7: Construct Post Detail Template<a class="headerlink" href="#step-7-construct-post-detail-template" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.8. </span>Step 7: Construct Post Detail Template<a class="headerlink" href="#step-7-construct-post-detail-template" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">users/templates/users/post_detail.html</span></code></p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &#39;blog/main.html&#39; %} {% block main-content%}
@@ -765,14 +773,14 @@ Disadvantages:</p></li>
 </li>
 </ul>
 <section id="id3">
-<h3><span class="section-number">15.8.1. </span>Notes:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.8.1. </span>Notes:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Privilege Check</strong>: Ensure that only the author can see the update and delete options.</p></li>
 </ul>
 </section>
 </section>
 <section id="step-8-construct-url-patterns">
-<h2><span class="section-number">15.9. </span>Step 8: Construct URL Patterns<a class="headerlink" href="#step-8-construct-url-patterns" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.9. </span>Step 8: Construct URL Patterns<a class="headerlink" href="#step-8-construct-url-patterns" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Define the URL patterns for the post CRUD operations.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
@@ -827,7 +835,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="pagination">
-<h2><span class="section-number">15.10. </span>Pagination<a class="headerlink" href="#pagination" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.10. </span>Pagination<a class="headerlink" href="#pagination" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>For demonstration, we generate multiple Post and Comment templates</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>shell
@@ -873,13 +881,13 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="id4">
-<h2><span class="section-number">15.11. </span>Pagination<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.11. </span>Pagination<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Pagination</span></code> is the process of dividing content into discrete pages, making it easier to navigate through large datasets.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Django</span></code> provides <strong>built-in support for pagination</strong> through <strong>class-based views</strong>.</p></li>
 </ul>
 <section id="add-pagination-to-postlistview">
-<h3><span class="section-number">15.11.1. </span>Add Pagination to PostListView<a class="headerlink" href="#add-pagination-to-postlistview" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.11.1. </span>Add Pagination to PostListView<a class="headerlink" href="#add-pagination-to-postlistview" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>To display a limited number of posts per page on the home view and add pagination controls for navigation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># users/views.py</span>
@@ -900,7 +908,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="create-a-pagination-template">
-<h3><span class="section-number">15.11.2. </span>Create a Pagination Template<a class="headerlink" href="#create-a-pagination-template" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.11.2. </span>Create a Pagination Template<a class="headerlink" href="#create-a-pagination-template" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>To provide pagination controls for navigating between pages.</p></li>
 <li><p>Create a template named <code class="docutils literal notranslate"><span class="pre">pagination.html</span></code> and include it in the <code class="docutils literal notranslate"><span class="pre">home.html</span></code> view.</p>
@@ -953,13 +961,13 @@ Disadvantages:</p></li>
 </section>
 </section>
 <section id="queryset">
-<h2><span class="section-number">15.12. </span>QuerySet<a class="headerlink" href="#queryset" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.12. </span>QuerySet<a class="headerlink" href="#queryset" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A <code class="docutils literal notranslate"><span class="pre">QuerySet</span></code> is a collection of database queries in Django.</p></li>
 <li><p>It allows you to retrieve, filter, and manipulate data from the database.</p></li>
 </ul>
 <section id="create-a-userposts-view">
-<h3><span class="section-number">15.12.1. </span>Create a UserPosts View<a class="headerlink" href="#create-a-userposts-view" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.12.1. </span>Create a UserPosts View<a class="headerlink" href="#create-a-userposts-view" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>To <strong>list posts by a specific user</strong> and implement pagination for these posts.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">get_queryset</span></code>: The<code class="docutils literal notranslate"> <span class="pre">get_queryset</span></code> method is used to filter the posts by the specific user passed in the URL.</p></li>
@@ -988,7 +996,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="construct-userposts-template">
-<h3><span class="section-number">15.12.2. </span>Construct UserPosts Template<a class="headerlink" href="#construct-userposts-template" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.12.2. </span>Construct UserPosts Template<a class="headerlink" href="#construct-userposts-template" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Create a template named <code class="docutils literal notranslate"><span class="pre">user_posts.html</span></code>.</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends &#39;blog/main.html&#39; %}
@@ -1024,7 +1032,7 @@ Disadvantages:</p></li>
 </ul>
 </section>
 <section id="construct-url-pattern-for-user-posts">
-<h3><span class="section-number">15.12.3. </span>Construct URL Pattern for User Posts<a class="headerlink" href="#construct-url-pattern-for-user-posts" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.12.3. </span>Construct URL Pattern for User Posts<a class="headerlink" href="#construct-url-pattern-for-user-posts" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Define the URL pattern for the <code class="docutils literal notranslate"><span class="pre">UserPostsView</span></code> to filter posts by a specific user.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
@@ -1039,9 +1047,9 @@ Disadvantages:</p></li>
 </section>
 </section>
 <section id="additional-resource">
-<h2><span class="section-number">15.13. </span>Additional Resource<a class="headerlink" href="#additional-resource" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.13. </span>Additional Resource<a class="headerlink" href="#additional-resource" title="Link to this heading">#</a></h2>
 <section id="built-in-generic-views">
-<h3><span class="section-number">15.13.1. </span>Built-in generic views<a class="headerlink" href="#built-in-generic-views" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.13.1. </span>Built-in generic views<a class="headerlink" href="#built-in-generic-views" title="Link to this heading">#</a></h3>
 <table>
   <tr>
     <th>View</th>
@@ -1187,7 +1195,7 @@ class PostDeleteView(DeleteView):
 </table>
 </section>
 <section id="pagination-object-in-django">
-<h3><span class="section-number">15.13.2. </span>Pagination Object in Django<a class="headerlink" href="#pagination-object-in-django" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.13.2. </span>Pagination Object in Django<a class="headerlink" href="#pagination-object-in-django" title="Link to this heading">#</a></h3>
 <table>
   <tr>
     <th>Parameter/Method</th>
@@ -1251,7 +1259,7 @@ class PostDeleteView(DeleteView):
   </tr>
 </table>
 <section id="example">
-<h4><span class="section-number">15.13.2.1. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">17.13.2.1. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p>Displaying Current Page Number:</p></li>
 </ol>
@@ -1303,7 +1311,7 @@ class PostDeleteView(DeleteView):
 </section>
 </section>
 <section id="key-features-of-django-queryset">
-<h3><span class="section-number">15.13.3. </span>Key Features of Django QuerySet:<a class="headerlink" href="#key-features-of-django-queryset" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.13.3. </span>Key Features of Django QuerySet:<a class="headerlink" href="#key-features-of-django-queryset" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Filtering (<code class="docutils literal notranslate"><span class="pre">filter()</span></code>)</strong>: Returns a new QuerySet containing objects that match the given lookup parameters.</p></li>
 </ol>
@@ -1391,7 +1399,7 @@ class PostDeleteView(DeleteView):
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1400,7 +1408,7 @@ class PostDeleteView(DeleteView):
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>User Authentication Tutorial</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>User Authentication Tutorial</p>
       </div>
     </a>
     <a class="right-next"
@@ -1408,7 +1416,7 @@ class PostDeleteView(DeleteView):
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Customizing the Django Admin</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>Customizing the Django Admin</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1428,50 +1436,50 @@ class PostDeleteView(DeleteView):
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs">15.1. Introduction to Class-Based Views (CBVs) vs. Function-Based Views (FBVs)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-views-cbvs">15.1.1. Class-Based Views (CBVs):</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based-views-fbvs">15.1.2. Function-Based Views (FBVs):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-class-based-views-cbvs-vs-function-based-views-fbvs">17.1. Introduction to Class-Based Views (CBVs) vs. Function-Based Views (FBVs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-based-views-cbvs">17.1.1. Class-Based Views (CBVs):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-based-views-fbvs">17.1.2. Function-Based Views (FBVs):</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-post-create-view">15.2. Step 1: Create Post Create View</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">15.2.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-post-create-view">17.2. Step 1: Create Post Create View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">17.2.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-post-update-view">15.3. Step 2: Create Post Update View</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.3.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-create-post-update-view">17.3. Step 2: Create Post Update View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.3.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-template-for-post-create-and-update-views">15.4. Step 3: Set Template for Post Create and Update Views</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step4-set-post-delete-view">15.5. Step4: Set Post Delete View</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.5.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-template-for-post-create-and-update-views">17.4. Step 3: Set Template for Post Create and Update Views</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step4-set-post-delete-view">17.5. Step4: Set Post Delete View</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">17.5.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-construct-post-confirm-delete-template">15.6. Step 5: Construct Post Confirm Delete Template</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-set-post-detail-view">15.7. Step 6: Set Post Detail View</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-construct-post-detail-template">15.8. Step 7: Construct Post Detail Template</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.8.1. Notes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-construct-post-confirm-delete-template">17.6. Step 5: Construct Post Confirm Delete Template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-set-post-detail-view">17.7. Step 6: Set Post Detail View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-construct-post-detail-template">17.8. Step 7: Construct Post Detail Template</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">17.8.1. Notes:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-construct-url-patterns">15.9. Step 8: Construct URL Patterns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination">15.10. Pagination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.11. Pagination</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-pagination-to-postlistview">15.11.1. Add Pagination to PostListView</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-pagination-template">15.11.2. Create a Pagination Template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-construct-url-patterns">17.9. Step 8: Construct URL Patterns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination">17.10. Pagination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">17.11. Pagination</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-pagination-to-postlistview">17.11.1. Add Pagination to PostListView</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-pagination-template">17.11.2. Create a Pagination Template</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset">15.12. QuerySet</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-userposts-view">15.12.1. Create a UserPosts View</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-userposts-template">15.12.2. Construct UserPosts Template</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-url-pattern-for-user-posts">15.12.3. Construct URL Pattern for User Posts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryset">17.12. QuerySet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-userposts-view">17.12.1. Create a UserPosts View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-userposts-template">17.12.2. Construct UserPosts Template</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-url-pattern-for-user-posts">17.12.3. Construct URL Pattern for User Posts</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resource">15.13. Additional Resource</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-generic-views">15.13.1. Built-in generic views</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-object-in-django">15.13.2. Pagination Object in Django</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">15.13.2.1. Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resource">17.13. Additional Resource</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-generic-views">17.13.1. Built-in generic views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-object-in-django">17.13.2. Pagination Object in Django</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">17.13.2.1. Example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-django-queryset">15.13.3. Key Features of Django QuerySet:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-django-queryset">17.13.3. Key Features of Django QuerySet:</a></li>
 </ul>
 </li>
 </ul>
@@ -1522,8 +1530,8 @@ By Yalin Yang
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
