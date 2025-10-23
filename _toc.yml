@@ -5,6 +5,11 @@ format: jb-book
 root: index
 
 parts:
+  - caption: General 
+    numbered: true
+    chapters:
+      - file: docs/General/01-Emmet_Comprehensive_Tutorial
+      - file: docs/General/02-Git_Beginner_Practical_Guide
   - caption: CSS
     numbered: true
     chapters:
@@ -31,6 +36,8 @@ parts:
       - file: docs/JS/ArcGIS/01-get-started
       - file: docs/JS/ArcGIS/02-manipulate-layers
       - file: docs/JS/ArcGIS/03-spatial-query
+      - file: docs/JS/esri_js/01-intro
+      - file: docs/JS/esri_js/02-selection
   - caption: Django Blog Project
     numbered: true
     maxdepth: 2
@@ -57,7 +64,4 @@ parts:
     maxdepth: 2
     chapters:
       - file: docs/Cesium/01-Introduction
-  # - caption: Appendix
-  #   chapters:
-  #     - file: book/gee/bibliography
-  #     - file: book/gee/issues
+
