@@ -8,6 +8,7 @@ parts:
   - caption: General 
     numbered: true
     chapters:
+      - file: docs/General/WCAG_2_1_AA_Developer_Checklist
       - file: docs/General/01-Emmet_Comprehensive_Tutorial
       - file: docs/General/02-Git_Beginner_Practical_Guide
   - caption: CSS
