@@ -16,13 +16,7 @@ if errorlevel 1 (
 
 echo.
 echo [2/2] ghp-import -n -p -f _build\html
-ghp-import -n -p -f _build\html
-if errorlevel 1 (
-  echo.
-  echo [FAILED] ghp-import returned %errorlevel%.
-  echo.
-  goto :PAUSE
-)
+python publish.py
 
 echo.
 echo [OK] Done.

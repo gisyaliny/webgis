@@ -68,6 +68,9 @@ parts:
     maxdepth: 2
     chapters:
       - file: docs/React/01-get-started
+      - file: docs/React/02_JSX
+      - file: docs/React/03_Components
+      - file: docs/React/04_Class_Components
   - caption: Cesium
     numbered: true
     maxdepth: 2
