@@ -25,6 +25,14 @@ parts:
       - file: docs/JS/01-JS-intro
       - file: docs/JS/03-loop-and-logic
       - file: docs/JS/02-Arrays-and-Object
+  - caption: ES6 Modern JavaScript
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: docs/ES6/01_Core_Syntax
+      - file: docs/ES6/02_Data_Handling
+      - file: docs/ES6/03_Architecture_Classes
+      - file: docs/ES6/04_Async_Advanced
   - caption: JS Examples
     numbered: true
     maxdepth: 2
