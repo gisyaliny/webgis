@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>11. ES6 Module 1: Core Syntax Fundamentals &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/ES6/01_Core_Syntax';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/ES6/01_Core_Syntax.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="12. ES6 Module 2: Data Handling &amp; Structures" href="02_Data_Handling.html" />
+    <link rel="prev" title="10. Array and Object (Dictionary)" href="../JS/02-Arrays-and-Object.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/WCAG_2_1_AA_Developer_Checklist.html">1. WCAG 2.1 AA — Developer Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">2. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">3. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">4. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">5. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">6. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">7. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">8. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">9. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">15. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">16. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">17. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">18. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/01-intro.html">19. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/02-selection.html">20. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">21. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">22. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">23. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">24. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">25. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">26. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">27. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">28. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">29. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">30. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/ES6/01_Core_Syntax.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/ES6/01_Core_Syntax.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/ES6/01_Core_Syntax.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/ES6/01_Core_Syntax.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/ES6/01_Core_Syntax.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ES6 Module 1: Core Syntax Fundamentals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-es6-ecmascript-2015">11.1. 1. Introduction to ES6 (ECMAScript 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-declarations-let-and-const">11.2. 2. Variable Declarations: <code class="docutils literal notranslate"><span class="pre">let</span></code> and <code class="docutils literal notranslate"><span class="pre">const</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let">11.2.1. <code class="docutils literal notranslate"><span class="pre">let</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#const">11.2.2. <code class="docutils literal notranslate"><span class="pre">const</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrow-functions">11.3. 3. Arrow Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">11.3.1. Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-binding">11.3.2. <code class="docutils literal notranslate"><span class="pre">this</span></code> Binding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#template-literals">11.4. 4. Template Literals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-parameters">11.5. 5. Default Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-core-syntax">11.6. 🔴 Quiz: Core Syntax</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="es6-module-1-core-syntax-fundamentals">
+<h1><span class="section-number">11. </span>ES6 Module 1: Core Syntax Fundamentals<a class="headerlink" href="#es6-module-1-core-syntax-fundamentals" title="Link to this heading">#</a></h1>
+<section id="introduction-to-es6-ecmascript-2015">
+<h2><span class="section-number">11.1. </span>1. Introduction to ES6 (ECMAScript 2015)<a class="headerlink" href="#introduction-to-es6-ecmascript-2015" title="Link to this heading">#</a></h2>
+<p>ES6 was a major update to JavaScript that included dozens of new features. It standardized many coding patterns that previously required libraries or hacks. It makes code more concise, readable, and safer.</p>
+</section>
+<hr class="docutils" />
+<section id="variable-declarations-let-and-const">
+<h2><span class="section-number">11.2. </span>2. Variable Declarations: <code class="docutils literal notranslate"><span class="pre">let</span></code> and <code class="docutils literal notranslate"><span class="pre">const</span></code><a class="headerlink" href="#variable-declarations-let-and-const" title="Link to this heading">#</a></h2>
+<p>Before ES6, <code class="docutils literal notranslate"><span class="pre">var</span></code> was the only way to declare variables. <code class="docutils literal notranslate"><span class="pre">var</span></code> has function scope and can be hoisted, which often leads to bugs.</p>
+<section id="let">
+<h3><span class="section-number">11.2.1. </span><code class="docutils literal notranslate"><span class="pre">let</span></code><a class="headerlink" href="#let" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Block Scoped</strong>: Only available within the <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> block where it’s defined.</p></li>
+<li><p><strong>Can be reassigned</strong>: Just like <code class="docutils literal notranslate"><span class="pre">var</span></code> (but safer).</p></li>
+<li><p><strong>No Hoisting</strong>: Cannot be accessed before declaration (Temporal Dead Zone).</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// console.log(x); // Error: x is not defined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span><span class="w"> </span><span class="c1">// 20 (var leaks out of blocks)</span>
+</pre></div>
+</div>
+</section>
+<section id="const">
+<h3><span class="section-number">11.2.2. </span><code class="docutils literal notranslate"><span class="pre">const</span></code><a class="headerlink" href="#const" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Block Scoped</strong>.</p></li>
+<li><p><strong>Cannot be reassigned</strong>: Must be initialized immediately.</p></li>
+<li><p><strong>Immutable Binding</strong>: The <em>variable</em> cannot point to a new value, but if it holds an object/array, the <em>contents</em> can still change.</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span>
+<span class="c1">// PI = 3; // Error: Assignment to constant variable.</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// Allowed! (Mutating the object, not reass. binding)</span>
+</pre></div>
+</div>
+<p><strong>Best Practice:</strong> Use <code class="docutils literal notranslate"><span class="pre">const</span></code> by default. Only use <code class="docutils literal notranslate"><span class="pre">let</span></code> when you know the value will change (like a loop counter). Avoid <code class="docutils literal notranslate"><span class="pre">var</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="arrow-functions">
+<h2><span class="section-number">11.3. </span>3. Arrow Functions<a class="headerlink" href="#arrow-functions" title="Link to this heading">#</a></h2>
+<p>Arrow functions provide a shorter syntax for writing function expressions and do not have their own <code class="docutils literal notranslate"><span class="pre">this</span></code>.</p>
+<section id="syntax">
+<h3><span class="section-number">11.3.1. </span>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ES5</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// ES6</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// Implicit return</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">square</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w">   </span><span class="c1">// Single arg doesn&#39;t need parens</span>
+</pre></div>
+</div>
+</section>
+<section id="this-binding">
+<h3><span class="section-number">11.3.2. </span><code class="docutils literal notranslate"><span class="pre">this</span></code> Binding<a class="headerlink" href="#this-binding" title="Link to this heading">#</a></h3>
+<p>Arrow functions inherit <code class="docutils literal notranslate"><span class="pre">this</span></code> from the surrounding scope (lexical scoping).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ES5 Problem</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#39;this&#39; refers to the global object or undefined!</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ES6 Solution</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Person</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">setInterval</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// &#39;this&#39; correctly refers to the Person instance</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="template-literals">
+<h2><span class="section-number">11.4. </span>4. Template Literals<a class="headerlink" href="#template-literals" title="Link to this heading">#</a></h2>
+<p>Template literals allow embedded expressions and multi-line strings using backticks (<code class="docutils literal notranslate"><span class="pre">`</span></code>).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;World&quot;</span><span class="p">;</span>
+
+<span class="c1">// Interpolation</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">);</span>
+
+<span class="c1">// Multi-line</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">  &lt;div&gt;</span>
+<span class="sb">    &lt;h1&gt;Title&lt;/h1&gt;</span>
+<span class="sb">  &lt;/div&gt;</span>
+<span class="sb">`</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="default-parameters">
+<h2><span class="section-number">11.5. </span>5. Default Parameters<a class="headerlink" href="#default-parameters" title="Link to this heading">#</a></h2>
+<p>You can now define default values for function parameters directly in the signature.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Guest&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hello, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">greet</span><span class="p">();</span><span class="w"> </span><span class="c1">// &quot;Hello, Guest&quot;</span>
+<span class="nx">greet</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;Hello, John&quot;</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="quiz-core-syntax">
+<h2><span class="section-number">11.6. </span>🔴 Quiz: Core Syntax<a class="headerlink" href="#quiz-core-syntax" title="Link to this heading">#</a></h2>
+<p><strong>Q1: What will the following code output?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;green&#39;</span><span class="p">];</span>
+<span class="nx">colors</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">colors</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A) Error (Assignment to constant)
+B) <code class="docutils literal notranslate"><span class="pre">['red',</span> <span class="pre">'green',</span> <span class="pre">'blue']</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">['red',</span> <span class="pre">'green']</span></code></p>
+<p><strong>Q2: Which statement applies to arrow functions?</strong>
+A) They have their own <code class="docutils literal notranslate"><span class="pre">this</span></code> context.
+B) They are hoisted.
+C) They inherit <code class="docutils literal notranslate"><span class="pre">this</span></code> from the surrounding code.</p>
+<p><strong>Q3: What happens if you try to log a <code class="docutils literal notranslate"><span class="pre">let</span></code> variable before it is declared?</strong>
+A) It logs <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.
+B) It throws a ReferenceError.
+C) It logs <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<details>
+<summary><strong>See Answers</strong></summary>
+<p><strong>A1: B.</strong> You can mutate the contents of a const array.
+<strong>A2: C.</strong> Arrow functions use lexical scoping for <code class="docutils literal notranslate"><span class="pre">this</span></code>.
+<strong>A3: B.</strong> Accessing a <code class="docutils literal notranslate"><span class="pre">let</span></code> variable in the Temporal Dead Zone throws an error.</p>
+</details>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\ES6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../JS/02-Arrays-and-Object.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Array and Object (Dictionary)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_Data_Handling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>ES6 Module 2: Data Handling &amp; Structures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-es6-ecmascript-2015">11.1. 1. Introduction to ES6 (ECMAScript 2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-declarations-let-and-const">11.2. 2. Variable Declarations: <code class="docutils literal notranslate"><span class="pre">let</span></code> and <code class="docutils literal notranslate"><span class="pre">const</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let">11.2.1. <code class="docutils literal notranslate"><span class="pre">let</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#const">11.2.2. <code class="docutils literal notranslate"><span class="pre">const</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrow-functions">11.3. 3. Arrow Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">11.3.1. Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-binding">11.3.2. <code class="docutils literal notranslate"><span class="pre">this</span></code> Binding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#template-literals">11.4. 4. Template Literals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-parameters">11.5. 5. Default Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-core-syntax">11.6. 🔴 Quiz: Core Syntax</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

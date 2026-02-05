@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>12. ES6 Module 2: Data Handling &amp; Structures &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/ES6/02_Data_Handling';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/ES6/02_Data_Handling.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13. ES6 Module 3: Architecture (Classes &amp; Modules)" href="03_Architecture_Classes.html" />
+    <link rel="prev" title="11. ES6 Module 1: Core Syntax Fundamentals" href="01_Core_Syntax.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/WCAG_2_1_AA_Developer_Checklist.html">1. WCAG 2.1 AA — Developer Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">2. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">3. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">4. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">5. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">6. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">7. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">8. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">9. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">15. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">16. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">17. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">18. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/01-intro.html">19. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/02-selection.html">20. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">21. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">22. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">23. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">24. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">25. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">26. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">27. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">28. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">29. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">30. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/ES6/02_Data_Handling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/ES6/02_Data_Handling.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/ES6/02_Data_Handling.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/ES6/02_Data_Handling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/ES6/02_Data_Handling.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ES6 Module 2: Data Handling & Structures</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#destructuring-assignment">12.1. 1. Destructuring Assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-destructuring">12.1.1. Object Destructuring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-destructuring">12.1.2. Array Destructuring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#destructuring-in-react-components">12.1.3. Destructuring in React Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#props-destructuring">12.1.3.1. Props Destructuring</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usestate-hook-destructuring">12.1.3.2. useState Hook Destructuring</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-destructuring-in-react">12.1.3.3. Nested Destructuring in React</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#destructuring-with-default-values-in-react">12.1.3.4. Destructuring with Default Values in React</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spread-and-rest-operators">12.2. 2. Spread and Rest Operators (<code class="docutils literal notranslate"><span class="pre">...</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spread-expand-elements">12.2.1. Spread (Expand elements)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-collect-elements">12.2.2. Rest (Collect elements)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-string-number-methods">12.3. 3. New String &amp; Number Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-of-loop">12.4. 4. <code class="docutils literal notranslate"><span class="pre">for...of</span></code> Loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-and-sets">12.5. 5. Maps and Sets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map">12.5.1. <code class="docutils literal notranslate"><span class="pre">Map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set">12.5.2. <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-data-handling">12.6. 🔴 Quiz: Data Handling</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="es6-module-2-data-handling-structures">
+<h1><span class="section-number">12. </span>ES6 Module 2: Data Handling &amp; Structures<a class="headerlink" href="#es6-module-2-data-handling-structures" title="Link to this heading">#</a></h1>
+<section id="destructuring-assignment">
+<h2><span class="section-number">12.1. </span>1. Destructuring Assignment<a class="headerlink" href="#destructuring-assignment" title="Link to this heading">#</a></h2>
+<p>Destructuring allows you to unpack values from arrays or properties from objects into distinct variables.</p>
+<section id="object-destructuring">
+<h3><span class="section-number">12.1.1. </span>Object Destructuring<a class="headerlink" href="#object-destructuring" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span><span class="w"> </span>
+<span class="p">};</span>
+
+<span class="c1">// Extracting properties</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;Alice&quot;</span>
+
+<span class="c1">// Aliasing</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">userName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">userName</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;Alice&quot;</span>
+
+<span class="c1">// Default values</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="array-destructuring">
+<h3><span class="section-number">12.1.2. </span>Array Destructuring<a class="headerlink" href="#array-destructuring" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">rgb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">255</span><span class="p">,</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">red</span><span class="p">,</span><span class="w"> </span><span class="nx">green</span><span class="p">,</span><span class="w"> </span><span class="nx">blue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rgb</span><span class="p">;</span>
+
+<span class="c1">// Skipping items</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">first</span><span class="p">,</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nx">third</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+</section>
+<section id="destructuring-in-react-components">
+<h3><span class="section-number">12.1.3. </span>Destructuring in React Components<a class="headerlink" href="#destructuring-in-react-components" title="Link to this heading">#</a></h3>
+<p>Destructuring is particularly useful in React for working with props, hooks, and API responses. It helps make your code more concise and easier to read.</p>
+<section id="props-destructuring">
+<h4><span class="section-number">12.1.3.1. </span>Props Destructuring<a class="headerlink" href="#props-destructuring" title="Link to this heading">#</a></h4>
+<p>When a component receives props, you can use destructuring to extract the values you need.</p>
+<p>Check out the difference between using and not using destructuring:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using destructuring:</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Greeting</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!</span><span class="w"> </span><span class="nx">You</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="p">{</span><span class="nx">age</span><span class="p">}</span><span class="w"> </span><span class="nx">years</span><span class="w"> </span><span class="nx">old</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="p">}</span>
+
+<span class="c1">// NOT using destructuring:</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Greeting</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!</span><span class="w"> </span><span class="nx">You</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">age</span><span class="p">}</span><span class="w"> </span><span class="nx">years</span><span class="w"> </span><span class="nx">old</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong> Using destructuring to extract props:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">Greeting</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!</span><span class="w"> </span><span class="nx">You</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="p">{</span><span class="nx">age</span><span class="p">}</span><span class="w"> </span><span class="nx">years</span><span class="w"> </span><span class="nx">old</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="p">}</span>
+<span class="w">  </span>
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)).</span><span class="nx">render</span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">Greeting</span><span class="w"> </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="w"> </span><span class="nx">age</span><span class="o">=</span><span class="p">{</span><span class="mf">25</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="usestate-hook-destructuring">
+<h4><span class="section-number">12.1.3.2. </span>useState Hook Destructuring<a class="headerlink" href="#usestate-hook-destructuring" title="Link to this heading">#</a></h4>
+<p>When a component uses the <code class="docutils literal notranslate"><span class="pre">useState</span></code> hook, we use destructuring to extract the values from it.</p>
+<p><strong>Example:</strong> Using destructuring to extract values from useState:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">Counter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Destructuring the array returned by useState</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="nx">Count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)).</span><span class="nx">render</span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">Counter</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-destructuring-in-react">
+<h4><span class="section-number">12.1.3.3. </span>Nested Destructuring in React<a class="headerlink" href="#nested-destructuring-in-react" title="Link to this heading">#</a></h4>
+<p>You can also destructure nested objects, which is common when working with API responses:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">UserProfile</span><span class="p">({</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Nested destructuring</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nx">address</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">city</span><span class="p">,</span><span class="w"> </span><span class="nx">country</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">city</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">country</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">address</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New York&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">country</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;USA&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="o">&lt;</span><span class="nx">UserProfile</span><span class="w"> </span><span class="nx">user</span><span class="o">=</span><span class="p">{</span><span class="nx">userData</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="destructuring-with-default-values-in-react">
+<h4><span class="section-number">12.1.3.4. </span>Destructuring with Default Values in React<a class="headerlink" href="#destructuring-with-default-values-in-react" title="Link to this heading">#</a></h4>
+<p>Provide fallback values for props that might be undefined:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Button</span><span class="p">({</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Click me&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">variant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;primary&quot;</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">variant</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">text</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/button&gt;;</span>
+<span class="p">}</span>
+
+<span class="c1">// If no props are passed, defaults will be used</span>
+<span class="o">&lt;</span><span class="nx">Button</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"> </span><span class="c1">// Renders: &lt;button class=&quot;primary&quot;&gt;Click me&lt;/button&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="spread-and-rest-operators">
+<h2><span class="section-number">12.2. </span>2. Spread and Rest Operators (<code class="docutils literal notranslate"><span class="pre">...</span></code>)<a class="headerlink" href="#spread-and-rest-operators" title="Link to this heading">#</a></h2>
+<p>The “three dots” operator behaves differently depending on context.</p>
+<section id="spread-expand-elements">
+<h3><span class="section-number">12.2.1. </span>Spread (Expand elements)<a class="headerlink" href="#spread-expand-elements" title="Link to this heading">#</a></h3>
+<p>Used to expand an array/object into individual elements.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Arrays</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">arr1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">arr2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">];</span><span class="w"> </span><span class="c1">// [1, 2, 3, 4]</span>
+
+<span class="c1">// Objects (ES2018, often grouped with ES6 learning)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">defaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">theme</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;dark&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">showNav</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">userSettings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="nx">defaults</span><span class="p">,</span><span class="w"> </span><span class="nx">showNav</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">};</span><span class="w"> </span>
+<span class="c1">// { theme: &quot;dark&quot;, showNav: false } (overrides match)</span>
+</pre></div>
+</div>
+</section>
+<section id="rest-collect-elements">
+<h3><span class="section-number">12.2.2. </span>Rest (Collect elements)<a class="headerlink" href="#rest-collect-elements" title="Link to this heading">#</a></h3>
+<p>Used to collect multiple elements into a single array.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Function parameters</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">sum</span><span class="p">(...</span><span class="nx">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// 10</span>
+
+<span class="c1">// Destructuring leftovers</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">head</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="nx">tail</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">];</span>
+<span class="c1">// head = 1, tail = [2, 3, 4]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="new-string-number-methods">
+<h2><span class="section-number">12.3. </span>3. New String &amp; Number Methods<a class="headerlink" href="#new-string-number-methods" title="Link to this heading">#</a></h2>
+<p>ES6 added convenient helper methods.</p>
+<ul class="simple">
+<li><p><strong>String</strong>: <code class="docutils literal notranslate"><span class="pre">startsWith()</span></code>, <code class="docutils literal notranslate"><span class="pre">endsWith()</span></code>, <code class="docutils literal notranslate"><span class="pre">includes()</span></code>, <code class="docutils literal notranslate"><span class="pre">repeat()</span></code>.</p></li>
+<li><p><strong>Number</strong>: <code class="docutils literal notranslate"><span class="pre">Number.isNaN()</span></code>, <code class="docutils literal notranslate"><span class="pre">Number.isFinite()</span></code>, <code class="docutils literal notranslate"><span class="pre">Number.isInteger()</span></code>.</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Hello World&quot;</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;World&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// true</span>
+<span class="s2">&quot;abc&quot;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;abcabcabc&quot;</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="for-of-loop">
+<h2><span class="section-number">12.4. </span>4. <code class="docutils literal notranslate"><span class="pre">for...of</span></code> Loop<a class="headerlink" href="#for-of-loop" title="Link to this heading">#</a></h2>
+<p>A new loop syntax for iterating over iterable objects (Arrays, Strings, Maps, Sets).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">fruits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;banana&quot;</span><span class="p">];</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">fruit</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">fruits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruit</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Unlike for...in, this iterates values, not keys/indices.</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="maps-and-sets">
+<h2><span class="section-number">12.5. </span>5. Maps and Sets<a class="headerlink" href="#maps-and-sets" title="Link to this heading">#</a></h2>
+<p>New built-in data structures.</p>
+<section id="map">
+<h3><span class="section-number">12.5.1. </span><code class="docutils literal notranslate"><span class="pre">Map</span></code><a class="headerlink" href="#map" title="Link to this heading">#</a></h3>
+<p>A collection of keyed data items, similar to an Object, but keys can be of <strong>any</strong> type.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;str1&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// string key</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;num1&#39;</span><span class="p">);</span><span class="w">     </span><span class="c1">// numeric key</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bool1&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// boolean key</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span><span class="w"> </span><span class="c1">// &#39;num1&#39;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">map</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span><span class="w">   </span><span class="c1">// 3</span>
+</pre></div>
+</div>
+</section>
+<section id="set">
+<h3><span class="section-number">12.5.2. </span><code class="docutils literal notranslate"><span class="pre">Set</span></code><a class="headerlink" href="#set" title="Link to this heading">#</a></h3>
+<p>A collection of <strong>unique</strong> values.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">set</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set { 1, 2, 3 } (duplicates removed)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quiz-data-handling">
+<h2><span class="section-number">12.6. </span>🔴 Quiz: Data Handling<a class="headerlink" href="#quiz-data-handling" title="Link to this heading">#</a></h2>
+<p><strong>Q1: What is the value of <code class="docutils literal notranslate"><span class="pre">b</span></code> in: <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">[a,</span> <span class="pre">...b]</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code>?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">2</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code></p>
+<p><strong>Q2: Which operator allows you to merge two objects?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">combine</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">...</span></code> (Spread)
+C) <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code></p>
+<p><strong>Q3: Can a <code class="docutils literal notranslate"><span class="pre">Map</span></code> use an object as a key?</strong>
+A) Yes
+B) No, only strings
+C) No, only numbers and strings</p>
+<details>
+<summary><strong>See Answers</strong></summary>
+<p><strong>A1: B.</strong> The rest operator collects the remaining elements into an array.
+<strong>A2: B.</strong> <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">merged</span> <span class="pre">=</span> <span class="pre">{</span> <span class="pre">...obj1,</span> <span class="pre">...obj2</span> <span class="pre">};</span></code>
+<strong>A3: A.</strong> Yes, Maps allow keys of any type, including objects.</p>
+</details>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\ES6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_Core_Syntax.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>ES6 Module 1: Core Syntax Fundamentals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_Architecture_Classes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>ES6 Module 3: Architecture (Classes &amp; Modules)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#destructuring-assignment">12.1. 1. Destructuring Assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-destructuring">12.1.1. Object Destructuring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-destructuring">12.1.2. Array Destructuring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#destructuring-in-react-components">12.1.3. Destructuring in React Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#props-destructuring">12.1.3.1. Props Destructuring</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usestate-hook-destructuring">12.1.3.2. useState Hook Destructuring</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-destructuring-in-react">12.1.3.3. Nested Destructuring in React</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#destructuring-with-default-values-in-react">12.1.3.4. Destructuring with Default Values in React</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spread-and-rest-operators">12.2. 2. Spread and Rest Operators (<code class="docutils literal notranslate"><span class="pre">...</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spread-expand-elements">12.2.1. Spread (Expand elements)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rest-collect-elements">12.2.2. Rest (Collect elements)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-string-number-methods">12.3. 3. New String &amp; Number Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-of-loop">12.4. 4. <code class="docutils literal notranslate"><span class="pre">for...of</span></code> Loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-and-sets">12.5. 5. Maps and Sets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map">12.5.1. <code class="docutils literal notranslate"><span class="pre">Map</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set">12.5.2. <code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-data-handling">12.6. 🔴 Quiz: Data Handling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

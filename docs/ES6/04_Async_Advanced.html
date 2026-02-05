@@ -1,0 +1,1192 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>14. ES6 Module 4: Async &amp; Advanced Concepts &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/ES6/04_Async_Advanced';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/ES6/04_Async_Advanced.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15. Creating a Sortable HTML Table with JavaScript" href="../JS/Examples/Sort-Tables.html" />
+    <link rel="prev" title="13. ES6 Module 3: Architecture (Classes &amp; Modules)" href="03_Architecture_Classes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/WCAG_2_1_AA_Developer_Checklist.html">1. WCAG 2.1 AA — Developer Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">2. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">3. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">4. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">5. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">6. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">7. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">8. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">9. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">15. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">16. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">17. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">18. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/01-intro.html">19. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/02-selection.html">20. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">21. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">22. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">23. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">24. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">25. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">26. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">27. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">28. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">29. React and TypeScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">30. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/ES6/04_Async_Advanced.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/ES6/04_Async_Advanced.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/ES6/04_Async_Advanced.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/ES6/04_Async_Advanced.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/ES6/04_Async_Advanced.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ES6 Module 4: Async & Advanced Concepts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#promises">14.1. 1. Promises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">14.1.1. States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-promise-usage">14.1.2. Basic Promise Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-fetching-user-data">14.1.3. Real Example: Fetching User Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-all-run-multiple-promises-in-parallel">14.1.4. Promise.all() - Run Multiple Promises in Parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-race-first-to-finish-wins">14.1.5. Promise.race() - First to Finish Wins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-allsettled-wait-for-all-regardless-of-outcome">14.1.6. Promise.allSettled() - Wait for All, Regardless of Outcome</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-any-first-success-wins">14.1.7. Promise.any() - First Success Wins</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbols">14.2. 2. Symbols</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-evolution">14.3. 3. Best Practices &amp; Evolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-vs-const">14.3.1. <code class="docutils literal notranslate"><span class="pre">let</span></code> vs <code class="docutils literal notranslate"><span class="pre">const</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrow-functions">14.3.2. Arrow Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-shorthand">14.3.3. Object Shorthand</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-async-await-es2017">14.3.4. Looking Ahead: <code class="docutils literal notranslate"><span class="pre">async</span></code> / <code class="docutils literal notranslate"><span class="pre">await</span></code> (ES2017)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-async-await">14.3.4.1. Basic async/await</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-sequential-api-calls">14.3.4.2. Real Example: Sequential API Calls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-parallel-execution-with-async-await">14.3.4.3. Real Example: Parallel Execution with async/await</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-patterns">14.3.4.4. Error Handling Patterns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-api-with-retry-logic">14.3.4.5. Real Example: API with Retry Logic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#async-functions-always-return-promises">14.3.4.6. Async Functions Always Return Promises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-async-advanced">14.4. 🔴 Quiz: Async &amp; Advanced</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="es6-module-4-async-advanced-concepts">
+<h1><span class="section-number">14. </span>ES6 Module 4: Async &amp; Advanced Concepts<a class="headerlink" href="#es6-module-4-async-advanced-concepts" title="Link to this heading">#</a></h1>
+<section id="promises">
+<h2><span class="section-number">14.1. </span>1. Promises<a class="headerlink" href="#promises" title="Link to this heading">#</a></h2>
+<p>Promises provide a cleaner way to handle asynchronous operations compared to callback hell. A Promise represents a value that may be available now, in the future, or never.</p>
+<section id="states">
+<h3><span class="section-number">14.1.1. </span>States<a class="headerlink" href="#states" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Pending</strong>: Initial state.</p></li>
+<li><p><strong>Fulfilled</strong>: Operation completed successfully.</p></li>
+<li><p><strong>Rejected</strong>: Operation failed.</p></li>
+</ul>
+</section>
+<section id="basic-promise-usage">
+<h3><span class="section-number">14.1.2. </span>Basic Promise Usage<a class="headerlink" href="#basic-promise-usage" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">fetchData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Data received!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;Connection error.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">fetchData</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span><span class="w">      </span><span class="c1">// Output: &quot;Data received!&quot;</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">finally</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// Output: &quot;Done.&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="real-example-fetching-user-data">
+<h3><span class="section-number">14.1.3. </span>Real Example: Fetching User Data<a class="headerlink" href="#real-example-fetching-user-data" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">getUserData</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="mf">2</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;User&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">      </span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">[</span><span class="nx">userId</span><span class="p">];</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="sb">`User </span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb"> not found`</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Using the promise</span>
+<span class="nx">getUserData</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+<span class="w">  </span>
+<span class="c1">// Output: { id: 1, name: &quot;Alice&quot;, role: &quot;Admin&quot; }</span>
+</pre></div>
+</div>
+</section>
+<section id="promise-all-run-multiple-promises-in-parallel">
+<h3><span class="section-number">14.1.4. </span>Promise.all() - Run Multiple Promises in Parallel<a class="headerlink" href="#promise-all-run-multiple-promises-in-parallel" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Promise.all()</span></code> waits for <strong>all</strong> promises to resolve, or fails immediately if <strong>any one</strong> fails.</p>
+<p><strong>Real Example: Fetching Multiple API Endpoints</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Simulating API calls</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">fetchUserProfile</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">({</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;alice@example.com&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">fetchUserPosts</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">([</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;First Post&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Second Post&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">1500</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">fetchUserComments</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">([</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Great article!&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Thanks for sharing&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">800</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// Fetch all data in parallel</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">  </span><span class="nx">fetchUserProfile</span><span class="p">(</span><span class="mf">1</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">fetchUserPosts</span><span class="p">(</span><span class="mf">1</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">fetchUserComments</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(([</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">,</span><span class="w"> </span><span class="nx">comments</span><span class="p">])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Profile:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profile</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Posts:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Comments:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">comments</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="cm">/* Output (after ~1.5 seconds - the longest promise):</span>
+<span class="cm">Profile: { userId: 1, name: &quot;Alice&quot;, email: &quot;alice@example.com&quot; }</span>
+<span class="cm">Posts: [ { id: 1, title: &quot;First Post&quot; }, { id: 2, title: &quot;Second Post&quot; } ]</span>
+<span class="cm">Comments: [ { id: 1, text: &quot;Great article!&quot; }, { id: 2, text: &quot;Thanks for sharing&quot; } ]</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p><strong>Example: Promise.all with Failure</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">promise1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Success 1&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">promise2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;Error in promise 2&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">promise3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Success 3&quot;</span><span class="p">);</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">promise1</span><span class="p">,</span><span class="w"> </span><span class="nx">promise2</span><span class="p">,</span><span class="w"> </span><span class="nx">promise3</span><span class="p">])</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">results</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">));</span>
+
+<span class="c1">// Output: &quot;Failed: Error in promise 2&quot;</span>
+<span class="c1">// Note: Promise.all fails fast - stops at first rejection</span>
+</pre></div>
+</div>
+</section>
+<section id="promise-race-first-to-finish-wins">
+<h3><span class="section-number">14.1.5. </span>Promise.race() - First to Finish Wins<a class="headerlink" href="#promise-race-first-to-finish-wins" title="Link to this heading">#</a></h3>
+<p>Returns the result of the <strong>first</strong> promise to settle (resolve or reject).</p>
+<p><strong>Real Example: Timeout Implementation</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchWithTimeout</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fetchPromise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">(</span><span class="sb">`Data from </span><span class="si">${</span><span class="nx">url</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="mf">3000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">timeoutPromise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;Request timeout!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="nx">timeout</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">race</span><span class="p">([</span><span class="nx">fetchPromise</span><span class="p">,</span><span class="w"> </span><span class="nx">timeoutPromise</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// This will succeed (3000ms &lt; 5000ms timeout)</span>
+<span class="nx">fetchWithTimeout</span><span class="p">(</span><span class="s2">&quot;api.example.com/data&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+<span class="c1">// Output: &quot;Data from api.example.com/data&quot;</span>
+
+<span class="c1">// This will timeout (3000ms &gt; 2000ms timeout)</span>
+<span class="nx">fetchWithTimeout</span><span class="p">(</span><span class="s2">&quot;api.example.com/data&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">2000</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+<span class="c1">// Output: &quot;Request timeout!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="promise-allsettled-wait-for-all-regardless-of-outcome">
+<h3><span class="section-number">14.1.6. </span>Promise.allSettled() - Wait for All, Regardless of Outcome<a class="headerlink" href="#promise-allsettled-wait-for-all-regardless-of-outcome" title="Link to this heading">#</a></h3>
+<p>Returns results of <strong>all</strong> promises, whether they resolve or reject.</p>
+<p><strong>Real Example: Batch Processing with Error Handling</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">uploadFile1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span><span class="w"> </span><span class="nx">file</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;image1.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;uploaded&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">uploadFile2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">({</span><span class="w"> </span><span class="nx">file</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;image2.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;File too large&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">uploadFile3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span><span class="w"> </span><span class="nx">file</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;image3.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;uploaded&quot;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">allSettled</span><span class="p">([</span><span class="nx">uploadFile1</span><span class="p">,</span><span class="w"> </span><span class="nx">uploadFile2</span><span class="p">,</span><span class="w"> </span><span class="nx">uploadFile3</span><span class="p">])</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">results</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">results</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;fulfilled&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✓ Upload </span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">:`</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`✗ Upload </span><span class="si">${</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb">:`</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">✓ Upload 1: { file: &quot;image1.jpg&quot;, status: &quot;uploaded&quot; }</span>
+<span class="cm">✗ Upload 2: { file: &quot;image2.jpg&quot;, error: &quot;File too large&quot; }</span>
+<span class="cm">✓ Upload 3: { file: &quot;image3.jpg&quot;, status: &quot;uploaded&quot; }</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="promise-any-first-success-wins">
+<h3><span class="section-number">14.1.7. </span>Promise.any() - First Success Wins<a class="headerlink" href="#promise-any-first-success-wins" title="Link to this heading">#</a></h3>
+<p>Returns the <strong>first fulfilled</strong> promise, ignoring rejections unless all fail.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">slowServer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Slow server response&quot;</span><span class="p">),</span><span class="w"> </span><span class="mf">3000</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">fastServer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;Fast server response&quot;</span><span class="p">),</span><span class="w"> </span><span class="mf">1000</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">failedServer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;Server down&quot;</span><span class="p">);</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">any</span><span class="p">([</span><span class="nx">slowServer</span><span class="p">,</span><span class="w"> </span><span class="nx">fastServer</span><span class="p">,</span><span class="w"> </span><span class="nx">failedServer</span><span class="p">])</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">));</span>
+
+<span class="c1">// Output: &quot;Fast server response&quot; (after 1 second)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="symbols">
+<h2><span class="section-number">14.2. </span>2. Symbols<a class="headerlink" href="#symbols" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Symbol</span></code> is a new primitive type that is <strong>unique</strong>. It is often used to add unique property keys to objects that won’t collide with other keys.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Symbol</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">[</span><span class="nx">id</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="mf">12345</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span>
+<span class="p">};</span>
+
+<span class="c1">// Symbols are ignored in for...in loops and Object.keys()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span><span class="w"> </span><span class="c1">// [&quot;name&quot;]</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="best-practices-evolution">
+<h2><span class="section-number">14.3. </span>3. Best Practices &amp; Evolution<a class="headerlink" href="#best-practices-evolution" title="Link to this heading">#</a></h2>
+<section id="let-vs-const">
+<h3><span class="section-number">14.3.1. </span><code class="docutils literal notranslate"><span class="pre">let</span></code> vs <code class="docutils literal notranslate"><span class="pre">const</span></code><a class="headerlink" href="#let-vs-const" title="Link to this heading">#</a></h3>
+<p><strong>Rule</strong>: Always use <code class="docutils literal notranslate"><span class="pre">const</span></code>. Only use <code class="docutils literal notranslate"><span class="pre">let</span></code> if you explicitly need to reassign the variable.</p>
+</section>
+<section id="arrow-functions">
+<h3><span class="section-number">14.3.2. </span>Arrow Functions<a class="headerlink" href="#arrow-functions" title="Link to this heading">#</a></h3>
+<p>Use them for callbacks and array methods (<code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">filter</span></code>). Use regular functions when you need dynamic <code class="docutils literal notranslate"><span class="pre">this</span></code> (e.g., inside object methods or event handlers if relying on <code class="docutils literal notranslate"><span class="pre">this</span></code>).</p>
+</section>
+<section id="object-shorthand">
+<h3><span class="section-number">14.3.3. </span>Object Shorthand<a class="headerlink" href="#object-shorthand" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="c1">// Bad</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">};</span>
+<span class="c1">// Good (ES6)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="looking-ahead-async-await-es2017">
+<h3><span class="section-number">14.3.4. </span>Looking Ahead: <code class="docutils literal notranslate"><span class="pre">async</span></code> / <code class="docutils literal notranslate"><span class="pre">await</span></code> (ES2017)<a class="headerlink" href="#looking-ahead-async-await-es2017" title="Link to this heading">#</a></h3>
+<p>While not strictly ES6, <code class="docutils literal notranslate"><span class="pre">async/await</span></code> is the modern standard for consuming Promises. It makes async code look synchronous and is easier to read.</p>
+<section id="basic-async-await">
+<h4><span class="section-number">14.3.4.1. </span>Basic async/await<a class="headerlink" href="#basic-async-await" title="Link to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Promise-based approach</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getDataPromise</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// async/await approach (cleaner!)</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getDataAsync</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="real-example-sequential-api-calls">
+<h4><span class="section-number">14.3.4.2. </span>Real Example: Sequential API Calls<a class="headerlink" href="#real-example-sequential-api-calls" title="Link to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getUserFullData</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Wait for user profile</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUserProfile</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got profile:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profile</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Then fetch posts (depends on profile)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUserPosts</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got posts:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// Then fetch comments (depends on posts)</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">comments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUserComments</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Got comments:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">comments</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">,</span><span class="w"> </span><span class="nx">comments</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Error fetching user data:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="nx">getUserFullData</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+
+<span class="cm">/* Output (sequential - total ~3.3 seconds):</span>
+<span class="cm">Got profile: { userId: 1, name: &quot;Alice&quot;, email: &quot;alice@example.com&quot; }</span>
+<span class="cm">Got posts: [ { id: 1, title: &quot;First Post&quot; }, ... ]</span>
+<span class="cm">Got comments: [ { id: 1, text: &quot;Great article!&quot; }, ... ]</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="real-example-parallel-execution-with-async-await">
+<h4><span class="section-number">14.3.4.3. </span>Real Example: Parallel Execution with async/await<a class="headerlink" href="#real-example-parallel-execution-with-async-await" title="Link to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getUserFullDataParallel</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Start all requests simultaneously</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">,</span><span class="w"> </span><span class="nx">comments</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">      </span><span class="nx">fetchUserProfile</span><span class="p">(</span><span class="nx">userId</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">fetchUserPosts</span><span class="p">(</span><span class="nx">userId</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">fetchUserComments</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+<span class="w">    </span><span class="p">]);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;All data received!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">,</span><span class="w"> </span><span class="nx">comments</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Error:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This completes in ~1.5 seconds (fastest of the three)</span>
+<span class="c1">// vs ~3.3 seconds for sequential approach</span>
+</pre></div>
+</div>
+</section>
+<section id="error-handling-patterns">
+<h4><span class="section-number">14.3.4.4. </span>Error Handling Patterns<a class="headerlink" href="#error-handling-patterns" title="Link to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Pattern 1: Try-Catch</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchWithErrorHandling</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">riskyOperation</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Operation failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Fallback value</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Pattern 2: Multiple operations with specific error handling</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">complexOperation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUser</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed to fetch user:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;User not found&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchPosts</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Failed to fetch posts:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="c1">// Use empty array as fallback</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Pattern 3: Promise-style catch for specific operations</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">mixedErrorHandling</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchUser</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;User fetch failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetchPosts</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">posts</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="real-example-api-with-retry-logic">
+<h4><span class="section-number">14.3.4.5. </span>Real Example: API with Retry Logic<a class="headerlink" href="#real-example-api-with-retry-logic" title="Link to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchWithRetry</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">maxRetries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">maxRetries</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`HTTP </span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Attempt </span><span class="si">${</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="si">}</span><span class="sb"> failed:`</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">      </span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">maxRetries</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Failed after </span><span class="si">${</span><span class="nx">maxRetries</span><span class="si">}</span><span class="sb"> attempts`</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span>
+<span class="w">      </span><span class="c1">// Wait before retrying (exponential backoff)</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span><span class="nx">resolve</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">)));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="nx">fetchWithRetry</span><span class="p">(</span><span class="s2">&quot;https://api.example.com/data&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Success:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Final failure:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">));</span>
+
+<span class="cm">/* Output (if all attempts fail):</span>
+<span class="cm">Attempt 1 failed: HTTP 500</span>
+<span class="cm">Attempt 2 failed: HTTP 500</span>
+<span class="cm">Attempt 3 failed: HTTP 500</span>
+<span class="cm">Final failure: Error: Failed after 3 attempts</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="async-functions-always-return-promises">
+<h4><span class="section-number">14.3.4.6. </span>Async Functions Always Return Promises<a class="headerlink" href="#async-functions-always-return-promises" title="Link to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// This is equivalent to:</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">getValuePromise</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Both can be used with .then()</span>
+<span class="nx">getValue</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span><span class="w"> </span><span class="c1">// Output: 42</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quiz-async-advanced">
+<h2><span class="section-number">14.4. </span>🔴 Quiz: Async &amp; Advanced<a class="headerlink" href="#quiz-async-advanced" title="Link to this heading">#</a></h2>
+<p><strong>Q1: What creates a microtask in the event loop?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">setTimeout</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">Promise.resolve().then(...)</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">setInterval</span></code></p>
+<p><strong>Q2: If <code class="docutils literal notranslate"><span class="pre">Promise.all([A,</span> <span class="pre">B])</span></code> runs, and A rejects, what happens?</strong>
+A) It waits for B, then catches.
+B) It immediately catches/rejects.
+C) It ignores A and returns B.</p>
+<p><strong>Q3: Are Symbols unique?</strong>
+A) No, <code class="docutils literal notranslate"><span class="pre">Symbol(&quot;x&quot;)</span> <span class="pre">===</span> <span class="pre">Symbol(&quot;x&quot;)</span></code> is true.
+B) Yes, <code class="docutils literal notranslate"><span class="pre">Symbol(&quot;x&quot;)</span> <span class="pre">===</span> <span class="pre">Symbol(&quot;x&quot;)</span></code> is false.</p>
+<p><strong>Q4: What does <code class="docutils literal notranslate"><span class="pre">Promise.race([p1,</span> <span class="pre">p2,</span> <span class="pre">p3])</span></code> return?</strong>
+A) An array of all results
+B) The result of the first promise to settle (resolve or reject)
+C) Only successful promises</p>
+<p><strong>Q5: What is the output of this code?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">test</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">Promise</span> <span class="pre">{</span> <span class="pre">&lt;pending&gt;</span> <span class="pre">}</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">Promise</span> <span class="pre">{</span> <span class="pre">&quot;Hello&quot;</span> <span class="pre">}</span></code></p>
+<p><strong>Q6: Which Promise method should you use when you want all results, even if some fail?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">Promise.all()</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">Promise.allSettled()</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">Promise.race()</span></code></p>
+<p><strong>Q7: What’s the difference between these two approaches?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Approach 1</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url1</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url2</span><span class="p">);</span>
+
+<span class="c1">// Approach 2</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url1</span><span class="p">),</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url2</span><span class="p">)]);</span>
+</pre></div>
+</div>
+<p>A) No difference
+B) Approach 1 is sequential, Approach 2 is parallel
+C) Approach 2 is slower</p>
+<p><strong>Q8: What happens if you don’t use <code class="docutils literal notranslate"><span class="pre">try-catch</span></code> with <code class="docutils literal notranslate"><span class="pre">await</span></code>?</strong>
+A) The error is automatically caught
+B) The error propagates and can be caught with <code class="docutils literal notranslate"><span class="pre">.catch()</span></code>
+C) The program crashes</p>
+<p><strong>Q9: What does <code class="docutils literal notranslate"><span class="pre">Promise.any([p1,</span> <span class="pre">p2,</span> <span class="pre">p3])</span></code> return?</strong>
+A) The first promise to resolve (ignores rejections)
+B) All promises that resolve
+C) The fastest promise (resolve or reject)</p>
+<p><strong>Q10: What is the total execution time for this code?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">delay</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1 second</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">delay</span><span class="p">(</span><span class="mf">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2 seconds</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">delay</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1 second</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A) 1 second (parallel)
+B) 2 seconds (takes the longest)
+C) 4 seconds (sequential)</p>
+<details>
+<summary><strong>See Answers</strong></summary>
+<p><strong>A1: B.</strong> Promises use the Microtask queue, which has higher priority than Macrotasks (timers).</p>
+<p><strong>A2: B.</strong> <code class="docutils literal notranslate"><span class="pre">Promise.all</span></code> uses “fail-fast” behavior. It rejects as soon as one promise rejects.</p>
+<p><strong>A3: B.</strong> Every Symbol created is unique, even with the same description.</p>
+<p><strong>A4: B.</strong> <code class="docutils literal notranslate"><span class="pre">Promise.race</span></code> returns the first promise to settle, whether it resolves or rejects.</p>
+<p><strong>A5: C.</strong> Async functions always return a Promise. If you return a value, it’s wrapped in <code class="docutils literal notranslate"><span class="pre">Promise.resolve()</span></code>.</p>
+<p><strong>A6: B.</strong> <code class="docutils literal notranslate"><span class="pre">Promise.allSettled()</span></code> waits for all promises and returns their results regardless of success or failure.</p>
+<p><strong>A7: B.</strong> Approach 1 executes sequentially (waits for each to complete). Approach 2 executes in parallel (both start immediately).</p>
+<p><strong>A8: B.</strong> Unhandled errors in async functions return a rejected Promise, which can be caught with <code class="docutils literal notranslate"><span class="pre">.catch()</span></code> on the function call.</p>
+<p><strong>A9: A.</strong> <code class="docutils literal notranslate"><span class="pre">Promise.any()</span></code> returns the first successful promise, ignoring rejections unless all promises reject.</p>
+<p><strong>A10: C.</strong> The <code class="docutils literal notranslate"><span class="pre">await</span></code> keyword makes execution sequential, so total time is 1 + 2 + 1 = 4 seconds.</p>
+</details>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\ES6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_Architecture_Classes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>ES6 Module 3: Architecture (Classes &amp; Modules)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../JS/Examples/Sort-Tables.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Creating a Sortable HTML Table with JavaScript</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#promises">14.1. 1. Promises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#states">14.1.1. States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-promise-usage">14.1.2. Basic Promise Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-fetching-user-data">14.1.3. Real Example: Fetching User Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-all-run-multiple-promises-in-parallel">14.1.4. Promise.all() - Run Multiple Promises in Parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-race-first-to-finish-wins">14.1.5. Promise.race() - First to Finish Wins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-allsettled-wait-for-all-regardless-of-outcome">14.1.6. Promise.allSettled() - Wait for All, Regardless of Outcome</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promise-any-first-success-wins">14.1.7. Promise.any() - First Success Wins</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbols">14.2. 2. Symbols</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-evolution">14.3. 3. Best Practices &amp; Evolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-vs-const">14.3.1. <code class="docutils literal notranslate"><span class="pre">let</span></code> vs <code class="docutils literal notranslate"><span class="pre">const</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrow-functions">14.3.2. Arrow Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-shorthand">14.3.3. Object Shorthand</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-ahead-async-await-es2017">14.3.4. Looking Ahead: <code class="docutils literal notranslate"><span class="pre">async</span></code> / <code class="docutils literal notranslate"><span class="pre">await</span></code> (ES2017)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-async-await">14.3.4.1. Basic async/await</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-sequential-api-calls">14.3.4.2. Real Example: Sequential API Calls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-parallel-execution-with-async-await">14.3.4.3. Real Example: Parallel Execution with async/await</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-patterns">14.3.4.4. Error Handling Patterns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#real-example-api-with-retry-logic">14.3.4.5. Real Example: API with Retry Logic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#async-functions-always-return-promises">14.3.4.6. Async Functions Always Return Promises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-async-advanced">14.4. 🔴 Quiz: Async &amp; Advanced</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

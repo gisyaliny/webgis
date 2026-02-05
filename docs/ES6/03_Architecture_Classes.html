@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>30. Introduction &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>13. ES6 Module 3: Architecture (Classes &amp; Modules) &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -57,12 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Cesium/01-Introduction';</script>
-    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/Cesium/01-Introduction.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/ES6/03_Architecture_Classes';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/ES6/03_Architecture_Classes.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="29. React and TypeScript" href="../React/01-get-started.html" />
+    <link rel="next" title="14. ES6 Module 4: Async &amp; Advanced Concepts" href="04_Async_Advanced.html" />
+    <link rel="prev" title="12. ES6 Module 2: Data Handling &amp; Structures" href="02_Data_Handling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -192,11 +193,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ES6/01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ES6/02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ES6/03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ES6/04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -229,8 +230,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">29. React and TypeScript</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">30. Introduction</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">30. Introduction</a></li>
 </ul>
 
     </div>
@@ -285,7 +286,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Cesium/01-Introduction.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/ES6/03_Architecture_Classes.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +304,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Cesium/01-Introduction.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/ES6/03_Architecture_Classes.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +352,7 @@
       
       
       
-      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/Cesium/01-Introduction.ipynb" target="_blank"
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/ES6/03_Architecture_Classes.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +369,7 @@
       
       
       
-      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/Cesium/01-Introduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/ES6/03_Architecture_Classes.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -398,7 +399,7 @@
       
       
       
-      <li><a href="../../_sources/docs/Cesium/01-Introduction.ipynb" target="_blank"
+      <li><a href="../../_sources/docs/ES6/03_Architecture_Classes.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -482,7 +483,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>ES6 Module 3: Architecture (Classes & Modules)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -492,10 +493,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-data-format">30.1. Support Data Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-in-developing">30.2. Cesium in developing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-component-for-cesium">30.3. Learning component for Cesium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-environment-setting">30.4. Cesium Environment setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">13.1. 1. Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-syntax">13.1.1. Basic Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-extends-and-super">13.1.2. Inheritance (<code class="docutils literal notranslate"><span class="pre">extends</span></code> and <code class="docutils literal notranslate"><span class="pre">super</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-methods">13.1.3. Static Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-import-export">13.2. 2. Modules (Import/Export)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#named-exports">13.2.1. Named Exports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-exports">13.2.2. Default Exports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming">13.2.3. Renaming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notes-on-modules">13.3. 3. Important Notes on Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-classes-modules">13.4. 🔴 Quiz: Classes &amp; Modules</a></li>
 </ul>
             </nav>
         </div>
@@ -507,169 +518,121 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><span class="section-number">30. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://cesium.com/">Cesium</a></p></li>
-</ul>
-<p>Cesium is an <strong>open-source JavaScript library</strong> for creating 3D globes and maps. It allows developers to build interactive web-based applications with high-performance rendering of geospatial data. Cesium is particularly renowned for its capability to visualize <strong>large-scale</strong>, <strong>time-dynamic</strong>, and <strong>geographically</strong></p>
-<ul class="simple">
-<li><p>It requires support of <code class="docutils literal notranslate"><span class="pre">WebGL</span></code></p></li>
-<li><p>Based on <code class="docutils literal notranslate"><span class="pre">Apache</span> <span class="pre">2.0</span></code> license</p></li>
-</ul>
-<p><img alt="" src="https://images.prismic.io/cesium/f9240055-e3a6-49f1-aef9-30e2ed4b0600_cesium-for-unreal-open1.png?auto=compress%2Cformat&amp;fit=crop&amp;ar=16%3A9&amp;crop=faces%2Ccenter&amp;w=675" /></p>
-<section id="support-data-format">
-<h2><span class="section-number">30.1. </span>Support Data Format<a class="headerlink" href="#support-data-format" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code>: A lightweight format for encoding geospatial data using JSON (JavaScript Object Notation).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">KML</span> <span class="pre">(Keyhole</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>: An XML-based format for expressing geographic annotation and visualization within Internet-based maps and Earth browsers.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CZML</span> <span class="pre">(Cesium</span> <span class="pre">Language)</span></code>: A JSON-based format specifically designed for Cesium, allowing developers to describe time-dynamic scenes in Cesium applications.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">3D</span> <span class="pre">Tiles</span></code>: A format for streaming massive heterogeneous 3D geospatial datasets, enabling efficient visualization of large-scale 3D content such as terrain, buildings, and point clouds.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Tileset</span></code>: Cesium supports various tileset formats for efficiently rendering large-scale datasets, including formats like quantized-mesh, 3D Tiles, and terrain tiles.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STL</span> <span class="pre">(Stereolithography)</span></code>: A file format native to the stereolithography <code class="docutils literal notranslate"><span class="pre">CAD</span></code> software used for creating 3D models, commonly used for representing 3D geometry in Cesium applications.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">COLLADA</span> <span class="pre">(COLLAborative</span> <span class="pre">Design</span> <span class="pre">Activity)</span></code>: A 3D model interchange format for exchanging digital assets between different graphics software applications, often used for importing 3D models into Cesium scenes.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OBJ</span> <span class="pre">(Wavefront</span> <span class="pre">.obj</span> <span class="pre">file)</span></code>: A simple text-based format for representing 3D models, suitable for importing into Cesium applications for visualization.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GML</span> <span class="pre">(Geography</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>: An <code class="docutils literal notranslate"><span class="pre">XML</span></code>-based encoding for the transport and storage of geographic information, supported in Cesium for interoperability with GIS systems.</p></li>
-</ul>
-</section>
-<section id="cesium-in-developing">
-<h2><span class="section-number">30.2. </span>Cesium in developing<a class="headerlink" href="#cesium-in-developing" title="Link to this heading">#</a></h2>
-<p><img alt="" src="docs/assets/01.png" /></p>
-</section>
-<section id="learning-component-for-cesium">
-<h2><span class="section-number">30.3. </span>Learning component for Cesium<a class="headerlink" href="#learning-component-for-cesium" title="Link to this heading">#</a></h2>
-<div style="text-align: center;">
-  <img src="../assets/02.png" alt="Image" style="width: 40%;">
+  <section class="tex2jax_ignore mathjax_ignore" id="es6-module-3-architecture-classes-modules">
+<h1><span class="section-number">13. </span>ES6 Module 3: Architecture (Classes &amp; Modules)<a class="headerlink" href="#es6-module-3-architecture-classes-modules" title="Link to this heading">#</a></h1>
+<section id="classes">
+<h2><span class="section-number">13.1. </span>1. Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<p>ES6 introduced <code class="docutils literal notranslate"><span class="pre">class</span></code> syntax, which is primarily syntactic sugar over JavaScript’s existing prototype-based inheritance. It makes object-oriented programming patterns easier to write and read.</p>
+<section id="basic-syntax">
+<h3><span class="section-number">13.1.1. </span>Basic Syntax<a class="headerlink" href="#basic-syntax" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">sayHi</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hi, I am </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">);</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">sayHi</span><span class="p">();</span>
+</pre></div>
 </div>
 </section>
-<section id="cesium-environment-setting">
-<h2><span class="section-number">30.4. </span>Cesium Environment setting<a class="headerlink" href="#cesium-environment-setting" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><code class="docutils literal notranslate"><span class="pre">Node.js</span> <span class="pre">and</span> <span class="pre">npm</span></code>: <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> development requires <code class="docutils literal notranslate"><span class="pre">Node.js</span></code>, which includes <code class="docutils literal notranslate"><span class="pre">npm</span></code> (Node Package Manager), for managing dependencies and running scripts. You can download and install <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> from <a class="reference external" href="https://nodejs.org/en">here</a>.</p>
-<ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">--version</span></code> to check whether you install <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> successfully</p></li>
-</ul>
-</li>
-<li><p>Create a New Project</p>
-<ol class="arabic simple">
-<li><p>First, create a new directory for your Cesium project. You can do this using the command line:</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">cesium</span><span class="o">-</span><span class="n">project</span>
-<span class="n">cd</span> <span class="n">cesium</span><span class="o">-</span><span class="n">project</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Next, initialize a new npm project in the project directory:
-<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">init</span> <span class="pre">-y</span></code></p></li>
-</ol>
-<p>This command creates a package.json file with default settings.</p>
-<ol class="arabic simple" start="3">
-<li><p>Install <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> as a dependency using <code class="docutils literal notranslate"><span class="pre">npm</span></code>:
-<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">cesium</span></code></p></li>
-</ol>
-<p>This command installs the Cesium library and adds it as a dependency in your package.json file.</p>
-</li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>node<span class="w"> </span>--version
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v14.17.6
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>cesium-project
-<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>cesium-project
-<span class="o">!</span>npm<span class="w"> </span>init<span class="w"> </span>-y
-<span class="o">!</span>npm<span class="w"> </span>install<span class="w"> </span>cesium
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wrote to e:\2024\github\gis\Cesium\package.json:
+<section id="inheritance-extends-and-super">
+<h3><span class="section-number">13.1.2. </span>Inheritance (<code class="docutils literal notranslate"><span class="pre">extends</span></code> and <code class="docutils literal notranslate"><span class="pre">super</span></code>)<a class="headerlink" href="#inheritance-extends-and-super" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">Admin</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">permissions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// Call parent constructor</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">permissions</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 
-{
-  &quot;name&quot;: &quot;Cesium&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;
-}
-
-
-
-&gt; protobufjs@7.2.6 postinstall e:\2024\github\gis\Cesium\node_modules\protobufjs
-&gt; node scripts/postinstall
-
-+ cesium@1.116.0
-added 39 packages from 79 contributors and audited 39 packages in 3.968s
-found 0 vulnerabilities
+<span class="w">  </span><span class="nx">deleteUser</span><span class="p">(</span><span class="nx">u</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> deleted </span><span class="si">${</span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>npm notice created a lockfile as package-lock.json. You should commit this file.
-npm WARN notsup Unsupported engine for @zip.js/zip.js@2.7.41: wanted: {&quot;deno&quot;:&quot;&gt;=1.0.0&quot;,&quot;node&quot;:&quot;&gt;=16.5.0&quot;,&quot;bun&quot;:&quot;&gt;=0.7.0&quot;} (current: {&quot;node&quot;:&quot;14.17.6&quot;,&quot;npm&quot;:&quot;6.14.15&quot;})
-npm WARN notsup Not compatible with your version of node/npm: @zip.js/zip.js@2.7.41
-npm WARN Cesium@1.0.0 No description
-npm WARN Cesium@1.0.0 No repository field.
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Create an <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file in your project directory.</p>
-<ul class="simple">
-<li><p>This file will serve as the entry point for your <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> application:</p></li>
-<li><p>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a editor and add the following content:</p></li>
-</ul>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Cesium Example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="c">/* Add any custom styles here */</span>
-<span class="w">      </span><span class="p">#</span><span class="nn">cesiumContainer</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">        </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="nt">body</span><span class="o">,</span>
-<span class="w">      </span><span class="nt">html</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
-<span class="w">        </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;cesiumContainer&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="c1">// Your Cesium code goes here</span>
-<span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">viewer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">Viewer</span><span class="p">(</span><span class="s2">&quot;cesiumContainer&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>This <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file sets up a basic webpage with a container <code class="docutils literal notranslate"><span class="pre">div</span></code> for the <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> viewer and includes the <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> library via a <code class="docutils literal notranslate"><span class="pre">script</span></code> tag.</p></li>
-</ul>
-</li>
-</ol>
 </section>
+<section id="static-methods">
+<h3><span class="section-number">13.1.3. </span>Static Methods<a class="headerlink" href="#static-methods" title="Link to this heading">#</a></h3>
+<p>Methods that are called on the class itself, not on instances.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span><span class="w"> </span><span class="nx">MathUtil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">MathUtil</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">));</span><span class="w"> </span><span class="c1">// 10</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modules-import-export">
+<h2><span class="section-number">13.2. </span>2. Modules (Import/Export)<a class="headerlink" href="#modules-import-export" title="Link to this heading">#</a></h2>
+<p>ES6 introduced an official module system. Each file is treated as a separate module.</p>
+<section id="named-exports">
+<h3><span class="section-number">13.2.1. </span>Named Exports<a class="headerlink" href="#named-exports" title="Link to this heading">#</a></h3>
+<p>You can export multiple items from a file.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// analytics.js</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">analyze</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// main.js</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">analyze</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./analytics.js&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="default-exports">
+<h3><span class="section-number">13.2.2. </span>Default Exports<a class="headerlink" href="#default-exports" title="Link to this heading">#</a></h3>
+<p>Used for the “main” entity of the module.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// User.js</span>
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// main.js</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./User.js&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// No curly braces needed</span>
+</pre></div>
+</div>
+</section>
+<section id="renaming">
+<h3><span class="section-number">13.2.3. </span>Renaming<a class="headerlink" href="#renaming" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">analyze</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">runAnalysis</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./analytics.js&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="important-notes-on-modules">
+<h2><span class="section-number">13.3. </span>3. Important Notes on Modules<a class="headerlink" href="#important-notes-on-modules" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Strict Mode</strong>: Modules are always in “strict mode” by default.</p></li>
+<li><p><strong>Defer</strong>: Module scripts are deferred automatically (they wait for HTML to parse).</p></li>
+<li><p><strong>CORS</strong>: Modules fetched over HTTP require valid CORS headers.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-classes-modules">
+<h2><span class="section-number">13.4. </span>🔴 Quiz: Classes &amp; Modules<a class="headerlink" href="#quiz-classes-modules" title="Link to this heading">#</a></h2>
+<p><strong>Q1: In a child class constructor, what must you call before using <code class="docutils literal notranslate"><span class="pre">this</span></code>?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">super()</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">parent()</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">this.init()</span></code></p>
+<p><strong>Q2: How do you import a “default” export?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">{</span> <span class="pre">Name</span> <span class="pre">}</span> <span class="pre">from</span> <span class="pre">...</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">Name</span> <span class="pre">from</span> <span class="pre">...</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">[</span> <span class="pre">Name</span> <span class="pre">]</span> <span class="pre">from</span> <span class="pre">...</span></code></p>
+<p><strong>Q3: Are ES6 Classes completely different from Prototypes?</strong>
+A) Yes, they use a new internal engine.
+B) No, they are syntactic sugar over prototypes.</p>
+<details>
+<summary><strong>See Answers</strong></summary>
+<p><strong>A1: A.</strong> <code class="docutils literal notranslate"><span class="pre">super()</span></code> calls the parent constructor and initializes <code class="docutils literal notranslate"><span class="pre">this</span></code>.
+<strong>A2: B.</strong> Default exports are imported without braces.
+<strong>A3: B.</strong> Under the hood, it is still prototype-based inheritance.</p>
+</details></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -685,7 +648,7 @@ npm WARN Cesium@1.0.0 No repository field.
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\Cesium"
+            path: "./docs\ES6"
         },
         predefinedOutput: true
     }
@@ -703,13 +666,22 @@ npm WARN Cesium@1.0.0 No repository field.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../React/01-get-started.html"
+       href="02_Data_Handling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">29. </span>React and TypeScript</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>ES6 Module 2: Data Handling &amp; Structures</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="04_Async_Advanced.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>ES6 Module 4: Async &amp; Advanced Concepts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -727,10 +699,20 @@ npm WARN Cesium@1.0.0 No repository field.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-data-format">30.1. Support Data Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-in-developing">30.2. Cesium in developing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-component-for-cesium">30.3. Learning component for Cesium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-environment-setting">30.4. Cesium Environment setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">13.1. 1. Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-syntax">13.1.1. Basic Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-extends-and-super">13.1.2. Inheritance (<code class="docutils literal notranslate"><span class="pre">extends</span></code> and <code class="docutils literal notranslate"><span class="pre">super</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-methods">13.1.3. Static Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-import-export">13.2. 2. Modules (Import/Export)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#named-exports">13.2.1. Named Exports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-exports">13.2.2. Default Exports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming">13.2.3. Renaming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-notes-on-modules">13.3. 3. Important Notes on Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-classes-modules">13.4. 🔴 Quiz: Classes &amp; Modules</a></li>
 </ul>
   </nav></div>
 
