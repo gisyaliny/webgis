@@ -1,0 +1,1399 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>30. React Module 2: JSX (JavaScript XML) &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/React/02_JSX';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/React/02_JSX.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="31. React Module 3: Components" href="03_Components.html" />
+    <link rel="prev" title="29. React and TypeScript" href="01-get-started.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/WCAG_2_1_AA_Developer_Checklist.html">1. WCAG 2.1 AA — Developer Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">2. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">3. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">4. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">5. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">6. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">7. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">8. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">9. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ES6/01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ES6/02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ES6/03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ES6/04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">15. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">16. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">17. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">18. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/01-intro.html">19. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/02-selection.html">20. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">21. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">22. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">23. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">24. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">25. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">26. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">27. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">28. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">29. React and TypeScript</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">30. React Module 2: JSX (JavaScript XML)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Components.html">31. React Module 3: Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Class_Components.html">32. React Module 4: Class Components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">33. Introduction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/React/02_JSX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/React/02_JSX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/React/02_JSX.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/React/02_JSX.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/React/02_JSX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>React Module 2: JSX (JavaScript XML)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-jsx">30.1. 1. What is JSX?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-benefits">30.1.1. Key Benefits:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jsx-vs-regular-javascript">30.1.2. JSX vs. Regular JavaScript</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions-in-jsx">30.2. 2. Expressions in JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-expressions">30.2.1. Basic Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-variables">30.2.2. Using Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-functions">30.2.3. Using Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conditional-expressions">30.2.4. Using Conditional Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-array-methods">30.2.5. Using Array Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-line-jsx">30.3. 3. Multi-line JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-creating-a-list">30.3.1. Example: Creating a List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-complex-layout">30.3.2. Example: Complex Layout</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-top-level-element-rule">30.4. 4. One Top-Level Element Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrong-multiple-top-level-elements">30.4.1. ❌ Wrong - Multiple Top-Level Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correct-wrapped-in-a-div">30.4.2. ✅ Correct - Wrapped in a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#better-using-react-fragments">30.4.3. ✅ Better - Using React Fragments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-must-be-closed">30.5. 5. Elements Must Be Closed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-closing-tags">30.5.1. Self-Closing Tags</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-elements">30.5.2. Regular Elements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classname-instead-of-class">30.6. 6. <code class="docutils literal notranslate"><span class="pre">className</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">class</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-classes">30.6.1. Multiple Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-classes">30.6.2. Conditional Classes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-attribute-differences">30.7. 7. Other Attribute Differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">30.7.1. Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-in-jsx">30.8. 8. Comments in JSX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsx-in-react-components">30.9. 9. JSX in React Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-component">30.9.1. Basic Component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-with-variables">30.9.2. Component with Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-with-logic">30.9.3. Component with Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-with-props">30.9.4. Component with Props</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-styles-in-jsx">30.10. 10. Inline Styles in JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-style-object">30.10.1. Inline Style Object</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-rendering-in-jsx">30.11. 11. Conditional Rendering in JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ternary-operator">30.11.1. Using Ternary Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-logical-and">30.11.2. Using Logical AND (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-if-else-before-return">30.11.3. Using If-Else Before Return</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-and-keys">30.12. 12. Lists and Keys</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-unique-ids-as-keys-best-practice">30.12.1. Using Unique IDs as Keys (Best Practice)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-react-jsx">30.13. 🔴 Quiz: React JSX</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="react-module-2-jsx-javascript-xml">
+<h1><span class="section-number">30. </span>React Module 2: JSX (JavaScript XML)<a class="headerlink" href="#react-module-2-jsx-javascript-xml" title="Link to this heading">#</a></h1>
+<section id="what-is-jsx">
+<h2><span class="section-number">30.1. </span>1. What is JSX?<a class="headerlink" href="#what-is-jsx" title="Link to this heading">#</a></h2>
+<p><strong>JSX</strong> stands for <strong>JavaScript XML</strong>. It’s a syntax extension for JavaScript that allows you to write HTML-like code directly in your JavaScript files.</p>
+<section id="key-benefits">
+<h3><span class="section-number">30.1.1. </span>Key Benefits:<a class="headerlink" href="#key-benefits" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Makes React code more readable and intuitive</p></li>
+<li><p>Allows you to write HTML structures in the same file as JavaScript logic</p></li>
+<li><p>Converts HTML tags into React elements</p></li>
+<li><p>Provides compile-time error checking</p></li>
+</ul>
+</section>
+<section id="jsx-vs-regular-javascript">
+<h3><span class="section-number">30.1.2. </span>JSX vs. Regular JavaScript<a class="headerlink" href="#jsx-vs-regular-javascript" title="Link to this heading">#</a></h3>
+<p><strong>With JSX (Recommended):</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">Love</span><span class="w"> </span><span class="nx">JSX</span><span class="o">!&lt;</span><span class="err">/h1&gt;;</span>
+
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)).</span><span class="nx">render</span><span class="p">(</span><span class="nx">myElement</span><span class="p">);</span>
+
+<span class="c1">// Output: Renders &quot;I Love JSX!&quot; as an h1 element</span>
+</pre></div>
+</div>
+<p><strong>Without JSX (Verbose):</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="s1">&#39;I do not use JSX!&#39;</span><span class="p">);</span>
+
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)).</span><span class="nx">render</span><span class="p">(</span><span class="nx">myElement</span><span class="p">);</span>
+
+<span class="c1">// Output: Renders &quot;I do not use JSX!&quot; as an h1 element</span>
+</pre></div>
+</div>
+<p>As you can see, JSX makes the code much cleaner and easier to understand!</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="expressions-in-jsx">
+<h2><span class="section-number">30.2. </span>2. Expressions in JSX<a class="headerlink" href="#expressions-in-jsx" title="Link to this heading">#</a></h2>
+<p>You can embed any JavaScript expression inside JSX by wrapping it in <strong>curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code></strong>.</p>
+<section id="basic-expressions">
+<h3><span class="section-number">30.2.1. </span>Basic Expressions<a class="headerlink" href="#basic-expressions" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">React</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="p">{</span><span class="mf">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5</span><span class="p">}</span><span class="w"> </span><span class="nx">times</span><span class="w"> </span><span class="nx">better</span><span class="w"> </span><span class="kd">with</span><span class="w"> </span><span class="nx">JSX</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+
+<span class="c1">// Output: &quot;React is 10 times better with JSX&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-variables">
+<h3><span class="section-number">30.2.2. </span>Using Variables<a class="headerlink" href="#using-variables" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">!</span><span class="w"> </span><span class="nx">You</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="p">{</span><span class="nx">age</span><span class="p">}</span><span class="w"> </span><span class="nx">years</span><span class="w"> </span><span class="nx">old</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+
+<span class="c1">// Output: &quot;Hello, Alice! You are 25 years old.&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-functions">
+<h3><span class="section-number">30.2.3. </span>Using Functions<a class="headerlink" href="#using-functions" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">formatName</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">firstName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;John&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Doe&#39;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">formatName</span><span class="p">(</span><span class="nx">user</span><span class="p">)}</span><span class="o">!&lt;</span><span class="err">/h1&gt;;</span>
+
+<span class="c1">// Output: &quot;Hello, John Doe!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-conditional-expressions">
+<h3><span class="section-number">30.2.4. </span>Using Conditional Expressions<a class="headerlink" href="#using-conditional-expressions" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Welcome back!&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Please sign in.&#39;</span><span class="p">}</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="p">);</span>
+
+<span class="c1">// Output: &quot;Welcome back!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-array-methods">
+<h3><span class="section-number">30.2.5. </span>Using Array Methods<a class="headerlink" href="#using-array-methods" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">];</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">listItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">number</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">number</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/li&gt;)}</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+<span class="p">);</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">&lt;ul&gt;</span>
+<span class="cm">  &lt;li&gt;2&lt;/li&gt;</span>
+<span class="cm">  &lt;li&gt;4&lt;/li&gt;</span>
+<span class="cm">  &lt;li&gt;6&lt;/li&gt;</span>
+<span class="cm">  &lt;li&gt;8&lt;/li&gt;</span>
+<span class="cm">  &lt;li&gt;10&lt;/li&gt;</span>
+<span class="cm">&lt;/ul&gt;</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="multi-line-jsx">
+<h2><span class="section-number">30.3. </span>3. Multi-line JSX<a class="headerlink" href="#multi-line-jsx" title="Link to this heading">#</a></h2>
+<p>When writing JSX that spans multiple lines, wrap it in <strong>parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code></strong> for better readability.</p>
+<section id="example-creating-a-list">
+<h3><span class="section-number">30.3.1. </span>Example: Creating a List<a class="headerlink" href="#example-creating-a-list" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">Apples</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">Bananas</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="nx">Cherries</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+<span class="p">);</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">• Apples</span>
+<span class="cm">• Bananas</span>
+<span class="cm">• Cherries</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="example-complex-layout">
+<h3><span class="section-number">30.3.2. </span>Example: Complex Layout<a class="headerlink" href="#example-complex-layout" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">card</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;card&quot;</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">img</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;profile.jpg&quot;</span><span class="w"> </span><span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Profile&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">John</span><span class="w"> </span><span class="nx">Doe</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Software</span><span class="w"> </span><span class="nx">Developer</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span><span class="nx">Contact</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="one-top-level-element-rule">
+<h2><span class="section-number">30.4. </span>4. One Top-Level Element Rule<a class="headerlink" href="#one-top-level-element-rule" title="Link to this heading">#</a></h2>
+<p>JSX expressions must have <strong>exactly ONE parent element</strong>. You cannot return multiple sibling elements without wrapping them.</p>
+<section id="wrong-multiple-top-level-elements">
+<h3><span class="section-number">30.4.1. </span>❌ Wrong - Multiple Top-Level Elements<a class="headerlink" href="#wrong-multiple-top-level-elements" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// This will cause an error!</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">paragraph</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="nx">too</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="correct-wrapped-in-a-div">
+<h3><span class="section-number">30.4.2. </span>✅ Correct - Wrapped in a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code><a class="headerlink" href="#correct-wrapped-in-a-div" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">paragraph</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="nx">too</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="better-using-react-fragments">
+<h3><span class="section-number">30.4.3. </span>✅ Better - Using React Fragments<a class="headerlink" href="#better-using-react-fragments" title="Link to this heading">#</a></h3>
+<p>React <strong>Fragments</strong> let you group elements without adding extra DOM nodes. Use <code class="docutils literal notranslate"><span class="pre">&lt;&gt;...&lt;/&gt;</span></code> (shorthand) or <code class="docutils literal notranslate"><span class="pre">&lt;React.Fragment&gt;...&lt;/React.Fragment&gt;</span></code>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">paragraph</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">I</span><span class="w"> </span><span class="nx">am</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="nx">too</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<span class="p">);</span>
+
+<span class="c1">// Output: Two paragraphs without an extra wrapper div in the DOM</span>
+</pre></div>
+</div>
+<p><strong>When to use Fragments:</strong></p>
+<ul class="simple">
+<li><p>When you don’t want extra wrapper elements in the DOM</p></li>
+<li><p>When returning multiple elements from a component</p></li>
+<li><p>When working with CSS Grid or Flexbox layouts where extra divs can break styling</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="elements-must-be-closed">
+<h2><span class="section-number">30.5. </span>5. Elements Must Be Closed<a class="headerlink" href="#elements-must-be-closed" title="Link to this heading">#</a></h2>
+<p>JSX follows <strong>XML rules</strong>, so all elements must be properly closed.</p>
+<section id="self-closing-tags">
+<h3><span class="section-number">30.5.1. </span>Self-Closing Tags<a class="headerlink" href="#self-closing-tags" title="Link to this heading">#</a></h3>
+<p>In HTML, some tags like <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;img&gt;</span></code> don’t require closing. In JSX, they <strong>must</strong> be self-closed with <code class="docutils literal notranslate"><span class="pre">/&gt;</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ✅ Correct</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">inputElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">imageElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">img</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;logo.png&quot;</span><span class="w"> </span><span class="nx">alt</span><span class="o">=</span><span class="s2">&quot;Logo&quot;</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">lineBreak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">br</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+
+<span class="c1">// ❌ Wrong - Will cause an error</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">inputElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="regular-elements">
+<h3><span class="section-number">30.5.2. </span>Regular Elements<a class="headerlink" href="#regular-elements" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ✅ Correct</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="w"> </span><span class="nx">World</span><span class="o">&lt;</span><span class="err">/p&gt;;</span>
+
+<span class="c1">// ❌ Wrong</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">paragraph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="w"> </span><span class="nx">World</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="classname-instead-of-class">
+<h2><span class="section-number">30.6. </span>6. <code class="docutils literal notranslate"><span class="pre">className</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">class</span></code><a class="headerlink" href="#classname-instead-of-class" title="Link to this heading">#</a></h2>
+<p>Since <code class="docutils literal notranslate"><span class="pre">class</span></code> is a reserved keyword in JavaScript, JSX uses <strong><code class="docutils literal notranslate"><span class="pre">className</span></code></strong> instead.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// ✅ Correct - Use className</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;header-title&quot;</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="w"> </span><span class="nx">World</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+
+<span class="c1">// ❌ Wrong - Don&#39;t use class</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;header-title&quot;</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="w"> </span><span class="nx">World</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+</pre></div>
+</div>
+<section id="multiple-classes">
+<h3><span class="section-number">30.6.1. </span>Multiple Classes<a class="headerlink" href="#multiple-classes" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;card primary-card shadow&quot;</span><span class="o">&gt;</span><span class="nx">Content</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+
+<span class="c1">// With template literals</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">cardType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;primary&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="sb">`card </span><span class="si">${</span><span class="nx">cardType</span><span class="si">}</span><span class="sb">-card shadow`</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Content</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+</pre></div>
+</div>
+</section>
+<section id="conditional-classes">
+<h3><span class="section-number">30.6.2. </span>Conditional Classes<a class="headerlink" href="#conditional-classes" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">isActive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">isActive</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;btn-active&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;btn-inactive&#39;</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="nx">Click</span><span class="w"> </span><span class="nx">Me</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="other-attribute-differences">
+<h2><span class="section-number">30.7. </span>7. Other Attribute Differences<a class="headerlink" href="#other-attribute-differences" title="Link to this heading">#</a></h2>
+<p>JSX uses <strong>camelCase</strong> for HTML attributes that have hyphens:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>HTML Attribute</p></th>
+<th class="head"><p>JSX Attribute</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">class</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">className</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">for</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">htmlFor</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tabindex</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tabIndex</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">onclick</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onClick</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">onchange</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">onChange</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">maxlength</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">maxLength</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">readonly</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">readOnly</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="example">
+<h3><span class="section-number">30.7.1. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">label</span><span class="w"> </span><span class="nx">htmlFor</span><span class="o">=</span><span class="s2">&quot;username&quot;</span><span class="o">&gt;</span><span class="nx">Username</span><span class="o">:&lt;</span><span class="err">/label&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">input</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;username&quot;</span>
+<span class="w">      </span><span class="nx">maxLength</span><span class="o">=</span><span class="p">{</span><span class="mf">20</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">readOnly</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span>
+<span class="w">      </span><span class="nx">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)}</span>
+<span class="w">    </span><span class="o">/&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comments-in-jsx">
+<h2><span class="section-number">30.8. </span>8. Comments in JSX<a class="headerlink" href="#comments-in-jsx" title="Link to this heading">#</a></h2>
+<p>Comments in JSX are written using <strong><code class="docutils literal notranslate"><span class="pre">{/*</span> <span class="pre">comment</span> <span class="pre">*/}</span></code></strong> syntax.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">{</span><span class="cm">/* This is a comment */</span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="w"> </span><span class="p">{</span><span class="cm">/* inline comment */</span><span class="p">}</span><span class="w"> </span><span class="nx">World</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="p">{</span><span class="cm">/* </span>
+<span class="cm">      Multi-line comment</span>
+<span class="cm">      You can write multiple lines here</span>
+<span class="cm">    */</span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Welcome</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">React</span><span class="o">!&lt;</span><span class="err">/p&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Regular JavaScript comments <code class="docutils literal notranslate"><span class="pre">//</span></code> or <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">*/</span></code> won’t work inside JSX markup.</p>
+</section>
+<hr class="docutils" />
+<section id="jsx-in-react-components">
+<h2><span class="section-number">30.9. </span>9. JSX in React Components<a class="headerlink" href="#jsx-in-react-components" title="Link to this heading">#</a></h2>
+<p>JSX works perfectly inside React components. Components are JavaScript functions that return JSX.</p>
+<section id="basic-component">
+<h3><span class="section-number">30.9.1. </span>Basic Component<a class="headerlink" href="#basic-component" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">Car</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">My</span><span class="w"> </span><span class="nx">Car</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">It</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">Ford</span><span class="w"> </span><span class="nx">Mustang</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)).</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">Car</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">);</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">My Car</span>
+<span class="cm">It is a Ford Mustang.</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="component-with-variables">
+<h3><span class="section-number">30.9.2. </span>Component with Variables<a class="headerlink" href="#component-with-variables" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Car</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">brand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ford&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Mustang&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2024</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">My</span><span class="w"> </span><span class="nx">Car</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">It</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="p">{</span><span class="nx">year</span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="nx">brand</span><span class="p">}</span><span class="w"> </span><span class="p">{</span><span class="nx">model</span><span class="p">}.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">My Car</span>
+<span class="cm">It is a 2024 Ford Mustang.</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+<section id="component-with-logic">
+<h3><span class="section-number">30.9.3. </span>Component with Logic<a class="headerlink" href="#component-with-logic" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Greeting</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">message</span><span class="p">;</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">12</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Good morning!&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">hour</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">18</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Good afternoon!&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Good evening!&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">message</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="p">}</span>
+
+<span class="c1">// Output: &quot;Good morning!&quot; (if before noon)</span>
+</pre></div>
+</div>
+</section>
+<section id="component-with-props">
+<h3><span class="section-number">30.9.4. </span>Component with Props<a class="headerlink" href="#component-with-props" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">UserCard</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">role</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;user-card&quot;</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;role&quot;</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">role</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">email</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="o">&lt;</span><span class="nx">UserCard</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Alice Johnson&quot;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">role</span><span class="o">=</span><span class="s2">&quot;Software Engineer&quot;</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">email</span><span class="o">=</span><span class="s2">&quot;alice@example.com&quot;</span><span class="w"> </span>
+<span class="err">/&gt;</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">Alice Johnson</span>
+<span class="cm">Software Engineer</span>
+<span class="cm">alice@example.com</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="inline-styles-in-jsx">
+<h2><span class="section-number">30.10. </span>10. Inline Styles in JSX<a class="headerlink" href="#inline-styles-in-jsx" title="Link to this heading">#</a></h2>
+<p>Styles in JSX are specified as JavaScript objects with camelCase properties.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">divStyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">backgroundColor</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;10px&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">borderRadius</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;5px&#39;</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">divStyle</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Styled</span><span class="w"> </span><span class="nx">Content</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+</pre></div>
+</div>
+<section id="inline-style-object">
+<h3><span class="section-number">30.10.1. </span>Inline Style Object<a class="headerlink" href="#inline-style-object" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">myElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">h1</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span>
+<span class="w">    </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">fontSize</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;24px&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">textAlign</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;center&#39;</span>
+<span class="w">  </span><span class="p">}}</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="nx">Styled</span><span class="w"> </span><span class="nx">Heading</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> The double curly braces <code class="docutils literal notranslate"><span class="pre">{{}}</span></code> are:</p>
+<ul class="simple">
+<li><p>Outer <code class="docutils literal notranslate"><span class="pre">{}</span></code>: JSX expression</p></li>
+<li><p>Inner <code class="docutils literal notranslate"><span class="pre">{}</span></code>: JavaScript object</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="conditional-rendering-in-jsx">
+<h2><span class="section-number">30.11. </span>11. Conditional Rendering in JSX<a class="headerlink" href="#conditional-rendering-in-jsx" title="Link to this heading">#</a></h2>
+<section id="using-ternary-operator">
+<h3><span class="section-number">30.11.1. </span>Using Ternary Operator<a class="headerlink" href="#using-ternary-operator" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">LoginButton</span><span class="p">({</span><span class="w"> </span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">button</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Logout&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Login&#39;</span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="using-logical-and">
+<h3><span class="section-number">30.11.2. </span>Using Logical AND (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)<a class="headerlink" href="#using-logical-and" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Notification</span><span class="p">({</span><span class="w"> </span><span class="nx">hasMessages</span><span class="p">,</span><span class="w"> </span><span class="nx">messageCount</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Inbox</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">hasMessages</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span><span class="w"> </span><span class="nx">have</span><span class="w"> </span><span class="p">{</span><span class="nx">messageCount</span><span class="p">}</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">messages</span><span class="o">!&lt;</span><span class="err">/p&gt;}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// If hasMessages is true: shows the paragraph</span>
+<span class="c1">// If hasMessages is false: shows nothing</span>
+</pre></div>
+</div>
+</section>
+<section id="using-if-else-before-return">
+<h3><span class="section-number">30.11.3. </span>Using If-Else Before Return<a class="headerlink" href="#using-if-else-before-return" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Dashboard</span><span class="p">({</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Please</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="ow">in</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">role</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Admin</span><span class="w"> </span><span class="nx">Dashboard</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">User</span><span class="w"> </span><span class="nx">Dashboard</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="lists-and-keys">
+<h2><span class="section-number">30.12. </span>12. Lists and Keys<a class="headerlink" href="#lists-and-keys" title="Link to this heading">#</a></h2>
+<p>When rendering lists, each item needs a unique <strong><code class="docutils literal notranslate"><span class="pre">key</span></code></strong> prop to help React identify which items have changed.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">FruitList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fruits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Apple&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Banana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Cherry&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Date&#39;</span><span class="p">];</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">fruits</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">fruit</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">fruit</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">      </span><span class="p">))}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">• Apple</span>
+<span class="cm">• Banana</span>
+<span class="cm">• Cherry</span>
+<span class="cm">• Date</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<section id="using-unique-ids-as-keys-best-practice">
+<h3><span class="section-number">30.12.1. </span>Using Unique IDs as Keys (Best Practice)<a class="headerlink" href="#using-unique-ids-as-keys-best-practice" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">TodoList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">todos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Learn React&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">completed</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Build a project&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">completed</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Deploy app&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">completed</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">];</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">todos</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">todo</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="w"> </span><span class="nx">style</span><span class="o">=</span><span class="p">{{</span><span class="w"> </span>
+<span class="w">          </span><span class="nx">textDecoration</span><span class="o">:</span><span class="w"> </span><span class="nx">todo</span><span class="p">.</span><span class="nx">completed</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;line-through&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;none&#39;</span><span class="w"> </span>
+<span class="w">        </span><span class="p">}}</span><span class="o">&gt;</span>
+<span class="w">          </span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">      </span><span class="p">))}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Output:</span>
+<span class="cm">• Learn React</span>
+<span class="cm">• Build a project</span>
+<span class="cm">• Deploy app (crossed out)</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quiz-react-jsx">
+<h2><span class="section-number">30.13. </span>🔴 Quiz: React JSX<a class="headerlink" href="#quiz-react-jsx" title="Link to this heading">#</a></h2>
+<p><strong>Q1: What does JSX stand for?</strong>
+A) JavaScript XML
+B) JavaScript Extension
+C) Java Syntax Extension</p>
+<p><strong>Q2: How do you embed a JavaScript expression in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">[expression]</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">{expression}</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">(expression)</span></code></p>
+<p><strong>Q3: Which is the correct way to create a self-closing input in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;text&quot;&gt;</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;text&quot;</span> <span class="pre">/&gt;</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;text&quot;&gt;&lt;/input&gt;</span></code></p>
+<p><strong>Q4: What should you use instead of <code class="docutils literal notranslate"><span class="pre">class</span></code> in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">class</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">className</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">classname</span></code></p>
+<p><strong>Q5: How do you write comments in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">comment</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">&lt;!--</span> <span class="pre">comment</span> <span class="pre">--&gt;</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">{/*</span> <span class="pre">comment</span> <span class="pre">*/}</span></code></p>
+<p><strong>Q6: What is wrong with this code?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">World</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>A) Nothing, it’s correct
+B) Missing parentheses
+C) Multiple top-level elements without a wrapper</p>
+<p><strong>Q7: What is the output of this code?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;Big&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Small&#39;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h1&gt;;</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;Big&lt;/h1&gt;</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;Small&lt;/h1&gt;</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">&lt;h1&gt;10&lt;/h1&gt;</span></code></p>
+<p><strong>Q8: Which is the correct way to use a Fragment?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">&lt;Fragment&gt;...&lt;/Fragment&gt;</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">&lt;&gt;...&lt;/&gt;</span></code>
+C) Both A and B are correct</p>
+<p><strong>Q9: What attribute should you use for a label’s “for” in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">for</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">htmlFor</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">labelFor</span></code></p>
+<p><strong>Q10: Why do we need keys when rendering lists?</strong>
+A) For styling purposes
+B) To help React identify which items have changed
+C) To make the code look better</p>
+<p><strong>Q11: What is the correct way to apply inline styles in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">style=&quot;color:</span> <span class="pre">red&quot;</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">style={{color:</span> <span class="pre">'red'}}</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">style={color:</span> <span class="pre">'red'}</span></code></p>
+<p><strong>Q12: What will this render?</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">show</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="err">/p&gt;}&lt;/div&gt;;</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;&lt;p&gt;Hello&lt;/p&gt;&lt;/div&gt;</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;false&lt;/div&gt;</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;&lt;/div&gt;</span></code> (empty div)</p>
+<details>
+<summary><strong>See Answers</strong></summary>
+<p><strong>A1: A.</strong> JSX stands for JavaScript XML, allowing you to write HTML-like syntax in JavaScript.</p>
+<p><strong>A2: B.</strong> Use curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code> to embed JavaScript expressions in JSX.</p>
+<p><strong>A3: B.</strong> Self-closing tags in JSX must end with <code class="docutils literal notranslate"><span class="pre">/&gt;</span></code>.</p>
+<p><strong>A4: B.</strong> Use <code class="docutils literal notranslate"><span class="pre">className</span></code> instead of <code class="docutils literal notranslate"><span class="pre">class</span></code> because <code class="docutils literal notranslate"><span class="pre">class</span></code> is a reserved keyword in JavaScript.</p>
+<p><strong>A5: C.</strong> JSX comments use the syntax <code class="docutils literal notranslate"><span class="pre">{/*</span> <span class="pre">comment</span> <span class="pre">*/}</span></code>.</p>
+<p><strong>A6: C.</strong> JSX must have one top-level element. Wrap multiple elements in a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> or Fragment <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code>.</p>
+<p><strong>A7: A.</strong> Since <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">&gt;</span> <span class="pre">5</span></code> is true, the ternary operator returns <code class="docutils literal notranslate"><span class="pre">'Big'</span></code>.</p>
+<p><strong>A8: C.</strong> Both <code class="docutils literal notranslate"><span class="pre">&lt;React.Fragment&gt;</span></code> and the shorthand <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> are valid Fragment syntax.</p>
+<p><strong>A9: B.</strong> Use <code class="docutils literal notranslate"><span class="pre">htmlFor</span></code> instead of <code class="docutils literal notranslate"><span class="pre">for</span></code> in JSX for label elements.</p>
+<p><strong>A10: B.</strong> Keys help React identify which items have changed, been added, or removed, improving performance.</p>
+<p><strong>A11: B.</strong> Inline styles use double curly braces: outer for JSX expression, inner for the style object.</p>
+<p><strong>A12: C.</strong> When using <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, if the left side is false, nothing is rendered. The div will be empty.</p>
+</details></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\React"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-get-started.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">29. </span>React and TypeScript</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_Components.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">31. </span>React Module 3: Components</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-jsx">30.1. 1. What is JSX?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-benefits">30.1.1. Key Benefits:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jsx-vs-regular-javascript">30.1.2. JSX vs. Regular JavaScript</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressions-in-jsx">30.2. 2. Expressions in JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-expressions">30.2.1. Basic Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-variables">30.2.2. Using Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-functions">30.2.3. Using Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conditional-expressions">30.2.4. Using Conditional Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-array-methods">30.2.5. Using Array Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-line-jsx">30.3. 3. Multi-line JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-creating-a-list">30.3.1. Example: Creating a List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-complex-layout">30.3.2. Example: Complex Layout</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-top-level-element-rule">30.4. 4. One Top-Level Element Rule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrong-multiple-top-level-elements">30.4.1. ❌ Wrong - Multiple Top-Level Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correct-wrapped-in-a-div">30.4.2. ✅ Correct - Wrapped in a <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#better-using-react-fragments">30.4.3. ✅ Better - Using React Fragments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elements-must-be-closed">30.5. 5. Elements Must Be Closed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-closing-tags">30.5.1. Self-Closing Tags</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-elements">30.5.2. Regular Elements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classname-instead-of-class">30.6. 6. <code class="docutils literal notranslate"><span class="pre">className</span></code> Instead of <code class="docutils literal notranslate"><span class="pre">class</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-classes">30.6.1. Multiple Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-classes">30.6.2. Conditional Classes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-attribute-differences">30.7. 7. Other Attribute Differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">30.7.1. Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-in-jsx">30.8. 8. Comments in JSX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jsx-in-react-components">30.9. 9. JSX in React Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-component">30.9.1. Basic Component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-with-variables">30.9.2. Component with Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-with-logic">30.9.3. Component with Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#component-with-props">30.9.4. Component with Props</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-styles-in-jsx">30.10. 10. Inline Styles in JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-style-object">30.10.1. Inline Style Object</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-rendering-in-jsx">30.11. 11. Conditional Rendering in JSX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ternary-operator">30.11.1. Using Ternary Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-logical-and">30.11.2. Using Logical AND (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-if-else-before-return">30.11.3. Using If-Else Before Return</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-and-keys">30.12. 12. Lists and Keys</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-unique-ids-as-keys-best-practice">30.12.1. Using Unique IDs as Keys (Best Practice)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-react-jsx">30.13. 🔴 Quiz: React JSX</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
