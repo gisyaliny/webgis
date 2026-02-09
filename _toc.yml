@@ -71,9 +71,21 @@ parts:
       - file: docs/React/02_JSX
       - file: docs/React/03_Components
       - file: docs/React/04_Class_Components
+      - file: docs/React/05_React_Props
+      - file: docs/React/06_React_Events
   - caption: Cesium
     numbered: true
     maxdepth: 2
     chapters:
       - file: docs/Cesium/01-Introduction
+  - caption: Experience Builder
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: docs/ex_builder/Module_1_Foundations
+      - file: docs/ex_builder/Module_2_HelloExB
+      - file: docs/ex_builder/Module_3_ConnectingToMap
+      - file: docs/ex_builder/Module_4_ManipulatingLayers
+      - file: docs/ex_builder/Module_5_Configuration
+      - file: docs/ex_builder/Module_6_AdvancedCommunication
 
