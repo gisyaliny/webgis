@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial Generation Guidelines &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '.agent/rules/tutorial-generation-rules';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/.agent/rules/tutorial-generation-rules.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/General/WCAG_2_1_AA_Developer_Checklist.html">1. WCAG 2.1 AA — Developer Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/General/01-Emmet_Comprehensive_Tutorial.html">2. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/General/02-Git_Beginner_Practical_Guide.html">3. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/CSS/01-get-start.html">4. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/CSS/02-CSS-Box.html">5. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/CSS/03-css-layout.html">6. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/CSS/04-css-selectors.html">7. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/01-JS-intro.html">8. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/03-loop-and-logic.html">9. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ES6/01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ES6/02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ES6/03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ES6/04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/Examples/Sort-Tables.html">15. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/ArcGIS/01-get-started.html">16. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/ArcGIS/02-manipulate-layers.html">17. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/JS/ArcGIS/03-spatial-query.html">18. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/esri_js/01-intro.html">19. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/esri_js/02-selection.html">20. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/01-get-started.html">21. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/02-database-and-admin.html">22. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/03-user-registration.html">23. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/04-post-crud.html">24. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/07-customize-admin.html">25. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/08-rest-api.html">26. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/Django-Blog/09-deploy.html">27. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Backend/01-sql-comprehensive.html">28. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/React/01-get-started.html">29. React and TypeScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/React/02_JSX.html">30. React Module 2: JSX (JavaScript XML)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/React/03_Components.html">31. React Module 3: Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/React/05_React_Props.html">33. React Module 5: React Props</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/React/06_React_Events.html">34. React Module 6: React Events</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/Cesium/01-Introduction.html">35. Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ex_builder/Module_1_Foundations.html">36. Module 1: The Foundations (Prerequisites)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ex_builder/Module_2_HelloExB.html">37. Module 2: Hello Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ex_builder/Module_3_ConnectingToMap.html">38. Module 3: Connecting to the Map (The Core)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ex_builder/Module_4_ManipulatingLayers.html">39. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ex_builder/Module_5_Configuration.html">40. Module 5: Making it Reusable (Configuration)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/ex_builder/Module_6_AdvancedCommunication.html">41. Module 6: Advanced Communications (Bonus)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/.agent/rules/tutorial-generation-rules.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2F.agent/rules/tutorial-generation-rules.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/.agent/rules/tutorial-generation-rules.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial Generation Guidelines</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-file-structure">1. Directory &amp; File Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory">Directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-naming">File Naming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-structure-per-module">2. Content Structure (Per Module)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-header">A. Header</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-core-sections">B. Core Sections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-formatting-standards">C. Formatting Standards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-interactive-quiz-mandatory">D. Interactive Quiz (Mandatory)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-template">Quiz Template:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-tone">3. Style &amp; Tone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4. Verification</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-generation-guidelines">
+<h1>Tutorial Generation Guidelines<a class="headerlink" href="#tutorial-generation-guidelines" title="Link to this heading">#</a></h1>
+<p>This document outlines the standard rules and workflow for generating learning tutorials (e.g., React, ES6) in this workspace. All new tutorials should follow these guidelines to ensure consistency and quality.</p>
+<section id="directory-file-structure">
+<h2>1. Directory &amp; File Structure<a class="headerlink" href="#directory-file-structure" title="Link to this heading">#</a></h2>
+<section id="directory">
+<h3>Directory<a class="headerlink" href="#directory" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a dedicated folder for the topic in <code class="docutils literal notranslate"><span class="pre">docs/</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">docs/ES6</span></code>, <code class="docutils literal notranslate"><span class="pre">docs/Python</span></code>).</p></li>
+</ul>
+</section>
+<section id="file-naming">
+<h3>File Naming<a class="headerlink" href="#file-naming" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use numbered prefixes to order modules logically.</p></li>
+<li><p>Use capitalized words separated by underscores or hyphens.</p></li>
+<li><p>Format: <code class="docutils literal notranslate"><span class="pre">XX_Topic_Name.md</span></code></p></li>
+<li><p><strong>Examples</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">01_Introduction.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">02_Data_Handling.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">03_Advanced_Patterns.md</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="content-structure-per-module">
+<h2>2. Content Structure (Per Module)<a class="headerlink" href="#content-structure-per-module" title="Link to this heading">#</a></h2>
+<p>Each tutorial file should generally follow this structure:</p>
+<section id="a-header">
+<h3>A. Header<a class="headerlink" href="#a-header" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>H1 Title</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;#</span> <span class="pre">Topic</span> <span class="pre">Module</span> <span class="pre">X:</span> <span class="pre">Module</span> <span class="pre">Name&quot;</span></code></p></li>
+<li><p><strong>Introduction</strong>: Brief summary (2-3 sentences) of what this module covers and why it matters.</p></li>
+</ul>
+</section>
+<section id="b-core-sections">
+<h3>B. Core Sections<a class="headerlink" href="#b-core-sections" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <strong>H2</strong> for main topics (<code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">1.</span> <span class="pre">Topic</span> <span class="pre">Name</span></code>).</p></li>
+<li><p>Use <strong>H3</strong> for subtopics (<code class="docutils literal notranslate"><span class="pre">###</span> <span class="pre">Subtopic</span></code>).</p></li>
+<li><p><strong>Explain-then-Show</strong>: Provide a brief explanation followed immediately by a code block.</p></li>
+<li><p><strong>Comparison</strong>: Where possible, show “Old vs. New” or “Wrong vs. Correct” examples.</p>
+<ul>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">❌</span> <span class="pre">Wrong</span></code> / <code class="docutils literal notranslate"><span class="pre">✅</span> <span class="pre">Correct</span></code> indicators.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="c-formatting-standards">
+<h3>C. Formatting Standards<a class="headerlink" href="#c-formatting-standards" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Code Blocks</strong>: Always specify the language (e.g., <code class="docutils literal notranslate"><span class="pre">javascript</span></code>, <code class="docutils literal notranslate"><span class="pre">python</span></code>).</p></li>
+<li><p><strong>Emphasis</strong>: Use <strong>bold</strong> for key terms and <code class="docutils literal notranslate"><span class="pre">backticks</span></code> for inline code/variable names.</p></li>
+<li><p><strong>Best Practices</strong>: Explicitly call out best practices vs. anti-patterns.</p></li>
+</ul>
+</section>
+<section id="d-interactive-quiz-mandatory">
+<h3>D. Interactive Quiz (Mandatory)<a class="headerlink" href="#d-interactive-quiz-mandatory" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>End each module with a <strong>Quiz section</strong>.</p></li>
+<li><p><strong>Header</strong>: <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">🔴</span> <span class="pre">Quiz:</span> <span class="pre">Topic</span> <span class="pre">Name</span></code></p></li>
+<li><p><strong>Format</strong>: Multiple-choice questions (Q1, Q2, Q3…).</p></li>
+<li><p><strong>Answers</strong>: Hide answers inside a collapsible <code class="docutils literal notranslate"><span class="pre">&lt;details&gt;</span></code> block.</p></li>
+</ul>
+<section id="quiz-template">
+<h4>Quiz Template:<a class="headerlink" href="#quiz-template" title="Link to this heading">#</a></h4>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## 🔴 Quiz: Module Name</span>
+
+<span class="gs">**Q1: Question text here?**</span>
+A) Option A
+B) Option B
+C) Option C
+
+&lt;details&gt;
+&lt;summary&gt;&lt;strong&gt;See Answers&lt;/strong&gt;&lt;/summary&gt;
+
+<span class="gs">**A1: B.**</span> Explanation of why B is correct.
+&lt;/details&gt;
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="style-tone">
+<h2>3. Style &amp; Tone<a class="headerlink" href="#style-tone" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Comprehensive</strong>: Cover edge cases and common pitfalls.</p></li>
+<li><p><strong>Modern</strong>: Teach modern standards (e.g., ES6+ over var, Functional React over Class).</p></li>
+<li><p><strong>Practical</strong>: Use realistic variable names (<code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">isLoggedIn</span></code>) rather than <code class="docutils literal notranslate"><span class="pre">foo</span></code>/<code class="docutils literal notranslate"><span class="pre">bar</span></code> where possible.</p></li>
+</ul>
+</section>
+<section id="verification">
+<h2>4. Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Ensure code examples are syntactically correct.</p></li>
+<li><p>Verify that standard links or references (if any) are valid.</p></li>
+<li><p>Check that the quiz answers match the content taught in the module.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./.agent\rules"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#directory-file-structure">1. Directory &amp; File Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#directory">Directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-naming">File Naming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content-structure-per-module">2. Content Structure (Per Module)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-header">A. Header</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-core-sections">B. Core Sections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-formatting-standards">C. Formatting Standards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-interactive-quiz-mandatory">D. Interactive Quiz (Mandatory)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-template">Quiz Template:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-tone">3. Style &amp; Tone</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">4. Verification</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

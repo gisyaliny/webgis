@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>40. Module 5: Making it Reusable (Configuration) &#8212; Yalin&#39;s GIS Developer Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/ex_builder/Module_5_Configuration';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/ex_builder/Module_5_Configuration.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="41. Module 6: Advanced Communications (Bonus)" href="Module_6_AdvancedCommunication.html" />
+    <link rel="prev" title="39. Module 4: Manipulating Layers (Replicating Your Widgets)" href="Module_4_ManipulatingLayers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Yalin's GIS Developer Handbook - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Yalin's GIS Developer Handbook - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../General/WCAG_2_1_AA_Developer_Checklist.html">1. WCAG 2.1 AA — Developer Checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/01-Emmet_Comprehensive_Tutorial.html">2. 🧩 Emmet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../General/02-Git_Beginner_Practical_Guide.html">3. 🧭 Git for Everyday Development</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/01-get-start.html">4. Intro to CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/02-CSS-Box.html">5. CSS Box Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/03-css-layout.html">6. CSS Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/04-css-selectors.html">7. CSS Selectors</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JavaScript Basic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/01-JS-intro.html">8. Values, Types, and Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/03-loop-and-logic.html">9. Loops and logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/02-Arrays-and-Object.html">10. Array and Object (Dictionary)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ES6 Modern JavaScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ES6/01_Core_Syntax.html">11. ES6 Module 1: Core Syntax Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ES6/02_Data_Handling.html">12. ES6 Module 2: Data Handling &amp; Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ES6/03_Architecture_Classes.html">13. ES6 Module 3: Architecture (Classes &amp; Modules)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ES6/04_Async_Advanced.html">14. ES6 Module 4: Async &amp; Advanced Concepts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">JS Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/Examples/Sort-Tables.html">15. Creating a Sortable HTML Table with JavaScript</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ArcGIS JS API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/01-get-started.html">16. Introduction to ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/02-manipulate-layers.html">17. Web Layers and widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../JS/ArcGIS/03-spatial-query.html">18. Working with Spatial Data with ArcGIS JS API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/01-intro.html">19. ArcGIS JavaScript API 4.x Foundations &amp; App Skeleton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esri_js/02-selection.html">20. Class 2 — Selection, Queries, Popups &amp; Symbology</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Django Blog Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/01-get-started.html">21. Blog-get started (Django)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/02-database-and-admin.html">22. Database and Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/03-user-registration.html">23. User Authentication Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/04-post-crud.html">24. POST Create, Read, Update and Delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/07-customize-admin.html">25. Customizing the Django Admin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/08-rest-api.html">26. Django REST API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Backend/Django-Blog/09-deploy.html">27. Deploy Project into Windows Server (IIS)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataBase</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">28. SQL</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">29. React and TypeScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/02_JSX.html">30. React Module 2: JSX (JavaScript XML)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/03_Components.html">31. React Module 3: Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/05_React_Props.html">33. React Module 5: React Props</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/06_React_Events.html">34. React Module 6: React Events</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">35. Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">36. Module 1: The Foundations (Prerequisites)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">37. Module 2: Hello Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">38. Module 3: Connecting to the Map (The Core)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">39. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">40. Module 5: Making it Reusable (Configuration)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">41. Module 6: Advanced Communications (Bonus)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/ex_builder/Module_5_Configuration.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/ex_builder/Module_5_Configuration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/ex_builder/Module_5_Configuration.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 5: Making it Reusable (Configuration)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-config-interface-config-ts">40.1. 1. The Config Interface (<code class="docutils literal notranslate"><span class="pre">config.ts</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-config-in-runtime-widget-tsx">40.2. 2. Using Config in Runtime (<code class="docutils literal notranslate"><span class="pre">widget.tsx</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-settings-panel-src-setting-setting-tsx">40.3. 3. The Settings Panel (<code class="docutils literal notranslate"><span class="pre">src/setting/setting.tsx</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-structure">40.3.1. Basic Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concept-props-onsettingchange">40.3.2. Key Concept: <code class="docutils literal notranslate"><span class="pre">props.onSettingChange</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-5">40.4. 🎓 Quiz: Module 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">40.4.1. Reference Answers</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-5-making-it-reusable-configuration">
+<h1><span class="section-number">40. </span>Module 5: Making it Reusable (Configuration)<a class="headerlink" href="#module-5-making-it-reusable-configuration" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>Goal</strong>: Stop hardcoding Layer IDs and let the user pick them in the Builder interface.</p>
+</div></blockquote>
+<p>Hardcoding IDs like <code class="docutils literal notranslate"><span class="pre">[&quot;layer-A&quot;]</span></code> is bad practice. If you delete the layer from the webmap, your widget breaks. We want the user to pick the layer from a list in the Experience Builder settings panel.</p>
+<hr class="docutils" />
+<section id="the-config-interface-config-ts">
+<h2><span class="section-number">40.1. </span>1. The Config Interface (<code class="docutils literal notranslate"><span class="pre">config.ts</span></code>)<a class="headerlink" href="#the-config-interface-config-ts" title="Link to this heading">#</a></h2>
+<p>First, we tell TypeScript what our settings look like. This usually lives in <code class="docutils literal notranslate"><span class="pre">src/config.ts</span></code>.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ImmutableObject</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;jimu-core&#39;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Config</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">layerIds</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span><span class="w">         </span><span class="c1">// User can pick multiple layers</span>
+<span class="w">  </span><span class="nx">buttonText</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">         </span><span class="c1">// User can change &quot;Focus&quot; to &quot;Show Water&quot;</span>
+<span class="w">  </span><span class="nx">activeColor</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w">        </span><span class="c1">// User can pick the color</span>
+<span class="w">  </span><span class="nx">isDefaultActive</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w">   </span><span class="c1">// Should it be on by default?</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IMConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ImmutableObject</span><span class="o">&lt;</span><span class="nx">Config</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ImmutableObject</strong>: ExB uses a special data type that cannot be changed directly. This makes the app safer.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="using-config-in-runtime-widget-tsx">
+<h2><span class="section-number">40.2. </span>2. Using Config in Runtime (<code class="docutils literal notranslate"><span class="pre">widget.tsx</span></code>)<a class="headerlink" href="#using-config-in-runtime-widget-tsx" title="Link to this heading">#</a></h2>
+<p>In your widget code, you access these settings via <code class="docutils literal notranslate"><span class="pre">props.config</span></code>.</p>
+<div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>const Widget = (props: AllWidgetProps&lt;IMConfig&gt;) =&gt; {
+  
+  // Reading the text
+  const label = props.config.buttonText || &quot;Default Button&quot;;
+  
+  // Reading the color
+  const style = {
+      backgroundColor: props.config.activeColor
+  };
+
+  return &lt;Button style={style}&gt;{label}&lt;/Button&gt;
+}
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="the-settings-panel-src-setting-setting-tsx">
+<h2><span class="section-number">40.3. </span>3. The Settings Panel (<code class="docutils literal notranslate"><span class="pre">src/setting/setting.tsx</span></code>)<a class="headerlink" href="#the-settings-panel-src-setting-setting-tsx" title="Link to this heading">#</a></h2>
+<p>This is a totally separate React component that only shows up in the Builder side.</p>
+<section id="basic-structure">
+<h3><span class="section-number">40.3.1. </span>Basic Structure<a class="headerlink" href="#basic-structure" title="Link to this heading">#</a></h3>
+<div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>import { React } from &#39;jimu-core&#39;;
+import { AllWidgetSettingProps } from &#39;jimu-for-builder&#39;;
+import { JimuMapViewSelector } from &#39;jimu-ui/advanced/setting-components&#39;; // The Magic Component
+
+const Setting = (props: AllWidgetSettingProps&lt;IMConfig&gt;) =&gt; {
+
+  const onMapSelected = (useMapWidgetIds: string[]) =&gt; {
+    // Save the user&#39;s choice to the widget config
+    props.onSettingChange({
+      id: props.id,
+      useMapWidgetIds: useMapWidgetIds
+    });
+  };
+
+  return (
+    &lt;div className=&quot;widget-setting-demo&quot;&gt;
+      &lt;p&gt;Select Map&lt;/p&gt;
+      &lt;JimuMapViewSelector 
+        onSelect={onMapSelected}
+        useMapWidgetIds={props.useMapWidgetIds}
+      /&gt;
+    &lt;/div&gt;
+  );
+};
+</pre></div>
+</div>
+</section>
+<section id="key-concept-props-onsettingchange">
+<h3><span class="section-number">40.3.2. </span>Key Concept: <code class="docutils literal notranslate"><span class="pre">props.onSettingChange</span></code><a class="headerlink" href="#key-concept-props-onsettingchange" title="Link to this heading">#</a></h3>
+<p>This is how you save data. You don’t “set state” here; you tell the main ExB app “The user changed setting X to Y”. ExB saves it and re-renders your widget automatically.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quiz-module-5">
+<h2><span class="section-number">40.4. </span>🎓 Quiz: Module 5<a class="headerlink" href="#quiz-module-5" title="Link to this heading">#</a></h2>
+<p><strong>Q1: Where do you define the <em>structure</em> or <em>types</em> of your widget’s settings?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">config.ts</span></code> (as an Interface)
+C) <code class="docutils literal notranslate"><span class="pre">widget.tsx</span></code></p>
+<p><strong>Q2: How do you access the user’s chosen settings inside your main widget code?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">props.settings</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">window.config</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">props.config</span></code></p>
+<p><strong>Q3: What function do you call in the Settings panel to save a change?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">props.onSettingChange</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">props.save()</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">props.updateConfig()</span></code></p>
+<hr class="docutils" />
+<section id="reference-answers">
+<h3><span class="section-number">40.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Q1: B</strong>. Defining an Interface in <code class="docutils literal notranslate"><span class="pre">config.ts</span></code> ensures both your Widget and your Settings panel agree on what data exists.</p></li>
+<li><p><strong>Q2: C</strong>. <code class="docutils literal notranslate"><span class="pre">props.config</span></code> is the standard prop name.</p></li>
+<li><p><strong>Q3: A</strong>. This is the specific Jimu function to broadcast updates to the framework.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\ex_builder"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Module_4_ManipulatingLayers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">39. </span>Module 4: Manipulating Layers (Replicating Your Widgets)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Module_6_AdvancedCommunication.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">41. </span>Module 6: Advanced Communications (Bonus)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-config-interface-config-ts">40.1. 1. The Config Interface (<code class="docutils literal notranslate"><span class="pre">config.ts</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-config-in-runtime-widget-tsx">40.2. 2. Using Config in Runtime (<code class="docutils literal notranslate"><span class="pre">widget.tsx</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-settings-panel-src-setting-setting-tsx">40.3. 3. The Settings Panel (<code class="docutils literal notranslate"><span class="pre">src/setting/setting.tsx</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-structure">40.3.1. Basic Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concept-props-onsettingchange">40.3.2. Key Concept: <code class="docutils literal notranslate"><span class="pre">props.onSettingChange</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-5">40.4. 🎓 Quiz: Module 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">40.4.1. Reference Answers</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yalin Yang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
