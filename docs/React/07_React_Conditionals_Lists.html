@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>37. Introduction &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>35. React Module 7: Conditionals &amp; Lists &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -57,13 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Cesium/01-Introduction';</script>
-    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/Cesium/01-Introduction.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/React/07_React_Conditionals_Lists';</script>
+    <link rel="canonical" href="https://gisyaliny.github.io/gis/docs/React/07_React_Conditionals_Lists.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="38. Module 1: The Foundations (Prerequisites)" href="../ex_builder/Module_1_Foundations.html" />
-    <link rel="prev" title="36. React Module 8: React Forms" href="../React/08_React_Forms.html" />
+    <link rel="next" title="36. React Module 8: React Forms" href="08_React_Forms.html" />
+    <link rel="prev" title="34. React Module 6: React Events" href="06_React_Events.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -226,19 +226,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../Backend/01-sql-comprehensive.html">28. SQL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">React and TypeScript</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../React/01-get-started.html">29. React and TypeScript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/02_JSX.html">30. React Module 2: JSX (JavaScript XML)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/03_Components.html">31. React Module 3: Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/05_React_Props.html">33. React Module 5: React Props</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/06_React_Events.html">34. React Module 6: React Events</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/07_React_Conditionals_Lists.html">35. React Module 7: Conditionals &amp; Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../React/08_React_Forms.html">36. React Module 8: React Forms</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-get-started.html">29. React and TypeScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_JSX.html">30. React Module 2: JSX (JavaScript XML)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Components.html">31. React Module 3: Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Class_Components.html">32. React Module 4: Class Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_React_Props.html">33. React Module 5: React Props</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_React_Events.html">34. React Module 6: React Events</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">35. React Module 7: Conditionals &amp; Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_React_Forms.html">36. React Module 8: React Forms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">37. Introduction</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">37. Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
 <ul class="nav bd-sidenav">
@@ -294,55 +294,6 @@
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/gisyaliny/gis/master?urlpath=tree/docs/Cesium/01-Introduction.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/gisyaliny/gis/blob/master/docs/Cesium/01-Introduction.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -368,7 +319,7 @@
       
       
       
-      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/Cesium/01-Introduction.ipynb" target="_blank"
+      <li><a href="https://github.com/gisyaliny/gis/edit/main/docs/React/07_React_Conditionals_Lists.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -385,7 +336,7 @@
       
       
       
-      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/Cesium/01-Introduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/gisyaliny/gis/issues/new?title=Issue%20on%20page%20%2Fdocs/React/07_React_Conditionals_Lists.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -415,7 +366,7 @@
       
       
       
-      <li><a href="../../_sources/docs/Cesium/01-Introduction.ipynb" target="_blank"
+      <li><a href="../../_sources/docs/React/07_React_Conditionals_Lists.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -425,7 +376,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -499,7 +450,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>React Module 7: Conditionals & Lists</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -509,10 +460,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-data-format">37.1. Support Data Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-in-developing">37.2. Cesium in developing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-component-for-cesium">37.3. Learning component for Cesium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-environment-setting">37.4. Cesium Environment setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-rendering">35.1. 1. Conditional Rendering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-if-statements">35.1.1. Using <code class="docutils literal notranslate"><span class="pre">if</span></code> Statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operator">35.1.2. Logical <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ternary-operator-condition-true-false">35.1.3. Ternary Operator (<code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">?</span> <span class="pre">true</span> <span class="pre">:</span> <span class="pre">false</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-lists">35.2. 2. Rendering Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-list">35.2.1. Basic List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keys">35.2.2. Keys</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrong-missing-key-warning">35.2.3. ❌ Wrong: Missing Key Warning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">35.3. 3. Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-conditionals-lists">35.4. 🔴 Quiz: Conditionals &amp; Lists</a></li>
 </ul>
             </nav>
         </div>
@@ -524,168 +485,142 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><span class="section-number">37. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="https://cesium.com/">Cesium</a></p></li>
-</ul>
-<p>Cesium is an <strong>open-source JavaScript library</strong> for creating 3D globes and maps. It allows developers to build interactive web-based applications with high-performance rendering of geospatial data. Cesium is particularly renowned for its capability to visualize <strong>large-scale</strong>, <strong>time-dynamic</strong>, and <strong>geographically</strong></p>
-<ul class="simple">
-<li><p>It requires support of <code class="docutils literal notranslate"><span class="pre">WebGL</span></code></p></li>
-<li><p>Based on <code class="docutils literal notranslate"><span class="pre">Apache</span> <span class="pre">2.0</span></code> license</p></li>
-</ul>
-<p><img alt="" src="https://images.prismic.io/cesium/f9240055-e3a6-49f1-aef9-30e2ed4b0600_cesium-for-unreal-open1.png?auto=compress%2Cformat&amp;fit=crop&amp;ar=16%3A9&amp;crop=faces%2Ccenter&amp;w=675" /></p>
-<section id="support-data-format">
-<h2><span class="section-number">37.1. </span>Support Data Format<a class="headerlink" href="#support-data-format" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code>: A lightweight format for encoding geospatial data using JSON (JavaScript Object Notation).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">KML</span> <span class="pre">(Keyhole</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>: An XML-based format for expressing geographic annotation and visualization within Internet-based maps and Earth browsers.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CZML</span> <span class="pre">(Cesium</span> <span class="pre">Language)</span></code>: A JSON-based format specifically designed for Cesium, allowing developers to describe time-dynamic scenes in Cesium applications.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">3D</span> <span class="pre">Tiles</span></code>: A format for streaming massive heterogeneous 3D geospatial datasets, enabling efficient visualization of large-scale 3D content such as terrain, buildings, and point clouds.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Tileset</span></code>: Cesium supports various tileset formats for efficiently rendering large-scale datasets, including formats like quantized-mesh, 3D Tiles, and terrain tiles.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">STL</span> <span class="pre">(Stereolithography)</span></code>: A file format native to the stereolithography <code class="docutils literal notranslate"><span class="pre">CAD</span></code> software used for creating 3D models, commonly used for representing 3D geometry in Cesium applications.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">COLLADA</span> <span class="pre">(COLLAborative</span> <span class="pre">Design</span> <span class="pre">Activity)</span></code>: A 3D model interchange format for exchanging digital assets between different graphics software applications, often used for importing 3D models into Cesium scenes.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OBJ</span> <span class="pre">(Wavefront</span> <span class="pre">.obj</span> <span class="pre">file)</span></code>: A simple text-based format for representing 3D models, suitable for importing into Cesium applications for visualization.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GML</span> <span class="pre">(Geography</span> <span class="pre">Markup</span> <span class="pre">Language)</span></code>: An <code class="docutils literal notranslate"><span class="pre">XML</span></code>-based encoding for the transport and storage of geographic information, supported in Cesium for interoperability with GIS systems.</p></li>
-</ul>
-</section>
-<section id="cesium-in-developing">
-<h2><span class="section-number">37.2. </span>Cesium in developing<a class="headerlink" href="#cesium-in-developing" title="Link to this heading">#</a></h2>
-<p><img alt="" src="docs/assets/01.png" /></p>
-</section>
-<section id="learning-component-for-cesium">
-<h2><span class="section-number">37.3. </span>Learning component for Cesium<a class="headerlink" href="#learning-component-for-cesium" title="Link to this heading">#</a></h2>
-<div style="text-align: center;">
-  <img src="../assets/02.png" alt="Image" style="width: 40%;">
+  <section class="tex2jax_ignore mathjax_ignore" id="react-module-7-conditionals-lists">
+<h1><span class="section-number">35. </span>React Module 7: Conditionals &amp; Lists<a class="headerlink" href="#react-module-7-conditionals-lists" title="Link to this heading">#</a></h1>
+<section id="conditional-rendering">
+<h2><span class="section-number">35.1. </span>1. Conditional Rendering<a class="headerlink" href="#conditional-rendering" title="Link to this heading">#</a></h2>
+<p>React allows you to render different components or elements based on certain conditions. This works the same way conditions work in JavaScript.</p>
+<section id="using-if-statements">
+<h3><span class="section-number">35.1.1. </span>Using <code class="docutils literal notranslate"><span class="pre">if</span></code> Statements<a class="headerlink" href="#using-if-statements" title="Link to this heading">#</a></h3>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to decide which JSX to return.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Goal</span><span class="p">({</span><span class="w"> </span><span class="nx">isGoal</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isGoal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">MadeGoal</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">MissedGoal</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </section>
-<section id="cesium-environment-setting">
-<h2><span class="section-number">37.4. </span>Cesium Environment setting<a class="headerlink" href="#cesium-environment-setting" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><code class="docutils literal notranslate"><span class="pre">Node.js</span> <span class="pre">and</span> <span class="pre">npm</span></code>: <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> development requires <code class="docutils literal notranslate"><span class="pre">Node.js</span></code>, which includes <code class="docutils literal notranslate"><span class="pre">npm</span></code> (Node Package Manager), for managing dependencies and running scripts. You can download and install <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> from <a class="reference external" href="https://nodejs.org/en">here</a>.</p>
+<section id="logical-operator">
+<h3><span class="section-number">35.1.2. </span>Logical <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> Operator<a class="headerlink" href="#logical-operator" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> when you want to render something <strong>only if</strong> a condition is true.</p>
 <ul class="simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">--version</span></code> to check whether you install <code class="docutils literal notranslate"><span class="pre">Node.js</span></code> successfully</p></li>
+<li><p>If true: renders the element.</p></li>
+<li><p>If false: renders nothing (ignores it).</p></li>
 </ul>
-</li>
-<li><p>Create a New Project</p>
-<ol class="arabic simple">
-<li><p>First, create a new directory for your Cesium project. You can do this using the command line:</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">cesium</span><span class="o">-</span><span class="n">project</span>
-<span class="n">cd</span> <span class="n">cesium</span><span class="o">-</span><span class="n">project</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Next, initialize a new npm project in the project directory:
-<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">init</span> <span class="pre">-y</span></code></p></li>
-</ol>
-<p>This command creates a package.json file with default settings.</p>
-<ol class="arabic simple" start="3">
-<li><p>Install <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> as a dependency using <code class="docutils literal notranslate"><span class="pre">npm</span></code>:
-<code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">cesium</span></code></p></li>
-</ol>
-<p>This command installs the Cesium library and adds it as a dependency in your package.json file.</p>
-</li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>node<span class="w"> </span>--version
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v14.17.6
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>cesium-project
-<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>cesium-project
-<span class="o">!</span>npm<span class="w"> </span>init<span class="w"> </span>-y
-<span class="o">!</span>npm<span class="w"> </span>install<span class="w"> </span>cesium
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wrote to e:\2024\github\gis\Cesium\package.json:
-
-{
-  &quot;name&quot;: &quot;Cesium&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;&quot;,
-  &quot;main&quot;: &quot;index.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
-  },
-  &quot;keywords&quot;: [],
-  &quot;author&quot;: &quot;&quot;,
-  &quot;license&quot;: &quot;ISC&quot;
-}
-
-
-
-&gt; protobufjs@7.2.6 postinstall e:\2024\github\gis\Cesium\node_modules\protobufjs
-&gt; node scripts/postinstall
-
-+ cesium@1.116.0
-added 39 packages from 79 contributors and audited 39 packages in 3.968s
-found 0 vulnerabilities
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>npm notice created a lockfile as package-lock.json. You should commit this file.
-npm WARN notsup Unsupported engine for @zip.js/zip.js@2.7.41: wanted: {&quot;deno&quot;:&quot;&gt;=1.0.0&quot;,&quot;node&quot;:&quot;&gt;=16.5.0&quot;,&quot;bun&quot;:&quot;&gt;=0.7.0&quot;} (current: {&quot;node&quot;:&quot;14.17.6&quot;,&quot;npm&quot;:&quot;6.14.15&quot;})
-npm WARN notsup Not compatible with your version of node/npm: @zip.js/zip.js@2.7.41
-npm WARN Cesium@1.0.0 No description
-npm WARN Cesium@1.0.0 No repository field.
-</pre></div>
-</div>
-</div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Create an <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file in your project directory.</p>
-<ul class="simple">
-<li><p>This file will serve as the entry point for your <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> application:</p></li>
-<li><p>Open <code class="docutils literal notranslate"><span class="pre">index.html</span></code> in a editor and add the following content:</p></li>
-</ul>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Cesium Example<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="c">/* Add any custom styles here */</span>
-<span class="w">      </span><span class="p">#</span><span class="nn">cesiumContainer</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">        </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">Garage</span><span class="p">({</span><span class="w"> </span><span class="nx">cars</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Garage</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">cars</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">You</span><span class="w"> </span><span class="nx">have</span><span class="w"> </span><span class="p">{</span><span class="nx">cars</span><span class="p">.</span><span class="nx">length</span><span class="p">}</span><span class="w"> </span><span class="nx">cars</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">your</span><span class="w"> </span><span class="nx">garage</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/h2&gt;</span>
 <span class="w">      </span><span class="p">}</span>
-<span class="w">      </span><span class="nt">body</span><span class="o">,</span>
-<span class="w">      </span><span class="nt">html</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">overflow</span><span class="p">:</span><span class="w"> </span><span class="kc">hidden</span><span class="p">;</span>
-<span class="w">        </span><span class="k">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;cesiumContainer&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./node_modules/cesium/Build/Cesium/Cesium.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="c1">// Your Cesium code goes here</span>
-<span class="w">      </span><span class="kd">var</span><span class="w"> </span><span class="nx">viewer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Cesium</span><span class="p">.</span><span class="nx">Viewer</span><span class="p">(</span><span class="s2">&quot;cesiumContainer&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
+</section>
+<section id="ternary-operator-condition-true-false">
+<h3><span class="section-number">35.1.3. </span>Ternary Operator (<code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">?</span> <span class="pre">true</span> <span class="pre">:</span> <span class="pre">false</span></code>)<a class="headerlink" href="#ternary-operator-condition-true-false" title="Link to this heading">#</a></h3>
+<p>The most common way to handle “if-else” logic inline within JSX.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">LoginStatus</span><span class="p">({</span><span class="w"> </span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="nx">The</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;currently&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;not&#39;</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/b&gt; logged in.</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="rendering-lists">
+<h2><span class="section-number">35.2. </span>2. Rendering Lists<a class="headerlink" href="#rendering-lists" title="Link to this heading">#</a></h2>
+<p>In React, you render lists by iterating over arrays, usually using the <code class="docutils literal notranslate"><span class="pre">.map()</span></code> function.</p>
+<section id="basic-list">
+<h3><span class="section-number">35.2.1. </span>Basic List<a class="headerlink" href="#basic-list" title="Link to this heading">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">CarList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BMW&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Audi&#39;</span><span class="p">];</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">cars</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">car</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">car</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">car</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/li&gt;)}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="keys">
+<h3><span class="section-number">35.2.2. </span>Keys<a class="headerlink" href="#keys" title="Link to this heading">#</a></h3>
+<p>A “key” is a special string attribute you need to include when creating lists of elements. Keys help React identify which items have changed, are added, or are removed.</p>
 <ul class="simple">
-<li><p>This <code class="docutils literal notranslate"><span class="pre">HTML</span></code> file sets up a basic webpage with a container <code class="docutils literal notranslate"><span class="pre">div</span></code> for the <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> viewer and includes the <code class="docutils literal notranslate"><span class="pre">Cesium</span></code> library via a <code class="docutils literal notranslate"><span class="pre">script</span></code> tag.</p></li>
+<li><p><strong>Best Practice</strong>: Use unique IDs from your data.</p></li>
+<li><p><strong>Fallback</strong>: Use the array index (only if the list is static and won’t be reordered).</p></li>
 </ul>
-</li>
-</ol>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">todos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Learn React&#39;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Build App&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">];</span>
+
+<span class="c1">// Correct usage of keys</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">listItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">todos</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">todo</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">todo</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="wrong-missing-key-warning">
+<h3><span class="section-number">35.2.3. </span>❌ Wrong: Missing Key Warning<a class="headerlink" href="#wrong-missing-key-warning" title="Link to this heading">#</a></h3>
+<p>React will throw a console warning if you forget <code class="docutils literal notranslate"><span class="pre">key</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="best-practices">
+<h2><span class="section-number">35.3. </span>3. Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Don’t use indexes as keys</strong> if the list order might change (e.g., sorting, filtering, adding/removing items), as this can cause bugs and performance issues.</p></li>
+<li><p>Keep render logic clean. If a conditional block is too complex, extract it into a separate component or function.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-conditionals-lists">
+<h2><span class="section-number">35.4. </span>🔴 Quiz: Conditionals &amp; Lists<a class="headerlink" href="#quiz-conditionals-lists" title="Link to this heading">#</a></h2>
+<p><strong>Q1: Which operator helps render an element ONLY if a condition is true?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">||</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">??</span></code></p>
+<p><strong>Q2: Why do lists need keys in React?</strong>
+A) To style the elements.
+B) To help React effectively update and re-render the list.
+C) To make the HTML valid.</p>
+<p><strong>Q3: Is it recommended to use the array index as a key?</strong>
+A) Yes, always.
+B) Only if the list is static, won’t change order, and items have no IDs.
+C) No, never under any circumstances.</p>
+<p><strong>Q4: How does the ternary operator work in JSX?</strong>
+A) <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(condition)</span> <span class="pre">{</span> <span class="pre">true</span> <span class="pre">}</span> <span class="pre">else</span> <span class="pre">{</span> <span class="pre">false</span> <span class="pre">}</span></code>
+B) <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">?</span> <span class="pre">true</span> <span class="pre">:</span> <span class="pre">false</span></code>
+C) <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">&amp;&amp;</span> <span class="pre">true</span> <span class="pre">||</span> <span class="pre">false</span></code></p>
+<p><strong>Q5: What is the correct way to render a list of items?</strong>
+A) Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop inside JSX.
+B) Using <code class="docutils literal notranslate"><span class="pre">.forEach()</span></code> inside JSX.
+C) Using <code class="docutils literal notranslate"><span class="pre">.map()</span></code> to return an array of elements.</p>
+<details>
+<summary><strong>See Answers</strong></summary>
+<p><strong>A1: B.</strong>
+The logical AND <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> operator renders the right side only if the left side is truthy.</p>
+<p><strong>A2: B.</strong>
+Keys allow React to track element identity, minimizing DOM operations during updates.</p>
+<p><strong>A3: B.</strong>
+Indexes are acceptable only for static lists; otherwise, they can cause state issues.</p>
+<p><strong>A4: B.</strong>
+The ternary operator is the standard inline if-else replacement in JSX.</p>
+<p><strong>A5: C.</strong>
+<code class="docutils literal notranslate"><span class="pre">map()</span></code> returns a new array of elements, which React can render. <code class="docutils literal notranslate"><span class="pre">forEach</span></code> returns undefined.</p>
+</details>
 </section>
 </section>
 
@@ -702,7 +637,7 @@ npm WARN Cesium@1.0.0 No repository field.
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\Cesium"
+            path: "./docs\React"
         },
         predefinedOutput: true
     }
@@ -720,20 +655,20 @@ npm WARN Cesium@1.0.0 No repository field.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../React/08_React_Forms.html"
+       href="06_React_Events.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">36. </span>React Module 8: React Forms</p>
+        <p class="prev-next-title"><span class="section-number">34. </span>React Module 6: React Events</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ex_builder/Module_1_Foundations.html"
+       href="08_React_Forms.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">38. </span>Module 1: The Foundations (Prerequisites)</p>
+        <p class="prev-next-title"><span class="section-number">36. </span>React Module 8: React Forms</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -753,10 +688,20 @@ npm WARN Cesium@1.0.0 No repository field.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-data-format">37.1. Support Data Format</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-in-developing">37.2. Cesium in developing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-component-for-cesium">37.3. Learning component for Cesium</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cesium-environment-setting">37.4. Cesium Environment setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-rendering">35.1. 1. Conditional Rendering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-if-statements">35.1.1. Using <code class="docutils literal notranslate"><span class="pre">if</span></code> Statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operator">35.1.2. Logical <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ternary-operator-condition-true-false">35.1.3. Ternary Operator (<code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">?</span> <span class="pre">true</span> <span class="pre">:</span> <span class="pre">false</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rendering-lists">35.2. 2. Rendering Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-list">35.2.1. Basic List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keys">35.2.2. Keys</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrong-missing-key-warning">35.2.3. ❌ Wrong: Missing Key Warning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">35.3. 3. Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-conditionals-lists">35.4. 🔴 Quiz: Conditionals &amp; Lists</a></li>
 </ul>
   </nav></div>
 

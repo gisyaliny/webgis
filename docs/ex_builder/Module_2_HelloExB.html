@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>37. Module 2: Hello Experience Builder &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>39. Module 2: Hello Experience Builder &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="38. Module 3: Connecting to the Map (The Core)" href="Module_3_ConnectingToMap.html" />
-    <link rel="prev" title="36. Module 1: The Foundations (Prerequisites)" href="Module_1_Foundations.html" />
+    <link rel="next" title="40. Module 3: Connecting to the Map (The Core)" href="Module_3_ConnectingToMap.html" />
+    <link rel="prev" title="38. Module 1: The Foundations (Prerequisites)" href="Module_1_Foundations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -233,19 +233,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/05_React_Props.html">33. React Module 5: React Props</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/06_React_Events.html">34. React Module 6: React Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/07_React_Conditionals_Lists.html">35. React Module 7: Conditionals &amp; Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/08_React_Forms.html">36. React Module 8: React Forms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">35. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">37. Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">36. Module 1: The Foundations (Prerequisites)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">37. Module 2: Hello Experience Builder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">38. Module 3: Connecting to the Map (The Core)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">39. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">40. Module 5: Making it Reusable (Configuration)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">41. Module 6: Advanced Communications (Bonus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">38. Module 1: The Foundations (Prerequisites)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">39. Module 2: Hello Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">40. Module 3: Connecting to the Map (The Core)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">41. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">42. Module 5: Making it Reusable (Configuration)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">43. Module 6: Advanced Communications (Bonus)</a></li>
 </ul>
 
     </div>
@@ -458,21 +460,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-widget">37.1. 1. The Anatomy of a Widget</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manifest-json">37.1.1. <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src-runtime-widget-tsx">37.1.2. <code class="docutils literal notranslate"><span class="pre">src/runtime/widget.tsx</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-widget">39.1. 1. The Anatomy of a Widget</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manifest-json">39.1.1. <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src-runtime-widget-tsx">39.1.2. <code class="docutils literal notranslate"><span class="pre">src/runtime/widget.tsx</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-first-widget-simple-button">37.2. 2. Creating Your First Widget (“Simple Button”)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-the-folder">37.2.1. Step 1: The Folder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-the-manifest">37.2.2. Step 2: The Manifest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-the-code">37.2.3. Step 3: The Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-restart">37.2.4. Step 4: Restart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-first-widget-simple-button">39.2. 2. Creating Your First Widget (“Simple Button”)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-the-folder">39.2.1. Step 1: The Folder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-the-manifest">39.2.2. Step 2: The Manifest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-the-code">39.2.3. Step 3: The Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-restart">39.2.4. Step 4: Restart</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jimu-ui">37.3. 3. Using <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-2">37.4. 🎓 Quiz: Module 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">37.4.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jimu-ui">39.3. 3. Using <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-2">39.4. 🎓 Quiz: Module 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">39.4.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>
@@ -487,14 +489,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="module-2-hello-experience-builder">
-<h1><span class="section-number">37. </span>Module 2: Hello Experience Builder<a class="headerlink" href="#module-2-hello-experience-builder" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">39. </span>Module 2: Hello Experience Builder<a class="headerlink" href="#module-2-hello-experience-builder" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p><strong>Goal</strong>: Understand the file structure and create your first visible widget.</p>
 </div></blockquote>
 <p>Now that we speak the language, let’s look at the engine. An Experience Builder widget isn’t just one file; it’s a small folder of files working together.</p>
 <hr class="docutils" />
 <section id="the-anatomy-of-a-widget">
-<h2><span class="section-number">37.1. </span>1. The Anatomy of a Widget<a class="headerlink" href="#the-anatomy-of-a-widget" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.1. </span>1. The Anatomy of a Widget<a class="headerlink" href="#the-anatomy-of-a-widget" title="Link to this heading">#</a></h2>
 <p>Every widget needs at least these files:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>my-widget/
 ├── manifest.json       &lt;-- The ID Card
@@ -507,25 +509,25 @@ document.write(`
 </pre></div>
 </div>
 <section id="manifest-json">
-<h3><span class="section-number">37.1.1. </span><code class="docutils literal notranslate"><span class="pre">manifest.json</span></code><a class="headerlink" href="#manifest-json" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.1.1. </span><code class="docutils literal notranslate"><span class="pre">manifest.json</span></code><a class="headerlink" href="#manifest-json" title="Link to this heading">#</a></h3>
 <p>This tells ExB “I exist.” It defines your widget’s name, version, and what other libraries it needs (like <code class="docutils literal notranslate"><span class="pre">jimu-arcgis</span></code>).
 <strong>Critical field</strong>: <code class="docutils literal notranslate"><span class="pre">dependency</span></code>. If you use maps, you usually need <code class="docutils literal notranslate"><span class="pre">&quot;jimu-arcgis&quot;</span></code>.</p>
 </section>
 <section id="src-runtime-widget-tsx">
-<h3><span class="section-number">37.1.2. </span><code class="docutils literal notranslate"><span class="pre">src/runtime/widget.tsx</span></code><a class="headerlink" href="#src-runtime-widget-tsx" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.1.2. </span><code class="docutils literal notranslate"><span class="pre">src/runtime/widget.tsx</span></code><a class="headerlink" href="#src-runtime-widget-tsx" title="Link to this heading">#</a></h3>
 <p>This is the entry point. ExB looks for a default exporT component here to put on the page.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="creating-your-first-widget-simple-button">
-<h2><span class="section-number">37.2. </span>2. Creating Your First Widget (“Simple Button”)<a class="headerlink" href="#creating-your-first-widget-simple-button" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.2. </span>2. Creating Your First Widget (“Simple Button”)<a class="headerlink" href="#creating-your-first-widget-simple-button" title="Link to this heading">#</a></h2>
 <p>Let’s walk through creating a widget from scratch.</p>
 <section id="step-1-the-folder">
-<h3><span class="section-number">37.2.1. </span>Step 1: The Folder<a class="headerlink" href="#step-1-the-folder" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.2.1. </span>Step 1: The Folder<a class="headerlink" href="#step-1-the-folder" title="Link to this heading">#</a></h3>
 <p>Create a folder named <code class="docutils literal notranslate"><span class="pre">simple-button</span></code> in your <code class="docutils literal notranslate"><span class="pre">client/your-extensions/widgets/</span></code> directory.</p>
 </section>
 <section id="step-2-the-manifest">
-<h3><span class="section-number">37.2.2. </span>Step 2: The Manifest<a class="headerlink" href="#step-2-the-manifest" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.2.2. </span>Step 2: The Manifest<a class="headerlink" href="#step-2-the-manifest" title="Link to this heading">#</a></h3>
 <p>Create <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code> inside that folder:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple-button&quot;</span><span class="p">,</span>
@@ -544,7 +546,7 @@ document.write(`
 </div>
 </section>
 <section id="step-3-the-code">
-<h3><span class="section-number">37.2.3. </span>Step 3: The Code<a class="headerlink" href="#step-3-the-code" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.2.3. </span>Step 3: The Code<a class="headerlink" href="#step-3-the-code" title="Link to this heading">#</a></h3>
 <p>Create the folder path <code class="docutils literal notranslate"><span class="pre">src/runtime/</span></code> and then <code class="docutils literal notranslate"><span class="pre">widget.tsx</span></code>:</p>
 <div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>import { React, type AllWidgetProps } from &#39;jimu-core&#39;;
 import { Button } from &#39;jimu-ui&#39;; // Using ExB&#39;s UI library
@@ -571,20 +573,20 @@ export default Widget;
 </div>
 </section>
 <section id="step-4-restart">
-<h3><span class="section-number">37.2.4. </span>Step 4: Restart<a class="headerlink" href="#step-4-restart" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.2.4. </span>Step 4: Restart<a class="headerlink" href="#step-4-restart" title="Link to this heading">#</a></h3>
 <p><strong>Important</strong>: Whenever you add a <em>new</em> widget folder, you must restart your <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">start</span></code> server for ExB to recognize it. After that, you can just save files to hot-reload.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="using-jimu-ui">
-<h2><span class="section-number">37.3. </span>3. Using <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code><a class="headerlink" href="#using-jimu-ui" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.3. </span>3. Using <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code><a class="headerlink" href="#using-jimu-ui" title="Link to this heading">#</a></h2>
 <p>You noticed we imported <code class="docutils literal notranslate"><span class="pre">Button</span></code> from <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code>.
 ExB comes with a massive library of pre-built components (Buttons, Dropdowns, Inputs) that look like ArcGIS.
 <strong>Tip</strong>: Always try to use <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code> components instead of standard HTML tags (<code class="docutils literal notranslate"><span class="pre">&lt;button&gt;</span></code>) to ensure your widget looks consistent with the rest of the app themes.</p>
 </section>
 <hr class="docutils" />
 <section id="quiz-module-2">
-<h2><span class="section-number">37.4. </span>🎓 Quiz: Module 2<a class="headerlink" href="#quiz-module-2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">39.4. </span>🎓 Quiz: Module 2<a class="headerlink" href="#quiz-module-2" title="Link to this heading">#</a></h2>
 <p><strong>Q1: Which file is absolutely mandatory for ExB to recognize your widget folder?</strong>
 A) style.css
 B) widget.tsx
@@ -599,7 +601,7 @@ B) HTML buttons don’t work in React.
 C) It is the only way to make a button clickable.</p>
 <hr class="docutils" />
 <section id="reference-answers">
-<h3><span class="section-number">37.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">39.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Q1: C</strong>. <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code> is the ID card. Without it, the system ignores the folder.</p></li>
 <li><p><strong>Q2: B</strong>. The heavy “webpack” process needs to scan for new folders on startup.</p></li>
@@ -645,7 +647,7 @@ C) It is the only way to make a button clickable.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">36. </span>Module 1: The Foundations (Prerequisites)</p>
+        <p class="prev-next-title"><span class="section-number">38. </span>Module 1: The Foundations (Prerequisites)</p>
       </div>
     </a>
     <a class="right-next"
@@ -653,7 +655,7 @@ C) It is the only way to make a button clickable.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">38. </span>Module 3: Connecting to the Map (The Core)</p>
+        <p class="prev-next-title"><span class="section-number">40. </span>Module 3: Connecting to the Map (The Core)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -673,21 +675,21 @@ C) It is the only way to make a button clickable.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-widget">37.1. 1. The Anatomy of a Widget</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manifest-json">37.1.1. <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src-runtime-widget-tsx">37.1.2. <code class="docutils literal notranslate"><span class="pre">src/runtime/widget.tsx</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-anatomy-of-a-widget">39.1. 1. The Anatomy of a Widget</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manifest-json">39.1.1. <code class="docutils literal notranslate"><span class="pre">manifest.json</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src-runtime-widget-tsx">39.1.2. <code class="docutils literal notranslate"><span class="pre">src/runtime/widget.tsx</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-first-widget-simple-button">37.2. 2. Creating Your First Widget (“Simple Button”)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-the-folder">37.2.1. Step 1: The Folder</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-the-manifest">37.2.2. Step 2: The Manifest</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-the-code">37.2.3. Step 3: The Code</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-restart">37.2.4. Step 4: Restart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-first-widget-simple-button">39.2. 2. Creating Your First Widget (“Simple Button”)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-the-folder">39.2.1. Step 1: The Folder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-the-manifest">39.2.2. Step 2: The Manifest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-the-code">39.2.3. Step 3: The Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-restart">39.2.4. Step 4: Restart</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jimu-ui">37.3. 3. Using <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-2">37.4. 🎓 Quiz: Module 2</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">37.4.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jimu-ui">39.3. 3. Using <code class="docutils literal notranslate"><span class="pre">jimu-ui</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-2">39.4. 🎓 Quiz: Module 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">39.4.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>

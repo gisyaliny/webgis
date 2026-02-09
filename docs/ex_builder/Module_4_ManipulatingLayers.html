@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>39. Module 4: Manipulating Layers (Replicating Your Widgets) &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>41. Module 4: Manipulating Layers (Replicating Your Widgets) &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="40. Module 5: Making it Reusable (Configuration)" href="Module_5_Configuration.html" />
-    <link rel="prev" title="38. Module 3: Connecting to the Map (The Core)" href="Module_3_ConnectingToMap.html" />
+    <link rel="next" title="42. Module 5: Making it Reusable (Configuration)" href="Module_5_Configuration.html" />
+    <link rel="prev" title="40. Module 3: Connecting to the Map (The Core)" href="Module_3_ConnectingToMap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -233,19 +233,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/05_React_Props.html">33. React Module 5: React Props</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/06_React_Events.html">34. React Module 6: React Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/07_React_Conditionals_Lists.html">35. React Module 7: Conditionals &amp; Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/08_React_Forms.html">36. React Module 8: React Forms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">35. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">37. Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">36. Module 1: The Foundations (Prerequisites)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">37. Module 2: Hello Experience Builder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">38. Module 3: Connecting to the Map (The Core)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">39. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">40. Module 5: Making it Reusable (Configuration)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">41. Module 6: Advanced Communications (Bonus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">38. Module 1: The Foundations (Prerequisites)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">39. Module 2: Hello Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">40. Module 3: Connecting to the Map (The Core)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">41. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">42. Module 5: Making it Reusable (Configuration)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">43. Module 6: Advanced Communications (Bonus)</a></li>
 </ul>
 
     </div>
@@ -458,12 +460,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-layers-jimulayerviews">39.1. 1. Accessing Layers (<code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-focus-button-logic">39.2. 2. The <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> Logic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-toggle-button-logic">39.3. 3. The <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> Logic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-property-layer-visible">39.4. 4. Key Property: <code class="docutils literal notranslate"><span class="pre">layer.visible</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-4">39.5. 🎓 Quiz: Module 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">39.5.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-layers-jimulayerviews">41.1. 1. Accessing Layers (<code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-focus-button-logic">41.2. 2. The <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-toggle-button-logic">41.3. 3. The <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-property-layer-visible">41.4. 4. Key Property: <code class="docutils literal notranslate"><span class="pre">layer.visible</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-4">41.5. 🎓 Quiz: Module 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">41.5.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>
@@ -478,14 +480,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="module-4-manipulating-layers-replicating-your-widgets">
-<h1><span class="section-number">39. </span>Module 4: Manipulating Layers (Replicating Your Widgets)<a class="headerlink" href="#module-4-manipulating-layers-replicating-your-widgets" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">41. </span>Module 4: Manipulating Layers (Replicating Your Widgets)<a class="headerlink" href="#module-4-manipulating-layers-replicating-your-widgets" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p><strong>Goal</strong>: Programmatically turn layers on and off. This is the exact logic inside your <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> vs <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code>.</p>
 </div></blockquote>
 <p>This is the “meat” of your custom widgets. Once you have the <code class="docutils literal notranslate"><span class="pre">jimuMapView</span></code> (from Module 3), you can start controlling layers.</p>
 <hr class="docutils" />
 <section id="accessing-layers-jimulayerviews">
-<h2><span class="section-number">39.1. </span>1. Accessing Layers (<code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>)<a class="headerlink" href="#accessing-layers-jimulayerviews" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">41.1. </span>1. Accessing Layers (<code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>)<a class="headerlink" href="#accessing-layers-jimulayerviews" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">jimuMapView</span></code> object has a property called <code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>. This is a dictionary of all the layers the map knows about.</p>
 <p><strong>Format</strong>:</p>
 <div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -507,7 +509,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="the-layer-focus-button-logic">
-<h2><span class="section-number">39.2. </span>2. The <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> Logic<a class="headerlink" href="#the-layer-focus-button-logic" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">41.2. </span>2. The <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> Logic<a class="headerlink" href="#the-layer-focus-button-logic" title="Link to this heading">#</a></h2>
 <p>Your “Focus” button logic is: <strong>“Turn specific layers ON, and everyone else OFF”</strong>.</p>
 <p>Let’s break down the code you already have:</p>
 <div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">handleFocusClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -539,7 +541,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="the-layer-toggle-button-logic">
-<h2><span class="section-number">39.3. </span>3. The <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> Logic<a class="headerlink" href="#the-layer-toggle-button-logic" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">41.3. </span>3. The <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> Logic<a class="headerlink" href="#the-layer-toggle-button-logic" title="Link to this heading">#</a></h2>
 <p>Your “Toggle” button logic is different: <strong>“Flip the status for specific layers, but force others OFF”</strong>.</p>
 <div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">handleToggleClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">targetLayerIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;layer-A&quot;</span><span class="p">];</span>
@@ -567,7 +569,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="key-property-layer-visible">
-<h2><span class="section-number">39.4. </span>4. Key Property: <code class="docutils literal notranslate"><span class="pre">layer.visible</span></code><a class="headerlink" href="#key-property-layer-visible" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">41.4. </span>4. Key Property: <code class="docutils literal notranslate"><span class="pre">layer.visible</span></code><a class="headerlink" href="#key-property-layer-visible" title="Link to this heading">#</a></h2>
 <p>The ArcGIS JS API is very simple here.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">layer.visible</span> <span class="pre">=</span> <span class="pre">true</span></code> (Shows)</p></li>
@@ -577,7 +579,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="quiz-module-4">
-<h2><span class="section-number">39.5. </span>🎓 Quiz: Module 4<a class="headerlink" href="#quiz-module-4" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">41.5. </span>🎓 Quiz: Module 4<a class="headerlink" href="#quiz-module-4" title="Link to this heading">#</a></h2>
 <p><strong>Q1: How do you access the list of layers from the JimuMapView?</strong>
 A) <code class="docutils literal notranslate"><span class="pre">jimuMapView.layers</span></code>
 B) <code class="docutils literal notranslate"><span class="pre">jimuMapView.jimuLayerViews</span></code>
@@ -592,7 +594,7 @@ B) They are turned off (<code class="docutils literal notranslate"><span class="
 C) They are deleted from the map.</p>
 <hr class="docutils" />
 <section id="reference-answers">
-<h3><span class="section-number">39.5.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">41.5.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Q1: B</strong>. ExB wraps layers in <code class="docutils literal notranslate"><span class="pre">JimuLayerView</span></code> objects, accessible via that dictionary.</p></li>
 <li><p><strong>Q2: C</strong>. Setting the boolean <code class="docutils literal notranslate"><span class="pre">visible</span></code> property is the standard way.</p></li>
@@ -638,7 +640,7 @@ C) They are deleted from the map.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">38. </span>Module 3: Connecting to the Map (The Core)</p>
+        <p class="prev-next-title"><span class="section-number">40. </span>Module 3: Connecting to the Map (The Core)</p>
       </div>
     </a>
     <a class="right-next"
@@ -646,7 +648,7 @@ C) They are deleted from the map.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">40. </span>Module 5: Making it Reusable (Configuration)</p>
+        <p class="prev-next-title"><span class="section-number">42. </span>Module 5: Making it Reusable (Configuration)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -666,12 +668,12 @@ C) They are deleted from the map.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-layers-jimulayerviews">39.1. 1. Accessing Layers (<code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-focus-button-logic">39.2. 2. The <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> Logic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-toggle-button-logic">39.3. 3. The <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> Logic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-property-layer-visible">39.4. 4. Key Property: <code class="docutils literal notranslate"><span class="pre">layer.visible</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-4">39.5. 🎓 Quiz: Module 4</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">39.5.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-layers-jimulayerviews">41.1. 1. Accessing Layers (<code class="docutils literal notranslate"><span class="pre">jimuLayerViews</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-focus-button-logic">41.2. 2. The <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-layer-toggle-button-logic">41.3. 3. The <code class="docutils literal notranslate"><span class="pre">layer-toggle-button</span></code> Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-property-layer-visible">41.4. 4. Key Property: <code class="docutils literal notranslate"><span class="pre">layer.visible</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-4">41.5. 🎓 Quiz: Module 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">41.5.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>

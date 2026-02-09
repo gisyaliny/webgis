@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>41. Module 6: Advanced Communications (Bonus) &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>43. Module 6: Advanced Communications (Bonus) &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -62,7 +62,7 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="40. Module 5: Making it Reusable (Configuration)" href="Module_5_Configuration.html" />
+    <link rel="prev" title="42. Module 5: Making it Reusable (Configuration)" href="Module_5_Configuration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -232,19 +232,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/05_React_Props.html">33. React Module 5: React Props</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/06_React_Events.html">34. React Module 6: React Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/07_React_Conditionals_Lists.html">35. React Module 7: Conditionals &amp; Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/08_React_Forms.html">36. React Module 8: React Forms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">35. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">37. Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">36. Module 1: The Foundations (Prerequisites)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">37. Module 2: Hello Experience Builder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">38. Module 3: Connecting to the Map (The Core)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">39. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">40. Module 5: Making it Reusable (Configuration)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">41. Module 6: Advanced Communications (Bonus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">38. Module 1: The Foundations (Prerequisites)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">39. Module 2: Hello Experience Builder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_3_ConnectingToMap.html">40. Module 3: Connecting to the Map (The Core)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">41. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">42. Module 5: Making it Reusable (Configuration)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">43. Module 6: Advanced Communications (Bonus)</a></li>
 </ul>
 
     </div>
@@ -457,15 +459,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-isolation">41.1. 1. The Problem: Isolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-global-events">41.2. 2. The Solution: Global Events</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shout-dispatch">41.2.1. The Shout (Dispatch)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listener-useeffect">41.2.2. The Listener (useEffect)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-isolation">43.1. 1. The Problem: Isolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-global-events">43.2. 2. The Solution: Global Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shout-dispatch">43.2.1. The Shout (Dispatch)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listener-useeffect">43.2.2. The Listener (useEffect)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-events-browser-tabs">41.3. 3. Storage Events (Browser Tabs)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-6">41.4. 🎓 Quiz: Module 6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">41.4.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-events-browser-tabs">43.3. 3. Storage Events (Browser Tabs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-6">43.4. 🎓 Quiz: Module 6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">43.4.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>
@@ -480,7 +482,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="module-6-advanced-communications-bonus">
-<h1><span class="section-number">41. </span>Module 6: Advanced Communications (Bonus)<a class="headerlink" href="#module-6-advanced-communications-bonus" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">43. </span>Module 6: Advanced Communications (Bonus)<a class="headerlink" href="#module-6-advanced-communications-bonus" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p><strong>Goal</strong>: How widgets talk to each other without a central brain.</p>
 </div></blockquote>
@@ -492,14 +494,14 @@ document.write(`
 </ul>
 <hr class="docutils" />
 <section id="the-problem-isolation">
-<h2><span class="section-number">41.1. </span>1. The Problem: Isolation<a class="headerlink" href="#the-problem-isolation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">43.1. </span>1. The Problem: Isolation<a class="headerlink" href="#the-problem-isolation" title="Link to this heading">#</a></h2>
 <p>Widget A doesn’t know Widget B exists. They are separate React components.</p>
 </section>
 <section id="the-solution-global-events">
-<h2><span class="section-number">41.2. </span>2. The Solution: Global Events<a class="headerlink" href="#the-solution-global-events" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">43.2. </span>2. The Solution: Global Events<a class="headerlink" href="#the-solution-global-events" title="Link to this heading">#</a></h2>
 <p>We use the browser window as a town square. Widget A shouts “I WAS CLICKED!” and Widget B listens.</p>
 <section id="the-shout-dispatch">
-<h3><span class="section-number">41.2.1. </span>The Shout (Dispatch)<a class="headerlink" href="#the-shout-dispatch" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">43.2.1. </span>The Shout (Dispatch)<a class="headerlink" href="#the-shout-dispatch" title="Link to this heading">#</a></h3>
 <div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">LAYER_FOCUS_MESSAGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;LAYER_FOCUS_ACTIVATED&#39;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">handleClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -516,7 +518,7 @@ document.write(`
 </div>
 </section>
 <section id="the-listener-useeffect">
-<h3><span class="section-number">41.2.2. </span>The Listener (useEffect)<a class="headerlink" href="#the-listener-useeffect" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">43.2.2. </span>The Listener (useEffect)<a class="headerlink" href="#the-listener-useeffect" title="Link to this heading">#</a></h3>
 <div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="c1">// The handler function</span>
@@ -546,14 +548,14 @@ If you don’t remove the listener, every time you open/close the page, you crea
 </section>
 <hr class="docutils" />
 <section id="storage-events-browser-tabs">
-<h2><span class="section-number">41.3. </span>3. Storage Events (Browser Tabs)<a class="headerlink" href="#storage-events-browser-tabs" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">43.3. </span>3. Storage Events (Browser Tabs)<a class="headerlink" href="#storage-events-browser-tabs" title="Link to this heading">#</a></h2>
 <p>Your code also uses <code class="docutils literal notranslate"><span class="pre">window.addEventListener('storage')</span></code>.
 This is even cooler: it works across <strong>Browser Tabs</strong>. If you have the same map open in two tabs, clicking a button in Tab 1 can actually update Tab 2!
 (Note: This is rarely needed for standard widgets, but <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code> includes it for robustness).</p>
 </section>
 <hr class="docutils" />
 <section id="quiz-module-6">
-<h2><span class="section-number">41.4. </span>🎓 Quiz: Module 6<a class="headerlink" href="#quiz-module-6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">43.4. </span>🎓 Quiz: Module 6<a class="headerlink" href="#quiz-module-6" title="Link to this heading">#</a></h2>
 <p><strong>Q1: Why can’t Widget A just call <code class="docutils literal notranslate"><span class="pre">WidgetB.turnOff()</span></code>?</strong>
 A) Because they are in different files.
 B) Because React Components are isolated and don’t have direct references to each other by default.
@@ -568,7 +570,7 @@ B) The widget won’t work.
 C) You create “Zombie” listeners (Memory Leaks) that keep running even after the widget is gone.</p>
 <hr class="docutils" />
 <section id="reference-answers">
-<h3><span class="section-number">41.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">43.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Q1: B</strong>. In component-based architecture, siblings don’t know about siblings. They communicate via parents or global events.</p></li>
 <li><p><strong>Q2: B</strong>. It acts as a global radio broadcast.</p></li>
@@ -614,7 +616,7 @@ C) You create “Zombie” listeners (Memory Leaks) that keep running even after
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">40. </span>Module 5: Making it Reusable (Configuration)</p>
+        <p class="prev-next-title"><span class="section-number">42. </span>Module 5: Making it Reusable (Configuration)</p>
       </div>
     </a>
 </div>
@@ -633,15 +635,15 @@ C) You create “Zombie” listeners (Memory Leaks) that keep running even after
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-isolation">41.1. 1. The Problem: Isolation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-global-events">41.2. 2. The Solution: Global Events</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shout-dispatch">41.2.1. The Shout (Dispatch)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listener-useeffect">41.2.2. The Listener (useEffect)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-isolation">43.1. 1. The Problem: Isolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution-global-events">43.2. 2. The Solution: Global Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-shout-dispatch">43.2.1. The Shout (Dispatch)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-listener-useeffect">43.2.2. The Listener (useEffect)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-events-browser-tabs">41.3. 3. Storage Events (Browser Tabs)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-6">41.4. 🎓 Quiz: Module 6</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">41.4.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-events-browser-tabs">43.3. 3. Storage Events (Browser Tabs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-6">43.4. 🎓 Quiz: Module 6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">43.4.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>

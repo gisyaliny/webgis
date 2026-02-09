@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>38. Module 3: Connecting to the Map (The Core) &#8212; Yalin&#39;s GIS Developer Handbook</title>
+    <title>40. Module 3: Connecting to the Map (The Core) &#8212; Yalin&#39;s GIS Developer Handbook</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="39. Module 4: Manipulating Layers (Replicating Your Widgets)" href="Module_4_ManipulatingLayers.html" />
-    <link rel="prev" title="37. Module 2: Hello Experience Builder" href="Module_2_HelloExB.html" />
+    <link rel="next" title="41. Module 4: Manipulating Layers (Replicating Your Widgets)" href="Module_4_ManipulatingLayers.html" />
+    <link rel="prev" title="39. Module 2: Hello Experience Builder" href="Module_2_HelloExB.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -233,19 +233,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../React/04_Class_Components.html">32. React Module 4: Class Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/05_React_Props.html">33. React Module 5: React Props</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../React/06_React_Events.html">34. React Module 6: React Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/07_React_Conditionals_Lists.html">35. React Module 7: Conditionals &amp; Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../React/08_React_Forms.html">36. React Module 8: React Forms</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cesium</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">35. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Cesium/01-Introduction.html">37. Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experience Builder</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">36. Module 1: The Foundations (Prerequisites)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">37. Module 2: Hello Experience Builder</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">38. Module 3: Connecting to the Map (The Core)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">39. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">40. Module 5: Making it Reusable (Configuration)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">41. Module 6: Advanced Communications (Bonus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_1_Foundations.html">38. Module 1: The Foundations (Prerequisites)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_2_HelloExB.html">39. Module 2: Hello Experience Builder</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">40. Module 3: Connecting to the Map (The Core)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_4_ManipulatingLayers.html">41. Module 4: Manipulating Layers (Replicating Your Widgets)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_5_Configuration.html">42. Module 5: Making it Reusable (Configuration)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module_6_AdvancedCommunication.html">43. Module 6: Advanced Communications (Bonus)</a></li>
 </ul>
 
     </div>
@@ -458,15 +460,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jimumapviewcomponent">38.1. 1. The JimuMapViewComponent</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-it">38.1.1. Import It</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-it-in-jsx">38.1.2. Use It in JSX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jimumapviewcomponent">40.1. 1. The JimuMapViewComponent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-it">40.1.1. Import It</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-it-in-jsx">40.1.2. Use It in JSX</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capturing-the-active-view">38.2. 2. Capturing the Active View</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-example-zoom-button">38.3. 3. Practical Example: Zoom Button</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-3">38.4. 🎓 Quiz: Module 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">38.4.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capturing-the-active-view">40.2. 2. Capturing the Active View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-example-zoom-button">40.3. 3. Practical Example: Zoom Button</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-3">40.4. 🎓 Quiz: Module 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">40.4.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>
@@ -481,23 +483,23 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="module-3-connecting-to-the-map-the-core">
-<h1><span class="section-number">38. </span>Module 3: Connecting to the Map (The Core)<a class="headerlink" href="#module-3-connecting-to-the-map-the-core" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">40. </span>Module 3: Connecting to the Map (The Core)<a class="headerlink" href="#module-3-connecting-to-the-map-the-core" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p><strong>Goal</strong>: Connect your widget to an ArcGIS Map. This is the foundation of your <code class="docutils literal notranslate"><span class="pre">layer-focus-button</span></code>.</p>
 </div></blockquote>
 <p>A widget by itself is blind. To make it “see” the map, we need to connect it. This is the most confusing part for beginners because it involves a specific component called <code class="docutils literal notranslate"><span class="pre">JimuMapViewComponent</span></code>.</p>
 <hr class="docutils" />
 <section id="the-jimumapviewcomponent">
-<h2><span class="section-number">38.1. </span>1. The JimuMapViewComponent<a class="headerlink" href="#the-jimumapviewcomponent" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">40.1. </span>1. The JimuMapViewComponent<a class="headerlink" href="#the-jimumapviewcomponent" title="Link to this heading">#</a></h2>
 <p>Think of this component as a visible “plug” that goes into the map. You don’t see it on the screen, but it sits in your widget’s code and listens to the map.</p>
 <section id="import-it">
-<h3><span class="section-number">38.1.1. </span>Import It<a class="headerlink" href="#import-it" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">40.1.1. </span>Import It<a class="headerlink" href="#import-it" title="Link to this heading">#</a></h3>
 <div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>import { JimuMapViewComponent, type JimuMapView } from &#39;jimu-arcgis&#39;;
 </pre></div>
 </div>
 </section>
 <section id="use-it-in-jsx">
-<h3><span class="section-number">38.1.2. </span>Use It in JSX<a class="headerlink" href="#use-it-in-jsx" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">40.1.2. </span>Use It in JSX<a class="headerlink" href="#use-it-in-jsx" title="Link to this heading">#</a></h3>
 <p>You usually place this at the top of your return statement.</p>
 <div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>return (
   &lt;div className=&quot;my-widget&quot;&gt;
@@ -519,7 +521,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="capturing-the-active-view">
-<h2><span class="section-number">38.2. </span>2. Capturing the Active View<a class="headerlink" href="#capturing-the-active-view" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">40.2. </span>2. Capturing the Active View<a class="headerlink" href="#capturing-the-active-view" title="Link to this heading">#</a></h2>
 <p>We need to save that <code class="docutils literal notranslate"><span class="pre">JimuMapView</span></code> object so we can use it later (like when a button is clicked).</p>
 <div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>const [jimuMapView, setJimuMapView] = React.useState&lt;JimuMapView&gt;(null);
 
@@ -539,7 +541,7 @@ Because <code class="docutils literal notranslate"><span class="pre">jimuMapView
 </section>
 <hr class="docutils" />
 <section id="practical-example-zoom-button">
-<h2><span class="section-number">38.3. </span>3. Practical Example: Zoom Button<a class="headerlink" href="#practical-example-zoom-button" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">40.3. </span>3. Practical Example: Zoom Button<a class="headerlink" href="#practical-example-zoom-button" title="Link to this heading">#</a></h2>
 <p>Let’s make a button that zooms the map when clicked.</p>
 <div class="highlight-tsx notranslate"><div class="highlight"><pre><span></span>const HelperWidget = (props) =&gt; {
   const [jimuMapView, setJimuMapView] = useState&lt;JimuMapView&gt;();
@@ -572,7 +574,7 @@ Because <code class="docutils literal notranslate"><span class="pre">jimuMapView
 </section>
 <hr class="docutils" />
 <section id="quiz-module-3">
-<h2><span class="section-number">38.4. </span>🎓 Quiz: Module 3<a class="headerlink" href="#quiz-module-3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">40.4. </span>🎓 Quiz: Module 3<a class="headerlink" href="#quiz-module-3" title="Link to this heading">#</a></h2>
 <p><strong>Q1: What is the purpose of <code class="docutils literal notranslate"><span class="pre">JimuMapViewComponent</span></code>?</strong>
 A) To display a second map inside your widget.
 B) To act as a bridge/listener between your widget and the main Map Widget.
@@ -587,7 +589,7 @@ B) <code class="docutils literal notranslate"><span class="pre">JimuMapView</spa
 C) <code class="docutils literal notranslate"><span class="pre">config.json</span></code></p>
 <hr class="docutils" />
 <section id="reference-answers">
-<h3><span class="section-number">38.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">40.4.1. </span>Reference Answers<a class="headerlink" href="#reference-answers" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Q1: B</strong>. It listens for the map instance and passes it to your code.</p></li>
 <li><p><strong>Q2: B</strong>. This requires your widget to have a setting page with a Map Selector (covered in Module 5), but <code class="docutils literal notranslate"><span class="pre">props</span></code> is how that selection reaches your code.</p></li>
@@ -633,7 +635,7 @@ C) <code class="docutils literal notranslate"><span class="pre">config.json</spa
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">37. </span>Module 2: Hello Experience Builder</p>
+        <p class="prev-next-title"><span class="section-number">39. </span>Module 2: Hello Experience Builder</p>
       </div>
     </a>
     <a class="right-next"
@@ -641,7 +643,7 @@ C) <code class="docutils literal notranslate"><span class="pre">config.json</spa
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">39. </span>Module 4: Manipulating Layers (Replicating Your Widgets)</p>
+        <p class="prev-next-title"><span class="section-number">41. </span>Module 4: Manipulating Layers (Replicating Your Widgets)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -661,15 +663,15 @@ C) <code class="docutils literal notranslate"><span class="pre">config.json</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jimumapviewcomponent">38.1. 1. The JimuMapViewComponent</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-it">38.1.1. Import It</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-it-in-jsx">38.1.2. Use It in JSX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jimumapviewcomponent">40.1. 1. The JimuMapViewComponent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-it">40.1.1. Import It</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-it-in-jsx">40.1.2. Use It in JSX</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capturing-the-active-view">38.2. 2. Capturing the Active View</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-example-zoom-button">38.3. 3. Practical Example: Zoom Button</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-3">38.4. 🎓 Quiz: Module 3</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">38.4.1. Reference Answers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capturing-the-active-view">40.2. 2. Capturing the Active View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-example-zoom-button">40.3. 3. Practical Example: Zoom Button</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-module-3">40.4. 🎓 Quiz: Module 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-answers">40.4.1. Reference Answers</a></li>
 </ul>
 </li>
 </ul>
