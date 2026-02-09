@@ -73,6 +73,8 @@ parts:
       - file: docs/React/04_Class_Components
       - file: docs/React/05_React_Props
       - file: docs/React/06_React_Events
+      - file: docs/React/07_React_Conditionals_Lists
+      - file: docs/React/08_React_Forms
   - caption: Cesium
     numbered: true
     maxdepth: 2
